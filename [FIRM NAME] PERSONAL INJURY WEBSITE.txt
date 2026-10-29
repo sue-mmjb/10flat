@@ -1,0 +1,316 @@
+[FIRM NAME] PERSONAL INJURY WEBSITE - CONTENT
+Plain text for pasting into the cloned mystack.com index.html.
+Source: Tim's instructions, WhatsApp, 30 October 2026.
+
+Anything in [square brackets] is not confirmed yet. Replace it before the site goes live.
+Do not add "free consultation", "no fee unless we win", "specialist", "best", "guaranteed",
+testimonials, results or attorney credentials. None of these has been confirmed.
+
+
+=====================================================================
+PART 1 - HOME PAGE, SLOT BY SLOT, IN THE ORDER OF THE CLONED PAGE
+=====================================================================
+"WAS" = the mystack text currently in index.html. "NOW" = what to paste instead.
+
+
+--- HEADER / NAV ---------------------------------------------------
+
+WAS:  For Brokers
+NOW:  Pricing
+
+WAS:  Instant quote  (header button)
+NOW:  Start your case
+
+
+--- HERO -------------------------------------------------------------
+
+WAS:  We're putting an end to the Brutal Renewal.
+NOW:  We're putting an end to high legal fees.
+
+WAS:  You know what's absurd? A surprise 20% hike on your team's group plan. But that's commonplace today. That's why we built Stack.
+NOW:  We win when you win. Simple as that. Personal injury representation with the fee published up front. Move the slider, see what you'd keep.
+
+WAS:  Instant quote  (hero button)
+NOW:  See what you'd keep
+
+
+--- SECTION: "SET A BUDGET. SKIP THE HEADACHE." ----------------------
+
+WAS:  Set a budget. Skip the headache.
+NOW:  Know your fee before you start.
+
+WAS:  Give your team an allowance for health benefits and they'll choose a plan that's right for them. You pick a budget. Stack handles the rest.
+NOW:  Most people never find out what a lawyer will cost until the case is over. We think that's backwards. At [FIRM NAME] the fee is a fixed percentage, published on this page, agreed in writing before we lift a finger. No hourly billing. No surprise deductions at the end.
+
+
+--- CALCULATOR (STEP 1 CARD) -----------------------------------------
+This card becomes the fee calculator.
+
+WAS:  step 1
+NOW:  step 1
+
+WAS:  You set the budget.
+NOW:  What would you actually take home?
+
+WAS:  Set your benchmark plan and contribution to see your budget. You're in total control.
+NOW:  Slide to the amount you expect to recover. We'll show you our fee and what you keep, next to what a typical firm would charge.
+
+WAS:  Benchmark Plan   (dropdown: Bronze / Silver / Gold)
+NOW:  Case type        (dropdown: Car accident 25% / Medical malpractice 33% / Dental malpractice 33%)
+
+WAS:  Employer Contribution  (slider)
+NOW:  Expected settlement or award  (slider, [CONFIRM: minimum] to [CONFIRM: maximum], default [CONFIRM: default])
+
+WAS:  Total Monthly Budget   (result)
+NOW:  Four result rows:
+      What you owe us today ............ [CONFIRM: $0 or $500]
+      Our fee when we win .............. (amount x percentage)
+      What you get when we win your case (amount minus our fee)
+      With a typical firm's fee you'd keep (amount minus [CONFIRM: industry %])
+
+Small print under the results (always visible):
+      These figures are illustrative only. They are not a prediction, promise or guarantee of any outcome or amount. Every case is different. [CONFIRM: whether case costs such as filing fees and expert fees are deducted separately]
+
+WAS:  Next, your team shops for benefits.  (link)
+NOW:  Next, tell us what happened.  (link to the step 2 card)
+
+
+--- STEP 2 CARD --------------------------------------------------------
+
+WAS:  step 2
+NOW:  step 2
+
+WAS:  Your team shops for benefits.
+NOW:  Tell us what happened.
+
+WAS:  Each employee builds a stack of health benefits that's right for them.
+NOW:  Answer a short set of questions online, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we'll ask.
+
+WAS:  $50 Employer + $50 Maria / Silver HMO Family Plan  (sample card inside the mock-up)
+NOW:  Car accident / Fee: 25% / Agreed in writing before we start  (sample card)
+
+
+--- SECTION: "OUR TRUSTED PARTNERS" (logo row) ---------------------------
+
+NOW:  Delete this section. The firm has no partner logos to show.
+
+
+--- SECTION: "WE BUILT STACK TO GIVE YOU AND YOUR TEAM CONTROL" ----------
+
+WAS:  We built Stack to give you and your team control.
+NOW:  Three steps. No waiting room.
+
+WAS:  You set the budget.
+NOW:  1. Tell us what happened.
+WAS:  Pick a monthly amount you can contribute. That's your number. It doesn't move unless you want it to. No surprise renewals.
+NOW:  Answer a short set of questions online, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we'll ask.
+
+WAS:  Your team builds their plan.
+NOW:  2. We build your case.
+WAS:  Stack guides each employee to coverage that fits them like their favorite pair of pants. If they're HSA-eligible, we help them maximize HSA funding to build a healthier financial future.
+NOW:  Our system organises your facts and documents and prepares the paperwork. Our attorney reviews every case and makes every legal decision.
+
+WAS:  The plan goes with them.
+NOW:  3. We pursue your recovery.
+WAS:  If someone leaves your team, the plan leaves with them, because it's their plan. That's how insurance should work.
+NOW:  You see the fee before we start. You see what you keep when we win.
+
+
+--- SECTION: TESTIMONIAL (Doug Buckley, Black Kahawa Coffee) -------------
+
+NOW:  Delete this section. The firm has no testimonials.
+
+
+--- SECTION: "WE WIN WHEN YOU AND YOUR TEAM ARE HAPPY" ---------------------
+
+WAS:  We win when you and your team are happy.
+NOW:  We win when you win.
+
+WAS:  We're not selling your team a plan. We're helping them find the right one.
+NOW:  Our fee is a percentage of your recovery. That means we only do well when you do.
+
+WAS:  No conflicts. No asterisks. Just someone in your corner.
+NOW:  No hourly billing. No surprises. Just someone in your corner.
+
+
+--- SECTION: "INSURANCE CARRIERS AVAILABLE THROUGH STACK" (logo row) --------
+
+WAS:  Insurance carriers available through stack
+NOW:  Replace the logo row with a three-row table:
+      One published rate for every kind of case.
+      Car accidents ............ [CONFIRM: $500 or $0] today ... 25% when we win
+      Medical malpractice ...... [CONFIRM] today ............... 33% when we win
+      Dental malpractice ....... [CONFIRM] today ............... 33% when we win
+      Link: See all case types and fees
+
+
+--- SECTION: "WE MAKE AN INSTANT IMPACT" (five quotes) ----------------------
+
+WAS:  We make an instant impact.  (plus five anonymous quotes)
+NOW:  Lower fees aren't a gimmick. They're a design.
+      Traditional firms charge high percentages because they run on paperwork and hours. We built [FIRM NAME] around technology that handles the intake, the document assembly and the case tracking, so our attorney spends time on your case, not on admin. That's the saving we pass on. [CONFIRM: say "AI" or "technology"]
+      Delete the five quotes.
+
+
+--- NEW SECTION (insert before the closing): FAQ ----------------------------
+Every answer must stay in the page even when the accordion is closed.
+The same text goes into the JSON-LD, word for word.
+
+Questions people ask before they start
+
+Q: What is your fee for a car accident case?
+A: Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start.
+
+Q: What is your fee for a medical or dental malpractice case?
+A: Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start.
+
+Q: What does it cost to start my case?
+A: [CONFIRM: $0 or $500 down, and whether it is refundable or credited against the fee]
+
+Q: What happens if you don't win?
+A: [CONFIRM: whether any amount is owed if there is no recovery]
+
+Q: How does the fee calculator work?
+A: Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome.
+
+Q: How do I start?
+A: Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship.
+
+
+--- CLOSING ---------------------------------------------------------------
+
+WAS:  You've got a business to run. Let Stack handle the benefits part.
+NOW:  You've been through enough. Let us handle the legal part.
+
+WAS:  Instant Quote  (button)
+NOW:  Start your case
+
+
+--- FOOTER ----------------------------------------------------------------
+
+WAS:  Stack Healthcare, Inc. is a financial technology company and is not a bank... (long disclaimer)
+NOW:  [FIRM NAME] | [STREET ADDRESS, CITY, STATE ZIP] | Text or call [PHONE]
+      Attorney responsible for this website: [ATTORNEY NAME], [BAR NUMBER], licensed in [STATE].
+      Attorney advertising. Prior results do not guarantee a similar outcome. Fee percentages are subject to a written fee agreement. The calculator is illustrative only.
+
+WAS:  Privacy Policy | Terms of Use
+NOW:  Privacy | Terms | Disclaimer
+
+WAS:  (c) 2026 Stack Healthcare, Inc. All rights reserved.
+NOW:  (c) 2026 [FIRM NAME]. All rights reserved.
+
+
+--- PAGE TITLE AND DESCRIPTION (in the <head>) ------------------------------
+
+Title:        Personal Injury Lawyers With Published Fees | [FIRM NAME]
+Description:  See our fee before you hire us. 25% for car accidents, 33% for medical and dental malpractice. Slide to see what you'd keep when we win.
+Language:     en
+
+
+=====================================================================
+PART 2 - OTHER PAGES
+=====================================================================
+
+
+--- /pricing ----------------------------------------------------------------
+
+Title:        Personal Injury Fees, Published | [FIRM NAME]
+Description:  Every case type we handle and the fee we charge, published in full. No hourly billing, no negotiation behind closed doors.
+
+Heading:      Every case type. Every fee. Published.
+Intro:        We don't negotiate fees case by case behind closed doors. Here is what we charge, for everything we handle.
+
+Confirmed rates
+      Car accidents ............ [CONFIRM: $500 or $0] today ... 25% when we win
+      Medical malpractice ...... [CONFIRM] today ............... 33% when we win
+      Dental malpractice ....... [CONFIRM] today ............... 33% when we win
+
+Other case types
+      Do not publish until Tim approves the proposed list (see PI-Website-Content-Draft.md, section 4.2).
+
+How the fee works
+Q: Is the percentage the same whether the case settles or goes to trial?
+A: [CONFIRM: whether the rate changes if the case goes to trial]
+
+Q: Are case costs included in the fee?
+A: [CONFIRM: how filing fees, expert fees and record costs are handled]
+
+Q: Can the fee change after we sign?
+A: No. The percentage in your written fee agreement is the percentage you pay. It does not go up during the case.
+
+Closing:      See what you'd keep.
+Buttons:      Open the calculator | Start your case
+
+
+--- /start ------------------------------------------------------------------
+
+Title:        Start Your Case Online | [FIRM NAME]
+Description:  Tell us what happened in about ten minutes. Upload what you have. Our attorney reviews every submission.
+
+Heading:      Start your case. It takes about ten minutes.
+Intro:        Answer a few questions about what happened. You can stop and come back. Nothing here commits you to anything.
+
+What we'll ask
+      1. What type of injury or incident
+      2. When and where it happened
+      3. Who was involved
+      4. Your injuries and treatment so far
+      5. Documents you already have (photos, police report, medical bills)
+      6. How to reach you
+
+Button:       Begin
+
+Note under the form:
+      Submitting this questionnaire does not create an attorney-client relationship. Our attorney reviews your answers and will contact you. [CONFIRM: response time, and whether first contact is by text, call or email]
+
+
+--- /about ------------------------------------------------------------------
+
+Title:        About [FIRM NAME] | Personal Injury With Published Fees
+Description:  A personal injury firm built to be fast to start and clear on price. Every legal decision is made by a licensed attorney.
+
+Heading:      A law firm built for the way people actually get hurt.
+Body:         People don't plan for a car accident or a surgery that goes wrong. When it happens, they shouldn't need to guess what a lawyer will cost or wait weeks for an answer. [FIRM NAME] was built to make personal injury representation faster to start and clear on price.
+
+Our attorney
+      [CONFIRM: attorney name, jurisdiction, bar admission, two-sentence bio supplied by the attorney]
+      Photo alt text: [ATTORNEY NAME], attorney at [FIRM NAME]
+
+How we work
+      Technology handles the routine. Our attorney handles the law. Every legal decision on your case is made by a licensed lawyer.
+
+
+--- /contact ----------------------------------------------------------------
+
+Title:        Contact [FIRM NAME]
+Description:  Text or call us, or start your case online. [CITY, STATE].
+
+Heading:      Talk to us.
+      Phone:    [PHONE]
+      Email:    [EMAIL]
+      Address:  [STREET ADDRESS, CITY, STATE ZIP]  (must match the footer exactly)
+      Hours:    [CONFIRM: hours]
+Button:       Start your case
+
+
+--- /privacy, /terms, /disclaimer ------------------------------------------------
+
+      Text to be supplied by the attorney. Keep these pages out of search (noindex) until then.
+
+
+=====================================================================
+PART 3 - WHAT TIM STILL NEEDS TO CONFIRM
+=====================================================================
+
+1.  $500 down or $0 today? Tim said both. The hero promise and every fee line depend on it.
+2.  Are case costs (filing fees, experts, records) deducted from the recovery, paid by the client, or included?
+3.  Firm name.
+4.  Domain.
+5.  Address, phone, email, hours.
+6.  Jurisdiction (which state).
+7.  Responsible attorney: name, bar number, short bio.
+8.  Calculator slider minimum, maximum and default.
+9.  The industry percentage to show in the comparison row.
+10. Say "AI" or "technology" on the site?
+11. Approve or change the proposed extra case types and rates.
+12. Imagery for this site (abstract buildings were specified for the M&A site only).

@@ -1,0 +1,89 @@
+<!-- JSON-LD for / (Home). Paste into the <head> of the home page. FAQ text must stay identical to the visible FAQ in PI-Website-Content-Pack.md. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id": "https://[DOMAIN]/#firm",
+      "name": "[FIRM NAME]",
+      "url": "https://[DOMAIN]/",
+      "telephone": "[PHONE]",
+      "email": "[EMAIL]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[STREET ADDRESS]",
+        "addressLocality": "[CITY]",
+        "addressRegion": "[STATE]",
+        "postalCode": "[ZIP]",
+        "addressCountry": "[COUNTRY]"
+      },
+      "areaServed": "[CONFIRM: jurisdiction]",
+      "priceRange": "Contingency fee: 25% for car accidents, 33% for medical and dental malpractice",
+      "knowsAbout": ["Car accidents", "Medical malpractice", "Dental malpractice"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://[DOMAIN]/#website",
+      "url": "https://[DOMAIN]/",
+      "name": "[FIRM NAME]",
+      "publisher": { "@id": "https://[DOMAIN]/#firm" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://[DOMAIN]/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is your fee for a car accident case?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is your fee for a medical or dental malpractice case?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost to start my case?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[CONFIRM: $0 or $500 down, and whether it is refundable or credited against the fee]"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if you don't win?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[CONFIRM: whether any amount is owed if there is no recovery]"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the fee calculator work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

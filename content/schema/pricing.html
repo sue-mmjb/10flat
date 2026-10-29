@@ -1,0 +1,54 @@
+<!-- JSON-LD for /pricing. FAQ text must stay identical to the "How the fee works" section in PI-Website-Content-Pack.md. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id": "https://[DOMAIN]/#firm",
+      "name": "[FIRM NAME]",
+      "url": "https://[DOMAIN]/",
+      "telephone": "[PHONE]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[STREET ADDRESS]",
+        "addressLocality": "[CITY]",
+        "addressRegion": "[STATE]",
+        "postalCode": "[ZIP]",
+        "addressCountry": "[COUNTRY]"
+      },
+      "priceRange": "Contingency fee: 25% for car accidents, 33% for medical and dental malpractice"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://[DOMAIN]/pricing#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is the percentage the same whether the case settles or goes to trial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[CONFIRM: whether the rate changes if the case goes to trial]"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are case costs included in the fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[CONFIRM: how filing fees, expert fees and record costs are handled]"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the fee change after we sign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The percentage in your written fee agreement is the percentage you pay. It does not go up during the case."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
