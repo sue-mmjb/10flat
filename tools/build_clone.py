@@ -65,7 +65,7 @@ GLOBAL = [
     ("We’re not selling your team a plan. We’re helping them find the right one.",
      "The insurance company decides how much to pay based on your case, not on what your lawyer charges. A lower fee doesn’t mean a smaller settlement. It means you keep more of it."),
     (">No conflicts.<", ">No markup on costs.<"), (">No asterisks.<", ">No admin fees.<"),
-    (">Doug Buckley<", ">Client testimonial<"), (">Black Kahawa Coffee<", ">Placeholder until we have real ones<"),
+    (">Doug Buckley<", ">“They showed me what I’d actually keep before I said yes.”<"), (">Black Kahawa Coffee<", ">Daniela R., Houston · Car accident · Sample story, not a real client<"),
     # quote carousel
     (">We make an instant impact<", ">We charge less because we spend less.<"),
     ('We make an <br class="framer-text">instant impact', 'We charge less because<br class="framer-text">we spend less.'),
@@ -151,15 +151,17 @@ CALC_HTML = f"""
 </div>
 """
 
-CASE_HTML = f"""
+CASE_HTML = """
 <div class="pi-case" data-pi-case hidden>
-  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 10% fee</div></div><div><div class="pi-c-big" style="font-size:26px">$85,500</div><div class="pi-c-label" style="text-align:right">After fee and costs (example)</div></div></div>
-  <div class="pi-c-label">Based on a $100,000 settlement with $5,000 case costs. Medical bills and liens are paid from the recovery.</div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Documents received</b><span>Police report · Medical bills · Photos · View your documents</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">10</span><div><b>Your fee: 10%</b><span>Calculated after case costs. Never goes up, even at trial.</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>If there is no recovery</b><span>No fee and no case costs. No markup on costs. No admin fees.</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>Licensed Texas attorney · Request a call</span></div></div>
-  <div class="pi-case-stage"><b>Current stage:</b> Evidence collection · <b>Next step:</b> Awaiting medical records · No decision needed right now</div>
+  <div class="pi-case-head"><img class="pi-case-avatar" src="assets/avatar.jpg" alt="" width="36" height="36"><div><div class="pi-case-name">Your Case</div><div class="pi-case-meta"><span>Car accident</span><i></i><span>10% fee, after costs</span></div></div></div>
+  <div class="pi-case-amt">$85,500</div>
+  <div class="pi-case-sub">After fee and costs (example)</div>
+  <div class="pi-case-note">Based on a $100,000 settlement with $5,000 case costs. Medical bills and liens are paid from the recovery.</div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span><div><b>Documents received</b><span>Police report<i></i>Medical bills<i></i>Photos<i></i>View all</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18"/><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></span><div><b>Your fee: 10%</b><span>Never goes up, even at trial</span><em>Calculated after case costs</em></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v18M16.5 7.5c0-1.7-2-2.5-4.5-2.5S7.5 6 7.5 8s2 2.6 4.5 3 4.5 1.1 4.5 3-2 2.5-4.5 2.5-4.5-.8-4.5-2.5"/></svg></span><div><b>If there is no recovery</b><span>No fee<i></i>No case costs<i></i>No markup<i></i>No admin fees</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span><div><b>Your attorney</b><span>Licensed Texas attorney</span><em>Request a call</em></div></div>
+  <div class="pi-case-stage"><b>Current stage</b> Evidence collection<i></i><b>Next step</b> Awaiting medical records<i></i>No decision needed right now</div>
   <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the case costs, the 10% fee, your medical bills and liens, and what you’d actually keep. Your attorney calls you before you decide anything.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
 </div>
 """
@@ -250,24 +252,34 @@ html{scroll-behavior:smooth}
 .pi-c-next{font-size:13px;color:#5f564a}
 .pi-c-btn{display:block;width:100%;text-align:center;background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435);border-radius:999px;padding:19px 0;font:700 13px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:inherit;text-decoration:none}
 .pi-c-disc{font-size:11px;line-height:1.45;color:#5f564a;margin:0;text-align:center}
-.pi-case{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;text-align:left}
+.pi-case{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;text-align:left}
 .pi-case[hidden]{display:none}
-.pi-case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #c9c4bb;padding-bottom:12px}
-.pi-case-name{font:800 18px/1.1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif}
-.pi-case-item{display:flex;gap:12px;align-items:center;background:#f4efe1;border-radius:12px;padding:12px}
-.pi-case-item b{display:block;font-size:14px}
-.pi-case-item span:last-child{font-size:12px;color:#5f564a}
-.pi-case-ic{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 "Instrument Sans",system-ui,sans-serif}
+.pi-case-head{display:flex;align-items:center;gap:12px}
+.pi-case-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none}
+.pi-case-name{font:700 15px/1.2 "Instrument Sans",system-ui,sans-serif}
+.pi-case-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:#5f564a;margin-top:2px}
+.pi-case-meta i,.pi-case-item span i,.pi-case-stage i{display:inline-block;width:1px;height:12px;background:#c9c4bb;margin:0 7px;vertical-align:-2px}
+.pi-case-amt{font:800 30px/1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;text-align:center;margin-top:8px;font-variant-numeric:tabular-nums}
+.pi-case-sub{font-size:12px;color:#5f564a;text-align:center}
+.pi-case-note{font-size:12px;color:#5f564a;line-height:1.4;padding:6px 0 2px;border-top:1px solid #e3ded2;margin-top:4px}
+.pi-case-item{display:flex;gap:12px;align-items:flex-start;background:#f4efe1;border-radius:14px;padding:12px 14px}
+.pi-case-item b{display:block;font-size:14px;line-height:1.25}
+.pi-case-item span:not(.pi-case-ic){display:block;font-size:12px;color:#5f564a;line-height:1.4;margin-top:2px}
+.pi-case-item em{display:inline-block;font-style:normal;font-size:11px;font-weight:600;background:#e8e2d1;border-radius:999px;padding:4px 9px;margin-top:7px}
+.pi-case-ic{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:9px;box-sizing:border-box}
+.pi-case-ic svg{width:100%;height:100%}
+.pi-case-stage{font-size:12px;color:#5f564a;line-height:1.5}
+.pi-case-stage b{color:#140c0a;font-weight:700}
+.pi-case-prem{font-size:12px;line-height:1.45;background:#fff;border:1px solid #c9c4bb;border-radius:14px;padding:12px 14px;margin-top:2px}
+.pi-case-choices{display:flex;gap:6px;margin-top:10px}
+.pi-case-choices span{flex:1;text-align:center;border:1px solid #140c0a;border-radius:999px;padding:8px 4px;font-weight:700;font-size:11px}
+.pi-case-choices span.is-on{background:#ffe435}
+.pi-c,.pi-case{transition:opacity .35s ease}
 .pi-c,.pi-case{transition:opacity .35s ease}
 [data-framer-name="Container Configurator"] [data-framer-name="Bronze"],[data-framer-name="Container Configurator Mobile 2"] [data-framer-name="Bronze"]{width:100%!important;max-width:470px!important;margin:0 auto!important;padding:44px 0!important;box-sizing:border-box}
 .pi-c-amount:focus-visible{outline:3px solid #140c0a;outline-offset:2px}
 .pi-c-dim{color:#5f564a;font-weight:600}
 .pi-c-amount.pi-c-costs{font:700 16px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;width:96px;border-bottom:1px dashed #c9c4bb;border-radius:0}
-.pi-case-stage{font-size:12px;color:#5f564a;line-height:1.4}
-.pi-case-prem{font-size:12px;line-height:1.4;background:#fff;border:1px solid #c9c4bb;border-radius:12px;padding:12px}
-.pi-case-choices{display:flex;gap:6px;margin-top:8px}
-.pi-case-choices span{flex:1;text-align:center;border:1px solid #140c0a;border-radius:999px;padding:7px 4px;font-weight:700;font-size:11px}
-.pi-case-choices span.is-on{background:#ffe435}
 .pi-hero-video{width:min(620px,100%)!important;height:auto!important;aspect-ratio:16/9!important;display:block;background:transparent;mix-blend-mode:darken;object-fit:cover;border-radius:0;-webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;-webkit-mask-composite:source-in;mask-composite:intersect}
 @media(max-width:809.98px){.pi-hero-video{width:100%!important}}
 /* Closing headline on phones: its wrapper shrink-wraps to the unbroken line width, so the h1 never wraps */
@@ -596,6 +608,9 @@ def main():
     # --- FAQ section before the footer (the bundle's #overlay sits between the page and the footer)
     assert html.count('<div id="overlay"></div>') == 1, 'overlay anchor'
     html = html.replace('<div id="overlay"></div>', faq_html() + '<div id="overlay"></div>', 1)
+    # --- testimonial photo: the handshake photo Sue picked instead of Stack's coffee roaster
+    html, n_t = re.subn(r'https://framerusercontent\.com/images/3UHEEKuo8uuO4x8qet37N2ykRK4\.jpg[^)"\s]*', 'assets/testimonial.jpg', html)
+    assert n_t >= 1, 'testimonial photo not found'
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
