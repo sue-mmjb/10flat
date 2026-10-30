@@ -42,7 +42,6 @@ GLOBAL = [
      "Most people never find out what a lawyer will cost until the case is over. We think that’s backwards. The fee is a fixed percentage, published on this page, agreed in writing before we lift a finger."),
     ("Set your benchmark plan and contribution to see your budget. You’re in total control.",
      "Slide to the amount you expect to recover. We’ll show you our fee and what you keep, next to what a typical firm would charge."),
-    ("Next, your team shops for benefits.", "Next, tell us what happened."),
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
      "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills."),
@@ -215,6 +214,11 @@ html{scroll-behavior:smooth}
 }
 @media(max-width:809.98px){
   .framer-e8x4r3 .framer-1ezgx8l{display:none}
+  /* phone configurator: Framer's script swapped step 1 and step 2 in one box; show them one after the other */
+  [data-framer-name="Container Configurator Mobile 2"]{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;gap:28px!important;align-items:stretch!important}
+  [data-framer-name="Container Configurator Mobile 2"] > *{position:relative!important;top:auto!important;left:auto!important;height:auto!important;width:100%!important;transform:none!important}
+  .framer-8OGkr .framer-85s22j{position:relative!important;top:auto!important;left:auto!important;right:auto!important}
+  .framer-8OGkr{height:auto!important;min-height:0!important}
   .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:32px!important}
   .framer-8pye7d,.framer-TzIF9 .framer-8pye7d,.framer-whz10a,.framer-TzIF9 .framer-whz10a{max-width:100%!important}
 }
@@ -329,11 +333,20 @@ MOTION_JS = """
 """
 
 
-def replace_all(html, pairs, where):
+def replace_all(html, pairs, where, required=True):
+    """Apply swaps. Section swaps must all hit; page-wide ones may miss when the
+    text they target lived inside a card we replaced. The leftover scan at the
+    end is what guarantees no Stack wording survives."""
+    skipped = []
     for old, new in pairs:
         if old not in html:
-            raise SystemExit(f"build_clone: text not found in {where}: {old[:80]!r}")
+            if required:
+                raise SystemExit(f"build_clone: text not found in {where}: {old[:80]!r}")
+            skipped.append(old[:40])
+            continue
         html = html.replace(old, new)
+    if skipped:
+        print(f"  (no longer present, skipped: {len(skipped)} swaps)")
     return html
 
 
@@ -366,8 +379,22 @@ def main():
     edits.append((disc_p["start"], disc_p["end"], f"{open_tag}{FOOTER_DISCLAIMER}</p>"))
     mark = t.find(by_class("framer-8pye7d"))
     edits.append((mark["start"], mark["end"], f'<div class="framer-8pye7d"><p class="pi-footer-mark">{FIRM}</p></div>'))
-    # calculator card insides, every breakpoint variant
-    for i, card in enumerate(t.find_all(by_class("framer-85s22j"))):
+    # Step-2 cards carry a copy of the step-1 calculator that the bundle used to
+    # slide away; drop those copies so step 2 shows only the case summary.
+    page2 = [n for n in t.find_all(by_name("Product - Page 2"))
+             if any(k in (n["attrs"].get("class") or "") for k in ("framer-lOaxc", "framer-8OGkr"))]
+    doomed = set()
+    for pg in page2:
+        for c in pg["children"]:
+            cls = c["attrs"].get("class") or ""
+            if "framer-85s22j" in cls or "framer-lyo4iw" in cls:
+                doomed.add(c["start"])
+                edits.append((c["start"], c["end"], ""))
+    # calculator card insides, every breakpoint variant (desktop/tablet use
+    # .framer-85s22j, the phone variant uses .framer-lyo4iw)
+    cards = [n for n in t.find_all(lambda n: any(k in (n["attrs"].get("class") or "").split() for k in ("framer-85s22j", "framer-lyo4iw")))
+             if n["start"] not in doomed]
+    for i, card in enumerate(cards):
         inner_open = src.find(">", card["start"]) + 1
         inner_close = src.rfind("<", 0, card["end"])
         edits.append((inner_open, inner_close, CALC_HTML.replace("__ID__", f"pi-award-{i}")))
@@ -381,7 +408,7 @@ def main():
         html = html[:start] + new + html[end:]
 
     # --- global swaps
-    html = replace_all(html, GLOBAL, "page")
+    html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{FIRM}</span>')
     html = re.sub(r'<a class="framer-18cgtl3 framer-1f2myp"[^>]*>.*?</a>', "", html, flags=re.S)
     html = re.sub(r'<a name="Nav Watch a demo" class="framer-cLKaN', '<a href="#hero" name="Start your case" class="framer-cLKaN', html, count=1)
@@ -411,11 +438,11 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")
-    print(f"built {OUT.relative_to(ROOT)}: {len(html):,} bytes; reveals: {html.count('--pi-appear')}; calculators: {html.count('data-pi-calc')}; h1: {html.count('<h1')}")
+    print(f"built {OUT.relative_to(ROOT)}: {len(html):,} bytes; reveals: {html.count('--pi-appear')}; calculators: {html.count('data-pi-calc')-1}; step-2 duplicates removed: {len(doomed)}; h1: {html.count('<h1')}")
 
 
 if __name__ == "__main__":
