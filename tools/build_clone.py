@@ -119,26 +119,32 @@ FOOTER_DISCLAIMER = (
 # $3,744 budget, the 80% slider). This is our version with Tim's numbers.
 CALC_HTML = """
 <div class="pi-c" data-pi-calc>
-  <div class="pi-c-row pi-c-top">
+  <div class="pi-c-sec pi-c-top">
     <div><div class="pi-c-label">After attorney fee, before costs and liens</div><div class="pi-c-big" data-out="after">$90,000</div></div>
-    <div class="pi-c-tags"><span>10% attorney fee</span><span>No automatic upgrades</span></div>
+    <div class="pi-c-tag"><span>10% attorney fee</span><i></i><span>No automatic upgrades</span></div>
   </div>
-  <div class="pi-c-row pi-c-line"><div class="pi-c-label">Case type</div><div class="pi-c-val" data-out="casetype">Car accident</div></div>
-  <div class="pi-c-pills" role="group" aria-label="Case type">
-    <button type="button" class="pi-c-pill is-on">Car accident</button>
-    <button type="button" class="pi-c-pill">Medical injury</button>
-    <button type="button" class="pi-c-pill">Dental injury</button>
+  <div class="pi-c-sec">
+    <div class="pi-c-label">Case type</div>
+    <div class="pi-c-pills" role="group" aria-label="Case type">
+      <button type="button" class="pi-c-pill is-on">Car accident</button>
+      <button type="button" class="pi-c-pill">Medical injury</button>
+      <button type="button" class="pi-c-pill">Dental injury</button>
+    </div>
   </div>
-  <div class="pi-c-row pi-c-line"><label class="pi-c-label" for="__ID__-amount">Illustrative recovery amount</label><input class="pi-c-val pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
-  <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Illustrative recovery amount" aria-valuetext="$100,000">
-  <div class="pi-c-rows">
-    <div class="pi-c-row"><span class="pi-c-label">Attorney fee, 10%</span><span class="pi-c-val" data-out="fee">$10,000</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">After attorney fee</span><span class="pi-c-val" data-out="after2">$90,000</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">Case costs</span><span class="pi-c-val pi-c-dim">Not yet estimated</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">Liens and reimbursements</span><span class="pi-c-val pi-c-dim">Not yet estimated</span></div>
+  <div class="pi-c-sec">
+    <div class="pi-c-row"><label class="pi-c-label" for="__ID__-amount">Illustrative recovery amount</label><input class="pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
+    <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Illustrative recovery amount" aria-valuetext="$100,000" style="--p:9.1%">
   </div>
-  <div class="pi-c-foot"><div class="pi-c-next">Tell us what happened. An attorney will review your request.</div><a class="pi-c-btn" href="#product-step-2">Continue to case review</a></div>
-  <p class="pi-c-disc">Illustration only, not a valuation, offer or guarantee. Case costs, medical liens and other reimbursements may reduce what you receive. Representation begins only after attorney acceptance and a signed agreement.</p>
+  <div class="pi-c-sec pi-c-rows">
+    <div class="pi-c-row"><span class="pi-c-label">Attorney fee (10%)</span><span class="pi-c-val" data-out="fee">$10,000</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Case costs</span><span class="pi-c-val pi-c-dim">To be estimated</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Liens and reimbursements</span><span class="pi-c-val pi-c-dim">To be estimated</span></div>
+  </div>
+  <div class="pi-c-foot">
+    <div class="pi-c-next">Next, tell us what happened.</div>
+    <a class="pi-c-btn" href="#product-step-2">Continue to case review</a>
+    <p class="pi-c-disc">Illustration only, not a valuation, offer or guarantee. Costs and liens may reduce what you receive. Representation begins only after attorney acceptance and a signed agreement.</p>
+  </div>
 </div>
 """
 
@@ -191,23 +197,31 @@ html{scroll-behavior:smooth}
 .pi-track > *{scroll-snap-align:start}
 [data-framer-name="Arrow Left"],[data-framer-name="Arrow Right"]{cursor:pointer}
 /* Calculator card */
-.pi-c{width:100%;display:flex;flex-direction:column;gap:14px;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
-.pi-c-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.pi-c-line{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);padding-top:14px;align-items:center}
-.pi-c-label{font-size:12px;color:#5f564a;line-height:1.3}
-.pi-c-big{font:800 36px/1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
-.pi-c-val{font:700 15px/1 "Instrument Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
-.pi-c-tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.pi-c-tags span{font:600 11px/1 "Instrument Sans",system-ui,sans-serif;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:6px;padding:6px 8px;white-space:nowrap}
-.pi-c-pills{display:flex;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:999px;padding:5px;gap:4px}
-.pi-c-pill{flex:1;border:0;background:transparent;border-radius:999px;padding:11px 6px;font:700 13px/1 "Instrument Sans",system-ui,sans-serif;color:inherit;cursor:pointer;min-height:38px}
+.pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
+.pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
+.pi-c-sec:first-child{border-top:0;padding-top:0}
+.pi-c-top{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-bottom:24px}
+.pi-c-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pi-c-row .pi-c-label{flex:1}
+.pi-c-label{font-size:13px;color:#5f564a;line-height:1.35}
+.pi-c-big{font:800 44px/1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;margin-top:10px;font-variant-numeric:tabular-nums}
+.pi-c-val{font:700 16px/1 "Instrument Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pi-c-tag{display:flex;align-items:center;gap:10px;flex:none;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:8px;padding:9px 12px;font:600 12px/1 "Instrument Sans",system-ui,sans-serif;white-space:nowrap}
+.pi-c-tag i{width:1px;height:14px;background:#c9c4bb}
+.pi-c-pills{display:flex;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:999px;padding:5px;gap:4px;margin-top:14px}
+.pi-c-pill{flex:1;border:0;background:transparent;border-radius:999px;padding:0 6px;font:700 14px/1 "Instrument Sans",system-ui,sans-serif;color:inherit;cursor:pointer;height:46px}
 .pi-c-pill.is-on{background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435)}
-.pi-c-pill:focus-visible,.pi-c-range:focus-visible,.pi-c-btn:focus-visible{outline:3px solid #140c0a;outline-offset:2px}
-.pi-c-range{width:100%;accent-color:#140c0a;height:32px;cursor:pointer;margin:0}
-.pi-c-foot{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);padding-top:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
-.pi-c-next{font-size:12px;color:#5f564a}
-.pi-c-btn{display:block;width:100%;text-align:center;background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435);border-radius:999px;padding:13px 0;font:700 12px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:inherit;text-decoration:none}
-.pi-case{width:100%;display:flex;flex-direction:column;gap:12px;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;text-align:left}
+.pi-c-pill:focus-visible,.pi-c-range:focus-visible,.pi-c-btn:focus-visible,.pi-c-amount{border:0;background:transparent;text-align:right;width:130px;padding:0;color:inherit;font:800 22px/1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pi-c-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;margin:22px 0 4px;cursor:pointer;background:linear-gradient(to right,#140c0a var(--p,9%),#e9e4d6 var(--p,9%))}
+.pi-c-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#140c0a;border:0}
+.pi-c-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#140c0a;border:0}
+.pi-c-range::-moz-range-track{height:6px;border-radius:3px;background:transparent}
+.pi-c-rows{display:flex;flex-direction:column;gap:10px}
+.pi-c-foot{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2);margin:4px -32px 0;padding:22px 32px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.pi-c-next{font-size:13px;color:#5f564a}
+.pi-c-btn{display:block;width:100%;text-align:center;background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435);border-radius:999px;padding:19px 0;font:700 13px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:inherit;text-decoration:none}
+.pi-c-disc{font-size:11px;line-height:1.45;color:#5f564a;margin:0;text-align:center}
+.pi-case{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;text-align:left}
 .pi-case[hidden]{display:none}
 .pi-case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #c9c4bb;padding-bottom:12px}
 .pi-case-name{font:800 18px/1.1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif}
@@ -216,12 +230,9 @@ html{scroll-behavior:smooth}
 .pi-case-item span:last-child{font-size:12px;color:#5f564a}
 .pi-case-ic{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 "Instrument Sans",system-ui,sans-serif}
 .pi-c,.pi-case{transition:opacity .35s ease}
-.pi-c-amount{border:0;border-bottom:2px solid #140c0a;border-radius:0;background:transparent;text-align:right;width:120px;padding:2px 0;color:inherit;font-size:15px}
+[data-framer-name="Container Configurator"] [data-framer-name="Bronze"],[data-framer-name="Container Configurator Mobile 2"] [data-framer-name="Bronze"]{width:100%!important;max-width:470px!important;margin:0 auto!important;padding:44px 0!important;box-sizing:border-box}
 .pi-c-amount:focus-visible{outline:3px solid #140c0a;outline-offset:2px}
-.pi-c-rows{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);padding-top:12px}
-.pi-c-rows .pi-c-row{align-items:center}
 .pi-c-dim{color:#5f564a;font-weight:600}
-.pi-c-disc{font-size:11px;line-height:1.4;color:#5f564a;margin:0}
 .pi-case-stage{font-size:12px;color:#5f564a;line-height:1.4}
 .pi-case-prem{font-size:12px;line-height:1.4;background:#fff;border:1px solid #c9c4bb;border-radius:12px;padding:12px}
 .pi-case-choices{display:flex;gap:6px;margin-top:8px}
@@ -264,6 +275,12 @@ html{scroll-behavior:smooth}
   .framer-e8x4r3{padding:14px 16px}
 }
 @media(max-width:809.98px){
+  .pi-c,.pi-case{padding:0 18px}
+  .pi-c-foot{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}
+  .pi-c-pill{font-size:12px;padding:10px 2px;height:auto;line-height:1.15}
+  .pi-c-tag{font-size:11px;padding:8px 10px;gap:8px}
+  .pi-c-big{font-size:38px}
+  .pi-c-amount{font-size:20px;width:110px}
   .framer-e8x4r3 .framer-1ezgx8l{display:none}
   /* phone configurator: Framer's script swapped step 1 and step 2 in one box; show them one after the other */
   [data-framer-name="Container Configurator Mobile 2"]{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;gap:28px!important;align-items:stretch!important}
@@ -377,6 +394,7 @@ MOTION_JS = """
     function set(sel, v) { var el = c.querySelector(sel); if (el) el.textContent = v; }
     function render(amount) {
       var fee = amount * RATE;
+      range.style.setProperty('--p', ((amount - min) / (max - min) * 100).toFixed(1) + '%');
       set('[data-out="fee"]', money(fee));
       set('[data-out="after"]', money(amount - fee));
       set('[data-out="after2"]', money(amount - fee));
@@ -477,6 +495,8 @@ def main():
     for start, end, new in sorted(edits, key=lambda e: -e[0]):
         html = html[:start] + new + html[end:]
 
+    # --- hero illustration: Tim's gavel instead of Stack's turtle
+    html = html.replace('https://framerusercontent.com/modules/FBm2eH5o7STzB0ruXyZj/sqYJJoCYRzvBBoSsyFCm/icon.svg', 'assets/gavel.png')
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
