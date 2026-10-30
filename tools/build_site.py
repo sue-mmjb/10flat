@@ -35,7 +35,7 @@ SCHEMA = ROOT / "content" / "schema" / "home.html"
 CONFIG = {
     "firm": "[FIRM NAME]",
     "brand": "10flat",
-    "domain": "[DOMAIN]",
+    "domain": "10flatlaw.com",
     "title": "10% Attorney Fee for Qualifying Injury Cases | 10flat",
     "description": "A straightforward 10% attorney fee for qualifying personal-injury cases. AI-powered case support, licensed-attorney oversight, clear pricing. Optional Attorney-Led service at 25% total, only if you choose it.",
     "noindex": True,  # prototype. Set False at launch.

@@ -14,7 +14,7 @@ Design reference is mystack.com, as Tim chose. Section order on the home page fo
 ## Global elements
 
 **Site name:** [FIRM NAME]
-**Domain:** `https://[DOMAIN]/` (all canonical URLs below use this)
+**Domain:** `https://10flatlaw.com/` (all canonical URLs below use this)
 **Default `<html lang>`:** `en`
 **Primary CTA, repeated in header and at the end of every page:** Start your case → `/start`
 **Secondary CTA:** See what you'd keep → `/#calculator`
@@ -36,7 +36,7 @@ Build note: the footer must be in server-rendered HTML on every page. The audit 
 | Field | Value |
 |---|---|
 | URL | `/` |
-| Canonical | `https://[DOMAIN]/` |
+| Canonical | `https://10flatlaw.com/` |
 | Title (≤60 chars) | Personal Injury Lawyers With Published Fees \| [FIRM NAME] |
 | Meta description (≤155 chars) | See our fee before you hire us. 25% for car accidents, 33% for medical and dental malpractice. Slide to see what you'd keep when we win. |
 | h1 | We're putting an end to high legal fees. |
@@ -144,7 +144,7 @@ Visible FAQ. Accordion is fine, but every answer must be in the HTML whether ope
 | Field | Value |
 |---|---|
 | URL | `/pricing` |
-| Canonical | `https://[DOMAIN]/pricing` |
+| Canonical | `https://10flatlaw.com/pricing` |
 | Title | Personal Injury Fees, Published \| [FIRM NAME] |
 | Meta description | Every case type we handle and the fee we charge, published in full. No hourly billing, no negotiation behind closed doors. |
 | h1 | Every case type. Every fee. Published. |
@@ -188,7 +188,7 @@ Do not publish this section until Tim approves the proposed rows in `PI-Website-
 | Field | Value |
 |---|---|
 | URL | `/start` |
-| Canonical | `https://[DOMAIN]/start` |
+| Canonical | `https://10flatlaw.com/start` |
 | Title | Start Your Case Online \| [FIRM NAME] |
 | Meta description | Tell us what happened in about ten minutes. Upload what you have. Our attorney reviews every submission. |
 | h1 | Start your case. It takes about ten minutes. |
@@ -218,7 +218,7 @@ Build note: the form must be a real `<form>` with labelled inputs and a submit `
 | Field | Value |
 |---|---|
 | URL | `/about` |
-| Canonical | `https://[DOMAIN]/about` |
+| Canonical | `https://10flatlaw.com/about` |
 | Title | About [FIRM NAME] \| Personal Injury With Published Fees |
 | Meta description | A personal injury firm built to be fast to start and clear on price. Every legal decision is made by a licensed attorney. |
 | h1 | A law firm built for the way people actually get hurt. |
@@ -244,7 +244,7 @@ Technology handles the routine. Our attorney handles the law. Every legal decisi
 | Field | Value |
 |---|---|
 | URL | `/contact` |
-| Canonical | `https://[DOMAIN]/contact` |
+| Canonical | `https://10flatlaw.com/contact` |
 | Title | Contact [FIRM NAME] |
 | Meta description | Text or call us, or start your case online. [CITY, STATE]. |
 | h1 | Talk to us. |
@@ -267,7 +267,7 @@ Technology handles the routine. Our attorney handles the law. Every legal decisi
 ## Site-wide technical requirements (what the audit checks)
 
 - `robots.txt` allowing all, pointing at `sitemap.xml`. Sitemap lists `/`, `/pricing`, `/start`, `/about`, `/contact` and the three legal pages once indexable.
-- Every page: exactly one h1, headings in order, unique title and meta description, canonical on `https://[DOMAIN]`, `<html lang="en">`.
+- Every page: exactly one h1, headings in order, unique title and meta description, canonical on `https://10flatlaw.com`, `<html lang="en">`.
 - Fonts via `next/font`. Images via `next/image`, each with alt text as specified. No image over 300 KB.
 - Any scroll-reveal: visible by default, animates only inside a `prefers-reduced-motion: no-preference` check, cleaned up on unmount.
 - Footer address and phone identical on every page and identical to the JSON-LD.

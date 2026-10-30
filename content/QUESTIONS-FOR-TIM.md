@@ -16,7 +16,7 @@ Sir Tim, the personal injury site is built from the mystack clone and working. I
 
 **Firm details**
 7. Have you chosen the firm name? I sent 10 options; my recommendation was Clearfee Law.
-8. What domain do we use?
+8. ~~What domain do we use?~~ Answered 31 Oct: 10flatlaw.com.
 9. Which state will the firm be registered in and practise in?
 10. Is Azure the attorney of record for the site? I need their name, bar number and two sentences for the About section and the footer.
 11. What address, phone number, email and hours go on the site?
@@ -30,7 +30,7 @@ Sir Tim, the personal injury site is built from the mystack clone and working. I
 **10flat (from the research document, applied 31 Oct)**
 17. The site now shows a 10% attorney fee on qualifying cases and Premium at 25% total, as the document recommends. The $50 per hour option and the 33% malpractice rate are gone. Is that the final structure, or do you still want hourly and 33% anywhere?
 18. The document says to show "$0 upfront" only if the agreement provides it, so the site now says "see your signed terms". Will the agreement provide $0 upfront? If yes I put "$0 upfront" back.
-19. "10flat" is used as the brand on the site because the whole document is built around it. Is 10flat the name, and is 10flatLaw.com the domain? The representing law firm is still a placeholder.
+19. ~~Is 10flat the name, and is 10flatLaw.com the domain?~~ Answered 31 Oct: the website is 10flatlaw.com. Applied to the canonical link and schema. The representing law firm is still a placeholder.
 20. Which cases qualify for the 10%? The document says straightforward, well-documented cases, mainly car accidents, with medical and dental injury listed as case types. Azure should confirm the screening rule we publish.
 21. Premium: what exactly is included, in which states, and can a client switch to it after signing?
 22. The document says the fee does not go up at filing, trial or appeal. Confirm, because that is what the site now promises.

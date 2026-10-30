@@ -112,3 +112,7 @@ The chat's final answer (pages 89 to 91) is the brief applied to the site on 31 
 - No automatic fee increases for filing suit, trial or appeal: the chat says 10flat "stays available", so none were introduced.
 
 Not yet from Tim in his own words: the firm name is still the placeholder; "10flat" is used as the platform brand because the whole document is written around it.
+
+## Update: domain (31 October 2026)
+
+Sue, in the build session: "wesbite name is http://10flatlaw.com/". Applied: canonical URL and all schema URLs now use https://10flatlaw.com/. The site stays noindex until launch.
