@@ -238,7 +238,7 @@ html{scroll-behavior:smooth}
 .pi-case-choices{display:flex;gap:6px;margin-top:8px}
 .pi-case-choices span{flex:1;text-align:center;border:1px solid #140c0a;border-radius:999px;padding:7px 4px;font-weight:700;font-size:11px}
 .pi-case-choices span.is-on{background:#ffe435}
-.pi-hero-video{width:min(620px,100%)!important;height:auto!important;aspect-ratio:16/9!important;display:block;background:transparent;mix-blend-mode:darken;-webkit-mask:none!important;mask:none!important;object-fit:cover;border-radius:0}
+.pi-hero-video{width:min(620px,100%)!important;height:auto!important;aspect-ratio:16/9!important;display:block;background:transparent;mix-blend-mode:darken;object-fit:cover;border-radius:0;-webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;-webkit-mask-composite:source-in;mask-composite:intersect}
 @media(max-width:809.98px){.pi-hero-video{width:100%!important}}
 /* Pinned scroll sections: original geometry at desktop, driven by our script */
 @media(min-width:1200px){
