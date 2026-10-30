@@ -401,15 +401,14 @@ MOTION_JS = """
   }
 
   /* 4b. Hero video: respect reduced motion */
-  var heroVideo = document.querySelector('.pi-hero-video');
-  if (heroVideo && reduce) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
-  if (heroVideo && !reduce) {
+  [].forEach.call(document.querySelectorAll('.pi-hero-video, .pi-watch-video'), function (heroVideo) {
+    if (reduce) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); return; }
     var kick = function () { if (heroVideo.paused) { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); } };
     heroVideo.addEventListener('canplay', kick);
     ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, kick, { once: true, passive: true }); });
     document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
     kick();
-  }
+  });
 
   /* 5. Calculator cards (one per breakpoint variant). From the client explainer: the 10% fee is
      calculated after case costs, next to a typical 33% firm figured the same way. Case costs default
@@ -539,6 +538,15 @@ def main():
         html, count=1)
     assert n_video == 1, 'hero video not placed'
     html = re.sub(r'(<video[^>]*class="framer-h3yKp framer-1qidnr3)"([^>]*?) class="pi-hero-video"', r'\1 pi-hero-video"\2', html, count=1)
+    # --- the "Watch" tile: Stack's Wistia demo (poster image + WATCH button) becomes a silent looping clip
+    html, n_watch = re.subn(
+        r'<img src="https://framerusercontent\.com/images/CTtHYoCcpC6BgMBFg0T5nTlRvFs\.png[^>]*>',
+        '<video class="pi-watch-video" poster="assets/watch-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="City at dusk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><source src="assets/watch.mp4" type="video/mp4"></video>',
+        html)
+    assert n_watch >= 1, 'watch tile poster not found'
+    html = re.sub(r'<div style="[^"]*" role="button" aria-label="WATCH video" tabindex="-?\d+"></div>', '', html)
+    html = re.sub(r'<button style="[^"]*" aria-label="WATCH video">.*?</button>', '', html, flags=re.S)
+    assert 'WATCH video' not in html, 'WATCH overlay still present'
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')

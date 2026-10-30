@@ -38,6 +38,7 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 
 **Build**
 17. The clone's fonts (Perfektta and GT Alpina) are licensed to Stack, not to us. Buy licences or switch to similar free fonts?
+18. The "Watch" tile now plays the iStock clip you picked (hospital at dusk, iStock 2212810404), but it is the watermarked 768px preview. Buy the licence and send me the full-resolution file before launch.
 
 Thank you. Questions 1 to 4 are the ones that block me; everything else I can slot in as the answers come.
 
