@@ -132,6 +132,17 @@ CALC_HTML = """
 </div>
 """
 
+CASE_HTML = """
+<div class="pi-case" data-pi-case hidden>
+  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 25% fee</div></div><div><div class="pi-c-big" style="font-size:26px">$75,000</div><div class="pi-c-label" style="text-align:right">What you keep</div></div></div>
+  <div class="pi-c-label">Your documents</div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Uploaded</b><span>Police report · Medical bills · Photos</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">&#10003;</span><div><b>Fee: 25% when we win</b><span>Agreed in writing</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>Pay nothing today</b><span>$0 down · $50 per hour option</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">33</span><div><b>Medical and dental malpractice</b><span>33% when we win</span></div></div>
+</div>
+"""
+
 MOTION_CSS = """
 <style id="pi-clone-motion">
 .framer-xvfz0d,.framer-xvfz0d *{pointer-events:auto}
@@ -184,6 +195,15 @@ html{scroll-behavior:smooth}
 .pi-c-foot{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);padding-top:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
 .pi-c-next{font-size:12px;color:#5f564a}
 .pi-c-btn{display:block;width:100%;text-align:center;background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435);border-radius:999px;padding:13px 0;font:700 12px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:inherit;text-decoration:none}
+.pi-case{width:100%;display:flex;flex-direction:column;gap:12px;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;text-align:left}
+.pi-case[hidden]{display:none}
+.pi-case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #c9c4bb;padding-bottom:12px}
+.pi-case-name{font:800 18px/1.1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif}
+.pi-case-item{display:flex;gap:12px;align-items:center;background:#f4efe1;border-radius:12px;padding:12px}
+.pi-case-item b{display:block;font-size:14px}
+.pi-case-item span:last-child{font-size:12px;color:#5f564a}
+.pi-case-ic{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 "Instrument Sans",system-ui,sans-serif}
+.pi-c,.pi-case{transition:opacity .35s ease}
 /* Pinned scroll sections: original geometry at desktop, driven by our script */
 @media(min-width:1200px){
   .framer-1ccwr6f,.framer-hd6jU .framer-1ccwr6f{height:300vh!important;position:relative!important;display:block!important}
@@ -277,6 +297,15 @@ MOTION_JS = """
       if (ctaContent) { ctaContent.style.opacity = p2.toFixed(3); ctaContent.style.transform = 'scale(' + (0.9 + 0.1 * p2).toFixed(3) + ')'; }
     }
   }
+  var step2Text = document.querySelector('[data-framer-name="Container Configurator"]') ? [].slice.call(document.querySelectorAll('[data-framer-name="Text Step 2"]')).filter(function (e) { return e.getBoundingClientRect().height > 0; })[0] : null;
+  var swapCalc = document.querySelector('[data-framer-name="Container Configurator"] [data-pi-calc]');
+  var swapCase = document.querySelector('[data-framer-name="Container Configurator"] [data-pi-case]');
+  function onSwap() {
+    if (!step2Text || !swapCalc || !swapCase) return;
+    var show2 = desktop() && step2Text.getBoundingClientRect().top < window.innerHeight * 0.55;
+    swapCase.hidden = !show2; swapCalc.style.display = show2 ? 'none' : '';
+  }
+  window.addEventListener('scroll', onSwap, { passive: true }); window.addEventListener('resize', onSwap); onSwap();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
@@ -394,10 +423,13 @@ def main():
     # .framer-85s22j, the phone variant uses .framer-lyo4iw)
     cards = [n for n in t.find_all(lambda n: any(k in (n["attrs"].get("class") or "").split() for k in ("framer-85s22j", "framer-lyo4iw")))
              if n["start"] not in doomed]
+    desktop_cards = {c["start"] for cfg in t.find_all(by_name("Container Configurator"))
+                     for c in t.find_all(by_class("framer-85s22j"), cfg["children"])}
     for i, card in enumerate(cards):
         inner_open = src.find(">", card["start"]) + 1
         inner_close = src.rfind("<", 0, card["end"])
-        edits.append((inner_open, inner_close, CALC_HTML.replace("__ID__", f"pi-award-{i}")))
+        panel = CASE_HTML if card["start"] in desktop_cards else ""
+        edits.append((inner_open, inner_close, CALC_HTML.replace("__ID__", f"pi-award-{i}") + panel))
     # hero title block gets a reveal on load
     hero_title = t.find(by_name("Title Block"))
     tag_end = src.find(">", hero_title["start"]) + 1
