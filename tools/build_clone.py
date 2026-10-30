@@ -547,6 +547,9 @@ def main():
     html = re.sub(r'<div style="[^"]*" role="button" aria-label="WATCH video" tabindex="-?\d+"></div>', '', html)
     html = re.sub(r'<button style="[^"]*" aria-label="WATCH video">.*?</button>', '', html, flags=re.S)
     assert 'WATCH video' not in html, 'WATCH overlay still present'
+    # --- closing image: Lady Justice (iStock 2214624729, licensed) instead of Stack's truck photo
+    html, n_close = re.subn(r'https://framerusercontent\.com/images/xBb8xgSKGQQN7I5S0r0MxSStns\.png[^)"\s]*', 'assets/justice.jpg', html)
+    assert n_close >= 1, 'closing image not found'
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
