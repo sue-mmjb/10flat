@@ -39,6 +39,9 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 **Build**
 17. The clone's fonts (Perfektta and GT Alpina) are licensed to Stack, not to us. Buy licences or switch to similar free fonts?
 
+**Legal sign-off**
+18. The site now has an 80-question FAQ (content/faq.json, shown on both versions and in the FAQPage schema). Ten answers end with "[Attorney to confirm.]": the Texas two-year deadline, fee legality, AI supervision, taxes, privacy wording, switching lawyers, case types at launch, minimum case size, Texas-only scope and referral fees. Who signs these off, and by when?
+
 Thank you. Questions 1 to 4 are the ones that block me; everything else I can slot in as the answers come.
 
 ---

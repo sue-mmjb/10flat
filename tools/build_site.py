@@ -60,22 +60,20 @@ CONFIG = {
     "slider_default": 100000,
 }
 
-FAQ = [  # Must stay identical to content/schema/home.html. Checked at build time.
-    ('What is the attorney fee?',
-     '10% of the amount recovered, calculated after case costs are repaid. It never goes up, even if we go to trial. Most injury firms take 33–40%.'),
-    ('Which cases qualify?',
-     'Injury cases such as car accidents and medical or dental injury claims. A licensed Texas attorney reviews every request, usually [the same day], and may accept or decline it. It’s free to find out if we can help.'),
-    ('What does it cost to start?',
-     'Nothing. If there is no recovery, you owe no fee and no case costs. There is no markup on case costs and no admin fees. Medical bills and liens are paid from your recovery the same way at any firm.'),
-    ('Why is the fee lower?',
-     'Because we spend less, not because we do less. Technology handles the paperwork that other firms pay staff to do: organising records, building a treatment timeline, totalling bills, drafting letters and tracking deadlines. We don’t spend your money on TV ads or a fancy office.'),
-    ('Does a lower fee mean a smaller settlement?',
-     'No. The insurance company decides how much to pay based on your injuries, your medical bills, the facts and the insurance coverage, not on what your lawyer charges. What the fee changes is how much of the settlement you keep.'),
-    ('How does the fee calculator work?',
-     'Choose a case type and type or slide to a settlement amount. The calculator shows example case costs, our 10% fee, the fee at a 33% firm and how much more you keep. Fees are figured after case costs at both firms. It is an example only; every case is different.'),
-    ('Who represents me?',
-     'A licensed Texas attorney is responsible for your case, and you choose your attorney from the team members available for it. 10flat uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed.'),
-]
+FAQ_PATH = ROOT / "content" / "faq.json"   # single source for both sites and the FAQPage schema
+FAQ_GROUPS = json.loads(FAQ_PATH.read_text(encoding="utf-8"))["groups"]
+FAQ = [(i["q"], i["a"]) for g in FAQ_GROUPS for i in g["items"]]
+
+
+def sync_schema_faq():
+    """Rewrite the FAQPage node in content/schema/home.html from content/faq.json."""
+    text = SCHEMA.read_text(encoding="utf-8")
+    m = re.search(r'(<script type="application/ld\+json">)(.*?)(</script>)', text, re.S)
+    data = json.loads(m.group(2))
+    node = next(n for n in data["@graph"] if n["@type"] == "FAQPage")
+    node["mainEntity"] = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]
+    new = m.group(1) + "\n" + json.dumps(data, indent=2, ensure_ascii=False) + "\n" + m.group(3)
+    SCHEMA.write_text(text[:m.start()] + new + text[m.end():], encoding="utf-8")
 
 # ----------------------------------------------------------------------------
 # Tiny HTML tree with byte offsets, so we can slice the clone safely.
@@ -325,8 +323,10 @@ def build_sections(btn):
 """
 
     faq_items = "".join(
-        f'<details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">{q}</summary>'
-        f'<p class="framer-text framer-styles-preset-u2fub4">{a}</p></details>' for q, a in FAQ)
+        f'<h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3 pi-faq-g">{g["title"]}</h3>' + "".join(
+            f'<details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">{i["q"]}</summary>'
+            f'<p class="framer-text framer-styles-preset-u2fub4">{i["a"]}</p></details>' for i in g["items"])
+        for g in FAQ_GROUPS)
     faq = f"""
 <section class="pi-section pi-offwhite" id="faq" aria-labelledby="faq-h">
   <div class="pi-wrap pi-center">
@@ -426,6 +426,7 @@ html{scroll-behavior:smooth}
 .pi-steps li{display:flex;flex-direction:column;gap:16px;padding:36px;border:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);border-radius:24px;background:#fff}
 .pi-steps p{--framer-text-color:var(--token-0fbfde70-3fa3-4b81-b4fe-9e6f34be838d,#2d2926);--framer-font-size:20px}
 .pi-faq{border-bottom:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb)}
+.pi-faq-g{margin:44px 0 6px}
 .pi-faq summary{cursor:pointer;padding:22px 44px 22px 0;position:relative;list-style:none;--framer-text-color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a)}
 .pi-faq summary::-webkit-details-marker{display:none}
 .pi-faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font:600 30px/1 "Instrument Sans",system-ui,sans-serif}
@@ -532,6 +533,7 @@ def main():
     head = re.sub(r"<meta\b[^>]*(?:name|property)=\"(?:description|robots|og:[^\"]+|twitter:[^\"]+|framer-search-index[^\"]*|generator)\"[^>]*>", "", head)
     head = re.sub(r"<link\b[^>]*rel=\"(?:canonical|icon)\"[^>]*>", "", head)
     head = re.sub(r"<!--[^$].*?-->", "", head, flags=re.S)  # html comments, keep <!--$-->
+    sync_schema_faq()
     schema_block = re.search(r"<script type=\"application/ld\+json\">.*?</script>", SCHEMA.read_text(encoding="utf-8"), re.S).group(0)
     meta = f"""
   <title>{c['title']}</title>

@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_site import Tree, by_name, by_class, derevelo, unhide, strip_comments, CONFIG, SCHEMA  # noqa: E402
+from build_site import Tree, by_name, by_class, derevelo, unhide, strip_comments, CONFIG, SCHEMA, FAQ_GROUPS, sync_schema_faq  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source" / "mystack-index.html"
@@ -209,6 +209,20 @@ html{scroll-behavior:smooth}
 @media(max-width:809px){.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:17px;--framer-line-height:1.42em}.framer-E2WzL.framer-9l7otk{--1oqahgf:30px 26px 26px 26px!important}}
 /* Step drawings: PNGs at their natural aspect instead of the SVGs' fixed .92 box */
 .framer-hd6jU .framer-dlhvuy,.framer-hd6jU .framer-qptr4j,.framer-hd6jU .framer-1xu5j0d{aspect-ratio:auto!important;height:auto!important}
+/* FAQ */
+.pi-faq-sec{width:100%;padding:120px 24px 100px;box-sizing:border-box;background:#f7f5ef;font-family:"Instrument Sans",system-ui,sans-serif;color:#140c0a;position:relative}
+.pi-faq-wrap{max-width:860px;margin:0 auto}
+.pi-faq-h{font:800 clamp(40px,5.5vw,72px)/.98 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 18px}
+.pi-faq-lead{font:500 20px/1.4 "GT Alpina Medium","Instrument Sans",serif;margin:0 0 16px;max-width:640px;color:#2d2926}
+.pi-faq-g{font:800 26px/1.1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.01em;margin:52px 0 6px}
+.pi-faq{border-bottom:1px solid #c9c4bb}
+.pi-faq summary{cursor:pointer;list-style:none;padding:18px 48px 18px 0;position:relative;font:700 17px/1.35 "Instrument Sans",system-ui,sans-serif}
+.pi-faq summary::-webkit-details-marker{display:none}
+.pi-faq summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font:600 28px/1 "Instrument Sans",system-ui,sans-serif}
+.pi-faq[open] summary::after{content:"\\2212"}
+.pi-faq summary:focus-visible{outline:3px solid #140c0a;outline-offset:3px}
+.pi-faq p{margin:0;padding:0 0 20px;font:400 16px/1.55 "Instrument Sans",system-ui,sans-serif;color:#2d2926;max-width:720px}
+@media(max-width:809.98px){.pi-faq-sec{padding:72px 20px 56px}.pi-faq-g{font-size:22px;margin-top:40px}.pi-faq summary{font-size:16px}}
 /* Calculator card */
 .pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
 .pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
@@ -481,6 +495,19 @@ def mark_appear(html):
                   r"opacity:1;transform:none;--pi-appear:\1px", html)
 
 
+
+def faq_html():
+    """The questions people ask, grouped; same source as the FAQPage schema in the head."""
+    groups = "".join(
+        f'<h3 class="pi-faq-g">{g["title"]}</h3>' + "".join(
+            f'<details class="pi-faq"><summary>{i["q"]}</summary><p>{i["a"]}</p></details>' for i in g["items"])
+        for g in FAQ_GROUPS)
+    return ('<section class="pi-faq-sec" id="faq" aria-labelledby="pi-faq-h"><div class="pi-faq-wrap">'
+            '<h2 id="pi-faq-h" class="pi-faq-h">Questions people ask.</h2>'
+            '<p class="pi-faq-lead">Straight answers about the fee, what you keep and how a case with 10flat works. Items in [brackets] are still being confirmed.</p>'
+            f'{groups}</div></section>')
+
+
 def main():
     src = SRC.read_text(encoding="utf-8")
     t = Tree(src)
@@ -562,6 +589,9 @@ def main():
     # --- the case card avatar: Tim's photo instead of Stack's stock portrait
     html, n_av = re.subn(r'https://framerusercontent\.com/images/mFmNcpd7kBFH15skVqgZeJ55uQ\.png[^"\s,]*', 'assets/avatar.jpg', html)
     assert n_av >= 1, 'avatar not found'
+    # --- FAQ section before the footer (the bundle's #overlay sits between the page and the footer)
+    assert html.count('<div id="overlay"></div>') == 1, 'overlay anchor'
+    html = html.replace('<div id="overlay"></div>', faq_html() + '<div id="overlay"></div>', 1)
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
@@ -573,6 +603,7 @@ def main():
     html = re.sub(r"<meta\b[^>]*(?:name|property)=\"(?:description|robots|og:[^\"]+|twitter:[^\"]+|framer-search-index[^\"]*|generator)\"[^>]*>", "", html)
     html = re.sub(r"<link\b[^>]*rel=\"(?:canonical|icon)\"[^>]*>", "", html)
     html = re.sub(r"<title>.*?</title>", f"<title>{CONFIG['title']}</title>", html, count=1, flags=re.S)
+    sync_schema_faq()
     schema_block = re.search(r"<script type=\"application/ld\+json\">.*?</script>", SCHEMA.read_text(encoding="utf-8"), re.S).group(0)
     meta = (f'<meta name="description" content="{CONFIG["description"]}">'
             f'<link rel="canonical" href="https://{CONFIG["domain"]}/">'
