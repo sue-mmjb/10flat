@@ -6,18 +6,24 @@ Prototype of the personal injury law firm site Tim asked for on 30 October 2026,
 
 | Folder | What it is |
 |---|---|
-| `site/` | The built website. Open `site/index.html` or serve the folder. This is what to show Tim. |
+| `site/` | The built website, two versions. `site/index.html` is the **clone**: mystack.com with every tile, illustration and logo row kept and only the text swapped, so Tim sees the cloned site as he asked. `site/v2/index.html` is the **rebuilt** version: same look, but the sections are clean HTML with a working calculator, pricing table, FAQ and intake form. Vercel serves this folder, so the clone is at `/` and the rebuilt version at `/v2/`. |
 | `source/` | The untouched mystack.com clone (`mystack-index.html`). Never edit it. |
 | `tools/` | `build_site.py` generates `site/index.html` from the clone plus the content below. |
 | `content/` | Tim's verbatim instructions (`TIM-INSTRUCTIONS.md`, the source of truth), the approved copy (`PI-Website-Content.txt`), the strategy and open questions (`PI-Website-Content-Draft.md`), the developer spec (`PI-Website-Content-Pack.md`), the audit directives, and the JSON-LD in `schema/`. |
 
 ## Rebuild after a change
 
-Edit `tools/build_site.py` (the `CONFIG` and `FAQ` blocks at the top hold every piece of text that is likely to change), then:
+Edit `tools/build_site.py` (the `CONFIG` and `FAQ` blocks at the top hold every piece of text that is likely to change) for the rebuilt version, or the swap lists in `tools/build_clone.py` for the clone, then:
+
+```bash
+python tools/build_clone.py
+```
 
 ```bash
 python tools/build_site.py
 ```
+
+The clone drops Framer's JavaScript bundle on purpose: tested 30 October 2026, the bundle re-renders the page from Stack's data a few seconds after load and puts Stack's text back. The CSS block in `build_clone.py` freezes the scroll animations the bundle used to drive. Two things in the clone are placeholders by nature: the partner and insurance-carrier logo rows are Stack's logos kept as tiles, and the testimonial photo and quote cards are Stack's layouts with placeholder text.
 
 The script refuses to build if the FAQ text no longer matches `content/schema/home.html`, if any Stack text survives, or if there is not exactly one h1.
 

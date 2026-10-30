@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build site/index.html for the [FIRM NAME] personal injury site from the
+"""Build site/v2/index.html (the rebuilt version) for the [FIRM NAME] personal injury site from the
 mystack.com Framer clone in source/mystack-index.html.
 
 What it keeps from the clone: the <head> styles (fonts, colour tokens, type
@@ -26,7 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source" / "mystack-index.html"
-OUT = ROOT / "site" / "index.html"
+OUT = ROOT / "site" / "v2" / "index.html"
 SCHEMA = ROOT / "content" / "schema" / "home.html"
 
 # ----------------------------------------------------------------------------
