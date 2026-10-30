@@ -61,7 +61,13 @@ CONFIG = {
 }
 
 FAQ_PATH = ROOT / "content" / "faq.json"   # single source for both sites and the FAQPage schema
-FAQ_GROUPS = json.loads(FAQ_PATH.read_text(encoding="utf-8"))["groups"]
+_FAQ_DOC = json.loads(FAQ_PATH.read_text(encoding="utf-8"))
+FAQ_ALL_GROUPS = _FAQ_DOC["groups"]
+if _FAQ_DOC.get("featured"):   # only the most-asked questions are shown; the rest stay in the file
+    _by_q = {i["q"]: i for g in FAQ_ALL_GROUPS for i in g["items"]}
+    FAQ_GROUPS = [{"title": "", "items": [_by_q[q] for q in _FAQ_DOC["featured"]]}]
+else:
+    FAQ_GROUPS = FAQ_ALL_GROUPS
 FAQ = [(i["q"], i["a"]) for g in FAQ_GROUPS for i in g["items"]]
 
 
@@ -323,7 +329,7 @@ def build_sections(btn):
 """
 
     faq_items = "".join(
-        f'<h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3 pi-faq-g">{g["title"]}</h3>' + "".join(
+        (f'<h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3 pi-faq-g">{g["title"]}</h3>' if g["title"] else "") + "".join(
             f'<details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">{i["q"]}</summary>'
             f'<p class="framer-text framer-styles-preset-u2fub4">{i["a"]}</p></details>' for i in g["items"])
         for g in FAQ_GROUPS)

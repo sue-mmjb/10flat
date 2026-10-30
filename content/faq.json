@@ -1,129 +1,376 @@
 {
-  "note": "Single source for the FAQ on both site versions and for the FAQPage JSON-LD in content/schema/home.html (regenerated at build time). Written 31 Oct 2026 to answer the gaps in AI-VISIBILITY-QUESTIONS.md. Rules: no named attorney, address or phone; no 'guaranteed'; never 'no fee unless we win' (say 'no fee and no costs if there is no recovery'); fee is always '10% of the amount recovered, calculated after case costs'. Items ending in '[Attorney to confirm.]' need a Texas attorney's sign-off before launch.",
+  "note": "Single source for the FAQ on both site versions and for the FAQPage JSON-LD in content/schema/home.html (regenerated at build time). Written 31 Oct 2026 to answer the gaps in AI-VISIBILITY-QUESTIONS.md. Rules: no named attorney, address or phone; no 'guaranteed'; never 'no fee unless we win' (say 'no fee and no costs if there is no recovery'); fee is always '10% of the amount recovered, calculated after case costs'. Items ending in '[Attorney to confirm.]' need a Texas attorney's sign-off before launch. 'featured' lists the questions shown on the site (and in the schema); the rest stay here for later.",
+  "featured": [
+    "What is the attorney fee?",
+    "What does it cost to start?",
+    "Does the fee go up if my case goes to trial?",
+    "Does a lower fee mean a smaller settlement?",
+    "Which cases qualify?"
+  ],
   "groups": [
     {
       "title": "Our fee",
       "items": [
-        {"q": "What is the attorney fee?", "a": "10% of the amount recovered, calculated after case costs are repaid. It never goes up, even if we go to trial. Most injury firms take 33–40%."},
-        {"q": "What is a contingency fee?", "a": "A fee that is only paid if your case recovers money, taken as a percentage of that recovery. You pay nothing up front. Ours is 10%. The usual rate at Texas injury firms is 33% for a case that settles and often 40% if a lawsuit is filed."},
-        {"q": "Is a 10% injury lawyer real, or is there a catch?", "a": "It is real. Here is the honest version: we take well-documented injury cases, technology does the paperwork that other firms pay staff to do, and you do more of your case from your phone. The fee is 10% of the amount recovered, calculated after case costs, written into the fee agreement before we start. Nothing is added later."},
-        {"q": "How can 10flat charge only 10%?", "a": "Because we spend less, not because we do less. Software organises records, builds the treatment timeline, totals bills, drafts letters and tracks deadlines. A supervised case team checks the work and a licensed Texas attorney reviews and approves it. We don’t spend your money on TV ads, billboards or an expensive office."},
-        {"q": "What does it cost to start?", "a": "Nothing. If there is no recovery, you owe no fee and no case costs. There is no markup on case costs and no admin fees. Medical bills and liens are paid from your recovery the same way at any firm."},
-        {"q": "Is the fee taken before or after case costs?", "a": "After. Case costs are repaid from the recovery first, then the 10% fee is calculated on what is left. Many firms calculate their percentage on the full amount before costs, which makes the fee larger. Ask any firm which way they do it."},
-        {"q": "What is the difference between attorney fees and case costs?", "a": "The attorney fee is what the firm earns for its work: ours is 10%. Case costs are money spent on your case: medical records, police reports, filing fees, expert reports and similar. At 10flat we advance the costs, repay them from the recovery at face value with no markup, and you owe none of them if there is no recovery."},
-        {"q": "Does the fee go up if my case goes to trial?", "a": "No. Our fee stays 10% whether the case settles early or goes all the way to trial. At most firms the percentage rises from 33% to 40% once a lawsuit is filed."},
-        {"q": "Can the fee change after I sign?", "a": "No. The fee is set in writing in the fee agreement before we start, and it stays 10% for the life of the case."},
-        {"q": "Is a lower attorney fee legal in Texas?", "a": "Yes. Texas does not set a minimum contingency fee. The rules require the fee to be reasonable and the agreement to be in writing, which ours is. [Attorney to confirm.]"},
-        {"q": "What percentage do personal injury lawyers take in Texas?", "a": "Typically 33% of the recovery for a case that settles before a lawsuit, and 40% once a lawsuit is filed. Some firms charge more for trial. 10flat charges 10%, calculated after case costs, at every stage."}
+        {
+          "q": "What is the attorney fee?",
+          "a": "10% of the amount recovered, calculated after case costs are repaid. It never goes up, even if we go to trial. Most injury firms take 33–40%."
+        },
+        {
+          "q": "What is a contingency fee?",
+          "a": "A fee that is only paid if your case recovers money, taken as a percentage of that recovery. You pay nothing up front. Ours is 10%. The usual rate at Texas injury firms is 33% for a case that settles and often 40% if a lawsuit is filed."
+        },
+        {
+          "q": "Is a 10% injury lawyer real, or is there a catch?",
+          "a": "It is real. Here is the honest version: we take well-documented injury cases, technology does the paperwork that other firms pay staff to do, and you do more of your case from your phone. The fee is 10% of the amount recovered, calculated after case costs, written into the fee agreement before we start. Nothing is added later."
+        },
+        {
+          "q": "How can 10flat charge only 10%?",
+          "a": "Because we spend less, not because we do less. Software organises records, builds the treatment timeline, totals bills, drafts letters and tracks deadlines. A supervised case team checks the work and a licensed Texas attorney reviews and approves it. We don’t spend your money on TV ads, billboards or an expensive office."
+        },
+        {
+          "q": "What does it cost to start?",
+          "a": "Nothing. If there is no recovery, you owe no fee and no case costs. There is no markup on case costs and no admin fees. Medical bills and liens are paid from your recovery the same way at any firm."
+        },
+        {
+          "q": "Is the fee taken before or after case costs?",
+          "a": "After. Case costs are repaid from the recovery first, then the 10% fee is calculated on what is left. Many firms calculate their percentage on the full amount before costs, which makes the fee larger. Ask any firm which way they do it."
+        },
+        {
+          "q": "What is the difference between attorney fees and case costs?",
+          "a": "The attorney fee is what the firm earns for its work: ours is 10%. Case costs are money spent on your case: medical records, police reports, filing fees, expert reports and similar. At 10flat we advance the costs, repay them from the recovery at face value with no markup, and you owe none of them if there is no recovery."
+        },
+        {
+          "q": "Does the fee go up if my case goes to trial?",
+          "a": "No. Our fee stays 10% whether the case settles early or goes all the way to trial. At most firms the percentage rises from 33% to 40% once a lawsuit is filed."
+        },
+        {
+          "q": "Can the fee change after I sign?",
+          "a": "No. The fee is set in writing in the fee agreement before we start, and it stays 10% for the life of the case."
+        },
+        {
+          "q": "Is a lower attorney fee legal in Texas?",
+          "a": "Yes. Texas does not set a minimum contingency fee. The rules require the fee to be reasonable and the agreement to be in writing, which ours is. [Attorney to confirm.]"
+        },
+        {
+          "q": "What percentage do personal injury lawyers take in Texas?",
+          "a": "Typically 33% of the recovery for a case that settles before a lawsuit, and 40% once a lawsuit is filed. Some firms charge more for trial. 10flat charges 10%, calculated after case costs, at every stage."
+        }
       ]
     },
     {
       "title": "What you keep",
       "items": [
-        {"q": "How much of my settlement will I actually get?", "a": "The settlement, minus case costs, minus the 10% fee, minus any medical bills and liens that have to be repaid. Our calculator shows the first three for any settlement amount, next to what the same case would leave you at a 33% firm."},
-        {"q": "Does a lower fee mean a smaller settlement?", "a": "No. The insurance company decides how much to pay based on your injuries, your medical bills, the facts and the insurance coverage, not on what your lawyer charges. What the fee changes is how much of the settlement you keep."},
-        {"q": "How does the fee calculator work?", "a": "Choose a case type and type or slide to a settlement amount. The calculator shows example case costs, our 10% fee, the fee at a 33% firm and how much more you keep. Fees are figured after case costs at both firms. It is an example only; every case is different."},
-        {"q": "What are typical case costs in a car accident case?", "a": "Medical records and billing statements, the police report, filing fees if a lawsuit is needed, and expert reports in larger cases. In a straightforward case they are often a few hundred to a few thousand dollars. The calculator uses an example of about 5% of the settlement; your real costs are listed in your case file as they happen."},
-        {"q": "Does the lawyer mark up case costs?", "a": "We don’t. Costs are repaid at exactly what they cost, and you can see every one of them in your case file."},
-        {"q": "Are there administrative or file fees on top of the percentage?", "a": "No. There are no admin fees, file fees or technology fees. The 10% fee and the actual case costs are the only deductions we make."},
-        {"q": "Do medical bills come out of my settlement?", "a": "Usually some do. Doctors, hospitals and health insurers that treated you or paid for your treatment are often entitled to be repaid from the recovery. This is the same at every firm. We show you every lien before you decide on any offer, and we work to reduce them where the law allows."},
-        {"q": "What is a medical lien?", "a": "A legal claim by a medical provider or insurer to be repaid from your settlement for treatment related to the injury. Liens are paid from the recovery before you receive your share. We list every lien in your case file so there are no surprises at the end."},
-        {"q": "Will I owe taxes on my injury settlement?", "a": "Compensation for physical injuries and the medical costs of treating them is generally not taxed under federal law. Some parts of a recovery can be, such as interest or punitive damages. Texas has no state income tax. Ask a tax adviser about your own situation. [Attorney to confirm.]"}
+        {
+          "q": "How much of my settlement will I actually get?",
+          "a": "The settlement, minus case costs, minus the 10% fee, minus any medical bills and liens that have to be repaid. Our calculator shows the first three for any settlement amount, next to what the same case would leave you at a 33% firm."
+        },
+        {
+          "q": "Does a lower fee mean a smaller settlement?",
+          "a": "No. The insurance company decides how much to pay based on your injuries, your medical bills, the facts and the insurance coverage, not on what your lawyer charges. What the fee changes is how much of the settlement you keep."
+        },
+        {
+          "q": "How does the fee calculator work?",
+          "a": "Choose a case type and type or slide to a settlement amount. The calculator shows example case costs, our 10% fee, the fee at a 33% firm and how much more you keep. Fees are figured after case costs at both firms. It is an example only; every case is different."
+        },
+        {
+          "q": "What are typical case costs in a car accident case?",
+          "a": "Medical records and billing statements, the police report, filing fees if a lawsuit is needed, and expert reports in larger cases. In a straightforward case they are often a few hundred to a few thousand dollars. The calculator uses an example of about 5% of the settlement; your real costs are listed in your case file as they happen."
+        },
+        {
+          "q": "Does the lawyer mark up case costs?",
+          "a": "We don’t. Costs are repaid at exactly what they cost, and you can see every one of them in your case file."
+        },
+        {
+          "q": "Are there administrative or file fees on top of the percentage?",
+          "a": "No. There are no admin fees, file fees or technology fees. The 10% fee and the actual case costs are the only deductions we make."
+        },
+        {
+          "q": "Do medical bills come out of my settlement?",
+          "a": "Usually some do. Doctors, hospitals and health insurers that treated you or paid for your treatment are often entitled to be repaid from the recovery. This is the same at every firm. We show you every lien before you decide on any offer, and we work to reduce them where the law allows."
+        },
+        {
+          "q": "What is a medical lien?",
+          "a": "A legal claim by a medical provider or insurer to be repaid from your settlement for treatment related to the injury. Liens are paid from the recovery before you receive your share. We list every lien in your case file so there are no surprises at the end."
+        },
+        {
+          "q": "Will I owe taxes on my injury settlement?",
+          "a": "Compensation for physical injuries and the medical costs of treating them is generally not taxed under federal law. Some parts of a recovery can be, such as interest or punitive damages. Texas has no state income tax. Ask a tax adviser about your own situation. [Attorney to confirm.]"
+        }
       ]
     },
     {
       "title": "About 10flat",
       "items": [
-        {"q": "What is 10flat?", "a": "10flat is a Texas personal injury law firm that charges a 10% fee, calculated after case costs, instead of the usual 33–40%. Technology does the paperwork. A licensed Texas attorney does the lawyering."},
-        {"q": "Is 10flat a real law firm or a referral service?", "a": "A law firm. We are not a lead generator and we do not sell your case to another firm. A licensed Texas attorney is responsible for your case from the first message to the settlement, and you choose that attorney from the team members available for it."},
-        {"q": "Who is behind 10flat?", "a": "10flat [PLLC] is a Texas law firm. Every case is handled under the responsibility of a licensed Texas attorney, supported by a supervised case team and the software we built to do the paperwork."},
-        {"q": "Is 10flat licensed in Texas?", "a": "Yes. The attorneys who handle your case are licensed in Texas, and the firm takes cases under Texas law."},
-        {"q": "Does 10flat use AI?", "a": "Yes, for the paperwork. Software, including AI, organises your documents, builds your treatment timeline, totals your bills, drafts letters and tracks deadlines. A supervised case team checks that work and a licensed attorney reviews and approves anything legal before it goes out."},
-        {"q": "Is it legal for a law firm to use AI on my case?", "a": "Yes, as long as a licensed attorney supervises the work and is responsible for it, which is how 10flat operates. The attorney, not the software, makes the legal decisions and signs what goes out. [Attorney to confirm.]"},
-        {"q": "Who reviews the AI’s work?", "a": "A trained case team checks every document the software prepares, and a licensed Texas attorney reviews and approves every important step: the demand, every offer, any filing and the settlement."},
-        {"q": "Is my information safe with 10flat?", "a": "Your documents are stored in your case file, which only you and the people working on your case can open. We do not sell your information or share it with anyone outside your case except as the case requires, such as sending records to the insurer with your permission. [Attorney to confirm the privacy policy wording.]"},
-        {"q": "Does 10flat have reviews or past results?", "a": "10flat is new. We would rather tell you that than invent results. What we can show you today is exactly how the fee works and exactly what you would keep from any offer."},
-        {"q": "Does 10flat have an office I can visit?", "a": "Your case runs from your phone. You send documents by WhatsApp, see everything in your case file, and talk to your attorney by phone or video. That is part of how we keep the fee at 10%."},
-        {"q": "Does 10flat take cases outside Texas?", "a": "Not yet. We take injury cases under Texas law for people hurt in Texas. [Attorney to confirm scope.]"},
-        {"q": "Can I hire 10flat from Houston, Dallas, San Antonio or Austin?", "a": "Yes. We take cases from anywhere in Texas. Because your case runs from your phone, where you live in the state makes no difference to how we work with you."}
+        {
+          "q": "What is 10flat?",
+          "a": "10flat is a Texas personal injury law firm that charges a 10% fee, calculated after case costs, instead of the usual 33–40%. Technology does the paperwork. A licensed Texas attorney does the lawyering."
+        },
+        {
+          "q": "Is 10flat a real law firm or a referral service?",
+          "a": "A law firm. We are not a lead generator and we do not sell your case to another firm. A licensed Texas attorney is responsible for your case from the first message to the settlement, and you choose that attorney from the team members available for it."
+        },
+        {
+          "q": "Who is behind 10flat?",
+          "a": "10flat [PLLC] is a Texas law firm. Every case is handled under the responsibility of a licensed Texas attorney, supported by a supervised case team and the software we built to do the paperwork."
+        },
+        {
+          "q": "Is 10flat licensed in Texas?",
+          "a": "Yes. The attorneys who handle your case are licensed in Texas, and the firm takes cases under Texas law."
+        },
+        {
+          "q": "Does 10flat use AI?",
+          "a": "Yes, for the paperwork. Software, including AI, organises your documents, builds your treatment timeline, totals your bills, drafts letters and tracks deadlines. A supervised case team checks that work and a licensed attorney reviews and approves anything legal before it goes out."
+        },
+        {
+          "q": "Is it legal for a law firm to use AI on my case?",
+          "a": "Yes, as long as a licensed attorney supervises the work and is responsible for it, which is how 10flat operates. The attorney, not the software, makes the legal decisions and signs what goes out. [Attorney to confirm.]"
+        },
+        {
+          "q": "Who reviews the AI’s work?",
+          "a": "A trained case team checks every document the software prepares, and a licensed Texas attorney reviews and approves every important step: the demand, every offer, any filing and the settlement."
+        },
+        {
+          "q": "Is my information safe with 10flat?",
+          "a": "Your documents are stored in your case file, which only you and the people working on your case can open. We do not sell your information or share it with anyone outside your case except as the case requires, such as sending records to the insurer with your permission. [Attorney to confirm the privacy policy wording.]"
+        },
+        {
+          "q": "Does 10flat have reviews or past results?",
+          "a": "10flat is new. We would rather tell you that than invent results. What we can show you today is exactly how the fee works and exactly what you would keep from any offer."
+        },
+        {
+          "q": "Does 10flat have an office I can visit?",
+          "a": "Your case runs from your phone. You send documents by WhatsApp, see everything in your case file, and talk to your attorney by phone or video. That is part of how we keep the fee at 10%."
+        },
+        {
+          "q": "Does 10flat take cases outside Texas?",
+          "a": "Not yet. We take injury cases under Texas law for people hurt in Texas. [Attorney to confirm scope.]"
+        },
+        {
+          "q": "Can I hire 10flat from Houston, Dallas, San Antonio or Austin?",
+          "a": "Yes. We take cases from anywhere in Texas. Because your case runs from your phone, where you live in the state makes no difference to how we work with you."
+        }
       ]
     },
     {
       "title": "Cases we take",
       "items": [
-        {"q": "Which cases qualify?", "a": "Injury cases such as car accidents and medical or dental injury claims. A licensed Texas attorney reviews every request, usually [the same day], and may accept or decline it. It’s free to find out if we can help."},
-        {"q": "Does 10flat handle car accident cases in Texas?", "a": "Yes. Car accidents are the most common case we take: rear-end collisions, intersection crashes, accidents with delivery or commercial vehicles, and crashes with uninsured drivers."},
-        {"q": "Does 10flat take dental injury cases?", "a": "Yes. Dental injury includes nerve damage after implants or extractions, failed implant or denture work, infections that were not treated, and injuries from procedures that fell below the standard of care."},
-        {"q": "Can I get a lawyer for nerve damage after a dental implant?", "a": "Yes. Numbness, tingling or pain in the lip, chin or tongue after an implant can mean the implant or the drilling came too close to the nerve. Send us your treatment records and any scans you have, and a Texas attorney will review whether there is a case."},
-        {"q": "Does 10flat take medical injury cases?", "a": "Yes, for injuries caused by medical treatment that fell below the standard of care. These cases need expert review, so the attorney will look at your records first and tell you honestly whether the case can be proven."},
-        {"q": "Does 10flat take truck, motorcycle or rideshare accident cases?", "a": "Message us and ask. The attorney reviews every request. [Attorney to confirm which case types are accepted at launch.]"},
-        {"q": "Will 10flat take a small case?", "a": "Message us. The fee is 10% of whatever is recovered, so a smaller case does not cost you more in percentage terms. The attorney will tell you whether the case is worth pursuing. [Attorney to confirm the minimum, if any.]"},
-        {"q": "What cases will 10flat not take?", "a": "Cases with no real injury or no one at fault, cases where the deadline has passed, and claims that are not truthful. The attorney may also decline a case the firm is not set up to handle well, and will tell you so quickly so you can look elsewhere."}
+        {
+          "q": "Which cases qualify?",
+          "a": "Injury cases such as car accidents and medical or dental injury claims. A licensed Texas attorney reviews every request, usually [the same day], and may accept or decline it. It’s free to find out if we can help."
+        },
+        {
+          "q": "Does 10flat handle car accident cases in Texas?",
+          "a": "Yes. Car accidents are the most common case we take: rear-end collisions, intersection crashes, accidents with delivery or commercial vehicles, and crashes with uninsured drivers."
+        },
+        {
+          "q": "Does 10flat take dental injury cases?",
+          "a": "Yes. Dental injury includes nerve damage after implants or extractions, failed implant or denture work, infections that were not treated, and injuries from procedures that fell below the standard of care."
+        },
+        {
+          "q": "Can I get a lawyer for nerve damage after a dental implant?",
+          "a": "Yes. Numbness, tingling or pain in the lip, chin or tongue after an implant can mean the implant or the drilling came too close to the nerve. Send us your treatment records and any scans you have, and a Texas attorney will review whether there is a case."
+        },
+        {
+          "q": "Does 10flat take medical injury cases?",
+          "a": "Yes, for injuries caused by medical treatment that fell below the standard of care. These cases need expert review, so the attorney will look at your records first and tell you honestly whether the case can be proven."
+        },
+        {
+          "q": "Does 10flat take truck, motorcycle or rideshare accident cases?",
+          "a": "Message us and ask. The attorney reviews every request. [Attorney to confirm which case types are accepted at launch.]"
+        },
+        {
+          "q": "Will 10flat take a small case?",
+          "a": "Message us. The fee is 10% of whatever is recovered, so a smaller case does not cost you more in percentage terms. The attorney will tell you whether the case is worth pursuing. [Attorney to confirm the minimum, if any.]"
+        },
+        {
+          "q": "What cases will 10flat not take?",
+          "a": "Cases with no real injury or no one at fault, cases where the deadline has passed, and claims that are not truthful. The attorney may also decline a case the firm is not set up to handle well, and will tell you so quickly so you can look elsewhere."
+        }
       ]
     },
     {
       "title": "Starting a case",
       "items": [
-        {"q": "How do I start a case with 10flat?", "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."},
-        {"q": "Can I hire an injury lawyer over WhatsApp?", "a": "Yes. WhatsApp is how you start with 10flat, send documents and get updates. The fee agreement is signed electronically. You never have to come to an office."},
-        {"q": "What should I send a lawyer after a car accident?", "a": "Photos of the vehicles and the scene, the police report or its number, the other driver’s insurance details, your medical records or discharge papers, and any letters from an insurance company. If you don’t have all of it, send what you have. We request the rest."},
-        {"q": "How fast will a lawyer look at my case?", "a": "Usually [the same day]. You will hear from us by WhatsApp whether we can take the case or not."},
-        {"q": "Is the first consultation free?", "a": "Yes. It costs nothing to find out whether we can help, and you are not committed to anything until you sign a fee agreement."},
-        {"q": "Do I have to sign anything to find out if I have a case?", "a": "No. Contacting us does not create an attorney-client relationship until a fee agreement is signed. You can ask questions and send documents first."},
-        {"q": "Can I switch to 10flat if I already have a lawyer?", "a": "In Texas you can change lawyers at any time. Your former lawyer may be entitled to be paid for work already done, which is settled between the firms out of the fee, not added on top of it. Message us and the attorney will explain how it would work in your case. [Attorney to confirm.]"},
-        {"q": "How long do I have to file an injury claim in Texas?", "a": "Generally two years from the date of the injury, with some exceptions that can shorten or extend it. Claims against a government body have much shorter notice deadlines. Do not wait: the sooner the case starts, the easier it is to collect the evidence. [Attorney to confirm.]"},
-        {"q": "Should I talk to the insurance company before I have a lawyer?", "a": "Report the accident, but do not give a recorded statement or accept an offer before a lawyer has looked at your case. Early offers are usually low, and anything you say can be used to reduce your claim."},
-        {"q": "Do I need to see a doctor before I contact a lawyer?", "a": "Your health comes first. See a doctor as soon as you can after an injury, both for your own sake and because your medical records are the backbone of any claim. Then message us."}
+        {
+          "q": "How do I start a case with 10flat?",
+          "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."
+        },
+        {
+          "q": "Can I hire an injury lawyer over WhatsApp?",
+          "a": "Yes. WhatsApp is how you start with 10flat, send documents and get updates. The fee agreement is signed electronically. You never have to come to an office."
+        },
+        {
+          "q": "What should I send a lawyer after a car accident?",
+          "a": "Photos of the vehicles and the scene, the police report or its number, the other driver’s insurance details, your medical records or discharge papers, and any letters from an insurance company. If you don’t have all of it, send what you have. We request the rest."
+        },
+        {
+          "q": "How fast will a lawyer look at my case?",
+          "a": "Usually [the same day]. You will hear from us by WhatsApp whether we can take the case or not."
+        },
+        {
+          "q": "Is the first consultation free?",
+          "a": "Yes. It costs nothing to find out whether we can help, and you are not committed to anything until you sign a fee agreement."
+        },
+        {
+          "q": "Do I have to sign anything to find out if I have a case?",
+          "a": "No. Contacting us does not create an attorney-client relationship until a fee agreement is signed. You can ask questions and send documents first."
+        },
+        {
+          "q": "Can I switch to 10flat if I already have a lawyer?",
+          "a": "In Texas you can change lawyers at any time. Your former lawyer may be entitled to be paid for work already done, which is settled between the firms out of the fee, not added on top of it. Message us and the attorney will explain how it would work in your case. [Attorney to confirm.]"
+        },
+        {
+          "q": "How long do I have to file an injury claim in Texas?",
+          "a": "Generally two years from the date of the injury, with some exceptions that can shorten or extend it. Claims against a government body have much shorter notice deadlines. Do not wait: the sooner the case starts, the easier it is to collect the evidence. [Attorney to confirm.]"
+        },
+        {
+          "q": "Should I talk to the insurance company before I have a lawyer?",
+          "a": "Report the accident, but do not give a recorded statement or accept an offer before a lawyer has looked at your case. Early offers are usually low, and anything you say can be used to reduce your claim."
+        },
+        {
+          "q": "Do I need to see a doctor before I contact a lawyer?",
+          "a": "Your health comes first. See a doctor as soon as you can after an injury, both for your own sake and because your medical records are the backbone of any claim. Then message us."
+        }
       ]
     },
     {
       "title": "During your case",
       "items": [
-        {"q": "How does 10flat handle my case?", "a": "You tell us what happened and send your documents. Our system organises them, requests missing records, builds a timeline of your treatment, totals your bills and tracks every deadline. Your attorney reviews the case, sends the demand, negotiates with the insurer and calls you before any decision. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%."},
-        {"q": "Who gathers my medical records?", "a": "We do. Once you authorise it, our system requests the records and bills from every provider and files them in your case."},
-        {"q": "Will I be able to see my documents and offers?", "a": "Yes. Every document, every update and every offer is in your case file on your phone. You hear from us first, not after the fact."},
-        {"q": "How often will I hear from my lawyer?", "a": "You get an update whenever something happens in the case, and a direct conversation with your attorney at every decision point: the demand, each offer and the settlement. You can message us any time with a question."},
-        {"q": "Do I decide whether to settle?", "a": "Yes. Every settlement decision is yours. For every offer we show the offer, the case costs, the 10% fee, your medical bills and liens, and what you would actually keep, and your attorney calls you before you decide anything."},
-        {"q": "What happens if the insurance company refuses to pay?", "a": "We file a lawsuit. Litigation costs more and takes longer, but our fee stays 10%; at most firms it would rise to 40% at this point."},
-        {"q": "How long does a personal injury case take in Texas?", "a": "A straightforward car accident claim often settles within a few months of finishing treatment. A case that goes to a lawsuit can take a year or more. The biggest factor is how long your medical treatment takes, because the claim cannot be valued until the injury is understood."},
-        {"q": "What is a demand letter?", "a": "The letter your attorney sends the insurance company setting out what happened, who is at fault, your injuries, your medical bills and lost income, and the amount you are asking for. It starts the negotiation."},
-        {"q": "What is a policy limit and why does it matter?", "a": "The maximum the at-fault party’s insurance will pay for one accident. If your damages are higher than the limit, we look for other coverage, such as your own uninsured or underinsured motorist policy. We tell you the limits as soon as we know them."}
+        {
+          "q": "How does 10flat handle my case?",
+          "a": "You tell us what happened and send your documents. Our system organises them, requests missing records, builds a timeline of your treatment, totals your bills and tracks every deadline. Your attorney reviews the case, sends the demand, negotiates with the insurer and calls you before any decision. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%."
+        },
+        {
+          "q": "Who gathers my medical records?",
+          "a": "We do. Once you authorise it, our system requests the records and bills from every provider and files them in your case."
+        },
+        {
+          "q": "Will I be able to see my documents and offers?",
+          "a": "Yes. Every document, every update and every offer is in your case file on your phone. You hear from us first, not after the fact."
+        },
+        {
+          "q": "How often will I hear from my lawyer?",
+          "a": "You get an update whenever something happens in the case, and a direct conversation with your attorney at every decision point: the demand, each offer and the settlement. You can message us any time with a question."
+        },
+        {
+          "q": "Do I decide whether to settle?",
+          "a": "Yes. Every settlement decision is yours. For every offer we show the offer, the case costs, the 10% fee, your medical bills and liens, and what you would actually keep, and your attorney calls you before you decide anything."
+        },
+        {
+          "q": "What happens if the insurance company refuses to pay?",
+          "a": "We file a lawsuit. Litigation costs more and takes longer, but our fee stays 10%; at most firms it would rise to 40% at this point."
+        },
+        {
+          "q": "How long does a personal injury case take in Texas?",
+          "a": "A straightforward car accident claim often settles within a few months of finishing treatment. A case that goes to a lawsuit can take a year or more. The biggest factor is how long your medical treatment takes, because the claim cannot be valued until the injury is understood."
+        },
+        {
+          "q": "What is a demand letter?",
+          "a": "The letter your attorney sends the insurance company setting out what happened, who is at fault, your injuries, your medical bills and lost income, and the amount you are asking for. It starts the negotiation."
+        },
+        {
+          "q": "What is a policy limit and why does it matter?",
+          "a": "The maximum the at-fault party’s insurance will pay for one accident. If your damages are higher than the limit, we look for other coverage, such as your own uninsured or underinsured motorist policy. We tell you the limits as soon as we know them."
+        }
       ]
     },
     {
       "title": "Offers and case value",
       "items": [
-        {"q": "Why did the insurance company offer me so little?", "a": "Because the first offer is a test. Insurers start low to see whether you will accept before you understand your claim or hire a lawyer. Offers usually rise once a lawyer puts the case together and the insurer knows a lawsuit is possible."},
-        {"q": "Should I accept the first settlement offer?", "a": "Not before you know what your claim is worth. Once you accept, the case is closed, even if your injury turns out to be worse. Send us the offer and we will tell you how it compares with your medical bills, lost income and the policy limits."},
-        {"q": "How much is my car accident case worth?", "a": "It depends on your medical bills, your lost income, how the injury affects your life, how clearly the other driver was at fault and how much insurance is available. No honest lawyer can give you a number before seeing the records. We can tell you quickly whether the case is worth pursuing, and we show you what you would keep from any offer."},
-        {"q": "How is a personal injury settlement calculated?", "a": "Insurers add up your medical bills and lost income, then add an amount for pain and the effect on your daily life, adjusted for fault and capped by the available insurance. Your attorney’s demand argues for the full value of each part."},
-        {"q": "What is pain and suffering compensation in Texas?", "a": "Money for the physical pain, mental anguish and loss of enjoyment of life caused by the injury, on top of your bills and lost income. Texas allows it in most injury cases; there is no fixed formula, so documentation matters."},
-        {"q": "Can I get compensation for lost wages?", "a": "Yes. Income you lost while you could not work, and in serious cases the income you will lose in future, are part of the claim. Pay stubs, tax returns and a letter from your employer’s payroll office are the usual proof."},
-        {"q": "What happens if the other driver has no insurance?", "a": "Your own policy may cover you through uninsured or underinsured motorist coverage, and there may be other responsible parties. Send us your policy and we will check what is available."},
-        {"q": "Can I counter an insurance offer?", "a": "Yes. Most settlements are reached after several rounds. You see every offer with what you would keep, and you decide with your attorney whether to accept, counter or keep going."}
+        {
+          "q": "Why did the insurance company offer me so little?",
+          "a": "Because the first offer is a test. Insurers start low to see whether you will accept before you understand your claim or hire a lawyer. Offers usually rise once a lawyer puts the case together and the insurer knows a lawsuit is possible."
+        },
+        {
+          "q": "Should I accept the first settlement offer?",
+          "a": "Not before you know what your claim is worth. Once you accept, the case is closed, even if your injury turns out to be worse. Send us the offer and we will tell you how it compares with your medical bills, lost income and the policy limits."
+        },
+        {
+          "q": "How much is my car accident case worth?",
+          "a": "It depends on your medical bills, your lost income, how the injury affects your life, how clearly the other driver was at fault and how much insurance is available. No honest lawyer can give you a number before seeing the records. We can tell you quickly whether the case is worth pursuing, and we show you what you would keep from any offer."
+        },
+        {
+          "q": "How is a personal injury settlement calculated?",
+          "a": "Insurers add up your medical bills and lost income, then add an amount for pain and the effect on your daily life, adjusted for fault and capped by the available insurance. Your attorney’s demand argues for the full value of each part."
+        },
+        {
+          "q": "What is pain and suffering compensation in Texas?",
+          "a": "Money for the physical pain, mental anguish and loss of enjoyment of life caused by the injury, on top of your bills and lost income. Texas allows it in most injury cases; there is no fixed formula, so documentation matters."
+        },
+        {
+          "q": "Can I get compensation for lost wages?",
+          "a": "Yes. Income you lost while you could not work, and in serious cases the income you will lose in future, are part of the claim. Pay stubs, tax returns and a letter from your employer’s payroll office are the usual proof."
+        },
+        {
+          "q": "What happens if the other driver has no insurance?",
+          "a": "Your own policy may cover you through uninsured or underinsured motorist coverage, and there may be other responsible parties. Send us your policy and we will check what is available."
+        },
+        {
+          "q": "Can I counter an insurance offer?",
+          "a": "Yes. Most settlements are reached after several rounds. You see every offer with what you would keep, and you decide with your attorney whether to accept, counter or keep going."
+        }
       ]
     },
     {
       "title": "En español",
       "items": [
-        {"q": "Is there a Spanish-speaking injury lawyer with a low fee?", "a": "Yes. Se habla español, from your first message to your settlement. You can send your documents and get your updates in Spanish."},
-        {"q": "¿Cuánto cobra 10flat?", "a": "El 10% de lo que se recupera, calculado después de los gastos del caso. Nunca sube, ni siquiera si vamos a juicio. La mayoría de los bufetes de lesiones cobran entre el 33% y el 40%."},
-        {"q": "¿Hay abogados de accidentes en Texas que cobran solo el 10%?", "a": "Sí. 10flat es un bufete de lesiones personales en Texas que cobra el 10%. Si no hay recuperación, no paga honorarios ni gastos del caso. Escríbanos por WhatsApp en español y un abogado con licencia en Texas revisará su caso."},
-        {"q": "¿Cuánto cobra un abogado de accidentes en Texas?", "a": "Normalmente el 33% de la recuperación si el caso se resuelve antes de una demanda, y el 40% si se presenta una demanda. 10flat cobra el 10%, calculado después de los gastos del caso, en todas las etapas."}
+        {
+          "q": "Is there a Spanish-speaking injury lawyer with a low fee?",
+          "a": "Yes. Se habla español, from your first message to your settlement. You can send your documents and get your updates in Spanish."
+        },
+        {
+          "q": "¿Cuánto cobra 10flat?",
+          "a": "El 10% de lo que se recupera, calculado después de los gastos del caso. Nunca sube, ni siquiera si vamos a juicio. La mayoría de los bufetes de lesiones cobran entre el 33% y el 40%."
+        },
+        {
+          "q": "¿Hay abogados de accidentes en Texas que cobran solo el 10%?",
+          "a": "Sí. 10flat es un bufete de lesiones personales en Texas que cobra el 10%. Si no hay recuperación, no paga honorarios ni gastos del caso. Escríbanos por WhatsApp en español y un abogado con licencia en Texas revisará su caso."
+        },
+        {
+          "q": "¿Cuánto cobra un abogado de accidentes en Texas?",
+          "a": "Normalmente el 33% de la recuperación si el caso se resuelve antes de una demanda, y el 40% si se presenta una demanda. 10flat cobra el 10%, calculado después de los gastos del caso, en todas las etapas."
+        }
       ]
     },
     {
       "title": "Choosing a lawyer",
       "items": [
-        {"q": "Who represents me?", "a": "A licensed Texas attorney is responsible for your case, and you choose your attorney from the team members available for it. 10flat uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed."},
-        {"q": "How do I choose a personal injury lawyer?", "a": "Ask four things: what percentage do you charge, is it calculated before or after case costs, does it go up if a lawsuit is filed, and will I see every offer with what I would keep. Then ask how you will hear from them. Most people never ask, and most firms give the same answers: 33%, before costs, 40% at trial."},
-        {"q": "What questions should I ask an injury lawyer about fees?", "a": "What is the percentage? Is it taken before or after case costs? Does it rise if a lawsuit is filed or the case goes to trial? Do you mark up case costs? Are there admin or file fees? Do I owe anything if there is no recovery? Get the answers in writing. Ours: 10%, after costs, never rises, no markup, no admin fees, nothing owed without a recovery."},
-        {"q": "Why don’t other firms charge 10%?", "a": "They could, but their costs are built for 33%: offices, advertising and staff who do by hand what our software does. A lower fee would mean rebuilding how the firm works. We built 10flat that way from the start."},
-        {"q": "What is the difference between 10flat and a billboard law firm?", "a": "Where the money goes. At a firm that advertises heavily, your 33–40% pays for the billboards, the TV ads, the office and the staff who type letters and track deadlines by hand. None of that makes your case stronger. At 10flat the paperwork is done by software, your attorney spends time on your case, and you keep more of the settlement."},
-        {"q": "Is 10flat cheaper than other flat-fee injury firms?", "a": "We have not found a Texas injury firm with a lower published fee than 10%. The lowest we have seen advertised elsewhere is 25%. If you find lower, we would like to know."},
-        {"q": "Does 10flat pay referral fees to other lawyers?", "a": "[Attorney to confirm: yes or no, and on what terms.]"},
-        {"q": "What does “we win when you win” mean?", "a": "We are paid only from money we recover for you, and only 10% of it. If there is no recovery, you owe no fee and no case costs. Our interest and yours are the same: the largest recovery, with you keeping as much of it as possible."},
-        {"q": "How do I contact 10flat?", "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. Se habla español."}
+        {
+          "q": "Who represents me?",
+          "a": "A licensed Texas attorney is responsible for your case, and you choose your attorney from the team members available for it. 10flat uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed."
+        },
+        {
+          "q": "How do I choose a personal injury lawyer?",
+          "a": "Ask four things: what percentage do you charge, is it calculated before or after case costs, does it go up if a lawsuit is filed, and will I see every offer with what I would keep. Then ask how you will hear from them. Most people never ask, and most firms give the same answers: 33%, before costs, 40% at trial."
+        },
+        {
+          "q": "What questions should I ask an injury lawyer about fees?",
+          "a": "What is the percentage? Is it taken before or after case costs? Does it rise if a lawsuit is filed or the case goes to trial? Do you mark up case costs? Are there admin or file fees? Do I owe anything if there is no recovery? Get the answers in writing. Ours: 10%, after costs, never rises, no markup, no admin fees, nothing owed without a recovery."
+        },
+        {
+          "q": "Why don’t other firms charge 10%?",
+          "a": "They could, but their costs are built for 33%: offices, advertising and staff who do by hand what our software does. A lower fee would mean rebuilding how the firm works. We built 10flat that way from the start."
+        },
+        {
+          "q": "What is the difference between 10flat and a billboard law firm?",
+          "a": "Where the money goes. At a firm that advertises heavily, your 33–40% pays for the billboards, the TV ads, the office and the staff who type letters and track deadlines by hand. None of that makes your case stronger. At 10flat the paperwork is done by software, your attorney spends time on your case, and you keep more of the settlement."
+        },
+        {
+          "q": "Is 10flat cheaper than other flat-fee injury firms?",
+          "a": "We have not found a Texas injury firm with a lower published fee than 10%. The lowest we have seen advertised elsewhere is 25%. If you find lower, we would like to know."
+        },
+        {
+          "q": "Does 10flat pay referral fees to other lawyers?",
+          "a": "[Attorney to confirm: yes or no, and on what terms.]"
+        },
+        {
+          "q": "What does “we win when you win” mean?",
+          "a": "We are paid only from money we recover for you, and only 10% of it. If there is no recovery, you owe no fee and no case costs. Our interest and yours are the same: the largest recovery, with you keeping as much of it as possible."
+        },
+        {
+          "q": "How do I contact 10flat?",
+          "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. Se habla español."
+        }
       ]
     }
   ]

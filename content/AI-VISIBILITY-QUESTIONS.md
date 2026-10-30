@@ -9,7 +9,7 @@ How to read the "On site" column:
 
 Rules for every answer (from PI-AUDIT_DIRECTIVES.md): no "guaranteed", no "no fee unless we win" phrasing (say "no fee and no costs if there is no recovery"), no promised amounts, no named attorney, no address or phone, Texas only, "licensed Texas attorney", fee always described as "10% of the amount recovered, calculated after case costs".
 
-Update 31 October 2026: every question below now has an answer on both site versions, in the FAQ section rendered from content/faq.json, with the same text in the FAQPage JSON-LD. The four rows marked Partly still contain a placeholder in the answer (entity name, the same-day promise, referral fees) or an honest "we are new" line (results). Ten answers end with "[Attorney to confirm.]" and need legal sign-off before launch.
+Update 31 October 2026: every question below now has an answer written in content/faq.json (80 items). On Sue's instruction only the five most-asked are shown on the site and in the FAQPage JSON-LD (the "featured" list in faq.json); the other 75 are ready to publish by adding them to that list. The four rows marked Partly still contain a placeholder in the answer (entity name, the same-day promise, referral fees) or an honest "we are new" line (results). Ten answers end with "[Attorney to confirm.]" and need legal sign-off before launch.
 
 Until the site is indexed (it is still noindex) none of this is visible to AI engines.
 

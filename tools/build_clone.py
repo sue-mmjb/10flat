@@ -513,12 +513,12 @@ def mark_appear(html):
 def faq_html():
     """The questions people ask, grouped; same source as the FAQPage schema in the head."""
     groups = "".join(
-        f'<h3 class="pi-faq-g">{g["title"]}</h3>' + "".join(
+        (f'<h3 class="pi-faq-g">{g["title"]}</h3>' if g["title"] else "") + "".join(
             f'<details class="pi-faq"><summary>{i["q"]}</summary><p>{i["a"]}</p></details>' for i in g["items"])
         for g in FAQ_GROUPS)
     return ('<section class="pi-faq-sec" id="faq" aria-labelledby="pi-faq-h"><div class="pi-faq-wrap">'
             '<h2 id="pi-faq-h" class="pi-faq-h">Questions people ask.</h2>'
-            '<p class="pi-faq-lead">Straight answers about the fee, what you keep and how a case with 10flat works. Items in [brackets] are still being confirmed.</p>'
+            '<p class="pi-faq-lead">Straight answers about the fee, what you keep and how a case with 10flat works.</p>'
             f'{groups}</div></section>')
 
 
