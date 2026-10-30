@@ -886,6 +886,13 @@ html.lenis body {
   /* 4b. Hero video: respect reduced motion */
   var heroVideo = document.querySelector('.pi-hero-video');
   if (heroVideo && reduce) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
+  if (heroVideo && !reduce) {
+    var kick = function () { if (heroVideo.paused) { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); } };
+    heroVideo.addEventListener('canplay', kick);
+    ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, kick, { once: true, passive: true }); });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
+    kick();
+  }
 
   /* 5. Calculator cards (one per breakpoint variant). One fee for every case type: 10% of the gross recovery. */
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
