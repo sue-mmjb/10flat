@@ -53,7 +53,7 @@ GLOBAL = [
     (">Stack Save HSA<", ">Your fee: 10%<"), (">$50 Employer + $50 Maria<", ">Never goes up, even at trial<"),
     (">Pre-Tax Savings<", ">Calculated after case costs<"), (">Stack Pay<", ">If there is no recovery<"),
     (">0% Interest<", ">No fee<"), (">Pay over time<", ">No case costs<"), (">Coming Soon<", ">No decision needed right now<"),
-    (">Dental Plan<", ">Your attorney<"), (">Family Plan<", ">[NAME] · Texas attorney<"),
+    (">Dental Plan<", ">Your attorney<"), (">Family Plan<", ">Licensed in Texas<"),
     (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
     (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
     # logo rows kept as tiles; headings say what they are
@@ -108,7 +108,7 @@ SCOPED = {
 }
 
 FOOTER_DISCLAIMER = (
-    f'{FIRM} [PLLC]. Attorney responsible: [ATTORNEY NAME, BAR NUMBER], [CITY], Texas. Message us on WhatsApp: [WHATSAPP NUMBER]. '
+    f'{FIRM} [PLLC], Texas. '
     'Our fee is 10% of the amount recovered, calculated after case costs are repaid. If there is no recovery, you owe no fee and no case costs. '
     'Medical bills and liens are paid from your recovery. Every case is different, and past results do not guarantee future results. '
     f'{FIRM} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. '
@@ -158,7 +158,7 @@ CASE_HTML = f"""
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Documents received</b><span>Police report · Medical bills · Photos · View your documents</span></div></div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">10</span><div><b>Your fee: 10%</b><span>Calculated after case costs. Never goes up, even at trial.</span></div></div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>If there is no recovery</b><span>No fee and no case costs. No markup on costs. No admin fees.</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>[ATTORNEY NAME] · Licensed Texas attorney · View profile · Request a call</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>Licensed Texas attorney · Request a call</span></div></div>
   <div class="pi-case-stage"><b>Current stage:</b> Evidence collection · <b>Next step:</b> Awaiting medical records · No decision needed right now</div>
   <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the case costs, the 10% fee, your medical bills and liens, and what you’d actually keep. Your attorney calls you before you decide anything.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
 </div>
@@ -562,7 +562,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering", "[ATTORNEY NAME", "[NAME]", "[WHATSAPP NUMBER]", "[CITY]", "[STREET ADDRESS]", "Azure", "Attorney responsible"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")

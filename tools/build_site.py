@@ -341,7 +341,7 @@ def build_sections(btn):
   <div class="pi-wrap pi-center">
     <h2 id="start-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Start your case. It takes about ten minutes.</h2>
     <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Message us on WhatsApp, or answer a few questions here. You can stop and come back. Nothing here commits you to anything. It’s free to find out if we can help.</p>
-    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">WhatsApp: {chip('CONFIRM: WhatsApp number')}. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. Se habla español, from your first message to your settlement.</p>
+    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. Se habla español, from your first message to your settlement.</p>
   </div>
   <div class="pi-wrap pi-narrow">
     <form class="pi-card pi-form" id="intake" novalidate>
@@ -623,7 +623,7 @@ def main():
     disclaimer = t.find_all(by_name("Disclaimer"), footer_outer["children"])[0]
     disc_p = [n for n in disclaimer["children"] if n["tag"] == "p"][0]
     new_disc = (f'<p class="framer-text framer-styles-preset-10holly" dir="auto" style="--framer-text-color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1, rgb(20, 12, 10))">'
-                f'{c["firm"]} {chip("PLLC")}. Attorney responsible: {chip("ATTORNEY NAME, BAR NUMBER")}, {chip("CITY")}, Texas. Message us on WhatsApp: {chip("WHATSAPP NUMBER")}.<br>'
+                f'{c["firm"]} {chip("PLLC")}, Texas.<br>'
                 f'Our fee is 10% of the amount recovered, calculated after case costs are repaid. If there is no recovery, you owe no fee and no case costs. Medical bills and liens are paid from your recovery. Every case is different, and past results do not guarantee future results.<br>'
                 f'{c["firm"]} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed. {chip("Not certified by the Texas Board of Legal Specialization, if applicable")}. Attorney advertising. Typical fee figures based on {chip("Texas Fee Index, date")}. The calculator is an example only.</p>')
     footer_html = footer_html.replace(t.html(disc_p), new_disc)

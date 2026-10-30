@@ -13,7 +13,7 @@ Input for the `website-presubmission-audit` skill (its Step 0). Copy this file i
 | Email | [EMAIL] | Pending |
 | Hours | [CONFIRM] | Pending |
 | Jurisdiction | Texas | From the client explainer, 31 Oct 2026 |
-| Responsible attorney | [ATTORNEY NAME], [BAR NUMBER], Texas | Pending (Azure) |
+| Responsible attorney, address, phone, WhatsApp number | None shown on the site | Sue, 31 Oct 2026: Tim never gave them and did not ask for them; the footer says only "10flat [PLLC], Texas" and the schema has no address or telephone. Build fails if a placeholder for them appears. |
 
 The audit must fail any page where the footer, the contact page and the JSON-LD disagree on any of these.
 
