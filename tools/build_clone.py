@@ -238,6 +238,8 @@ html{scroll-behavior:smooth}
 .pi-case-choices{display:flex;gap:6px;margin-top:8px}
 .pi-case-choices span{flex:1;text-align:center;border:1px solid #140c0a;border-radius:999px;padding:7px 4px;font-weight:700;font-size:11px}
 .pi-case-choices span.is-on{background:#ffe435}
+.pi-hero-video{width:min(620px,100%)!important;height:auto!important;aspect-ratio:16/9!important;display:block;background:#ffe435;-webkit-mask:none!important;mask:none!important;object-fit:cover;border-radius:0}
+@media(max-width:809.98px){.pi-hero-video{width:100%!important}}
 /* Pinned scroll sections: original geometry at desktop, driven by our script */
 @media(min-width:1200px){
   .framer-1ccwr6f,.framer-hd6jU .framer-1ccwr6f{height:300vh!important;position:relative!important;display:block!important;align-content:start!important;padding:0!important}
@@ -385,6 +387,10 @@ MOTION_JS = """
     }
   }
 
+  /* 4b. Hero video: respect reduced motion */
+  var heroVideo = document.querySelector('.pi-hero-video');
+  if (heroVideo && reduce) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
+
   /* 5. Calculator cards (one per breakpoint variant). One fee for every case type: 10% of the gross recovery. */
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
   var RATE = 0.10;
@@ -496,7 +502,14 @@ def main():
         html = html[:start] + new + html[end:]
 
     # --- hero illustration: Tim's gavel instead of Stack's turtle
-    html = html.replace('https://framerusercontent.com/modules/FBm2eH5o7STzB0ruXyZj/sqYJJoCYRzvBBoSsyFCm/icon.svg', 'assets/gavel.png')
+    html = html.replace('https://framerusercontent.com/modules/FBm2eH5o7STzB0ruXyZj/sqYJJoCYRzvBBoSsyFCm/icon.svg', 'assets/gavel.mp4')
+    # the <img> becomes a silent looping <video>; the poster is its first frame
+    html, n_video = re.subn(
+        r'<img([^>]*?)\s*alt(?:="[^"]*")?([^>]*)src="assets/gavel.mp4"([^>]*)>',
+        r'<video\1\2\3 class="pi-hero-video" poster="assets/gavel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/gavel.mp4" type="video/mp4"></video>',
+        html, count=1)
+    assert n_video == 1, 'hero video not placed'
+    html = re.sub(r'(<video[^>]*class="framer-h3yKp framer-1qidnr3)"([^>]*?) class="pi-hero-video"', r'\1 pi-hero-video"\2', html, count=1)
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
