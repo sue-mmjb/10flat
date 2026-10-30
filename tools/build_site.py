@@ -44,9 +44,10 @@ CONFIG = {
         {"key": "med", "label": "Medical malpractice", "rate": 0.33},
         {"key": "dent", "label": "Dental malpractice", "rate": 0.33},
     ],
-    # CONFIRM: Tim said both "$500 down" and "what you owe us today $0".
+    # Confirmed by Tim 30 Oct 2026 08:29: "$0 down, $50 per hour or 25% contingency", "33% for medical/dental".
     "today_display": "$0",
-    "today_confirm": "CONFIRM: $0 or $500 down",
+    "hourly": "$50 per hour",
+    "hourly_confirm": "CONFIRM: whether the client chooses hourly or percentage, and whether hourly applies to malpractice",
     # CONFIRM: comparison percentage Tim wants shown "based on industry".
     "industry_rate": 0.33,
     "industry_confirm": "CONFIRM: industry %",
@@ -63,7 +64,7 @@ FAQ = [  # Must stay identical to content/schema/home.html. Checked at build tim
     ("What is your fee for a medical or dental malpractice case?",
      "Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start."),
     ("What does it cost to start my case?",
-     "[CONFIRM: $0 or $500 down, and whether it is refundable or credited against the fee]"),
+     "Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]"),
     ("What happens if you don't win?",
      "[CONFIRM: whether any amount is owed if there is no recovery]"),
     ("How does the fee calculator work?",
@@ -256,12 +257,13 @@ def build_sections(btn):
           <p class="pi-note framer-text framer-styles-preset-10holly">Slider range {chip('CONFIRM: minimum, maximum and default')}</p>
         </div>
         <dl class="pi-results">
-          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">What you owe us today</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-today">{c['today_display']}</dd><dd class="pi-rowchip">{chip(c['today_confirm'])}</dd></div>
+          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">What you owe us today</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-today">{c['today_display']}</dd></div>
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Our fee when we win <span id="out-rate">({int(round(r0*100))}%)</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-fee">{money(fee0)}</dd></div>
           <div class="pi-row pi-row-hero"><dt class="framer-text framer-styles-preset-u2fub4">What you get when we win your case</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-big" id="out-keep">{money(keep0)}</dd></div>
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">With a typical firm's fee ({int(round(c['industry_rate']*100))}%) you'd keep <span class="pi-rowchip">{chip(c['industry_confirm'])}</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-industry">{money(ind0)}</dd></div>
           <div class="pi-row pi-row-diff"><dt class="framer-text framer-styles-preset-u2fub4">Difference</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-diff">{money(keep0-ind0)}</dd></div>
         </dl>
+        <p class="pi-note framer-text framer-styles-preset-u2fub4">Prefer an hourly rate? {c['hourly']} instead of a percentage. {chip(c['hourly_confirm'])}</p>
         <p class="pi-fine framer-text framer-styles-preset-10holly">These figures are illustrative only. They are not a prediction, promise or guarantee of any outcome or amount. Every case is different. {chip('CONFIRM: sentence on whether case costs such as filing fees and expert fees are deducted separately')}</p>
       </div>
       <a class="pi-next framer-text framer-styles-preset-15qf7x7" href="#start">Next, tell us what happened. &rarr;</a>
@@ -272,7 +274,8 @@ def build_sections(btn):
 
     rows = "".join(
         f'<tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">{r["label"] if r["key"] != "car" else "Car accidents"}</th>'
-        f'<td class="framer-text framer-styles-preset-u2fub4">{chip("CONFIRM: $500 or $0") if r["key"]=="car" else chip("CONFIRM")}</td>'
+        f'<td class="framer-text framer-styles-preset-u2fub4">$0</td>'
+        f'<td class="framer-text framer-styles-preset-u2fub4">{c["hourly"] if r["key"]=="car" else chip("CONFIRM: hourly option for malpractice")}</td>'
         f'<td class="framer-text framer-styles-preset-1jvhhyw pi-rate">{int(round(r["rate"]*100))}%</td></tr>'
         for r in c["rates"])
     pricing = f"""
@@ -283,7 +286,7 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <table class="pi-table">
-      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
+      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Hourly option</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
       <tbody>{rows}</tbody>
     </table>
     <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Other case types and rates are proposed only and will be added once approved. {chip('CONFIRM: proposed case types, see content pack section 4.2')}</p>
@@ -298,7 +301,7 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <ol class="pi-steps">
-      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Answer a short set of questions online, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we'll ask.</p></li>
+      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we'll ask.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">2</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We build your case.</h3><p class="framer-text framer-styles-preset-1fc2js5">Our system organises your facts and documents and prepares the paperwork. Our attorney reviews every case and makes every legal decision.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">3</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We pursue your recovery.</h3><p class="framer-text framer-styles-preset-1fc2js5">You see the fee before we start. You see what you keep when we win.</p></li>
     </ol>
@@ -332,6 +335,7 @@ def build_sections(btn):
   <div class="pi-wrap pi-center">
     <h2 id="start-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Start your case. It takes about ten minutes.</h2>
     <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Answer a few questions about what happened. You can stop and come back. Nothing here commits you to anything.</p>
+    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Prefer WhatsApp? Message us at {chip('CONFIRM: WhatsApp number')} and our assistant takes your details any time. Our attorney reviews every case.</p>
   </div>
   <div class="pi-wrap pi-narrow">
     <form class="pi-card pi-form" id="intake" novalidate>
@@ -576,7 +580,7 @@ def main():
     hero_html = replace_once(hero_html, "We’re putting an end to the Brutal Renewal.", "We’re putting an end to high legal fees.", "hero h1")
     hero_html = replace_once(hero_html,
         "You know what’s absurd? A surprise 20% hike on your team’s group plan. But that’s commonplace today. That’s why we built Stack.",
-        "We win when you win. Simple as that. Personal injury representation with the fee published up front. Move the slider, see what you’d keep.", "hero p")
+        "We win when you win. Simple as that. $0 down. Personal injury representation with the fee published up front. Move the slider, see what you’d keep.", "hero p")
     hero_html = hero_html.replace(btn_tpl, btn("See what you’d keep", "#calculator"), 1)
     hero_html = strip_comments(hero_html)
 

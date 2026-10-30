@@ -72,3 +72,15 @@ Not Tim's words, so second-hand, but it is the only record of what he said on th
 
 - 03:48 "use this text" with the morninglightlaw.com link. Read in context (after "use this for m and a" and the vandijkenglas.nl choice) as the M&A site only.
 - 03:49 "photos for tiles ... abstract images of buildings we can find from istock". Said for the M&A site. No imagery was specified for personal injury.
+
+## Update: Tim's answer on the down payment (WhatsApp, 30 October 2026)
+
+| Time | From | Message |
+|---|---|---|
+| 08:28 | Tim | *(quoting Sue's question 1)* I was thinking to collect $500 so we dont get people to waste time but then i remembered we can have ai do the initial consult by whatsapp |
+| 08:29 | Tim | so $0 down would be very disruptive |
+| 08:29 | Tim | $0 down, $50 per hour or 25% contingency |
+| 08:29 | Tim | 33% for medical/dental |
+| 08:29 | Tim | this would be ground breaking |
+
+Applied: $0 down everywhere, the $500 is gone, the hourly option is shown next to the contingency rate, and the WhatsApp intake is mentioned in step 1 and the Start section. Still open: whether the client chooses hourly or percentage, whether hourly applies to malpractice, and the WhatsApp number.

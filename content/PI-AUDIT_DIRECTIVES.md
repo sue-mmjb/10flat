@@ -24,7 +24,8 @@ Do not judge the prices. Flag only where two places disagree. The published figu
 - Car accidents: 25% contingency. Confirmed by Tim.
 - Medical malpractice: 33%. Confirmed by Tim.
 - Dental malpractice: 33%. Confirmed by Tim.
-- Amount due at the start: Tim said both "$500 dollars down" and "what you owe us today $0". Unresolved. Any page that states either figure as fact before Tim resolves it is a P0.
+- Amount due at the start: $0. Confirmed by Tim 30 Oct 2026 08:29 ("$0 down, $50 per hour or 25% contingency"). Any mention of $500 is a P0.
+- Hourly option: $50 per hour, stated by Tim alongside the 25% for car accidents. Whether the client chooses, and whether it applies to malpractice, is unconfirmed; the site shows it with a [CONFIRM] chip.
 - Every other case type and rate is proposed only. Publishing one before Tim approves it is a P0.
 
 ## Structured data

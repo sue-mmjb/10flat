@@ -63,7 +63,7 @@ NOW:  Expected settlement or award  (slider, [CONFIRM: minimum] to [CONFIRM: max
 
 WAS:  Total Monthly Budget   (result)
 NOW:  Four result rows:
-      What you owe us today ............ [CONFIRM: $0 or $500]
+      What you owe us today ............ $0  (confirmed by Tim 30 Oct 08:29)
       Our fee when we win .............. (amount x percentage)
       What you get when we win your case (amount minus our fee)
       With a typical firm's fee you'd keep (amount minus [CONFIRM: industry %])
@@ -165,7 +165,7 @@ Q: What is your fee for a medical or dental malpractice case?
 A: Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start.
 
 Q: What does it cost to start my case?
-A: [CONFIRM: $0 or $500 down, and whether it is refundable or credited against the fee]
+A: Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]
 
 Q: What happens if you don't win?
 A: [CONFIRM: whether any amount is owed if there is no recovery]

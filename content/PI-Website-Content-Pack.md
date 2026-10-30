@@ -71,7 +71,7 @@ At [FIRM NAME] the fee is a fixed percentage, published on this page, agreed in 
 
 | Label | Formula |
 |---|---|
-| What you owe us today | `[CONFIRM: $0 or $500]` |
+| What you owe us today | $0 (confirmed by Tim, 30 Oct 08:29) |
 | Our fee when we win | amount × rate |
 | What you get when we win your case | amount − (amount × rate) |
 | What you'd keep with a typical firm's fee | amount − (amount × `[CONFIRM: industry %]`) |
@@ -85,9 +85,9 @@ Build note: the calculator is the one piece of client-side JavaScript on the pag
 
 | Case type | Today | When we win |
 |---|---|---|
-| Car accidents | `[CONFIRM: $500 or $0]` | 25% |
-| Medical malpractice | `[CONFIRM]` | 33% |
-| Dental malpractice | `[CONFIRM]` | 33% |
+| Car accidents | $0 | 25%, or $50 per hour `[CONFIRM: client chooses?]` |
+| Medical malpractice | $0 | 33% `[CONFIRM: hourly option?]` |
+| Dental malpractice | $0 | 33% `[CONFIRM: hourly option?]` |
 
 **Link:** See all case types and fees → `/pricing`
 
@@ -121,7 +121,7 @@ Visible FAQ. Accordion is fine, but every answer must be in the HTML whether ope
 **A:** Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start.
 
 **Q:** What does it cost to start my case?
-**A:** [CONFIRM: $0 or $500 down, and whether it is refundable or credited against the fee]
+**A:** Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]
 
 **Q:** What happens if you don't win?
 **A:** [CONFIRM: whether any amount is owed if there is no recovery]
