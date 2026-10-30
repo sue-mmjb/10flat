@@ -48,3 +48,7 @@ Everything inside an orange dashed `[CONFIRM ...]` chip on the page, and the fir
 3. **The intake form** does nothing yet. It needs a destination (email, CRM or the AI intake system from the meeting) and the attorney's sign-off on the no-relationship wording.
 4. **Legal review.** The responsible attorney must approve the fee wording, the calculator disclaimer, the footer and whether the site may mention AI.
 5. **Run the audit skill** (`website-presubmission-audit`) with `content/PI-AUDIT_DIRECTIVES.md` once the placeholders are filled.
+
+## Pricing model on the site (31 Oct 2026)
+
+Built from the "10flat" brief Tim shared (`content/TIM-INSTRUCTIONS.md`, last section): a 10% attorney fee on qualifying cases, the same for every case type shown; optional Premium (Attorney-Led) at 25% total, which replaces the 10% and is never automatic; no hourly option; "$0 upfront" not shown until the engagement agreement provides it. The calculator reports the amount after the attorney fee, before costs and liens, and is labelled an illustration. Both `/` and `/v2/` use these figures. Open questions are in `content/QUESTIONS-FOR-TIM.md`.

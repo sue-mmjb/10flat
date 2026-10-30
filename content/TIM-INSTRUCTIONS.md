@@ -84,3 +84,31 @@ Not Tim's words, so second-hand, but it is the only record of what he said on th
 | 08:29 | Tim | this would be ground breaking |
 
 Applied: $0 down everywhere, the $500 is gone, the hourly option is shown next to the contingency rate, and the WhatsApp intake is mentioned in step 1 and the Start section. Still open: whether the client chooses hourly or percentage, whether hourly applies to malpractice, and the WhatsApp number.
+
+## Update: the 10flat model (Perplexity research chat Tim shared as "10flat app.pdf", 30 to 31 October 2026)
+
+Tim shared a 107-page research chat that works out a new fee model called 10flat. The messages from the group chat quoted inside it:
+
+| Time | From | Message |
+|---|---|---|
+| 23:50, 10/30 | Tim | I think this is better than azhul idea to make a lawfirm where I help him with cases. Whst do you think chandana |
+| 23:50, 10/30 | Chandana | Yes this would be very disruptive |
+
+Tim's own prompts inside the chat (his words):
+
+- "10flat is always available. If client wants to upgrade to premium that's up to them. Its a bolt on. Help us structure the pricing and language so 10flat is legal and ethical but we also want to provide full service human brick and mortar services in every u.s. state if the client chooses and only if client chooses. No bait and switch"
+- "We cant charge 10% of award, can we"
+- "this is the picture of the app. suggest content for 10flat law and make edit document" (with screenshots of the clone's calculator and step-2 card)
+
+The chat's final answer (pages 89 to 91) is the brief applied to the site on 31 October 2026:
+
+- Replace the 25% / 33% pricing with a genuine 10% base attorney fee. Premium is an optional 25% total fee, not an extra 25% and not required.
+- Calculator: "Your fee, made clear"; "After attorney fee, before costs and liens" instead of "What you get when we win"; "Illustrative recovery amount" instead of "Expected award"; rows for attorney fee, after fee, case costs (not yet estimated), liens (not yet estimated); the amount editable as well as slidable; "Continue to case review".
+- Remove the $50/hour option unless it is a separately defined service. Remove percentages from the case-type tabs; choosing medical or dental must not change the fee.
+- Show "$0 upfront" only if the agreement actually provides it. Until then: "See your signed payment and case-cost terms."
+- Case dashboard: documents received, attorney fee 10% confirmed in the signed agreement, upfront payment per the agreement, your attorney (name, firm, state), current stage, next step, no decision needed. Premium offered below, never forced: "The 25% fee replaces the 10% fee. Upgrade only if you choose and sign."
+- Disclaimer under the calculator: illustration only, not a valuation, offer or guarantee; costs and liens may reduce what you receive; representation begins only after attorney acceptance and a signed agreement.
+- Brand language: 10flat is a legal technology company, not a law firm; an independent licensed attorney or law firm represents the client; 10flat takes no portion of the settlement or attorney fee. Never say "AI lawyer", "no fee unless we win", "guaranteed", "cheapest".
+- No automatic fee increases for filing suit, trial or appeal: the chat says 10flat "stays available", so none were introduced.
+
+Not yet from Tim in his own words: the firm name is still the placeholder; "10flat" is used as the platform brand because the whole document is written around it.

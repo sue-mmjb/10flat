@@ -19,14 +19,16 @@ The audit must fail any page where the footer, the contact page and the JSON-LD 
 
 ## Pricing rule
 
-Do not judge the prices. Flag only where two places disagree. The published figures are:
+Do not judge the prices. Flag only where two places disagree. The published figures, from the 10flat brief Tim shared on 30 October 2026 (applied 31 October):
 
-- Car accidents: 25% contingency. Confirmed by Tim.
-- Medical malpractice: 33%. Confirmed by Tim.
-- Dental malpractice: 33%. Confirmed by Tim.
-- Amount due at the start: $0. Confirmed by Tim 30 Oct 2026 08:29 ("$0 down, $50 per hour or 25% contingency"). Any mention of $500 is a P0.
-- Hourly option: $50 per hour, stated by Tim alongside the 25% for car accidents. Whether the client chooses, and whether it applies to malpractice, is unconfirmed; the site shows it with a [CONFIRM] chip.
+- Base attorney fee: 10% of the gross recovery on qualifying cases. Every case type on the site (car accident, medical injury, dental injury) shows the same 10%. A case-type control must not change the fee.
+- Optional Premium (Attorney-Led): 25% total attorney fee. It replaces the 10% fee. Must be described as optional, client-chosen and signed; "no automatic upgrades".
+- Upfront payment: "see your signed terms". Any "$0 upfront" or "$0 down" is a P0 until Tim confirms the agreement provides it.
+- No hourly option. Any "$50" or "per hour" is a P0.
+- The old 25% car / 33% malpractice figures are a P0 anywhere they survive.
+- No fee increase at filing, trial or appeal is published. If one is introduced, the 10% claim must carry the qualification conspicuously.
 - Every other case type and rate is proposed only. Publishing one before Tim approves it is a P0.
+- Calculator figures must be labelled "after attorney fee, before costs and liens", never "what you keep" or "take home", with costs and liens shown as not yet estimated.
 
 ## Structured data
 
@@ -38,7 +40,7 @@ Do not judge the prices. Flag only where two places disagree. The published figu
 
 | Category | Phrases | Why |
 |---|---|---|
-| Unconfirmed promises | "free consultation", "free case review", "no fee unless we win", "no win no fee", "nothing to lose" | Implied by Tim's "$0 today" but contradicted by "$500 down". Not confirmed. |
+| Unconfirmed promises | "free consultation", "free case review", "no fee unless we win", "no win no fee", "nothing to lose", "AI lawyer", "cheapest" | The 10flat brief forbids these outright; costs may still be owed after a loss. |
 | Overclaiming | "specialist", "specialized", "board-certified", "best", "#1", "top-rated", "award-winning", "guarantee", "guaranteed", "painless" | Bar advertising rules; no credentials supplied. "Guarantee" is allowed only inside a disclaimer that says there is none, e.g. "do not guarantee". |
 | Results | any dollar figure described as recovered, won or obtained; "millions recovered"; "track record" | No results exist. |
 | Testimonials | any quoted client | None exist. |
@@ -48,7 +50,7 @@ Do not judge the prices. Flag only where two places disagree. The published figu
 
 ## Allowed exceptions
 
-- "$0" may appear only as the value of the calculator row "What you owe us today", and only after Tim confirms it.
+- "$0 upfront" may appear only after Tim confirms the engagement agreement provides it.
 - "guarantee" may appear only in the negative, in the calculator note and footer disclaimer.
 - "AI" may appear only if Tim answers question 4 in `PI-Website-Content-Draft.md` with yes.
 

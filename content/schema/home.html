@@ -19,15 +19,21 @@
         "addressCountry": "[COUNTRY]"
       },
       "areaServed": "[CONFIRM: jurisdiction]",
-      "priceRange": "Contingency fee: 25% for car accidents, 33% for medical and dental malpractice",
-      "knowsAbout": ["Car accidents", "Medical malpractice", "Dental malpractice"]
+      "priceRange": "Attorney fee: 10% of the gross recovery on qualifying cases; optional Attorney-Led service at 25% total",
+      "knowsAbout": [
+        "Car accidents",
+        "Medical injury",
+        "Dental injury"
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://[DOMAIN]/#website",
       "url": "https://[DOMAIN]/",
-      "name": "[FIRM NAME]",
-      "publisher": { "@id": "https://[DOMAIN]/#firm" },
+      "name": "10flat",
+      "publisher": {
+        "@id": "https://[DOMAIN]/#firm"
+      },
       "inLanguage": "en"
     },
     {
@@ -36,34 +42,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is your fee for a car accident case?",
+          "name": "What is the attorney fee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+            "text": "On qualifying personal-injury cases the independent law firm charges a 10% attorney fee on the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."
           }
         },
         {
           "@type": "Question",
-          "name": "What is your fee for a medical or dental malpractice case?",
+          "name": "Which cases qualify?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+            "text": "Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it."
           }
         },
         {
           "@type": "Question",
-          "name": "What does it cost to start my case?",
+          "name": "What does it cost to start?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]"
+            "text": "Your upfront payment and case-cost terms are set out in your signed agreement. [CONFIRM: whether the agreement provides $0 upfront, and how case costs are handled if there is no recovery]"
           }
         },
         {
           "@type": "Question",
-          "name": "What happens if you don't win?",
+          "name": "What is Premium?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "[CONFIRM: whether any amount is owed if there is no recovery]"
+            "text": "An optional service at a 25% total attorney fee, with more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. You upgrade only if you choose and sign. There are no automatic upgrades."
           }
         },
         {
@@ -71,15 +77,15 @@
           "name": "How does the fee calculator work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome."
+            "text": "Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I start?",
+          "name": "Who represents me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship."
+            "text": "An independent licensed attorney or law firm, not 10flat. 10flat provides the technology platform and operational support and does not receive any portion of your settlement or attorney fee."
           }
         }
       ]

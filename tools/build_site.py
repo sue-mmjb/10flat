@@ -34,20 +34,21 @@ SCHEMA = ROOT / "content" / "schema" / "home.html"
 # ----------------------------------------------------------------------------
 CONFIG = {
     "firm": "[FIRM NAME]",
+    "brand": "10flat",
     "domain": "[DOMAIN]",
-    "title": "Personal Injury Lawyers With Published Fees | [FIRM NAME]",
-    "description": "See our fee before you hire us. 25% for car accidents, 33% for medical and dental malpractice. Slide to see what you'd keep when we win.",
+    "title": "10% Attorney Fee for Qualifying Injury Cases | 10flat",
+    "description": "A straightforward 10% attorney fee for qualifying personal-injury cases. AI-powered case support, licensed-attorney oversight, clear pricing. Optional Attorney-Led service at 25% total, only if you choose it.",
     "noindex": True,  # prototype. Set False at launch.
     # Fee rates. Confirmed by Tim, 30 Oct 2026.
     "rates": [
-        {"key": "car", "label": "Car accident", "rate": 0.25},
-        {"key": "med", "label": "Medical malpractice", "rate": 0.33},
-        {"key": "dent", "label": "Dental malpractice", "rate": 0.33},
+        {"key": "car", "label": "Car accident", "rate": 0.10},
+        {"key": "med", "label": "Medical injury", "rate": 0.10},
+        {"key": "dent", "label": "Dental injury", "rate": 0.10},
     ],
     # Confirmed by Tim 30 Oct 2026 08:29: "$0 down, $50 per hour or 25% contingency", "33% for medical/dental".
-    "today_display": "$0",
-    "hourly": "$50 per hour",
-    "hourly_confirm": "CONFIRM: whether the client chooses hourly or percentage, and whether hourly applies to malpractice",
+    "today_display": "Per your signed agreement",
+    "hourly": "Optional Premium: 25% total attorney fee",
+    "hourly_confirm": "CONFIRM: Premium scope, availability by state, and whether it can be chosen after signing",
     # CONFIRM: comparison percentage Tim wants shown "based on industry".
     "industry_rate": 0.33,
     "industry_confirm": "CONFIRM: industry %",
@@ -59,18 +60,18 @@ CONFIG = {
 }
 
 FAQ = [  # Must stay identical to content/schema/home.html. Checked at build time.
-    ("What is your fee for a car accident case?",
-     "Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start."),
-    ("What is your fee for a medical or dental malpractice case?",
-     "Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start."),
-    ("What does it cost to start my case?",
-     "Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]"),
-    ("What happens if you don't win?",
-     "[CONFIRM: whether any amount is owed if there is no recovery]"),
+    ("What is the attorney fee?",
+     "On qualifying personal-injury cases the independent law firm charges a 10% attorney fee on the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."),
+    ("Which cases qualify?",
+     "Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it."),
+    ("What does it cost to start?",
+     "Your upfront payment and case-cost terms are set out in your signed agreement. [CONFIRM: whether the agreement provides $0 upfront, and how case costs are handled if there is no recovery]"),
+    ("What is Premium?",
+     "An optional service at a 25% total attorney fee, with more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. You upgrade only if you choose and sign. There are no automatic upgrades."),
     ("How does the fee calculator work?",
-     "Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome."),
-    ("How do I start?",
-     "Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship."),
+     "Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee."),
+    ("Who represents me?",
+     "An independent licensed attorney or law firm, not 10flat. 10flat provides the technology platform and operational support and does not receive any portion of your settlement or attorney fee."),
 ]
 
 # ----------------------------------------------------------------------------
@@ -263,7 +264,7 @@ def build_sections(btn):
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">With a typical firm's fee ({int(round(c['industry_rate']*100))}%) you'd keep <span class="pi-rowchip">{chip(c['industry_confirm'])}</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-industry">{money(ind0)}</dd></div>
           <div class="pi-row pi-row-diff"><dt class="framer-text framer-styles-preset-u2fub4">Difference</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-diff">{money(keep0-ind0)}</dd></div>
         </dl>
-        <p class="pi-note framer-text framer-styles-preset-u2fub4">Prefer an hourly rate? {c['hourly']} instead of a percentage. {chip(c['hourly_confirm'])}</p>
+        <p class="pi-note framer-text framer-styles-preset-u2fub4">Want more personal service? {c['hourly']}. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign. {chip(c['hourly_confirm'])}</p>
         <p class="pi-fine framer-text framer-styles-preset-10holly">These figures are illustrative only. They are not a prediction, promise or guarantee of any outcome or amount. Every case is different. {chip('CONFIRM: sentence on whether case costs such as filing fees and expert fees are deducted separately')}</p>
       </div>
       <a class="pi-next framer-text framer-styles-preset-15qf7x7" href="#start">Next, tell us what happened. &rarr;</a>
@@ -275,7 +276,7 @@ def build_sections(btn):
     rows = "".join(
         f'<tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">{r["label"] if r["key"] != "car" else "Car accidents"}</th>'
         f'<td class="framer-text framer-styles-preset-u2fub4">$0</td>'
-        f'<td class="framer-text framer-styles-preset-u2fub4">{c["hourly"] if r["key"]=="car" else chip("CONFIRM: hourly option for malpractice")}</td>'
+        f'<td class="framer-text framer-styles-preset-u2fub4">{c["hourly"]}</td>'
         f'<td class="framer-text framer-styles-preset-1jvhhyw pi-rate">{int(round(r["rate"]*100))}%</td></tr>'
         for r in c["rates"])
     pricing = f"""
@@ -286,7 +287,7 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <table class="pi-table">
-      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Hourly option</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
+      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Optional Premium</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
       <tbody>{rows}</tbody>
     </table>
     <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Other case types and rates are proposed only and will be added once approved. {chip('CONFIRM: proposed case types, see content pack section 4.2')}</p>

@@ -136,13 +136,13 @@
   }
 </style>
 
-  <title>Personal Injury Lawyers With Published Fees | [FIRM NAME]</title>
-  <meta name="description" content="See our fee before you hire us. 25% for car accidents, 33% for medical and dental malpractice. Slide to see what you'd keep when we win.">
+  <title>10% Attorney Fee for Qualifying Injury Cases | 10flat</title>
+  <meta name="description" content="A straightforward 10% attorney fee for qualifying personal-injury cases. AI-powered case support, licensed-attorney oversight, clear pricing. Optional Attorney-Led service at 25% total, only if you choose it.">
   <link rel="canonical" href="https://[DOMAIN]/">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Personal Injury Lawyers With Published Fees | [FIRM NAME]">
-  <meta property="og:description" content="See our fee before you hire us. 25% for car accidents, 33% for medical and dental malpractice. Slide to see what you'd keep when we win.">
+  <meta property="og:title" content="10% Attorney Fee for Qualifying Injury Cases | 10flat">
+  <meta property="og:description" content="A straightforward 10% attorney fee for qualifying personal-injury cases. AI-powered case support, licensed-attorney oversight, clear pricing. Optional Attorney-Led service at 25% total, only if you choose it.">
   <meta property="og:url" content="https://[DOMAIN]/">
   <script type="application/ld+json">
 {
@@ -164,15 +164,21 @@
         "addressCountry": "[COUNTRY]"
       },
       "areaServed": "[CONFIRM: jurisdiction]",
-      "priceRange": "Contingency fee: 25% for car accidents, 33% for medical and dental malpractice",
-      "knowsAbout": ["Car accidents", "Medical malpractice", "Dental malpractice"]
+      "priceRange": "Attorney fee: 10% of the gross recovery on qualifying cases; optional Attorney-Led service at 25% total",
+      "knowsAbout": [
+        "Car accidents",
+        "Medical injury",
+        "Dental injury"
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://[DOMAIN]/#website",
       "url": "https://[DOMAIN]/",
-      "name": "[FIRM NAME]",
-      "publisher": { "@id": "https://[DOMAIN]/#firm" },
+      "name": "10flat",
+      "publisher": {
+        "@id": "https://[DOMAIN]/#firm"
+      },
       "inLanguage": "en"
     },
     {
@@ -181,34 +187,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is your fee for a car accident case?",
+          "name": "What is the attorney fee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+            "text": "On qualifying personal-injury cases the independent law firm charges a 10% attorney fee on the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."
           }
         },
         {
           "@type": "Question",
-          "name": "What is your fee for a medical or dental malpractice case?",
+          "name": "Which cases qualify?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start."
+            "text": "Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it."
           }
         },
         {
           "@type": "Question",
-          "name": "What does it cost to start my case?",
+          "name": "What does it cost to start?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]"
+            "text": "Your upfront payment and case-cost terms are set out in your signed agreement. [CONFIRM: whether the agreement provides $0 upfront, and how case costs are handled if there is no recovery]"
           }
         },
         {
           "@type": "Question",
-          "name": "What happens if you don't win?",
+          "name": "What is Premium?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "[CONFIRM: whether any amount is owed if there is no recovery]"
+            "text": "An optional service at a 25% total attorney fee, with more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. You upgrade only if you choose and sign. There are no automatic upgrades."
           }
         },
         {
@@ -216,15 +222,15 @@
           "name": "How does the fee calculator work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome."
+            "text": "Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I start?",
+          "name": "Who represents me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship."
+            "text": "An independent licensed attorney or law firm, not 10flat. 10flat provides the technology platform and operational support and does not receive any portion of your settlement or attorney fee."
           }
         }
       ]
@@ -363,7 +369,7 @@ html{scroll-behavior:smooth}
       <div class="pi-calc">
         <div class="pi-field">
           <label for="case-type" class="framer-text framer-styles-preset-7jf1zc">Case type</label>
-          <select id="case-type" class="pi-select framer-text framer-styles-preset-u2fub4"><option value="car">Car accident (25%)</option><option value="med">Medical malpractice (33%)</option><option value="dent">Dental malpractice (33%)</option></select>
+          <select id="case-type" class="pi-select framer-text framer-styles-preset-u2fub4"><option value="car">Car accident (10%)</option><option value="med">Medical injury (10%)</option><option value="dent">Dental injury (10%)</option></select>
         </div>
         <div class="pi-field">
           <label for="amount" class="framer-text framer-styles-preset-7jf1zc">Expected settlement or award <span class="pi-amount-out" id="amount-out">$100,000</span></label>
@@ -372,13 +378,13 @@ html{scroll-behavior:smooth}
           <p class="pi-note framer-text framer-styles-preset-10holly">Slider range <mark class="pi-confirm">[CONFIRM: minimum, maximum and default]</mark></p>
         </div>
         <dl class="pi-results">
-          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">What you owe us today</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-today">$0</dd></div>
-          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Our fee when we win <span id="out-rate">(25%)</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-fee">$25,000</dd></div>
-          <div class="pi-row pi-row-hero"><dt class="framer-text framer-styles-preset-u2fub4">What you get when we win your case</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-big" id="out-keep">$75,000</dd></div>
+          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">What you owe us today</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-today">Per your signed agreement</dd></div>
+          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Our fee when we win <span id="out-rate">(10%)</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-fee">$10,000</dd></div>
+          <div class="pi-row pi-row-hero"><dt class="framer-text framer-styles-preset-u2fub4">What you get when we win your case</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-big" id="out-keep">$90,000</dd></div>
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">With a typical firm's fee (33%) you'd keep <span class="pi-rowchip"><mark class="pi-confirm">[CONFIRM: industry %]</mark></span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-industry">$67,000</dd></div>
-          <div class="pi-row pi-row-diff"><dt class="framer-text framer-styles-preset-u2fub4">Difference</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-diff">$8,000</dd></div>
+          <div class="pi-row pi-row-diff"><dt class="framer-text framer-styles-preset-u2fub4">Difference</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-diff">$23,000</dd></div>
         </dl>
-        <p class="pi-note framer-text framer-styles-preset-u2fub4">Prefer an hourly rate? $50 per hour instead of a percentage. <mark class="pi-confirm">[CONFIRM: whether the client chooses hourly or percentage, and whether hourly applies to malpractice]</mark></p>
+        <p class="pi-note framer-text framer-styles-preset-u2fub4">Want more personal service? Optional Premium: 25% total attorney fee. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign. <mark class="pi-confirm">[CONFIRM: Premium scope, availability by state, and whether it can be chosen after signing]</mark></p>
         <p class="pi-fine framer-text framer-styles-preset-10holly">These figures are illustrative only. They are not a prediction, promise or guarantee of any outcome or amount. Every case is different. <mark class="pi-confirm">[CONFIRM: sentence on whether case costs such as filing fees and expert fees are deducted separately]</mark></p>
       </div>
       <a class="pi-next framer-text framer-styles-preset-15qf7x7" href="#start">Next, tell us what happened. &rarr;</a>
@@ -394,8 +400,8 @@ html{scroll-behavior:smooth}
   </div>
   <div class="pi-wrap">
     <table class="pi-table">
-      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Hourly option</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
-      <tbody><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Car accidents</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4">$50 per hour</td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">25%</td></tr><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Medical malpractice</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4"><mark class="pi-confirm">[CONFIRM: hourly option for malpractice]</mark></td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">33%</td></tr><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Dental malpractice</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4"><mark class="pi-confirm">[CONFIRM: hourly option for malpractice]</mark></td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">33%</td></tr></tbody>
+      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Today</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Optional Premium</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">When we win</th></tr></thead>
+      <tbody><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Car accidents</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4">Optional Premium: 25% total attorney fee</td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">10%</td></tr><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Medical injury</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4">Optional Premium: 25% total attorney fee</td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">10%</td></tr><tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">Dental injury</th><td class="framer-text framer-styles-preset-u2fub4">$0</td><td class="framer-text framer-styles-preset-u2fub4">Optional Premium: 25% total attorney fee</td><td class="framer-text framer-styles-preset-1jvhhyw pi-rate">10%</td></tr></tbody>
     </table>
     <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Other case types and rates are proposed only and will be added once approved. <mark class="pi-confirm">[CONFIRM: proposed case types, see content pack section 4.2]</mark></p>
   </div>
@@ -429,7 +435,7 @@ html{scroll-behavior:smooth}
   <div class="pi-wrap pi-center">
     <h2 id="faq-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Questions people ask before they start.</h2>
   </div>
-  <div class="pi-wrap pi-narrow"><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What is your fee for a car accident case?</summary><p class="framer-text framer-styles-preset-u2fub4">Our fee is 25% of what we recover for you. The percentage is published on this site and agreed in writing before we start.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What is your fee for a medical or dental malpractice case?</summary><p class="framer-text framer-styles-preset-u2fub4">Our fee is 33% of what we recover for you. The percentage is published on this site and agreed in writing before we start.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What does it cost to start my case?</summary><p class="framer-text framer-styles-preset-u2fub4">Nothing. There is no down payment. Our fee is either $50 per hour or a percentage of what we recover, agreed in writing before we start. [CONFIRM: whether the client chooses between hourly and percentage]</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What happens if you don't win?</summary><p class="framer-text framer-styles-preset-u2fub4">[CONFIRM: whether any amount is owed if there is no recovery]</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">How does the fee calculator work?</summary><p class="framer-text framer-styles-preset-u2fub4">Choose your case type and slide to the amount you expect to recover. The calculator shows our fee at the published percentage and what you would keep. The figures are illustrative only and are not a prediction or guarantee of any outcome.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">How do I start?</summary><p class="framer-text framer-styles-preset-u2fub4">Answer a short set of questions online and upload any documents you have. Our attorney reviews your answers and contacts you. Submitting the questionnaire does not create an attorney-client relationship.</p></details></div>
+  <div class="pi-wrap pi-narrow"><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What is the attorney fee?</summary><p class="framer-text framer-styles-preset-u2fub4">On qualifying personal-injury cases the independent law firm charges a 10% attorney fee on the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">Which cases qualify?</summary><p class="framer-text framer-styles-preset-u2fub4">Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What does it cost to start?</summary><p class="framer-text framer-styles-preset-u2fub4">Your upfront payment and case-cost terms are set out in your signed agreement. [CONFIRM: whether the agreement provides $0 upfront, and how case costs are handled if there is no recovery]</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">What is Premium?</summary><p class="framer-text framer-styles-preset-u2fub4">An optional service at a 25% total attorney fee, with more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. You upgrade only if you choose and sign. There are no automatic upgrades.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">How does the fee calculator work?</summary><p class="framer-text framer-styles-preset-u2fub4">Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee.</p></details><details class="pi-faq"><summary class="framer-text framer-styles-preset-1fc2js5">Who represents me?</summary><p class="framer-text framer-styles-preset-u2fub4">An independent licensed attorney or law firm, not 10flat. 10flat provides the technology platform and operational support and does not receive any portion of your settlement or attorney fee.</p></details></div>
 </section>
 
 
@@ -443,7 +449,7 @@ html{scroll-behavior:smooth}
     <form class="pi-card pi-form" id="intake" novalidate>
       <p class="framer-text framer-styles-preset-lit60w pi-step">step 2</p>
       <h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3>
-      <div class="pi-field"><label for="f-type" class="framer-text framer-styles-preset-7jf1zc">1. What type of injury or incident</label><select id="f-type" name="type" class="pi-select framer-text framer-styles-preset-u2fub4"><option value="">Choose one</option><option value="car">Car accident (25%)</option><option value="med">Medical malpractice (33%)</option><option value="dent">Dental malpractice (33%)</option><option value="other">Something else</option></select></div>
+      <div class="pi-field"><label for="f-type" class="framer-text framer-styles-preset-7jf1zc">1. What type of injury or incident</label><select id="f-type" name="type" class="pi-select framer-text framer-styles-preset-u2fub4"><option value="">Choose one</option><option value="car">Car accident (10%)</option><option value="med">Medical injury (10%)</option><option value="dent">Dental injury (10%)</option><option value="other">Something else</option></select></div>
       <div class="pi-field"><label for="f-when" class="framer-text framer-styles-preset-7jf1zc">2. When and where it happened</label><input id="f-when" name="when" type="text" class="pi-input framer-text framer-styles-preset-u2fub4" autocomplete="off"></div>
       <div class="pi-field"><label for="f-who" class="framer-text framer-styles-preset-7jf1zc">3. Who was involved</label><input id="f-who" name="who" type="text" class="pi-input framer-text framer-styles-preset-u2fub4" autocomplete="off"></div>
       <div class="pi-field"><label for="f-injury" class="framer-text framer-styles-preset-7jf1zc">4. Your injuries and treatment so far</label><textarea id="f-injury" name="injury" rows="4" class="pi-input framer-text framer-styles-preset-u2fub4"></textarea></div>
@@ -624,7 +630,7 @@ html{scroll-behavior:smooth}
 
 <script>
 (function(){
-  var RATES = {"car": 0.25, "med": 0.33, "dent": 0.33};
+  var RATES = {"car": 0.1, "med": 0.1, "dent": 0.1};
   var INDUSTRY = 0.33;
   var sel = document.getElementById('case-type'), rng = document.getElementById('amount');
   if (!sel || !rng) return;

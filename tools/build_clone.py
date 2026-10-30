@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source" / "mystack-index.html"
 OUT = ROOT / "site" / "index.html"
 FIRM = CONFIG["firm"]
+BRAND = CONFIG.get("brand", "10flat")
 
 # ----------------------------------------------------------------------------
 # Text swaps. Left = exact text in the clone (curly quotes as in the source).
@@ -32,64 +33,64 @@ FIRM = CONFIG["firm"]
 GLOBAL = [
     ('href="./brokers">For Brokers', 'href="#we-win-when">Pricing'),
     (">Instant Quote<", ">Start your case<"),            # nav and closing CTA
-    (">Instant quote<", ">See what you’d keep<"),         # hero button
+    (">Instant quote<", ">See your fee<"),                # hero button
     ("We’re putting an end to the Brutal Renewal.", "We’re putting an end to high legal fees."),
     ("You know what’s absurd? A surprise 20% hike on your team’s group plan. But that’s commonplace today. That’s why we built Stack.",
-     "We win when you win. Simple as that. $0 down. Personal injury representation with the fee published up front. Move the slider, see what you’d keep."),
+     "We win when you win. Simple as that. A straightforward 10% attorney fee for qualifying injury cases. AI-powered case support. Licensed-attorney oversight. Clear pricing. Optional Attorney-Led service if you want more personal attorney involvement."),
     (">Set a budget.<", ">Know your fee<"),
-    (">Skip the headache.<", ">before you start.<"),
+    (">Skip the headache.<", ">before you sign.<"),
     ("Give your team an allowance for health benefits and they’ll choose a plan that’s right for them. You pick a budget. Stack handles the rest.",
-     "Most people never find out what a lawyer will cost until the case is over. We think that’s backwards. The fee is a fixed percentage, published on this page, agreed in writing before we lift a finger."),
+     "Most people never find out what a lawyer will cost until the case is over. We think that’s backwards. On qualifying cases the attorney fee is 10% of the gross recovery, published here and confirmed in a signed agreement before representation begins."),
     ("Set your benchmark plan and contribution to see your budget. You’re in total control.",
-     "Slide to the amount you expect to recover. We’ll show you our fee and what you keep, next to what a typical firm would charge."),
+     "Type or slide to an illustrative recovery amount. You’ll see the 10% attorney fee and the amount after it, before case costs and liens."),
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
-     "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills."),
-    # the mock app card inside step 2
-    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">25% fee<"),
-    (">$575/mo<", ">$75,000<"), (">Total Allowance<", ">What you keep<"), (">Maria’s Stack<", ">Your documents<"),
-    (">Stackables<", ">Uploaded<"), (">Whoop<", ">Police report<"), (">Carbon Health<", ">Medical bills<"),
-    (">Stack Save HSA<", ">Photos<"), (">$50 Employer + $50 Maria<", ">Fee: 25% when we win<"),
-    (">Pre-Tax Savings<", ">Agreed in writing<"), (">Stack Pay<", ">Pay nothing today<"),
-    (">0% Interest<", ">$0 down<"), (">Pay over time<", ">$50 per hour option<"), (">Coming Soon<", ">To confirm<"),
-    (">Dental Plan<", ">Dental malpractice<"), (">Family Plan<", ">33% when we win<"),
-    (">Silver HMO Family Plan<", ">25% when we win<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Our fee<"),
-    (">Bronze<", ">Car 25%<"), (">Silver<", ">Medical 33%<"), (">Gold<", ">Dental 33%<"),   # pill variants outside the card
+     "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills. An attorney will review your request."),
+    # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat brief
+    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% attorney fee<"),
+    (">$575/mo<", ">$90,000<"), (">Total Allowance<", ">After attorney fee (illustration)<"), (">Maria’s Stack<", ">Documents received<"),
+    (">Stackables<", ">View your documents<"), (">Whoop<", ">Police report<"), (">Carbon Health<", ">Medical bills · Photos<"),
+    (">Stack Save HSA<", ">Your attorney fee: 10%<"), (">$50 Employer + $50 Maria<", ">Confirmed in your signed agreement<"),
+    (">Pre-Tax Savings<", ">No automatic upgrades<"), (">Stack Pay<", ">Upfront payment<"),
+    (">0% Interest<", ">See your signed payment<"), (">Pay over time<", ">and case-cost terms<"), (">Coming Soon<", ">No decision needed right now<"),
+    (">Dental Plan<", ">Your attorney<"), (">Family Plan<", f">[ATTORNEY NAME] · {FIRM}<"),
+    (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
+    (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
     # logo rows kept as tiles; headings say what they are
     (">Our trusted partners<", ">Partner logos (placeholder tiles)<"),
-    (">Insurance carriers available through stack<", ">One published rate for every kind of case. Car accidents 25% · Medical and dental malpractice 33% · $0 down<"),
+    (">Insurance carriers available through stack<", ">One attorney fee for qualifying cases: 10% of the gross recovery. Car accidents · Medical injury · Dental injury. Optional Attorney-Led service at 25% total, only if you choose it.<"),
     # we win when
     ("We win when you and your team are <span", "We win when <span"),
     (">happy.</span>", ">you win.</span>"),
     ("We’re not selling your team a plan. We’re helping them find the right one.",
-     "Our fee is a percentage of your recovery. That means we only do well when you do."),
-    (">No conflicts.<", ">No hourly billing.<"), (">No asterisks.<", ">No surprises.<"),
+     "The attorney fee is 10% of the gross recovery on qualifying cases. It is disclosed before you sign and confirmed in writing."),
+    (">No conflicts.<", ">No hidden fees.<"), (">No asterisks.<", ">No automatic upgrades.<"),
     (">Doug Buckley<", ">Client testimonial<"), (">Black Kahawa Coffee<", ">Placeholder until we have real ones<"),
     # quote carousel
     (">We make an instant impact<", ">Lower fees aren’t a gimmick. They’re a design.<"),
     ('We make an <br class="framer-text">instant impact', 'Lower fees aren’t a gimmick.<br class="framer-text">They’re a design.'),
     ("“I renewed the same plan four years in a row because changing felt impossible. Stack makes it feel possible.”",
-     "Traditional firms charge high percentages because they run on paperwork and hours. We built the firm around technology that handles the intake, the document assembly and the case tracking."),
+     "Traditional firms charge 33% or more because they run on paperwork, overhead and hours. Our platform handles intake, document organisation, chronologies and deadline tracking, so attorneys spend their time on legal judgment."),
     ("“Our renewal rates have been 15 to 20% year over year, which is just asinine, but you know, that's life.”",
-     "Our attorney spends time on your case, not on admin. That’s the saving we pass on."),
-    ("“It’s all just so much busy work.”", "$0 down. $50 per hour or 25% of what we recover. 33% for medical and dental malpractice."),
+     "AI prepares. The attorney decides. Licensed attorneys make the legal decisions, approve filings and represent you."),
+    ("“It’s all just so much busy work.”", "10% attorney fee on qualifying personal-injury cases. The transparent alternative to the 33% contingency fee."),
     ("“We’ve been hit the last two years with 20% increases in terms of our premiums, year over year, and those costs compound.”",
-     "Client testimonial placeholder. Real quotes only, once we have them."),
+     "Optional Premium: 25% total attorney fee. More scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign."),
     ("“There are real challenges to fitting a one-size-fits-all type of deal for our overall demographic.”",
-     "Client testimonial placeholder. Real quotes only, once we have them."),
-    (">General Contractor (9 employees)<", ">Why our fee is lower<"), (">Architecture Firm (28 employees)<", ">Why our fee is lower<"),
-    (">Law Firm (4 employees)<", ">Published rates<"), (">Creative Agency (70 employees)<", ">Placeholder<"), (">Pizza Chain (110 employees)<", ">Placeholder<"),
-    (">Head of HR<", ">Case type<"), (">Owner<", ">Case type<"),
+     f"{BRAND} is a legal technology company. We are not a law firm and do not provide legal representation. If your case is accepted, you will be represented by an independent licensed attorney or law firm."),
+    (">General Contractor (9 employees)<", ">Why the fee is lower<"), (">Architecture Firm (28 employees)<", ">AI-supported, attorney-supervised<"),
+    (">Law Firm (4 employees)<", ">Published fee<"), (">Creative Agency (70 employees)<", ">Optional Premium<"), (">Pizza Chain (110 employees)<", ">Who represents you<"),
+    (">Head of HR<", f">{BRAND}<"), (">Owner<", f">{BRAND}<"),
     # closing
     ('You’ve got a business<br class="framer-text">to run. Let Stack handle the benefits part.', 'You’ve been through enough.<br class="framer-text">Let us handle the legal part.'),
     # footer
     (">Privacy Policy<", ">Privacy<"), (">Terms of Use<", ">Terms<"),
-    ("© 2026 Stack Healthcare, Inc. All rights reserved.", f"© 2026 {FIRM}. All rights reserved."),
+    ("© 2026 Stack Healthcare, Inc. All rights reserved.", f"© 2026 {BRAND}. All rights reserved."),
 ]
 
 SCOPED = {
     "SET A BUDGET": [
-        (">You set the budget.<", ">What would you actually take home?<"),
+        (">You set the budget.<", ">Your fee, made clear.<"),
     ],
     "WE BUILT STACK": [
         ("We built Stack to give you and your team ", "Three steps. "),
@@ -99,17 +100,19 @@ SCOPED = {
          "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we’ll ask."),
         (">Your team builds their plan.<", ">2. We build your case.<"),
         ("Stack guides each employee to coverage that fits them like their favorite pair of pants. If they're HSA-eligible, we help them maximize HSA funding to build a healthier financial future.",
-         "Our system organises your facts and documents and prepares the paperwork. Our attorney reviews every case and makes every legal decision."),
+         "AI organises your documents, tracks deadlines, prepares chronologies and sends status updates. A licensed attorney reviews key decisions and required legal work."),
         (">The plan goes with them.<", ">3. We pursue your recovery.<"),
         ("If someone leaves your team, the plan leaves with them, because it’s their plan. That’s how insurance should work.",
-         "You see the fee before we start. You see what you keep when we win."),
+         "You see the 10% attorney fee before you sign. When an offer arrives you see the offer, the fee, estimated costs and liens, and the estimated net to you, before you decide."),
     ],
 }
 
 FOOTER_DISCLAIMER = (
+    f'{BRAND} is a legal technology company. We provide software, case-organisation tools and client-communication technology. '
+    f'We are not a law firm and do not provide legal representation. If your case is accepted, you will be represented by an independent licensed attorney or law firm. '
     f'{FIRM} · [STREET ADDRESS, CITY, STATE ZIP] · Text or call [PHONE]. '
     f'Attorney responsible for this website: [ATTORNEY NAME, BAR NUMBER], licensed in [STATE]. '
-    f'Attorney advertising. Prior results do not guarantee a similar outcome. Fee percentages are subject to a written fee agreement. The calculator is illustrative only.'
+    f'Attorney advertising. Prior results do not guarantee a similar outcome. The attorney fee, any case costs, liens and client responsibilities are explained in the written engagement agreement before representation begins. The calculator is an illustration only.'
 )
 
 # The step-1 card's insides were drawn by Framer's bundle on the live site (the
@@ -117,29 +120,38 @@ FOOTER_DISCLAIMER = (
 CALC_HTML = """
 <div class="pi-c" data-pi-calc>
   <div class="pi-c-row pi-c-top">
-    <div><div class="pi-c-label">What you get when we win</div><div class="pi-c-big" data-out="keep">$75,000</div></div>
-    <div class="pi-c-tags"><span>$0 down</span><span data-out="ratetag">25% fee</span></div>
+    <div><div class="pi-c-label">After attorney fee, before costs and liens</div><div class="pi-c-big" data-out="after">$90,000</div></div>
+    <div class="pi-c-tags"><span>10% attorney fee</span><span>No automatic upgrades</span></div>
   </div>
-  <div class="pi-c-row pi-c-line"><div class="pi-c-label">Case type</div><div class="pi-c-val">$50 / hour option</div></div>
+  <div class="pi-c-row pi-c-line"><div class="pi-c-label">Case type</div><div class="pi-c-val" data-out="casetype">Car accident</div></div>
   <div class="pi-c-pills" role="group" aria-label="Case type">
-    <button type="button" class="pi-c-pill is-on" data-rate="0.25">Car 25%</button>
-    <button type="button" class="pi-c-pill" data-rate="0.33">Medical 33%</button>
-    <button type="button" class="pi-c-pill" data-rate="0.33">Dental 33%</button>
+    <button type="button" class="pi-c-pill is-on">Car accident</button>
+    <button type="button" class="pi-c-pill">Medical injury</button>
+    <button type="button" class="pi-c-pill">Dental injury</button>
   </div>
-  <div class="pi-c-row pi-c-line"><label class="pi-c-label" for="__ID__">Expected award</label><div class="pi-c-val" data-out="amount">$100,000</div></div>
-  <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-valuetext="$100,000">
-  <div class="pi-c-foot"><div class="pi-c-next">Next, tell us what happened.</div><a class="pi-c-btn" href="#product-step-2">Step 2</a></div>
+  <div class="pi-c-row pi-c-line"><label class="pi-c-label" for="__ID__-amount">Illustrative recovery amount</label><input class="pi-c-val pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
+  <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Illustrative recovery amount" aria-valuetext="$100,000">
+  <div class="pi-c-rows">
+    <div class="pi-c-row"><span class="pi-c-label">Attorney fee, 10%</span><span class="pi-c-val" data-out="fee">$10,000</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">After attorney fee</span><span class="pi-c-val" data-out="after2">$90,000</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Case costs</span><span class="pi-c-val pi-c-dim">Not yet estimated</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Liens and reimbursements</span><span class="pi-c-val pi-c-dim">Not yet estimated</span></div>
+  </div>
+  <div class="pi-c-foot"><div class="pi-c-next">Tell us what happened. An attorney will review your request.</div><a class="pi-c-btn" href="#product-step-2">Continue to case review</a></div>
+  <p class="pi-c-disc">Illustration only, not a valuation, offer or guarantee. Case costs, medical liens and other reimbursements may reduce what you receive. Representation begins only after attorney acceptance and a signed agreement.</p>
 </div>
 """
 
-CASE_HTML = """
+CASE_HTML = f"""
 <div class="pi-case" data-pi-case hidden>
-  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 25% fee</div></div><div><div class="pi-c-big" style="font-size:26px">$75,000</div><div class="pi-c-label" style="text-align:right">What you keep</div></div></div>
-  <div class="pi-c-label">Your documents</div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Uploaded</b><span>Police report · Medical bills · Photos</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">&#10003;</span><div><b>Fee: 25% when we win</b><span>Agreed in writing</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>Pay nothing today</b><span>$0 down · $50 per hour option</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">33</span><div><b>Medical and dental malpractice</b><span>33% when we win</span></div></div>
+  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 10% attorney fee</div></div><div><div class="pi-c-big" style="font-size:26px">$90,000</div><div class="pi-c-label" style="text-align:right">Illustrative amount after attorney fee</div></div></div>
+  <div class="pi-c-label">Based on a $100,000 illustration. Costs and liens not included.</div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Documents received</b><span>Police report · Medical bills · Photos · View your documents</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">10</span><div><b>Your attorney fee: 10%</b><span>Confirmed in your signed agreement. No automatic upgrades.</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>Upfront payment</b><span>See your signed payment and case-cost terms.</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>[ATTORNEY NAME] · {FIRM} · Licensed in [STATE] · View profile · Request a call</span></div></div>
+  <div class="pi-case-stage"><b>Current stage:</b> Evidence collection · <b>Next step:</b> Awaiting medical records · No decision needed right now</div>
+  <div class="pi-case-prem"><b>Want more personal service?</b> Optional Premium, 25% total attorney fee: more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign.<span class="pi-case-choices"><span class="is-on">Keep {BRAND} at 10%</span><span>Explore Premium</span></span></div>
 </div>
 """
 
@@ -204,6 +216,17 @@ html{scroll-behavior:smooth}
 .pi-case-item span:last-child{font-size:12px;color:#5f564a}
 .pi-case-ic{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 "Instrument Sans",system-ui,sans-serif}
 .pi-c,.pi-case{transition:opacity .35s ease}
+.pi-c-amount{border:0;border-bottom:2px solid #140c0a;border-radius:0;background:transparent;text-align:right;width:120px;padding:2px 0;color:inherit;font-size:15px}
+.pi-c-amount:focus-visible{outline:3px solid #140c0a;outline-offset:2px}
+.pi-c-rows{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#c9c4bb);padding-top:12px}
+.pi-c-rows .pi-c-row{align-items:center}
+.pi-c-dim{color:#5f564a;font-weight:600}
+.pi-c-disc{font-size:11px;line-height:1.4;color:#5f564a;margin:0}
+.pi-case-stage{font-size:12px;color:#5f564a;line-height:1.4}
+.pi-case-prem{font-size:12px;line-height:1.4;background:#fff;border:1px solid #c9c4bb;border-radius:12px;padding:12px}
+.pi-case-choices{display:flex;gap:6px;margin-top:8px}
+.pi-case-choices span{flex:1;text-align:center;border:1px solid #140c0a;border-radius:999px;padding:7px 4px;font-weight:700;font-size:11px}
+.pi-case-choices span.is-on{background:#ffe435}
 /* Pinned scroll sections: original geometry at desktop, driven by our script */
 @media(min-width:1200px){
   .framer-1ccwr6f,.framer-hd6jU .framer-1ccwr6f{height:300vh!important;position:relative!important;display:block!important;align-content:start!important;padding:0!important}
@@ -345,26 +368,32 @@ MOTION_JS = """
     }
   }
 
-  /* 5. Calculator cards (one per breakpoint variant) */
+  /* 5. Calculator cards (one per breakpoint variant). One fee for every case type: 10% of the gross recovery. */
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  var RATE = 0.10;
   [].forEach.call(document.querySelectorAll('[data-pi-calc]'), function (c) {
-    var range = c.querySelector('.pi-c-range'), pills = c.querySelectorAll('.pi-c-pill');
-    var rate = 0.25;
-    function update() {
-      var amount = Number(range.value);
-      c.querySelector('[data-out="amount"]').textContent = money(amount);
-      c.querySelector('[data-out="keep"]').textContent = money(amount - amount * rate);
-      c.querySelector('[data-out="ratetag"]').textContent = Math.round(rate * 100) + '% fee';
+    var range = c.querySelector('.pi-c-range'), amountIn = c.querySelector('.pi-c-amount'), pills = c.querySelectorAll('.pi-c-pill');
+    var min = Number(range.min), max = Number(range.max);
+    function set(sel, v) { var el = c.querySelector(sel); if (el) el.textContent = v; }
+    function render(amount) {
+      var fee = amount * RATE;
+      set('[data-out="fee"]', money(fee));
+      set('[data-out="after"]', money(amount - fee));
+      set('[data-out="after2"]', money(amount - fee));
       range.setAttribute('aria-valuetext', money(amount));
     }
+    function parse(v) { return Number(String(v).replace(/[^0-9]/g, '')); }
+    function clampN(n) { return Math.min(max, Math.max(min, n)); }
+    range.addEventListener('input', function () { amountIn.value = money(Number(range.value)); render(Number(range.value)); });
+    amountIn.addEventListener('input', function () { var n = parse(amountIn.value); if (!n) return; n = clampN(n); range.value = n; render(n); });
+    amountIn.addEventListener('blur', function () { var n = clampN(parse(amountIn.value) || Number(range.value)); range.value = n; amountIn.value = money(n); render(n); });
     [].forEach.call(pills, function (p) {
       p.addEventListener('click', function () {
         [].forEach.call(pills, function (q) { q.classList.remove('is-on'); });
-        p.classList.add('is-on'); rate = Number(p.getAttribute('data-rate')); update();
+        p.classList.add('is-on'); set('[data-out="casetype"]', p.textContent);
       });
     });
-    range.addEventListener('input', update);
-    update();
+    render(Number(range.value));
   });
 })();
 </script>
@@ -450,7 +479,7 @@ def main():
 
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
-    html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{FIRM}</span>')
+    html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
     html = re.sub(r'<a class="framer-18cgtl3 framer-1f2myp"[^>]*>.*?</a>', "", html, flags=re.S)
     html = re.sub(r'<a name="Nav Watch a demo" class="framer-cLKaN', '<a href="#hero" name="Start your case" class="framer-cLKaN', html, count=1)
 
@@ -465,7 +494,7 @@ def main():
             f'<meta name="robots" content="noindex, nofollow">{schema_block}{MOTION_CSS}')
     html = html.replace("</head>", meta + "</head>", 1)
     html = html.replace(' data-framer-hydrate-v2="', ' data-x-hydrate="', 1)
-    html = html.replace("<!-- Made in Framer · framer.com -->", f"<!-- {FIRM} prototype: mystack.com clone with text swapped by tools/build_clone.py. Do not edit by hand. -->", 1)
+    html = html.replace("<!-- Made in Framer · framer.com -->", f"<!-- {BRAND} prototype: mystack.com clone with text swapped by tools/build_clone.py. Do not edit by hand. -->", 1)
     html = html.replace("</body>", MOTION_JS + "</body>", 1)
 
     # --- motion markers, then make everything else the bundle hid visible
@@ -479,7 +508,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "what you keep", "take home", "$0 down", "Clearfee", "AI lawyer", "no fee unless", "guaranteed"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")
