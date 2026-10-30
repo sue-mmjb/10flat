@@ -207,6 +207,8 @@ html{scroll-behavior:smooth}
 .framer-qS6iJ .framer-1dbzg9h{height:auto!important;min-height:400px;align-items:stretch}
 @media(max-width:1199px) and (min-width:810px){.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:18px}.framer-E2WzL.framer-9l7otk{--1oqahgf:36px 36px 32px 36px!important}}
 @media(max-width:809px){.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:17px;--framer-line-height:1.42em}.framer-E2WzL.framer-9l7otk{--1oqahgf:30px 26px 26px 26px!important}}
+/* Step drawings: PNGs at their natural aspect instead of the SVGs' fixed .92 box */
+.framer-hd6jU .framer-dlhvuy,.framer-hd6jU .framer-qptr4j,.framer-hd6jU .framer-1xu5j0d{aspect-ratio:auto!important;height:auto!important}
 /* Calculator card */
 .pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
 .pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
@@ -552,6 +554,11 @@ def main():
     # --- closing image: Lady Justice (iStock 2214624729, licensed) instead of Stack's truck photo
     html, n_close = re.subn(r'https://framerusercontent\.com/images/xBb8xgSKGQQN7I5S0r0MxSStns\.png[^)"\s]*', 'assets/justice.jpg', html)
     assert n_close >= 1, 'closing image not found'
+    # --- the three step drawings: Tim's set (phone and WhatsApp, case folders, scales and briefcase) instead of Stack's inline SVGs
+    for n, cls in ((1, "dlhvuy"), (2, "qptr4j"), (3, "1xu5j0d")):
+        html, k = re.subn(r'(<img alt class="framer-[A-Za-z0-9]+ framer-%s" src=")data:image/svg\+xml,[^"]*(")' % cls,
+                          r'\g<1>assets/step-%d.png\g<2>' % n, html)
+        assert k >= 1, 'step %d drawing not found' % n
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
