@@ -2,6 +2,8 @@
 
 Prototype of the personal injury law firm site Tim asked for on 30 October 2026, built on the mystack.com clone he chose as the design reference.
 
+**Live preview:** https://personal-injury-law-nine.vercel.app/ (clone) and https://personal-injury-law-nine.vercel.app/v2/ (rebuilt). Vercel redeploys automatically on every push to `main`.
+
 ## Folders
 
 | Folder | What it is |
