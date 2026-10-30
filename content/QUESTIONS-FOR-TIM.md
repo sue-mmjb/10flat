@@ -38,7 +38,6 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 
 **Build**
 17. The clone's fonts (Perfektta and GT Alpina) are licensed to Stack, not to us. Buy licences or switch to similar free fonts?
-18. The "Watch" tile now plays the iStock clip you picked (hospital at dusk, iStock 2212810404), but it is the watermarked 768px preview. Buy the licence and send me the full-resolution file before launch.
 
 Thank you. Questions 1 to 4 are the ones that block me; everything else I can slot in as the answers come.
 
@@ -55,5 +54,6 @@ Thank you. Questions 1 to 4 are the ones that block me; everything else I can sl
 - Hero lines: "We're putting an end to high legal fees." and "We win when you win. Simple as that." (Tim, 30 Oct 04:08.)
 - Calculator: slide the award, show what the client keeps; "$0 today" and "what you get when we win" (Tim, 30 Oct 04:10). Case-type percentages are gone because every case is 10%.
 - Hero visual: gavel smashing money instead of Stack's turtle (Tim, 30 Oct 19:26). Done.
+- "Watch" tile: the licensed iStock clip 2212810404 (hospital at dusk, 4K ProRes master from Sue, 31 Oct) encoded to 1080p and playing as a silent loop. Licence covered.
 - Intake by WhatsApp with AI doing the initial consult (Tim, 30 Oct 08:28). On the site.
 - Fee argument on the site ("where your money goes at a typical firm", "lower percentage, not lower amount") comes from Tim's 30 Oct chain-of-thought prompts.
