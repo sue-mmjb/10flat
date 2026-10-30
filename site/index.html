@@ -265,8 +265,16 @@ html{scroll-behavior:smooth}
 /* Quote carousel */
 .pi-track{overflow-x:auto!important;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .pi-track::-webkit-scrollbar{display:none}
-.pi-track > *{scroll-snap-align:start}
+.pi-track > *{scroll-snap-align:start;transform:none!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;height:100%!important}  /* the bundle leaves each card at its pre-appear translateX offset, and its carousel variant parks the first card absolutely under the second */
 [data-framer-name="Arrow Left"],[data-framer-name="Arrow Right"]{cursor:pointer}
+/* Quote cards: the testimonial preset (28px GT Alpina, 72px padding, 400px card) was sized for one-line quotes; ours are paragraphs */
+.framer-E2WzL.framer-9l7otk{--1oqahgf:44px 44px 40px 44px!important}
+.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:22px;--framer-line-height:1.4em;--framer-letter-spacing:-.15px}
+.framer-E2WzL .framer-16qio8u p.framer-text.framer-styles-preset-7jf1zc{--framer-font-size:11px;--framer-letter-spacing:.7px;--framer-line-height:1.3em}
+.framer-E2WzL .framer-16qio8u p.framer-text.framer-styles-preset-15qf7x7{--framer-font-size:15px}
+.framer-qS6iJ .framer-1dbzg9h{height:auto!important;min-height:400px;align-items:stretch}
+@media(max-width:1199px) and (min-width:810px){.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:18px}.framer-E2WzL.framer-9l7otk{--1oqahgf:36px 36px 32px 36px!important}}
+@media(max-width:809px){.framer-E2WzL .framer-cn8rb9 p.framer-text.framer-styles-preset-1fc2js5{--framer-font-size:17px;--framer-line-height:1.42em}.framer-E2WzL.framer-9l7otk{--1oqahgf:30px 26px 26px 26px!important}}
 /* Calculator card */
 .pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
 .pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
