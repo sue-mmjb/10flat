@@ -559,6 +559,9 @@ def main():
         html, k = re.subn(r'(<img alt class="framer-[A-Za-z0-9]+ framer-%s" src=")data:image/svg\+xml,[^"]*(")' % cls,
                           r'\g<1>assets/step-%d.png\g<2>' % n, html)
         assert k >= 1, 'step %d drawing not found' % n
+    # --- the case card avatar: Tim's photo instead of Stack's stock portrait
+    html, n_av = re.subn(r'https://framerusercontent\.com/images/mFmNcpd7kBFH15skVqgZeJ55uQ\.png[^"\s,]*', 'assets/avatar.jpg', html)
+    assert n_av >= 1, 'avatar not found'
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
