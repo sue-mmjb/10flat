@@ -1,4 +1,4 @@
-# Audit directives: [FIRM NAME] personal injury site
+# Audit directives: 10flat personal injury site
 
 Input for the `website-presubmission-audit` skill (its Step 0). Copy this file into the repo root when the site is built. Everything here comes from Tim's instructions of 30 October 2026 or is a placeholder Tim must fill. Tim's directives are final: the audit reports where the site contradicts them, nothing more.
 
@@ -6,14 +6,14 @@ Input for the `website-presubmission-audit` skill (its Step 0). Copy this file i
 
 | Fact | Value | Status |
 |---|---|---|
-| Firm name | 10flatlaw | Confirmed by Sue 31 Oct 2026 |
+| Firm name | 10flat | Confirmed by Sue 31 Oct 2026 ("it's 10flat, not 10flatlaw") |
 | Domain | https://10flatlaw.com/ | Confirmed by Sue 31 Oct 2026 ("website name is http://10flatlaw.com/") |
 | Address | [STREET ADDRESS, CITY, STATE ZIP] | Pending |
 | Phone | [PHONE] | Pending |
 | Email | [EMAIL] | Pending |
 | Hours | [CONFIRM] | Pending |
-| Jurisdiction | [CONFIRM] | Pending |
-| Responsible attorney | [ATTORNEY NAME], [BAR NUMBER], [STATE] | Pending (Azure) |
+| Jurisdiction | Texas | From the client explainer, 31 Oct 2026 |
+| Responsible attorney | [ATTORNEY NAME], [BAR NUMBER], Texas | Pending (Azure) |
 
 The audit must fail any page where the footer, the contact page and the JSON-LD disagree on any of these.
 
@@ -21,12 +21,12 @@ The audit must fail any page where the footer, the contact page and the JSON-LD 
 
 Do not judge the prices. Flag only where two places disagree. The published figures, from the 10flat brief Tim shared on 30 October 2026 (applied 31 October):
 
-- Base attorney fee: 10% of the gross recovery on qualifying cases. Every case type on the site (car accident, medical injury, dental injury) shows the same 10%. A case-type control must not change the fee.
-- Optional Premium (Attorney-Led): 25% total attorney fee. It replaces the 10% fee. Must be described as optional, client-chosen and signed; "no automatic upgrades".
-- Upfront payment: "see your signed terms". Any "$0 upfront" or "$0 down" is a P0 until Tim confirms the agreement provides it.
-- No hourly option. Any "$50" or "per hour" is a P0.
+- Attorney fee: 10% of the amount recovered, calculated after case costs are repaid (client explainer, 31 Oct 2026). Every case type on the site (car accident, medical injury, dental injury) shows the same 10%. A case-type control must not change the fee. "Gross recovery" wording is a P1 anywhere it survives.
+- The fee stays 10% at trial. Any fee increase for filing, trial or appeal is a P0.
+- No recovery, no fee and no case costs. No markup on case costs. No admin fees. These three promises must appear identically wherever fees are explained.
+- No Premium / Attorney-Led tier, no hourly option. Any "25%", "Premium", "$50" or "per hour" is a P0.
+- The comparison figure is a 33% firm (the explainer's table), with "33–40%" as the typical range; the footnote must cite the Texas Fee Index once Tim supplies it.
 - The old 25% car / 33% malpractice figures are a P0 anywhere they survive.
-- No fee increase at filing, trial or appeal is published. If one is introduced, the 10% claim must carry the qualification conspicuously.
 - Every other case type and rate is proposed only. Publishing one before Tim approves it is a P0.
 - Calculator figures must be labelled "after attorney fee, before costs and liens", never "what you keep" or "take home", with costs and liens shown as not yet estimated.
 

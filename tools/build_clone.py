@@ -36,50 +36,50 @@ GLOBAL = [
     (">Instant quote<", ">See your fee<"),                # hero button
     ("We’re putting an end to the Brutal Renewal.", "We’re putting an end to high legal fees."),
     ("You know what’s absurd? A surprise 20% hike on your team’s group plan. But that’s commonplace today. That’s why we built Stack.",
-     "We win when you win. Simple as that. A straightforward 10% attorney fee for qualifying injury cases. AI-powered case support. Licensed-attorney oversight. Clear pricing. Optional Attorney-Led service if you want more personal attorney involvement."),
-    (">Set a budget.<", ">Know your fee<"),
-    (">Skip the headache.<", ">before you sign.<"),
+     "We win when you win. Simple as that. Most injury firms take 33–40% of your settlement. We take 10%, and it stays 10% even if we go to trial. Technology does the paperwork. Your lawyer does the lawyering."),
+    (">Set a budget.<", ">Less paperwork.<"),
+    (">Skip the headache.<", ">More money to you.<"),
     ("Give your team an allowance for health benefits and they’ll choose a plan that’s right for them. You pick a budget. Stack handles the rest.",
-     "Most people never find out what a lawyer will cost until the case is over. We think that’s backwards. On qualifying cases the attorney fee is 10% of the gross recovery, published here and confirmed in a signed agreement before representation begins."),
+     "When a firm charges 33–40%, that fee pays for paperwork staff, billboards and expensive offices. None of that makes your case stronger, but it all comes out of your settlement. We charge less because we spend less, not because we do less. Our fee is 10%, calculated after case costs, and it never goes up, even at trial."),
     ("Set your benchmark plan and contribution to see your budget. You’re in total control.",
-     "Type or slide to an illustrative recovery amount. You’ll see the 10% attorney fee and the amount after it, before case costs and liens."),
+     "Type or slide to a settlement amount. You’ll see our 10% fee next to the fee at a typical 33% firm, and how much more of your settlement you keep."),
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
-     "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills. An attorney will review your request."),
+     "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."),
     # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat brief
-    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% attorney fee<"),
-    (">$575/mo<", ">$90,000<"), (">Total Allowance<", ">After attorney fee (illustration)<"), (">Maria’s Stack<", ">Documents received<"),
+    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% fee, after costs<"),
+    (">$575/mo<", ">$85,500<"), (">Total Allowance<", ">After fee and costs (example)<"), (">Maria’s Stack<", ">Documents received<"),
     (">Stackables<", ">View your documents<"), (">Whoop<", ">Police report<"), (">Carbon Health<", ">Medical bills · Photos<"),
-    (">Stack Save HSA<", ">Your attorney fee: 10%<"), (">$50 Employer + $50 Maria<", ">Confirmed in your signed agreement<"),
-    (">Pre-Tax Savings<", ">No automatic upgrades<"), (">Stack Pay<", ">Upfront payment<"),
-    (">0% Interest<", ">See your signed payment<"), (">Pay over time<", ">and case-cost terms<"), (">Coming Soon<", ">No decision needed right now<"),
-    (">Dental Plan<", ">Your attorney<"), (">Family Plan<", f">[ATTORNEY NAME] · {FIRM}<"),
+    (">Stack Save HSA<", ">Your fee: 10%<"), (">$50 Employer + $50 Maria<", ">Never goes up, even at trial<"),
+    (">Pre-Tax Savings<", ">Calculated after case costs<"), (">Stack Pay<", ">If there is no recovery<"),
+    (">0% Interest<", ">No fee<"), (">Pay over time<", ">No case costs<"), (">Coming Soon<", ">No decision needed right now<"),
+    (">Dental Plan<", ">Your attorney<"), (">Family Plan<", ">[NAME] · Texas attorney<"),
     (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
     (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
     # logo rows kept as tiles; headings say what they are
     (">Our trusted partners<", ">Partner logos (placeholder tiles)<"),
-    (">Insurance carriers available through stack<", ">One attorney fee for qualifying cases: 10% of the gross recovery. Car accidents · Medical injury · Dental injury. Optional Attorney-Led service at 25% total, only if you choose it.<"),
+    (">Insurance carriers available through stack<", ">One fee: 10% of your recovery, calculated after case costs. It never goes up, even at trial. Car accidents · Medical injury · Dental injury. Se habla español.<"),
     # we win when
     ("We win when you and your team are <span", "We win when <span"),
     (">happy.</span>", ">you win.</span>"),
     ("We’re not selling your team a plan. We’re helping them find the right one.",
-     "The attorney fee is 10% of the gross recovery on qualifying cases. It is disclosed before you sign and confirmed in writing."),
-    (">No conflicts.<", ">No hidden fees.<"), (">No asterisks.<", ">No automatic upgrades.<"),
+     "The insurance company decides how much to pay based on your case, not on what your lawyer charges. A lower fee doesn’t mean a smaller settlement. It means you keep more of it."),
+    (">No conflicts.<", ">No markup on costs.<"), (">No asterisks.<", ">No admin fees.<"),
     (">Doug Buckley<", ">Client testimonial<"), (">Black Kahawa Coffee<", ">Placeholder until we have real ones<"),
     # quote carousel
-    (">We make an instant impact<", ">Lower fees aren’t a gimmick. They’re a design.<"),
-    ('We make an <br class="framer-text">instant impact', 'Lower fees aren’t a gimmick.<br class="framer-text">They’re a design.'),
+    (">We make an instant impact<", ">We charge less because we spend less.<"),
+    ('We make an <br class="framer-text">instant impact', 'We charge less because<br class="framer-text">we spend less.'),
     ("“I renewed the same plan four years in a row because changing felt impossible. Stack makes it feel possible.”",
-     "Traditional firms charge 33% or more because they run on paperwork, overhead and hours. Our platform handles intake, document organisation, chronologies and deadline tracking, so attorneys spend their time on legal judgment."),
+     "When a firm charges 33–40%, that fee pays for much more than your lawyer’s time. It pays for staff who type letters and track deadlines by hand, for billboards and TV ads, and for expensive offices. None of that makes your case stronger. But it all comes out of your settlement."),
     ("“Our renewal rates have been 15 to 20% year over year, which is just asinine, but you know, that's life.”",
-     "AI prepares. The attorney decides. Licensed attorneys make the legal decisions, approve filings and represent you."),
-    ("“It’s all just so much busy work.”", "10% attorney fee on qualifying personal-injury cases. The transparent alternative to the 33% contingency fee."),
+     "Technology handles the paperwork. It organises your photos, police report and medical records the moment you send them, requests missing records, builds a timeline of your treatment, totals your bills and tracks every deadline. Your lawyer does the lawyering. A licensed Texas attorney reviews and approves every important step."),
+    ("“It’s all just so much busy work.”", "A broken arm is worth the same whether your lawyer charges 10% or 40%. The insurance company decides how much to pay based on your case, not on what your lawyer charges. What the fee changes is how much of that settlement you keep."),
     ("“We’ve been hit the last two years with 20% increases in terms of our premiums, year over year, and those costs compound.”",
-     "Optional Premium: 25% total attorney fee. More scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign."),
+     "You see everything on your phone: every document, every update, every offer. You hear from us first. You choose your attorney from the team members available for your case. For every offer we show what you’d actually keep. You decide, with a call from your attorney before you do. Se habla español."),
     ("“There are real challenges to fitting a one-size-fits-all type of deal for our overall demographic.”",
-     f"{BRAND} is a legal-service offering provided through licensed attorneys. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves."),
-    (">General Contractor (9 employees)<", ">Why the fee is lower<"), (">Architecture Firm (28 employees)<", ">AI-supported, attorney-supervised<"),
-    (">Law Firm (4 employees)<", ">Published fee<"), (">Creative Agency (70 employees)<", ">Optional Premium<"), (">Pizza Chain (110 employees)<", ">Who represents you<"),
+     "10% fee, calculated after case costs. It never goes up, even at trial. No fee and no costs if we don’t recover money for you. No markup on case costs. No admin fees. A licensed Texas attorney is responsible for your case. No pressure. It’s your case and your decision."),
+    (">General Contractor (9 employees)<", ">Where your money goes at a typical firm<"), (">Architecture Firm (28 employees)<", ">What we do differently<"),
+    (">Law Firm (4 employees)<", ">Lower percentage, not lower amount<"), (">Creative Agency (70 employees)<", ">Better service, not less service<"), (">Pizza Chain (110 employees)<", ">Our promises<"),
     (">Head of HR<", f">{BRAND}<"), (">Owner<", f">{BRAND}<"),
     # closing
     ('You’ve got a business<br class="framer-text">to run. Let Stack handle the benefits part.', 'You’ve been through enough.<br class="framer-text">Let us handle the legal part.'),
@@ -90,37 +90,40 @@ GLOBAL = [
 
 SCOPED = {
     "SET A BUDGET": [
-        (">You set the budget.<", ">Your fee, made clear.<"),
+        (">You set the budget.<", ">See what you keep.<"),
     ],
     "WE BUILT STACK": [
         ("We built Stack to give you and your team ", "Three steps. "),
         (">control</span>.", ">No waiting room</span>."),
         (">You set the budget.<", ">1. Tell us what happened.<"),
         ("Pick a monthly amount you can contribute. That’s your number. It doesn’t move unless you want it to. No surprise renewals.",
-         "Answer a short set of questions online or on WhatsApp, at your own pace. Upload what you have: photos, police report, medical bills. If something is missing, we’ll ask."),
+         "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."),
         (">Your team builds their plan.<", ">2. We build your case.<"),
         ("Stack guides each employee to coverage that fits them like their favorite pair of pants. If they're HSA-eligible, we help them maximize HSA funding to build a healthier financial future.",
-         "AI organises your documents, tracks deadlines, prepares chronologies and sends status updates. A licensed attorney reviews key decisions and required legal work."),
+         "Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work."),
         (">The plan goes with them.<", ">3. We pursue your recovery.<"),
         ("If someone leaves your team, the plan leaves with them, because it’s their plan. That’s how insurance should work.",
-         "You see the 10% attorney fee before you sign. When an offer arrives you see the offer, the fee, estimated costs and liens, and the estimated net to you, before you decide."),
+         "Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. For every offer we show what you’d actually keep. You make every settlement decision, with a call from your attorney before you do. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%."),
     ],
 }
 
 FOOTER_DISCLAIMER = (
-    f'{FIRM} is a legal-service offering provided through licensed attorneys. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves. '
-    f'{FIRM} · [STREET ADDRESS, CITY, STATE ZIP] · Text or call [PHONE]. '
-    f'Attorney responsible for this website: [ATTORNEY NAME, BAR NUMBER], licensed in [STATE]. '
-    f'Attorney advertising. Prior results do not guarantee a similar outcome. The attorney fee, any case costs, liens and client responsibilities are explained in the written engagement agreement before representation begins. The calculator is an illustration only.'
+    f'{FIRM} [PLLC]. Attorney responsible: [ATTORNEY NAME, BAR NUMBER], [CITY], Texas. Message us on WhatsApp: [WHATSAPP NUMBER]. '
+    'Our fee is 10% of the amount recovered, calculated after case costs are repaid. If there is no recovery, you owe no fee and no case costs. '
+    'Medical bills and liens are paid from your recovery. Every case is different, and past results do not guarantee future results. '
+    f'{FIRM} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. '
+    'Contacting us does not create an attorney-client relationship until a fee agreement is signed. '
+    '[Not certified by the Texas Board of Legal Specialization, if applicable.] Attorney advertising. '
+    'Typical fee figures based on [Texas Fee Index, date]. The calculator is an example only.'
 )
 
 # The step-1 card's insides were drawn by Framer's bundle on the live site (the
 # $3,744 budget, the 80% slider). This is our version with Tim's numbers.
-CALC_HTML = """
+CALC_HTML = f"""
 <div class="pi-c" data-pi-calc>
   <div class="pi-c-sec pi-c-top">
-    <div><div class="pi-c-label">After attorney fee, before costs and liens</div><div class="pi-c-big" data-out="after">$90,000</div></div>
-    <div class="pi-c-tag"><span>10% attorney fee</span><i></i><span>No automatic upgrades</span></div>
+    <div><div class="pi-c-label">You keep this much more than at a 33% firm</div><div class="pi-c-big" data-out="more">$21,850</div></div>
+    <div class="pi-c-tag"><span>10% fee, after case costs</span><i></i><span>Stays 10% at trial</span></div>
   </div>
   <div class="pi-c-sec">
     <div class="pi-c-label">Case type</div>
@@ -131,32 +134,33 @@ CALC_HTML = """
     </div>
   </div>
   <div class="pi-c-sec">
-    <div class="pi-c-row"><label class="pi-c-label" for="__ID__-amount">Illustrative recovery amount</label><input class="pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
-    <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Illustrative recovery amount" aria-valuetext="$100,000" style="--p:9.1%">
+    <div class="pi-c-row"><label class="pi-c-label" for="__ID__-amount">If your case settles for</label><input class="pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
+    <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Settlement amount" aria-valuetext="$100,000" style="--p:9.1%">
   </div>
   <div class="pi-c-sec pi-c-rows">
-    <div class="pi-c-row"><span class="pi-c-label">Attorney fee (10%)</span><span class="pi-c-val" data-out="fee">$10,000</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">Case costs</span><span class="pi-c-val pi-c-dim">To be estimated</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">Liens and reimbursements</span><span class="pi-c-val pi-c-dim">To be estimated</span></div>
+    <div class="pi-c-row"><label class="pi-c-label" for="__ID__-costs">Case costs (example, you can change it)</label><input class="pi-c-amount pi-c-costs" id="__ID__-costs" type="text" inputmode="numeric" value="$5,000" autocomplete="off"></div>
+    <div class="pi-c-row"><span class="pi-c-label">Fee at a 33% firm</span><span class="pi-c-val pi-c-dim" data-out="fee33">$31,350</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Fee at {BRAND} (10%)</span><span class="pi-c-val" data-out="fee">$9,500</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">You keep, after fee and costs</span><span class="pi-c-val" data-out="keep">$85,500</span></div>
   </div>
   <div class="pi-c-foot">
     <div class="pi-c-next">Next, tell us what happened.</div>
-    <a class="pi-c-btn" href="#product-step-2">Continue to case review</a>
-    <p class="pi-c-disc">Illustration only, not a valuation, offer or guarantee. Costs and liens may reduce what you receive. Representation begins only after attorney acceptance and a signed agreement.</p>
+    <a class="pi-c-btn" href="#product-step-2">Start your case</a>
+    <p class="pi-c-disc">Fees are figured after case costs at both firms. Medical bills and liens are paid from the settlement the same way at any firm. Example only; every case is different.</p>
   </div>
 </div>
 """
 
 CASE_HTML = f"""
 <div class="pi-case" data-pi-case hidden>
-  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 10% attorney fee</div></div><div><div class="pi-c-big" style="font-size:26px">$90,000</div><div class="pi-c-label" style="text-align:right">Illustrative amount after attorney fee</div></div></div>
-  <div class="pi-c-label">Based on a $100,000 illustration. Costs and liens not included.</div>
+  <div class="pi-case-head"><div><div class="pi-case-name">Your case</div><div class="pi-c-label">Car accident · 10% fee</div></div><div><div class="pi-c-big" style="font-size:26px">$85,500</div><div class="pi-c-label" style="text-align:right">After fee and costs (example)</div></div></div>
+  <div class="pi-c-label">Based on a $100,000 settlement with $5,000 case costs. Medical bills and liens are paid from the recovery.</div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435">&#9776;</span><div><b>Documents received</b><span>Police report · Medical bills · Photos · View your documents</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">10</span><div><b>Your attorney fee: 10%</b><span>Confirmed in your signed agreement. No automatic upgrades.</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>Upfront payment</b><span>See your signed payment and case-cost terms.</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>[ATTORNEY NAME] · {FIRM} · Licensed in [STATE] · View profile · Request a call</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8">10</span><div><b>Your fee: 10%</b><span>Calculated after case costs. Never goes up, even at trial.</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300">$</span><div><b>If there is no recovery</b><span>No fee and no case costs. No markup on costs. No admin fees.</span></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815">&#9679;</span><div><b>Your attorney</b><span>[ATTORNEY NAME] · Licensed Texas attorney · View profile · Request a call</span></div></div>
   <div class="pi-case-stage"><b>Current stage:</b> Evidence collection · <b>Next step:</b> Awaiting medical records · No decision needed right now</div>
-  <div class="pi-case-prem"><b>Want more personal service?</b> Optional Premium, 25% total attorney fee: more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign.<span class="pi-case-choices"><span class="is-on">Keep {BRAND} at 10%</span><span>Explore Premium</span></span></div>
+  <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the case costs, the 10% fee, your medical bills and liens, and what you’d actually keep. Your attorney calls you before you decide anything.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
 </div>
 """
 
@@ -232,6 +236,7 @@ html{scroll-behavior:smooth}
 [data-framer-name="Container Configurator"] [data-framer-name="Bronze"],[data-framer-name="Container Configurator Mobile 2"] [data-framer-name="Bronze"]{width:100%!important;max-width:470px!important;margin:0 auto!important;padding:44px 0!important;box-sizing:border-box}
 .pi-c-amount:focus-visible{outline:3px solid #140c0a;outline-offset:2px}
 .pi-c-dim{color:#5f564a;font-weight:600}
+.pi-c-amount.pi-c-costs{font:700 16px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;width:96px;border-bottom:1px dashed #c9c4bb;border-radius:0}
 .pi-case-stage{font-size:12px;color:#5f564a;line-height:1.4}
 .pi-case-prem{font-size:12px;line-height:1.4;background:#fff;border:1px solid #c9c4bb;border-radius:12px;padding:12px}
 .pi-case-choices{display:flex;gap:6px;margin-top:8px}
@@ -279,7 +284,8 @@ html{scroll-behavior:smooth}
   .pi-c,.pi-case{padding:0 18px}
   .pi-c-foot{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}
   .pi-c-pill{font-size:12px;padding:10px 2px;height:auto;line-height:1.15}
-  .pi-c-tag{font-size:11px;padding:8px 10px;gap:8px}
+  .pi-c-tag{font-size:11px;padding:8px 10px;gap:6px 10px;white-space:normal;flex-wrap:wrap;max-width:100%}
+  .pi-c-tag i{display:none}
   .pi-c-big{font-size:38px}
   .pi-c-amount{font-size:20px;width:110px}
   .framer-e8x4r3 .framer-1ezgx8l{display:none}
@@ -397,26 +403,35 @@ MOTION_JS = """
     kick();
   }
 
-  /* 5. Calculator cards (one per breakpoint variant). One fee for every case type: 10% of the gross recovery. */
+  /* 5. Calculator cards (one per breakpoint variant). From the client explainer: the 10% fee is
+     calculated after case costs, next to a typical 33% firm figured the same way. Case costs default
+     to an example (5%, to the nearest $500: $1,000 / $2,000 / $5,000 for the explainer's three rows)
+     and can be edited. */
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-  var RATE = 0.10;
+  var RATE = 0.10, TYPICAL = 0.33;
+  function autoCosts(a) { return Math.max(500, Math.round(a * 0.05 / 500) * 500); }
   [].forEach.call(document.querySelectorAll('[data-pi-calc]'), function (c) {
-    var range = c.querySelector('.pi-c-range'), amountIn = c.querySelector('.pi-c-amount'), pills = c.querySelectorAll('.pi-c-pill');
-    var min = Number(range.min), max = Number(range.max);
+    var range = c.querySelector('.pi-c-range'), amountIn = c.querySelector('.pi-c-amount:not(.pi-c-costs)'), costsIn = c.querySelector('.pi-c-costs'), pills = c.querySelectorAll('.pi-c-pill');
+    var min = Number(range.min), max = Number(range.max), costsManual = false;
     function set(sel, v) { var el = c.querySelector(sel); if (el) el.textContent = v; }
-    function render(amount) {
-      var fee = amount * RATE;
-      range.style.setProperty('--p', ((amount - min) / (max - min) * 100).toFixed(1) + '%');
-      set('[data-out="fee"]', money(fee));
-      set('[data-out="after"]', money(amount - fee));
-      set('[data-out="after2"]', money(amount - fee));
-      range.setAttribute('aria-valuetext', money(amount));
-    }
     function parse(v) { return Number(String(v).replace(/[^0-9]/g, '')); }
     function clampN(n) { return Math.min(max, Math.max(min, n)); }
+    function costs(amount) { var n = costsManual ? parse(costsIn.value) : autoCosts(amount); return Math.min(amount * 0.9, Math.max(0, n)); }
+    function render(amount) {
+      var k = costs(amount), net = amount - k, fee = net * RATE, fee33 = net * TYPICAL;
+      range.style.setProperty('--p', ((amount - min) / (max - min) * 100).toFixed(1) + '%');
+      if (document.activeElement !== costsIn) costsIn.value = money(k);
+      set('[data-out="fee"]', money(fee));
+      set('[data-out="fee33"]', money(fee33));
+      set('[data-out="more"]', money(fee33 - fee));
+      set('[data-out="keep"]', money(net - fee));
+      range.setAttribute('aria-valuetext', money(amount));
+    }
     range.addEventListener('input', function () { amountIn.value = money(Number(range.value)); render(Number(range.value)); });
     amountIn.addEventListener('input', function () { var n = parse(amountIn.value); if (!n) return; n = clampN(n); range.value = n; render(n); });
     amountIn.addEventListener('blur', function () { var n = clampN(parse(amountIn.value) || Number(range.value)); range.value = n; amountIn.value = money(n); render(n); });
+    costsIn.addEventListener('input', function () { costsManual = true; render(Number(range.value)); });
+    costsIn.addEventListener('blur', function () { if (!parse(costsIn.value)) costsManual = false; render(Number(range.value)); });
     [].forEach.call(pills, function (p) {
       p.addEventListener('click', function () {
         [].forEach.call(pills, function (q) { q.classList.remove('is-on'); });
@@ -547,7 +562,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "what you keep", "take home", "$0 down", "Clearfee", "[FIRM NAME]", "technology company", "AI lawyer", "no fee unless", "guaranteed"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")

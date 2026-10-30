@@ -1,4 +1,4 @@
-<!-- JSON-LD for / (Home). Paste into the <head> of the home page. FAQ text must stay identical to the visible FAQ in PI-Website-Content-Pack.md. -->
+<!-- JSON-LD for / (Home). Paste into the <head> of the home page. FAQ text must stay identical to the visible FAQ (tools/build_site.py FAQ list; checked at build time). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -6,20 +6,20 @@
     {
       "@type": "LegalService",
       "@id": "https://10flatlaw.com/#firm",
-      "name": "10flatlaw",
+      "name": "10flat",
       "url": "https://10flatlaw.com/",
-      "telephone": "[PHONE]",
+      "telephone": "[WHATSAPP NUMBER]",
       "email": "[EMAIL]",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "[STREET ADDRESS]",
         "addressLocality": "[CITY]",
-        "addressRegion": "[STATE]",
+        "addressRegion": "TX",
         "postalCode": "[ZIP]",
-        "addressCountry": "[COUNTRY]"
+        "addressCountry": "US"
       },
-      "areaServed": "[CONFIRM: jurisdiction]",
-      "priceRange": "Attorney fee: 10% of the gross recovery on qualifying cases; optional Attorney-Led service at 25% total",
+      "areaServed": "Texas",
+      "priceRange": "Attorney fee: 10% of the amount recovered, calculated after case costs. No fee and no costs if there is no recovery. The fee stays 10% at trial.",
       "knowsAbout": [
         "Car accidents",
         "Medical injury",
@@ -30,7 +30,7 @@
       "@type": "WebSite",
       "@id": "https://10flatlaw.com/#website",
       "url": "https://10flatlaw.com/",
-      "name": "10flatlaw",
+      "name": "10flat",
       "publisher": {
         "@id": "https://10flatlaw.com/#firm"
       },
@@ -45,7 +45,7 @@
           "name": "What is the attorney fee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "On qualifying personal-injury cases the attorney fee is 10% of the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."
+            "text": "10% of the amount recovered, calculated after case costs are repaid. It never goes up, even if we go to trial. Most injury firms take 33–40%."
           }
         },
         {
@@ -53,7 +53,7 @@
           "name": "Which cases qualify?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it."
+            "text": "Injury cases such as car accidents and medical or dental injury claims. A licensed Texas attorney reviews every request, usually [the same day], and may accept or decline it. It’s free to find out if we can help."
           }
         },
         {
@@ -61,15 +61,23 @@
           "name": "What does it cost to start?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Your upfront payment and case-cost terms are set out in your signed agreement. [CONFIRM: whether the agreement provides $0 upfront, and how case costs are handled if there is no recovery]"
+            "text": "Nothing. If there is no recovery, you owe no fee and no case costs. There is no markup on case costs and no admin fees. Medical bills and liens are paid from your recovery the same way at any firm."
           }
         },
         {
           "@type": "Question",
-          "name": "What is Premium?",
+          "name": "Why is the fee lower?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An optional service at a 25% total attorney fee, with more scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. You upgrade only if you choose and sign. There are no automatic upgrades."
+            "text": "Because we spend less, not because we do less. Technology handles the paperwork that other firms pay staff to do: organising records, building a treatment timeline, totalling bills, drafting letters and tracking deadlines. We don’t spend your money on TV ads or a fancy office."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a lower fee mean a smaller settlement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The insurance company decides how much to pay based on your injuries, your medical bills, the facts and the insurance coverage, not on what your lawyer charges. What the fee changes is how much of the settlement you keep."
           }
         },
         {
@@ -77,7 +85,7 @@
           "name": "How does the fee calculator work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee."
+            "text": "Choose a case type and type or slide to a settlement amount. The calculator shows example case costs, our 10% fee, the fee at a 33% firm and how much more you keep. Fees are figured after case costs at both firms. It is an example only; every case is different."
           }
         },
         {
@@ -85,7 +93,7 @@
           "name": "Who represents me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A licensed attorney at 10flatlaw. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves. [CONFIRM: whether 10flatlaw is the representing law firm or a platform working with independent firms]"
+            "text": "A licensed Texas attorney is responsible for your case, and you choose your attorney from the team members available for it. 10flat uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed."
           }
         }
       ]

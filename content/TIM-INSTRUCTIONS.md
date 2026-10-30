@@ -119,4 +119,16 @@ Sue, in the build session: "wesbite name is http://10flatlaw.com/". Applied: can
 
 ## Update: firm name (31 October 2026)
 
-Sue, in the build session: "the firm name is 10flatlaw". Applied: wordmark, page title, footer, copyright, attorney line and schema all say 10flatlaw. The old [FIRM NAME] placeholder is gone and the build now fails if it reappears.
+Sue, in the build session: "the firm name is 10flatlaw". Corrected the same day: "it's 10flat, not 10flatlaw". Applied: wordmark, page title, footer, copyright, attorney line and schema all say 10flat. The domain stays 10flatlaw.com. The old [FIRM NAME] placeholder is gone and the build now fails if it or "10flatlaw" reappears in the page text.
+
+## Update: client explainer (31 October 2026)
+
+Sue shared `10flat-client-explainer.pdf` ("Less Paperwork. More Money to You. How 10Flat Law charges 10%, and why a lower fee doesn't mean a smaller settlement") with "read this file and apply to the app as client". It is the client-facing version of the 10flat model and supersedes the research chat where they differ. Applied to both site versions:
+
+- Fee: 10% of the amount recovered, **calculated after case costs are repaid**. It never goes up, even at trial. (The research chat said 10% of the gross recovery; the explainer wins.)
+- No fee and no costs if there is no recovery. No markup on case costs. No admin fees. "$0 upfront" wording is no longer withheld: the explainer promises it.
+- No Premium / Attorney-Led tier. The explainer promises the fee "never goes up" and says nothing about a 25% option, so Premium is removed from both sites. Flagged for Tim in QUESTIONS-FOR-TIM.md.
+- A licensed Texas attorney is responsible for the case; the client chooses their attorney from the team members available. [STATE] placeholders are now Texas.
+- Calculator rebuilt around the explainer's table: settlement amount, case costs (example, editable; 5% to the nearest $500 reproduces the explainer's $1,000 / $2,000 / $5,000 rows), fee at a 33% firm, fee at 10flat, what you keep, and the headline "You keep this much more than at a 33% firm". Footnote: "Fees are figured after case costs at both firms. Medical bills and liens are paid from the settlement the same way at any firm. Example only; every case is different."
+- Copy taken from the explainer's sections: where the money goes at a typical firm, what we do differently, lower percentage does not mean lower amount, better service not less, our promises. Intake is "Message us on WhatsApp"; "Se habla español" is shown.
+- Footer uses the explainer's legal paragraph (10flat [PLLC], attorney responsible, fee after costs, no recovery no fee, software including AI with a supervised case team, no attorney-client relationship until a fee agreement is signed, Texas Board of Legal Specialization line, Texas Fee Index citation). Placeholders in square brackets are still Tim's to fill.
