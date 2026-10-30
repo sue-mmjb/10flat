@@ -320,6 +320,8 @@ html{scroll-behavior:smooth}
 .pi-case-choices span.is-on{background:#ffe435}
 .pi-hero-video{width:min(620px,100%)!important;height:auto!important;aspect-ratio:16/9!important;display:block;background:transparent;mix-blend-mode:darken;object-fit:cover;border-radius:0;-webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent)!important;-webkit-mask-composite:source-in;mask-composite:intersect}
 @media(max-width:809.98px){.pi-hero-video{width:100%!important}}
+/* Closing headline on phones: its wrapper shrink-wraps to the unbroken line width, so the h1 never wraps */
+@media(max-width:809.98px){[data-framer-name="CTA"] .framer-81bid4{width:100%!important;max-width:100%!important}}
 /* Pinned scroll sections: original geometry at desktop, driven by our script */
 @media(min-width:1200px){
   .framer-1ccwr6f,.framer-hd6jU .framer-1ccwr6f{height:300vh!important;position:relative!important;display:block!important;align-content:start!important;padding:0!important}
