@@ -77,7 +77,7 @@ GLOBAL = [
     ("“We’ve been hit the last two years with 20% increases in terms of our premiums, year over year, and those costs compound.”",
      "Optional Premium: 25% total attorney fee. More scheduled attorney consultations, enhanced personal coordination and in-person office appointments where available. The 25% fee replaces the 10% fee. Upgrade only if you choose and sign."),
     ("“There are real challenges to fitting a one-size-fits-all type of deal for our overall demographic.”",
-     f"{BRAND} is a legal technology company. We are not a law firm and do not provide legal representation. If your case is accepted, you will be represented by an independent licensed attorney or law firm."),
+     f"{BRAND} is a legal-service offering provided through licensed attorneys. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves."),
     (">General Contractor (9 employees)<", ">Why the fee is lower<"), (">Architecture Firm (28 employees)<", ">AI-supported, attorney-supervised<"),
     (">Law Firm (4 employees)<", ">Published fee<"), (">Creative Agency (70 employees)<", ">Optional Premium<"), (">Pizza Chain (110 employees)<", ">Who represents you<"),
     (">Head of HR<", f">{BRAND}<"), (">Owner<", f">{BRAND}<"),
@@ -108,8 +108,7 @@ SCOPED = {
 }
 
 FOOTER_DISCLAIMER = (
-    f'{BRAND} is a legal technology company. We provide software, case-organisation tools and client-communication technology. '
-    f'We are not a law firm and do not provide legal representation. If your case is accepted, you will be represented by an independent licensed attorney or law firm. '
+    f'{FIRM} is a legal-service offering provided through licensed attorneys. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves. '
     f'{FIRM} · [STREET ADDRESS, CITY, STATE ZIP] · Text or call [PHONE]. '
     f'Attorney responsible for this website: [ATTORNEY NAME, BAR NUMBER], licensed in [STATE]. '
     f'Attorney advertising. Prior results do not guarantee a similar outcome. The attorney fee, any case costs, liens and client responsibilities are explained in the written engagement agreement before representation begins. The calculator is an illustration only.'
@@ -541,7 +540,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "what you keep", "take home", "$0 down", "Clearfee", "AI lawyer", "no fee unless", "guaranteed"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "what you keep", "take home", "$0 down", "Clearfee", "[FIRM NAME]", "technology company", "AI lawyer", "no fee unless", "guaranteed"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")

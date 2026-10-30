@@ -1,6 +1,6 @@
 # Firm name options for the personal injury firm
 
-Nothing here is approved. Tim has not chosen a name.
+Superseded on 31 October 2026: the firm name is 10flatlaw. Kept for the record.
 
 ## What Tim said about the name (Zoom, 29 October 2026, 26:40 to 27:25)
 

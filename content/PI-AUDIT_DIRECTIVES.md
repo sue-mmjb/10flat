@@ -6,7 +6,7 @@ Input for the `website-presubmission-audit` skill (its Step 0). Copy this file i
 
 | Fact | Value | Status |
 |---|---|---|
-| Firm name | [FIRM NAME] | Pending (Chandana producing 3 to 5 options) |
+| Firm name | 10flatlaw | Confirmed by Sue 31 Oct 2026 |
 | Domain | https://10flatlaw.com/ | Confirmed by Sue 31 Oct 2026 ("website name is http://10flatlaw.com/") |
 | Address | [STREET ADDRESS, CITY, STATE ZIP] | Pending |
 | Phone | [PHONE] | Pending |

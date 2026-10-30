@@ -33,10 +33,10 @@ SCHEMA = ROOT / "content" / "schema" / "home.html"
 # Content. Confirmed by Tim unless marked CONFIRM.
 # ----------------------------------------------------------------------------
 CONFIG = {
-    "firm": "[FIRM NAME]",
-    "brand": "10flat",
+    "firm": "10flatlaw",
+    "brand": "10flatlaw",
     "domain": "10flatlaw.com",
-    "title": "10% Attorney Fee for Qualifying Injury Cases | 10flat",
+    "title": "10% Attorney Fee for Qualifying Injury Cases | 10flatlaw",
     "description": "A straightforward 10% attorney fee for qualifying personal-injury cases. AI-powered case support, licensed-attorney oversight, clear pricing. Optional Attorney-Led service at 25% total, only if you choose it.",
     "noindex": True,  # prototype. Set False at launch.
     # Fee rates. Confirmed by Tim, 30 Oct 2026.
@@ -61,7 +61,7 @@ CONFIG = {
 
 FAQ = [  # Must stay identical to content/schema/home.html. Checked at build time.
     ("What is the attorney fee?",
-     "On qualifying personal-injury cases the independent law firm charges a 10% attorney fee on the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."),
+     "On qualifying personal-injury cases the attorney fee is 10% of the gross recovery. The fee is disclosed before you sign and confirmed in the written engagement agreement."),
     ("Which cases qualify?",
      "Straightforward, well-documented injury cases such as car accidents and medical or dental injury claims that pass screening. A licensed attorney reviews every request and may accept or decline it."),
     ("What does it cost to start?",
@@ -71,7 +71,7 @@ FAQ = [  # Must stay identical to content/schema/home.html. Checked at build tim
     ("How does the fee calculator work?",
      "Choose a case type and type or slide to an illustrative recovery amount. The calculator shows the 10% attorney fee and the amount after that fee, before case costs and liens. It is an illustration only, not a valuation, offer or guarantee."),
     ("Who represents me?",
-     "An independent licensed attorney or law firm, not 10flat. 10flat provides the technology platform and operational support and does not receive any portion of your settlement or attorney fee."),
+     "A licensed attorney at 10flatlaw. AI tools assist with organisation, preparation and communication but do not replace attorney judgment or create an attorney-client relationship by themselves. [CONFIRM: whether 10flatlaw is the representing law firm or a platform working with independent firms]"),
 ]
 
 # ----------------------------------------------------------------------------

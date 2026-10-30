@@ -116,3 +116,7 @@ Not yet from Tim in his own words: the firm name is still the placeholder; "10fl
 ## Update: domain (31 October 2026)
 
 Sue, in the build session: "wesbite name is http://10flatlaw.com/". Applied: canonical URL and all schema URLs now use https://10flatlaw.com/. The site stays noindex until launch.
+
+## Update: firm name (31 October 2026)
+
+Sue, in the build session: "the firm name is 10flatlaw". Applied: wordmark, page title, footer, copyright, attorney line and schema all say 10flatlaw. The old [FIRM NAME] placeholder is gone and the build now fails if it reappears.
