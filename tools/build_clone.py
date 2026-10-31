@@ -65,7 +65,7 @@ GLOBAL = [
     ("We’re not selling your team a plan. We’re helping them find the right one.",
      "The insurance company decides how much to pay based on your case, not on what your lawyer charges. A lower fee doesn’t mean a smaller settlement. It means you keep more of it."),
     (">No conflicts.<", ">No markup on costs.<"), (">No asterisks.<", ">No admin fees.<"),
-    (">Doug Buckley<", ">“They showed me what I’d actually keep before I said yes.”<"), (">Black Kahawa Coffee<", ">Daniela R., Houston · Car accident · Sample story, not a real client<"),
+    
     # quote carousel
     (">We make an instant impact<", ">We charge less because we spend less.<"),
     ('We make an <br class="framer-text">instant impact', 'We charge less because<br class="framer-text">we spend less.'),
@@ -611,6 +611,9 @@ def main():
     # --- testimonial photo: the handshake photo Sue picked instead of Stack's coffee roaster
     html, n_t = re.subn(r'https://framerusercontent\.com/images/3UHEEKuo8uuO4x8qet37N2ykRK4\.jpg[^)"\s]*', 'assets/testimonial.jpg', html)
     assert n_t >= 1, 'testimonial photo not found'
+    # --- the testimonial tile's quote chip (Stack's name card over the photo) is removed: no real testimonial yet
+    html, n_chip = re.subn(r'<div class="framer-13jzx4b" data-framer-name="Frame 30">.*?Black Kahawa Coffee</p></div></div></div>', '', html, flags=re.S)
+    assert n_chip >= 1, 'testimonial chip not found'
     # --- global swaps
     html = replace_all(html, GLOBAL, "page", required=False)
     html = html.replace('<div class="framer-DJN29 framer-cqcfvd"></div>', f'<span class="pi-wordmark">{BRAND}</span>')
