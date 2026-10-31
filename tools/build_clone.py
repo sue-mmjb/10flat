@@ -227,8 +227,6 @@ html{scroll-behavior:smooth}
 @media(max-width:809.98px){.pi-faq-sec{padding:72px 20px 56px}.pi-faq-g{font-size:22px;margin-top:40px}.pi-faq summary{font-size:16px}}
 /* Accent words in headings: the bundle's 60% yellow on off-white is unreadable; a dark amber keeps the hue at 3.7:1 */
 [style*="token-9700579c"]{--token-9700579c-8505-41af-81b6-a348c67b82f2:#9a7a00!important}
-/* Hero background matches the gavel clip's own yellow (#e6d054, measured from the clip) so the video has no visible edge */
-#hero,.framer-15epngl{background-color:#e6d054!important}
 /* Calculator card */
 .pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
 .pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
