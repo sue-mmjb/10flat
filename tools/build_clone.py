@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source" / "mystack-index.html"
 OUT = ROOT / "site" / "index.html"
 FIRM = CONFIG["firm"]
-BRAND = CONFIG.get("brand", "10flat")
+BRAND = CONFIG.get("brand", "10flat Law")
 
 # ----------------------------------------------------------------------------
 # Text swaps. Left = exact text in the clone (curly quotes as in the source).
@@ -46,7 +46,7 @@ GLOBAL = [
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
      "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."),
-    # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat brief
+    # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat Law brief
     (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% fee, after costs<"),
     (">$575/mo<", ">$85,500<"), (">Total Allowance<", ">After fee and costs (example)<"), (">Maria’s Stack<", ">Documents received<"),
     (">Stackables<", ">View your documents<"), (">Whoop<", ">Police report<"), (">Carbon Health<", ">Medical bills · Photos<"),
@@ -516,7 +516,7 @@ def faq_html():
         for g in FAQ_GROUPS)
     return ('<section class="pi-faq-sec" id="faq" aria-labelledby="pi-faq-h"><div class="pi-faq-wrap">'
             '<h2 id="pi-faq-h" class="pi-faq-h">Questions people ask.</h2>'
-            '<p class="pi-faq-lead">Straight answers about the fee, what you keep and how a case with 10flat works.</p>'
+            '<p class="pi-faq-lead">Straight answers about the fee, what you keep and how a case with 10flat Law works.</p>'
             f'{groups}</div></section>')
 
 

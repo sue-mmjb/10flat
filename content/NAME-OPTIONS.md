@@ -1,6 +1,6 @@
 # Firm name options for the personal injury firm
 
-Superseded on 31 October 2026: the firm name is 10flat (domain 10flatlaw.com). Kept for the record.
+Superseded on 31 October 2026: the firm name is 10flat Law (Sue, 31 Oct 2026, later the same day than the short form; domain 10flatlaw.com). Kept for the record.
 
 ## What Tim said about the name (Zoom, 29 October 2026, 26:40 to 27:25)
 

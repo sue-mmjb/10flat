@@ -13,7 +13,7 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 4. Which cases qualify for the 10%? The explainer says straightforward, well-documented cases, mainly car accidents, with medical and dental injury as case types. You also said "AI will reject client fraud and frivolous lawsuits". The screening rule we publish needs legal sign-off.
 
 **Firm details**
-5. Registered entity: the explainer's legal line says "10Flat Law [PLLC]". What is the exact entity name for the footer? The footer currently reads "10flat [PLLC], Texas" and nothing else.
+5. Registered entity: the explainer's legal line says "10Flat Law [PLLC]". What is the exact entity name for the footer? The footer currently reads "10flat Law [PLLC], Texas" and nothing else.
 6. Does the "Not certified by the Texas Board of Legal Specialization" line apply?
 7. Texas only at launch, or national? The site says "licensed Texas attorney" everywhere. Your messages mention "at least 1 attorney in each state" and "cheapest attorney in Texas"; if other states come later, I will keep the copy Texas-only for now.
 
@@ -50,7 +50,7 @@ Thank you. Questions 1 to 4 are the ones that block me; everything else I can sl
 
 - Fee: 10% of the amount recovered, calculated after case costs are repaid; stays 10% at trial; no fee and no costs without a recovery; no markup on costs; no admin fees. (Explainer, 31 Oct.) Supersedes "$500 down + 25%/33%" (30 Oct 00:45) and "$0 down, $50 per hour or 25%" (30 Oct 08:29).
 - $0 upfront: "No fee and no costs if we don't recover money for you." The engagement agreement must match.
-- Firm name: 10flat (Sue, 31 Oct). Domain: 10flatlaw.com, confirmed by Tim on 30 Oct 23:17 ("We secured the name 10flatlaw.com"); the huddle's "10flat.law.com" was a slip.
+- Firm name: 10flat Law (Sue, 31 Oct, replacing the short "10flat" of the same day). Wordmark, title, footer, schema and FAQ all say "10flat Law". Domain: 10flatlaw.com, confirmed by Tim on 30 Oct 23:17 ("We secured the name 10flatlaw.com"); the huddle's "10flat.law.com" was a slip.
 - State: Texas (explainer: licensed Texas attorney). Applied to footer, schema and copy.
 - Firm or platform: 10flat is the law firm ("10Flat Law [PLLC]"); software, including AI, and a supervised case team prepare the work; a licensed attorney reviews and approves it.
 - No named attorney, no address, no phone, no email, no WhatsApp number anywhere on the site or in the schema (Sue, 31 Oct). Tim never gave them and did not ask for them. The site still says "Message us on WhatsApp" as the way in; the number itself is not shown. The build fails if one of the old placeholders reappears.

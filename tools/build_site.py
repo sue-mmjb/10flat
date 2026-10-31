@@ -33,13 +33,13 @@ SCHEMA = ROOT / "content" / "schema" / "home.html"
 # Content. Confirmed by Tim unless marked CONFIRM.
 # ----------------------------------------------------------------------------
 CONFIG = {
-    "firm": "10flat",
-    "brand": "10flat",
+    "firm": "10flat Law",
+    "brand": "10flat Law",
     "domain": "10flatlaw.com",
-    "title": "10% Injury Fee, Even at Trial | 10flat",
-    "description": "Most injury firms take 33–40% of your settlement. 10flat takes 10%, calculated after case costs, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
+    "title": "10% Injury Fee, Even at Trial | 10flat Law",
+    "description": "Most injury firms take 33–40% of your settlement. 10flat Law takes 10%, calculated after case costs, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
     "noindex": True,  # prototype. Set False at launch.
-    # One fee for every case type. From the 10flat client explainer, 31 Oct 2026.
+    # One fee for every case type. From the 10flat Law client explainer, 31 Oct 2026.
     "rates": [
         {"key": "car", "label": "Car accident", "rate": 0.10},
         {"key": "med", "label": "Medical injury", "rate": 0.10},
