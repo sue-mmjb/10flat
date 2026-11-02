@@ -57,7 +57,7 @@ GLOBAL = [
     (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
     (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
     # the carrier logo row is kept as tiles; its heading says what it is (the partner logo strip is removed in pass 2)
-    (">Insurance carriers available through stack<", ">One fee: 10% of your recovery, calculated after case costs. It never goes up, even at trial. Car accidents · Medical injury · Dental injury. Se habla español.<"),
+    (">Insurance carriers available through stack<", ">One fee for every case we take: car accidents, medical injury, dental injury.<"),
     # we win when
     ("We win when you and your team are <span", "We win when <span"),
     (">happy.</span>", ">you win.</span>"),
@@ -191,6 +191,10 @@ html{scroll-behavior:smooth}
 /* Elements the bundle faded in that are not scroll reveals */
 [data-framer-name="Tabs"],[data-framer-name="SET A BUDGET"] [style*="opacity:0"]{opacity:1!important}
 /* Logo ticker */
+.pi-promises{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%;max-width:1100px}
+.pi-promises li{font:600 11px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:13px 18px;white-space:nowrap}
+.pi-promises li.is-key{background:#ffe435;border-color:#ffe435;color:#140c0a}
+@media(max-width:809px){.pi-promises{gap:8px}.pi-promises li{font-size:10px;padding:11px 14px;letter-spacing:.06em}}
 .pi-marquee{animation:pi-marquee 28s linear infinite;width:max-content!important;transform:none!important}
 @keyframes pi-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.pi-marquee{animation:none}}
@@ -499,6 +503,12 @@ def mark_appear(html):
 
 
 
+PROMISES = ["10% fee, even at trial", "No fee without a recovery", "No markup on case costs", "No admin fees",
+            "Licensed Texas attorney", "You choose your attorney", "Se habla español", "Start on WhatsApp"]
+PROMISES_HTML = '<ul class="pi-promises" id="logos-strip" aria-label="What every client gets">' + "".join(
+    f'<li{" class=\"is-key\"" if i == 0 else ""}>{t}</li>' for i, t in enumerate(PROMISES)) + '</ul>'
+
+
 def faq_html():
     """The questions people ask, grouped; same source as the FAQPage schema in the head."""
     groups = "".join(
@@ -535,6 +545,11 @@ def main():
     partners = t.find_all(by_name("TRUSTED PARTNERS"))
     assert partners, "TRUSTED PARTNERS section not found"
     for n in partners:
+        edits.append((n["start"], n["end"], ""))
+    # No insurance carriers either (Sue, 2 Nov 2026): the logo strips in the black band become a row of fee promises.
+    strip = t.find(by_name("Logos Strip Desktop"))
+    edits.append((strip["start"], strip["end"], PROMISES_HTML))
+    for n in t.find_all(by_name("Logos Strip Mobile")):
         edits.append((n["start"], n["end"], ""))
     edits.append((mark["start"], mark["end"], f'<div class="framer-8pye7d"><p class="pi-footer-mark">{FIRM}</p></div>'))
     # Step-2 cards carry a copy of the step-1 calculator that the bundle used to
@@ -640,7 +655,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering", "[ATTORNEY NAME", "[NAME]", "[WHATSAPP NUMBER]", "[CITY]", "[STREET ADDRESS]", "Azure", "Attorney responsible", "partner logos", "trusted partners"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering", "[ATTORNEY NAME", "[NAME]", "[WHATSAPP NUMBER]", "[CITY]", "[STREET ADDRESS]", "Azure", "Attorney responsible", "partner logos", "trusted partners", "Anthem", "Oscar", "CareSource", "Ambetter", "United Healthcare"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")
