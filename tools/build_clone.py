@@ -342,6 +342,57 @@ html{scroll-behavior:smooth}
   .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:32px!important}
   .framer-8pye7d,.framer-TzIF9 .framer-8pye7d,.framer-whz10a,.framer-TzIF9 .framer-whz10a{max-width:100%!important}
 }
+/* One screen per section on desktop (Sue, 2 Nov 2026): the page snaps section by section, every section is sized to the
+   viewport so it fits at 100% zoom and below, the pinned sections (three steps) keep their inner scroll. */
+@media(min-width:1200px){
+  html{scroll-snap-type:y mandatory}
+  [data-framer-name="HERO"],[data-framer-name="SET A BUDGET"] .framer-thykcu,[data-framer-name="Text Step 1"],[data-framer-name="Text Step 2"],
+  .framer-14srhib,[data-framer-name="WE BUILT STACK"],[data-framer-name="WE WIN WHEN"],[data-framer-name="INSURANCE CARRIERS"],
+  [data-framer-name="INSTANT IMPACT"],[data-framer-name="CTA"],.pi-faq-sec,[data-framer-name="FOOTER"]{scroll-snap-align:start;scroll-snap-stop:always}
+  /* 1 hero */
+  [data-framer-name="HERO"]{height:100vh!important;min-height:0!important}
+  [data-framer-name="HERO"] .framer-hn5at0{height:100vh!important;padding:96px 76px 36px!important;gap:0!important;justify-content:space-evenly!important}
+  [data-framer-name="HERO"] .framer-15dy5a7{height:clamp(200px,calc(100vh - 620px),349px)!important;flex:none!important}
+  [data-framer-name="HERO"] .framer-15dy5a7 > *,[data-framer-name="HERO"] .pi-hero-video{height:100%!important;width:auto!important;aspect-ratio:620/349;max-width:none!important}
+  /* 2 intro, 3 step 1, 4 step 2: the intro and each step text get a full screen; the box stays pinned beside the steps */
+  .framer-1jodbn0,.framer-hd6jU .framer-1jodbn0{padding:0!important;gap:0!important}
+  .framer-1jodbn0 .framer-6c6fbx{gap:0!important;transform:none!important}   /* Framer left this column at scale(.9), which offset every screen inside it */
+  .framer-1jodbn0 .framer-thykcu{height:100vh!important;justify-content:center!important;padding-top:40px!important;box-sizing:border-box}
+  .framer-1jodbn0 .framer-1gd9fr0,.framer-1jodbn0 .framer-1jy5270{gap:0!important}
+  [data-framer-name="Text Step 1"],[data-framer-name="Text Step 2"]{height:100vh!important;padding-top:60px!important;box-sizing:border-box}
+  .framer-1jodbn0 .framer-1dds1aq{top:max(96px,calc(50vh - 392px))!important;height:auto!important;align-self:flex-start}
+  .framer-1p6ec6q,.framer-1jodbn0 .framer-1p6ec6q{height:auto!important;min-height:0!important;padding:32px 0!important}
+  .framer-1p6ec6q .framer-q6lhhs{height:auto!important;min-height:0!important;overflow:visible!important}
+  [data-framer-name="Container Configurator"] [data-framer-name="Bronze"]{height:auto!important;min-height:0!important;padding:28px 0!important}
+  [data-framer-name="Container Configurator"] .framer-85s22j{height:auto!important;min-height:0!important}
+  .pi-case{gap:8px}
+  .pi-case-item{padding:10px 12px}
+  .pi-case-item b{font-size:13px}
+  .pi-case-item em{margin-top:5px;padding:3px 8px}
+  .pi-case-prem{padding:10px 12px}
+  .pi-case-choices{margin-top:8px}
+  /* 5 watch tile */
+  .framer-14srhib{height:100vh!important}
+  .framer-14srhib .framer-odjog9{height:100%!important;padding:96px 76px 36px!important;box-sizing:border-box}
+  .framer-14srhib .framer-x1jqzw{height:100%!important;max-height:calc(100vh - 132px)!important}
+  /* 6 three steps: the pinned stack starts at the top of its screen */
+  .framer-113uxek,.framer-hd6jU .framer-113uxek{padding:0!important;gap:0!important}
+  /* 7 we win when you win */
+  .framer-1ioyvxv,.framer-hd6jU .framer-1ioyvxv{height:100vh!important;padding:0!important;justify-content:center!important;gap:0!important}
+  .framer-1ioyvxv .framer-1g735ip{max-height:calc(100vh - 140px)!important;align-items:center!important}
+  .framer-1ioyvxv .framer-lstnog{height:min(762px,calc(100vh - 180px))!important}
+  /* 8 promises band */
+  .framer-v75sm4,.framer-hd6jU .framer-v75sm4{min-height:100vh!important;justify-content:center!important;padding:96px 0!important;box-sizing:border-box}
+  .pi-promises li{font-size:13px;padding:16px 22px}
+  /* 9 quote carousel */
+  .framer-1kjwwr3,.framer-hd6jU .framer-1kjwwr3{height:100vh!important;padding:0!important;justify-content:center!important;gap:0!important}
+  /* 10 closing: one plain screen instead of a 200vh scroll-driven zoom */
+  .framer-71z80s,.framer-hd6jU .framer-71z80s{height:100vh!important}
+  /* 11 questions, 12 footer */
+  .pi-faq-sec{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 24px 70px;box-sizing:border-box}
+  .framer-1ebd1db,.framer-hd6jU .framer-1ebd1db{min-height:100vh!important;justify-content:flex-end!important;padding:120px 0 56px!important;box-sizing:border-box}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-snap-type:none}}
 </style>
 """
 
@@ -409,7 +460,7 @@ MOTION_JS = """
     }
     if (cta) {
       var r2 = cta.getBoundingClientRect();
-      var p2 = clamp(-r2.top / Math.max(1, r2.height - vh));
+      var p2 = 1;   /* the closing section is one screen since 2 Nov 2026; keep the final state */
       if (ctaImg) ctaImg.style.transform = 'scale(' + (0.3 + 0.7 * p2).toFixed(3) + ')';
       if (ctaContent) { ctaContent.style.opacity = p2.toFixed(3); ctaContent.style.transform = 'scale(' + (0.9 + 0.1 * p2).toFixed(3) + ')'; }
     }
@@ -426,6 +477,36 @@ MOTION_JS = """
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
+
+  /* 3b. One wheel gesture = one screen (desktop). The CSS snap lands each screen; this makes a short wheel nudge
+         advance to the next screen instead of settling back. Tall pinned screens (three steps) scroll freely inside. */
+  var SNAP_SEL = '[data-framer-name="HERO"],[data-framer-name="SET A BUDGET"] .framer-thykcu,[data-framer-name="Text Step 1"],[data-framer-name="Text Step 2"],.framer-14srhib,[data-framer-name="WE BUILT STACK"],[data-framer-name="WE WIN WHEN"],[data-framer-name="INSURANCE CARRIERS"],[data-framer-name="INSTANT IMPACT"],[data-framer-name="CTA"],.pi-faq-sec,[data-framer-name="FOOTER"]';
+  var wheelLock = 0;
+  function snapList() {
+    return [].slice.call(document.querySelectorAll(SNAP_SEL)).filter(function (e) { return e.getBoundingClientRect().width > 0; })
+      .map(function (e) { var r = e.getBoundingClientRect(); return { top: Math.round(r.top + window.scrollY), h: Math.round(r.height) }; })
+      .sort(function (a, b) { return a.top - b.top; });
+  }
+  window.addEventListener('wheel', function (ev) {
+    if (!desktop() || reduce || ev.ctrlKey || Math.abs(ev.deltaY) < Math.abs(ev.deltaX)) return;
+    var now = Date.now();
+    if (now < wheelLock) { ev.preventDefault(); return; }
+    var vh = window.innerHeight, y = window.scrollY, dir = ev.deltaY > 0 ? 1 : -1;
+    var list = snapList(), i = -1;
+    for (var k = 0; k < list.length; k++) if (list[k].top <= y + 2) i = k;
+    if (i < 0) return;
+    var cur = list[i];
+    if (cur.h > vh + 2) {                                     /* inside a tall pinned screen: free scroll until its end */
+      var end = cur.top + cur.h - vh;
+      if ((dir > 0 && y < end - 2) || (dir < 0 && y > cur.top + 2)) return;
+    }
+    var target = dir > 0 ? list[i + 1] : (y > cur.top + 2 ? cur : list[i - 1]);
+    if (!target) return;
+    ev.preventDefault();
+    wheelLock = now + 1200;                                 /* long enough to swallow a trackpad's momentum tail */
+    var to = (dir < 0 && target.h > vh) ? target.top + target.h - vh : target.top;
+    window.scrollTo({ top: to, behavior: 'smooth' });
+  }, { passive: false });
 
   /* 4. Quote carousel arrows */
   var impact = document.querySelector('[data-framer-name="INSTANT IMPACT"]');
