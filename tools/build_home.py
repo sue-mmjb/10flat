@@ -198,15 +198,15 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 
 GAVEL_JS = r"""
 (function () {
-  // The gavel clip (0.5 MB) loads only on wider screens, when it scrolls into view; phones and reduced motion keep the still.
+  // The gavel clip (0.5 MB) loads when it nears the screen, on phones too (Sue, 3 Nov 2026); reduced motion keeps the still.
   var v = document.querySelector('.gavel'); if (!v || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(max-width: 760px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   new IntersectionObserver(function (es) {
     es.forEach(function (e) {
       if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
       else if (v.src) v.pause();
     });
-  }, { rootMargin: '200px 0px' }).observe(v);
+  }, { rootMargin: '300px 0px' }).observe(v);
 })();
 """
 
