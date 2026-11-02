@@ -56,8 +56,7 @@ GLOBAL = [
     (">Dental Plan<", ">Your attorney<"), (">Family Plan<", ">Licensed in Texas<"),
     (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
     (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
-    # logo rows kept as tiles; headings say what they are
-    (">Our trusted partners<", ">Partner logos (placeholder tiles)<"),
+    # the carrier logo row is kept as tiles; its heading says what it is (the partner logo strip is removed in pass 2)
     (">Insurance carriers available through stack<", ">One fee: 10% of your recovery, calculated after case costs. It never goes up, even at trial. Car accidents · Medical injury · Dental injury. Se habla español.<"),
     # we win when
     ("We win when you and your team are <span", "We win when <span"),
@@ -190,9 +189,8 @@ html{scroll-behavior:smooth}
 .framer-nh45d3,.framer-TzIF9 .framer-nh45d3{position:relative!important;top:auto!important;height:auto!important;width:100%!important}
 .pi-footer-mark{font:800 clamp(56px,12vw,180px)/.9 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.04em;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);margin:0}
 /* Elements the bundle faded in that are not scroll reveals */
-[data-framer-name="TRUSTED PARTNERS"] div,[data-framer-name="TRUSTED PARTNERS"] ul,[data-framer-name="TRUSTED PARTNERS"] li,[data-framer-name="Tabs"],[data-framer-name="SET A BUDGET"] [style*="opacity:0"]{opacity:1!important}
+[data-framer-name="Tabs"],[data-framer-name="SET A BUDGET"] [style*="opacity:0"]{opacity:1!important}
 /* Logo ticker */
-[data-framer-name="TRUSTED PARTNERS"] .framer-100iuxi{overflow:hidden!important}
 .pi-marquee{animation:pi-marquee 28s linear infinite;width:max-content!important;transform:none!important}
 @keyframes pi-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.pi-marquee{animation:none}}
@@ -404,13 +402,6 @@ MOTION_JS = """
   window.addEventListener('resize', onScroll);
   onScroll();
 
-  /* 3. Logo ticker */
-  var track = document.querySelector('[data-framer-name="TRUSTED PARTNERS"] .framer-100iuxi > div');
-  if (track && track.children.length) {
-    track.innerHTML += track.innerHTML;   /* seamless loop */
-    track.classList.add('pi-marquee');
-  }
-
   /* 4. Quote carousel arrows */
   var impact = document.querySelector('[data-framer-name="INSTANT IMPACT"]');
   if (impact) {
@@ -540,6 +531,11 @@ def main():
     open_tag = src[disc_p["start"]:src.find(">", disc_p["start"]) + 1]
     edits.append((disc_p["start"], disc_p["end"], f"{open_tag}{FOOTER_DISCLAIMER}</p>"))
     mark = t.find(by_class("framer-8pye7d"))
+    # No partners yet (Sue, 2 Nov 2026): drop Stack's "trusted partners" logo strip entirely.
+    partners = t.find_all(by_name("TRUSTED PARTNERS"))
+    assert partners, "TRUSTED PARTNERS section not found"
+    for n in partners:
+        edits.append((n["start"], n["end"], ""))
     edits.append((mark["start"], mark["end"], f'<div class="framer-8pye7d"><p class="pi-footer-mark">{FIRM}</p></div>'))
     # Step-2 cards carry a copy of the step-1 calculator that the bundle used to
     # slide away; drop those copies so step 2 shows only the case summary.
@@ -644,7 +640,7 @@ def main():
 
     body = html[html.find("<body"):]
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", body, flags=re.S)))
-    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering", "[ATTORNEY NAME", "[NAME]", "[WHATSAPP NUMBER]", "[CITY]", "[STREET ADDRESS]", "Azure", "Attorney responsible"):
+    for bad in ("Brutal Renewal", "Stack Health", "ICHRA", "$500", "Instant Quote", "Instant quote", "For Brokers", "benefits", "renewal", "employee", "$3,744", "Bronze", "Silver", "Gold", "Maria", "Monthly Budget", "benchmark", "$50", "Car 25%", "Medical 33%", "Dental 33%", "25% when we win", "33% when", "What you get when we win", "Expected award", "$0 down", "Clearfee", "[FIRM NAME]", "AI lawyer", "no fee unless", "guaranteed", "gross recovery", "Premium", "Attorney-Led", "automatic upgrade", "Illustrative recovery", "before costs and liens", "10flatlaw", "[STATE]", "legal-service offering", "[ATTORNEY NAME", "[NAME]", "[WHATSAPP NUMBER]", "[CITY]", "[STREET ADDRESS]", "Azure", "Attorney responsible", "partner logos", "trusted partners"):
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")
