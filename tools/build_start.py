@@ -25,6 +25,9 @@ DISCLAIMER = (
     "Sending this form does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising."
 )
 
+FOOTER = (f'<footer><p>{escape(DISCLAIMER)}</p><p class="flinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a>'
+          f'<span>© 2026 {FIRM}. All rights reserved.</span></p></footer>')
+
 FONTS = """
 @font-face{font-family:"Perfektta ExtraBold";src:url("https://framerusercontent.com/assets/ehgAhB5skp3UmdaHTx9XRxEGak.woff2");font-display:swap;font-weight:800}
 @font-face{font-family:"GT Alpina Medium";src:url("https://framerusercontent.com/assets/akcrPmCPzVvRITrHAHEcGkGliuE.woff2");font-display:swap;font-weight:500}
@@ -81,6 +84,18 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .btn[disabled]{opacity:.6;cursor:progress}
 .formerr{background:#fff6f5;color:var(--err);border-radius:14px;padding:14px 16px;font-size:14px;margin:0}
 .formerr:empty{display:none}
+.drop{position:relative;display:flex;flex-direction:column;gap:4px;align-items:flex-start;border:1.5px dashed #cfc6ad;border-radius:16px;padding:18px 18px 18px 64px;background:var(--field);cursor:pointer;font-weight:400}
+.drop::before{content:"";position:absolute;left:18px;top:50%;width:32px;height:32px;margin-top:-16px;border-radius:50%;background:var(--yellow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23140c0a' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/16px no-repeat}
+.drop:hover,.drop:focus-within{border-color:var(--ink)}
+.drop b{font-weight:600;font-size:15px}
+.drop span{font-size:13px;color:var(--muted)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.files{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.files:empty{display:none}
+.files li{display:flex;align-items:center;gap:12px;background:var(--egg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;min-width:0}
+.files .fn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files .fs{color:var(--muted);font-size:13px;flex:none}
+.files button{flex:none;border:0;background:none;font:600 13px/1 "Instrument Sans",sans-serif;text-decoration:underline;cursor:pointer;padding:6px;color:var(--ink)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .done{text-align:left}
 .done h2{font:800 40px/1 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.03em;margin:0 0 16px}
@@ -88,6 +103,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .done ol{margin:20px 0 28px;padding-left:22px;display:grid;gap:8px}
 .done a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;width:auto;padding:0 28px}
 footer{border-top:1px solid var(--line);padding:28px 32px 40px;max-width:1180px;margin:0 auto;font-size:12.5px;line-height:1.55;color:var(--muted)}
+footer p{margin:0 0 12px}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.flinks a{color:var(--ink);text-underline-offset:3px}
+.consent a{color:var(--ink)}
 @media(max-width:900px){
   .wrap{grid-template-columns:1fr;gap:28px;padding:20px 20px 56px}
   .intro{position:static}
@@ -109,6 +128,48 @@ JS = """
   var lawyerNote = document.getElementById('lawyer-note');
   [].forEach.call(form.querySelectorAll('input[name=lawyer]'), function (r) {
     r.addEventListener('change', function () { lawyerNote.hidden = el('lawyer').value !== 'yes'; });
+  });
+  var MAX_FILES = 5, MAX_TOTAL = 3 * 1024 * 1024, picked = [], busy = 0;
+  var fileIn = document.getElementById('f-files'), fileList = document.getElementById('file-list');
+  function kb(n) { return n < 1048576 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
+  function total() { return picked.reduce(function (a, f) { return a + f.size; }, 0); }
+  function okType(f) { return /^image\\//.test(f.type) || f.type === 'application/pdf' || /\\.(pdf|jpe?g|png|heic|heif|webp)$/i.test(f.name); }
+  function shrink(f) {
+    if (!/^image\\/(jpeg|png|webp|heic|heif)$/.test(f.type) || !window.createImageBitmap) return Promise.resolve(f);
+    return createImageBitmap(f).then(function (bmp) {
+      var s = Math.min(1, 1600 / Math.max(bmp.width, bmp.height)), c = document.createElement('canvas');
+      c.width = Math.round(bmp.width * s); c.height = Math.round(bmp.height * s);
+      c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+      return new Promise(function (res) { c.toBlob(function (b) {
+        if (!b || b.size >= f.size) return res(f);
+        res(new File([b], f.name.replace(/\\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' }));
+      }, 'image/jpeg', 0.82); });
+    }).catch(function () { return f; });
+  }
+  function b64(blob) { return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { res(String(r.result).split(',')[1]); }; r.onerror = rej; r.readAsDataURL(blob); }); }
+  function drawFiles() {
+    fileList.innerHTML = '';
+    picked.forEach(function (f, i) {
+      var li = document.createElement('li'), n = document.createElement('span'), s = document.createElement('span'), x = document.createElement('button');
+      n.className = 'fn'; n.textContent = f.name; s.className = 'fs'; s.textContent = kb(f.size);
+      x.type = 'button'; x.textContent = 'Remove'; x.setAttribute('aria-label', 'Remove ' + f.name);
+      x.addEventListener('click', function () { picked.splice(i, 1); setErr('files', ''); drawFiles(); });
+      li.appendChild(n); li.appendChild(s); li.appendChild(x); fileList.appendChild(li);
+    });
+  }
+  fileIn.addEventListener('change', function () {
+    var list = [].slice.call(fileIn.files); fileIn.value = ''; var msgs = [];
+    list.forEach(function (f) {
+      if (!okType(f)) { msgs.push('“' + f.name + '” isn’t a photo or PDF.'); return; }
+      if (picked.length + busy >= MAX_FILES) { msgs.push('You can add up to ' + MAX_FILES + ' files here; your attorney can collect more later.'); return; }
+      busy++;
+      shrink(f).then(function (g) {
+        busy--;
+        if (total() + g.size > MAX_TOTAL) { setErr('files', '“' + f.name + '” is too large to send here (3 MB in total). Your attorney can collect larger files later.'); return; }
+        picked.push(g); drawFiles();
+      });
+    });
+    setErr('files', msgs.filter(function (m, i) { return msgs.indexOf(m) === i; }).join(' '));
   });
   var MSG = {
     name: 'Please tell us your name.',
@@ -152,7 +213,10 @@ JS = """
       consent: true, company: el('company').value, page: location.href
     };
     btn.disabled = true; btn.textContent = 'Sending…';
-    fetch('/api/intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+    (function wait() { return busy ? new Promise(function (r) { setTimeout(r, 150); }).then(wait) : Promise.resolve(); })()
+      .then(function () { return Promise.all(picked.map(function (f) { return b64(f).then(function (d) { return { name: f.name, type: f.type || 'application/octet-stream', size: f.size, data: d }; }); })); })
+      .then(function (files) { data.files = files;
+        return fetch('/api/intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; }); })
       .then(function (res) {
         if (res.status === 200 && res.body.ok) {
@@ -198,11 +262,15 @@ def build():
         field("language", "Preferred language", '<select id="f-language" name="language"><option>English</option><option>Español</option></select>'),
         radios("treatment", "Have you seen a doctor or dentist for this?", [("yes", "Yes"), ("no", "No"), ("scheduled", "Appointment scheduled")]),
         field("story", "Briefly, what happened and how were you hurt?", '<textarea id="f-story" name="story" maxlength="4000" aria-describedby="e-story"></textarea>', full=True),
+        ('<div class="field full" data-field="files"><span class="legend">Photos or documents <span class="opt">(optional)</span></span>'
+         '<label class="drop" for="f-files"><input type="file" id="f-files" multiple accept="image/*,application/pdf,.heic,.heif" aria-describedby="e-files">'
+         '<b>Add photos or documents</b><span>Scene or injury photos, police report, bills or insurer letters. Up to 5 files.</span></label>'
+         '<ul class="files" id="file-list"></ul><p class="err" id="e-files" aria-live="polite"></p></div>'),
         field("insurer", "Insurance company involved", '<input type="text" id="f-insurer" name="insurer" maxlength="100">', full=True, optional=True),
         radios("lawyer", "Do you already have a lawyer for this?", [("no", "No"), ("yes", "Yes")], checked="no"),
         '<p class="note full" id="lawyer-note" hidden>Thanks for telling us. An attorney will read your request first. We don’t ask people who already have a lawyer to switch; if you want to talk about changing lawyers, say so above.</p>',
         f'<div class="field full" data-field="consent"><label class="consent"><input type="checkbox" id="f-consent" name="consent" aria-describedby="e-consent">'
-        f'<span>I agree that {FIRM} may contact me about my request by phone, text or WhatsApp, and that technology helps organize my information for attorney review.</span></label>'
+        f'<span>I agree that {FIRM} may contact me about my request by phone, text or WhatsApp, and that technology helps organize my information for attorney review, as the <a href="/privacy" target="_blank">Privacy Policy</a> explains.</span></label>'
         f'<p class="err" id="e-consent" aria-live="polite"></p></div>',
         '<div class="hp" aria-hidden="true"><label for="f-company">Company</label><input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off"></div>',
         '<p class="formerr full" id="form-err" role="alert"></p>',
@@ -234,7 +302,7 @@ def build():
       <li>No fee and no costs without a recovery</li>
       <li>Se habla español</li>
     </ul>
-    <p class="fine">Sending this form does not create an attorney-client relationship. Please don’t include anything you consider highly sensitive; your attorney will ask for records securely later.</p>
+    <p class="fine">Sending this form does not create an attorney-client relationship. Please don’t send anything you consider highly sensitive, such as full medical records; your attorney will ask for those securely later.</p>
   </section>
   <section class="card" aria-label="Case review form">
     <form id="case-form" class="grid" novalidate>{form}</form>
@@ -250,7 +318,7 @@ def build():
     </div>
   </section>
 </main>
-<footer>{escape(DISCLAIMER)}</footer>
+{FOOTER}
 <script>{JS}</script>
 </body>
 </html>
@@ -262,6 +330,57 @@ def build():
     if m:
         raise SystemExit(f"build_start: placeholder on the page: {m.group(0)!r}")
     print(f"built {OUT.relative_to(ROOT)}: {len(page):,} bytes")
+    build_legal()
+
+
+DOC_CSS = """
+.doc{max-width:760px;margin:0 auto;padding:40px 32px 72px}
+.doc h1{margin-bottom:12px}
+.doc .updated{font-size:14px;color:var(--muted);margin:0 0 36px}
+.doc h2{font:800 26px/1.1 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.02em;margin:40px 0 12px}
+.doc p,.doc li{font-size:17px;line-height:1.65}
+.doc p{margin:0 0 14px}
+.doc ul{margin:0 0 14px;padding-left:22px;display:grid;gap:8px}
+.doc a{text-underline-offset:3px}
+@media(max-width:900px){.doc{padding:24px 20px 56px}.doc h2{font-size:22px}}
+"""
+
+
+def head(title, desc, path, extra_css=""):
+    robots = '<meta name="robots" content="noindex, nofollow">' if CONFIG.get("noindex") else ""
+    return f"""<!doctype html>
+<!-- Built by tools/build_start.py. Do not edit by hand; edit the script and rebuild. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} | {FIRM}</title>
+<meta name="description" content="{desc}">
+{robots}
+<link rel="canonical" href="https://{CONFIG['domain']}{path}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffe435'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%23140c0a'%3E10%3C/text%3E%3C/svg%3E">
+<style>{FONTS}{CSS}{extra_css}</style>
+</head>"""
+
+
+def build_legal():
+    from legal_content import PRIVACY, TERMS, UPDATED
+    for slug, title, desc, body in (
+        ("privacy", "Privacy Policy", f"How {FIRM} collects, uses and protects the information you send through this website.", PRIVACY),
+        ("terms", "Terms of Use", f"The terms for using the {FIRM} website.", TERMS),
+    ):
+        page = (head(title, desc, f"/{slug}", DOC_CSS) +
+                f'\n<body>\n<header class="nav"><a class="mark" href="/">{FIRM}</a><a class="back" href="/">&larr; Back to home</a></header>\n'
+                f'<main class="doc"><p class="eyebrow">{FIRM}</p><h1>{title}</h1><p class="updated">Last updated {UPDATED}</p>{body}</main>\n'
+                f'{FOOTER}\n</body>\n</html>\n')
+        out = ROOT / "site" / slug / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(page, encoding="utf-8")
+        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", page, flags=re.S)))
+        m = re.search(r"\[[^\]]{2,80}\]", text)
+        if m:
+            raise SystemExit(f"build_start: placeholder on /{slug}: {m.group(0)!r}")
+        print(f"built {out.relative_to(ROOT)}: {len(page):,} bytes")
 
 
 if __name__ == "__main__":

@@ -6,6 +6,9 @@
 const CASE_TYPES = ["Car accident", "Truck accident", "Slip and fall", "Medical injury", "Dental injury", "Something else"];
 const LANGS = ["English", "Español"];
 const TREATMENT = ["yes", "no", "scheduled"];
+const MAX_FILES = 5;
+const MAX_TOTAL = 3 * 1024 * 1024; // bytes after decoding; keeps the request under Vercel's 4.5 MB body limit
+const FILE_TYPE = /^(image\/(jpeg|png|webp|heic|heif|gif)|application\/pdf|application\/octet-stream)$/;
 
 function str(v, max) {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
@@ -39,6 +42,22 @@ module.exports = async (req, res) => {
     hasLawyer: b.hasLawyer === true,
     consent: b.consent === true,
   };
+  // optional attachments: [{name, type, data (base64)}]
+  const files = [];
+  let bytes = 0, badFiles = false;
+  if (b.files !== undefined) {
+    if (!Array.isArray(b.files) || b.files.length > MAX_FILES) badFiles = true;
+    else for (const f of b.files) {
+      const name = f && str(f.name, 120).replace(/[\\/:*?"<>|\u0000-\u001f]/g, "_");
+      const type = f && str(f.type, 60);
+      const data = f && typeof f.data === "string" ? f.data : "";
+      if (!name || !FILE_TYPE.test(type) || !/^[A-Za-z0-9+/=]+$/.test(data)) { badFiles = true; break; }
+      const size = Math.floor((data.length * 3) / 4) - (data.endsWith("==") ? 2 : data.endsWith("=") ? 1 : 0);
+      bytes += size;
+      files.push({ name, type, size, data });
+    }
+    if (bytes > MAX_TOTAL) badFiles = true;
+  }
   const digits = r.phone.replace(/[^0-9]/g, "");
   const problems = [];
   if (r.name.length < 2) problems.push("name");
@@ -50,6 +69,7 @@ module.exports = async (req, res) => {
   if (!TREATMENT.includes(r.treatment)) problems.push("treatment");
   if (r.story.length < 10) problems.push("story");
   if (!r.consent) problems.push("consent");
+  if (badFiles) problems.push("files");
   if (problems.length) return res.status(422).json({ ok: false, error: "invalid", fields: problems });
 
   const url = process.env.INTAKE_WEBHOOK_URL;
@@ -60,15 +80,19 @@ module.exports = async (req, res) => {
     receivedAt: new Date().toISOString(),
     source: "website /start",
     ...r,
+    files,
   };
   try {
     const out = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(record),
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(25000),
     });
     if (!out.ok) return res.status(502).json({ ok: false, error: "forward_failed" });
+    // the Google Apps Script receiver answers {"ok":true}; anything else means it did not save the request
+    const reply = await out.json().catch(() => null);
+    if (reply && reply.ok === false) return res.status(502).json({ ok: false, error: "forward_failed" });
   } catch (e) {
     return res.status(502).json({ ok: false, error: "forward_failed" });
   }

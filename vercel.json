@@ -3,6 +3,19 @@
   "outputDirectory": "site",
   "cleanUrls": true,
   "headers": [
-    { "source": "/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" } ] }
-  ]
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/intake.js": {
+      "maxDuration": 30
+    }
+  }
 }

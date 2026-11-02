@@ -779,6 +779,7 @@ def main():
     assert n_stuck >= 8, f"stuck step wrappers: {n_stuck}"
     html = unhide(html)
     html = strip_comments(html)
+    html = html.replace('href="./privacy-policy"', 'href="/privacy"').replace('href="./terms-of-use"', 'href="/terms"')
     # every "Start your case" button opens the case form page (tools/build_start.py); several had no link at all
     def _to_start(m):
         attrs, inner = m.group(1), m.group(2)

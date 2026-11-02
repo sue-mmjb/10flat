@@ -638,8 +638,8 @@ def main():
     links = t.find_all(by_name("Links Container"), footer_outer["children"])[0]
     footer_html = footer_html.replace(t.html(links),
         '<div class="framer-p6032j pi-footer-links" data-framer-name="Links Container">'
-        '<a class="framer-text framer-styles-preset-10holly" href="#privacy">Privacy</a>'
-        '<a class="framer-text framer-styles-preset-10holly" href="#terms">Terms</a>'
+        '<a class="framer-text framer-styles-preset-10holly" href="/privacy">Privacy</a>'
+        '<a class="framer-text framer-styles-preset-10holly" href="/terms">Terms</a>'
         '<a class="framer-text framer-styles-preset-10holly" href="#disclaimer">Disclaimer</a></div>')
     footer_html = re.sub(r"© 2026 Stack Healthcare, Inc\. All rights reserved\.", f"© 2026 {c['firm']}. All rights reserved.", footer_html)
     footer_html = footer_html.replace("Stack Healthcare", c["firm"])
