@@ -187,10 +187,20 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 .cfine{font-size:11.5px;line-height:1.45;color:var(--muted);margin:10px 0 0}
 
 /* how it works */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;list-style:none;padding:0}
-.steps li{background:var(--white);border-radius:24px;padding:28px;display:flex;flex-direction:column}
-.steps img{width:100%;height:auto;aspect-ratio:320/220;object-fit:contain;margin:0 0 18px}
-.steps p{margin:0;font-size:16px;line-height:1.55}
+.steps{display:grid;grid-template-columns:1fr;gap:0;margin-top:40px;list-style:none;padding:0}
+.steps::after{content:"";display:block;height:26vh}   /* room inside the sticky area, so the finished stack holds for a moment */
+.steps li{position:sticky;top:calc(var(--stack-top,88px) + var(--i) * 16px);margin-bottom:40px;border-radius:32px;
+  box-shadow:0 -12px 34px -20px rgba(20,12,10,.4);transform-origin:50% 0;will-change:transform;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);grid-template-rows:auto auto auto;column-gap:56px;align-content:center;
+  min-height:min(480px,calc(100vh - 220px));padding:56px 64px}
+.steps li:last-child{margin-bottom:0}
+.steps li.c1{background:#ffe435}
+.steps li.c2{background:#b8d63a}
+.steps li.c3{background:#f4b0d8}
+.steps img{grid-column:2;grid-row:1/4;align-self:center;width:100%;height:auto;aspect-ratio:320/220;object-fit:contain;margin:0}
+.steps .num{grid-column:1;justify-self:start;background:var(--ink);color:#fff;margin-bottom:16px}
+.steps .h3{grid-column:1;font-size:clamp(30px,3.2vw,44px);margin-bottom:14px}
+.steps p{grid-column:1;margin:0;font-size:18px;line-height:1.6;max-width:560px}
 .num{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--yellow);align-items:center;justify-content:center;font-weight:700;margin-bottom:12px}
 
 /* why 10% */
@@ -248,18 +258,16 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
   .hero .in,.phone-sec .in{grid-template-columns:1fr;gap:40px}
   .calc{max-width:520px}
 }
+@media(max-width:1100px){
+  .steps li{grid-template-columns:minmax(0,1fr) minmax(0,260px);column-gap:32px;padding:44px 40px}
+}
 @media(max-width:860px){
-  .steps,.prom{grid-template-columns:1fr}
-  .steps{gap:0;padding-bottom:0}
-  .steps li{position:sticky;top:calc(var(--stack-top,76px) + var(--i) * 14px);min-height:min(560px,calc(100svh - 190px));margin-bottom:32px;
-    padding:28px 26px 30px;border-radius:28px;box-shadow:0 -10px 30px -18px rgba(20,12,10,.35);transform-origin:50% 0;will-change:transform}
-  .steps li:last-child{margin-bottom:0}
-  .steps::after{content:"";display:block;height:26vh}   /* room inside the sticky area, so the finished stack holds for a moment */
-  .steps li.c1{background:#ffe435}
-  .steps li.c2{background:#b8d63a}
-  .steps li.c3{background:#f4b0d8}
-  .steps li .num{background:var(--ink);color:#fff}
-  .steps img{max-height:220px;margin-bottom:22px}
+  .prom{grid-template-columns:1fr}
+  .steps li{top:calc(var(--stack-top,76px) + var(--i) * 14px);display:flex;flex-direction:column;align-content:normal;
+    min-height:min(560px,calc(100svh - 190px));margin-bottom:32px;padding:28px 26px 30px;border-radius:28px}
+  .steps img{max-height:220px;margin:0 0 22px}
+  .steps .h3{font-size:26px;margin-bottom:10px}
+  .steps p{font-size:16px;line-height:1.55}
   .compare{grid-template-columns:1fr}
   .money-box{grid-template-columns:1fr;gap:10px}
 }
@@ -582,18 +590,18 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 </script>
 <script>
 (function () {
-  // Stacked step cards on phones: as the next card slides over, the covered one shrinks a little (like the reference).
-  var mq = window.matchMedia('(max-width: 860px)'), reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // Stacked step cards: as the next card slides over, the covered one shrinks a little (like the reference).
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var cards = [].slice.call(document.querySelectorAll('.steps li')), ticking = false;
   var nav = document.querySelector('.nav');
   function setTop() { document.documentElement.style.setProperty('--stack-top', ((nav ? nav.getBoundingClientRect().height : 64) + 12) + 'px'); }
   function update() {
     ticking = false;
     cards.forEach(function (c, i) {
-      if (!mq.matches || reduce.matches || i === cards.length - 1) { c.style.transform = ''; return; }
+      if (reduce.matches || i === cards.length - 1) { c.style.transform = ''; return; }
       var r = c.getBoundingClientRect(), n = cards[i + 1].getBoundingClientRect();
       var covered = Math.min(1, Math.max(0, (r.bottom - n.top) / r.height));
-      c.style.transform = 'scale(' + (1 - 0.06 * covered).toFixed(4) + ')';
+      c.style.transform = 'scale(' + (1 - (window.innerWidth > 860 ? 0.04 : 0.06) * covered).toFixed(4) + ')';
     });
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
