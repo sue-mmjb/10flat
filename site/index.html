@@ -249,6 +249,7 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 /* closing */
 .close .in{text-align:center}
 .close .h2{max-width:900px;margin:0 auto 14px}
+.gavel{display:block;width:min(520px,100%);height:auto;aspect-ratio:854/480;margin:-24px auto 4px;mix-blend-mode:darken}
 .close .body{margin:0 auto}
 .close .btns{justify-content:center}
 
@@ -427,7 +428,7 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
   <div class="in">
     <div>
       <h1 id="h1">10% fee.<br>Even at trial.</h1>
-      <p class="body">We’re putting an end to high legal fees. A one-third fee is common for Texas injury cases. Ours is 10% of what we recover for you, and it stays 10% if your case goes to trial.</p>
+      <p class="body">A one-third fee is common for Texas injury cases. Ours is 10% of what we recover for you, and it stays 10% if your case goes to trial.</p>
       <ul class="ticks">
         <li>No fee and no costs without a recovery</li>
         <li>A licensed Texas attorney on every case</li>
@@ -524,8 +525,9 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 
 <section class="sec yellow close" aria-labelledby="close-h">
   <div class="in">
-    <h2 class="h2" id="close-h">You’ve been through enough. Let us handle the legal part.</h2>
-    <p class="body">We win when you win. Simple as that.</p>
+    <video class="gavel" muted loop playsinline preload="none" poster="/assets/gavel-poster.webp" data-src="/assets/gavel-480.mp4" width="854" height="480" aria-hidden="true"></video>
+    <h2 class="h2" id="close-h">We’re putting an end to high legal fees.</h2>
+    <p class="body">You’ve been through enough. Let us handle the legal part. We win when you win. Simple as that.</p>
     <div class="btns"><a class="b1" href="/start" onclick="track('start_click',{from:'closing'})">Start your case</a><a class="b2" href="#calculator">See your fee</a></div>
   </div>
 </section>
@@ -608,6 +610,19 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
   setTop(); update();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { setTop(); onScroll(); });
+})();
+</script>
+<script>
+(function () {
+  // The gavel clip (0.5 MB) loads only on wider screens, when it scrolls into view; phones and reduced motion keep the still.
+  var v = document.querySelector('.gavel'); if (!v || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(max-width: 760px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (v.src) v.pause();
+    });
+  }, { rootMargin: '200px 0px' }).observe(v);
 })();
 </script>
 </body>
