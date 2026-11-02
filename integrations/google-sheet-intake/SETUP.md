@@ -12,7 +12,7 @@ Setup takes about ten minutes. Do it while signed in to the Google account that 
 
 The script emails 10flatlaw@gmail.com for now. As of 3 Nov 2026 10flatlaw.com is not registered (the domain bought on
 30 Oct is tenflatlaw.com, at GoDaddy), so contact@10flatlaw.com cannot receive mail yet. Once the firm's address works,
-change `NOTIFY_TO` at the top of `Code.gs` and redeploy (see "If you change the script later"). The address has to receive mail. Either set up Google Workspace on 10flatlaw.com, or add email forwarding for `contact@` at the domain registrar (most registrars, and Cloudflare Email Routing, do this for free) and forward it to 10flatlaw@gmail.com. To send the emails somewhere else, change `NOTIFY_TO` at the top of `Code.gs`.
+change `NOTIFY_TO` at the top of `Code.gs` and redeploy (see "If you change the script later"). The address has to receive mail. Either set up Google Workspace on the firm's domain, or add email forwarding for `contact@` at the domain registrar (most registrars, and Cloudflare Email Routing, do this for free) and forward it to 10flatlaw@gmail.com. To send the emails somewhere else, change `NOTIFY_TO` at the top of `Code.gs`.
 
 ## 1. Make the Sheet and paste the script
 
