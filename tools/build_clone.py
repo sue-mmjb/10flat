@@ -779,6 +779,14 @@ def main():
     assert n_stuck >= 8, f"stuck step wrappers: {n_stuck}"
     html = unhide(html)
     html = strip_comments(html)
+    # every "Start your case" button opens the case form page (tools/build_start.py); several had no link at all
+    def _to_start(m):
+        attrs, inner = m.group(1), m.group(2)
+        if "Start your case" not in re.sub(r"<[^>]+>", "", inner):
+            return m.group(0)
+        return '<a href="/start"' + re.sub(r'\s+href="[^"]*"', "", attrs) + ">" + inner + "</a>"
+    html, n_start = re.subn(r"<a\b([^>]*)>(.*?)</a>", _to_start, html, flags=re.S)
+    assert html.count('href="/start"') >= 10, html.count('href="/start"')
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
@@ -797,6 +805,8 @@ def main():
     if m:
         raise SystemExit(f"build_clone: placeholder left on the page: {m.group(0)!r}")
     print(f"built {OUT.relative_to(ROOT)}: {len(html):,} bytes; reveals: {html.count('--pi-appear')}; calculators: {html.count('data-pi-calc')-1}; step-2 duplicates removed: {len(doomed)}; h1: {html.count('<h1')}")
+    import build_start
+    build_start.build()
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 
 **Intake**
 8. Do we promise that an attorney reviews the case "the same day"?
-9. Where should "Start your case" submissions go: your email, a CRM, or the intake system? And what response time do we promise, by text, call or email?
+9. (Page built 3 Nov: /start, posting to /api/intake, which forwards each request to the INTAKE_WEBHOOK_URL set in Vercel. Until that is set, the form tells the client it couldn't send.) Where should "Start your case" submissions go: your email, a CRM, or the intake system? And what response time do we promise, by text, call or email?
 10. "Se habla español, from your first message to your settlement" is on the site because the explainer promises it. Confirm Spanish-language intake and case updates exist before launch.
 
 **The app on the site**
