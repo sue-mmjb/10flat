@@ -315,6 +315,10 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   .framer-1j23hd2-container{transition:transform .1s linear}
 }
 @media(max-width:1199.98px){
+  /* Steps 1 and 2 on tablet and phone: Framer left the column at scale(.9), so the beige frames were narrower
+     than the reference; the frames size to their cards (see the stuck-wrapper fix in main). */
+  .framer-1jodbn0 .framer-6c6fbx{transform:none!important}
+  .framer-1nvdwd5,.framer-q4impc{height:auto!important}
   [data-framer-name="MAIN"] [data-framer-name="Absolute"]{position:relative!important;inset:auto!important;transform:none!important}
   [data-framer-name="MAIN"] [data-framer-name="Viewport"]{height:auto!important;min-height:0!important;overflow:visible!important}
   /* below desktop the layers flow one after another; the title layer and each card wrapper lose their viewport-tall runway */
@@ -740,6 +744,11 @@ def main():
     # --- motion markers, then make everything else the bundle hid visible
     html = derevelo(html)
     html = mark_appear(html)
+    # Framer left the step 1 and step 2 wrappers frozen 40-50px lower (their entrance animation never ran),
+    # so the white cards hung past the bottom of the beige frame. Turn them into normal scroll-in reveals.
+    html, n_stuck = re.subn(r'(id="(?:configurator-desktop|configurator-tablet|configurator-mobile|product-page-2-tablet|product-cards-2-mobile)"[^>]*?style="will-change:transform;opacity:1;)transform:translateY\((\d+)px\)',
+                            r"\1transform:none;--pi-appear:\2px", html)
+    assert n_stuck >= 8, f"stuck step wrappers: {n_stuck}"
     html = unhide(html)
     html = strip_comments(html)
 
