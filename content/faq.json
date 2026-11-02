@@ -28,7 +28,7 @@
         },
         {
           "q": "Is a 10% injury lawyer real, or is there a catch?",
-          "a": "It is real. Here is the honest version: we take well-documented injury cases, technology does the paperwork that other firms pay staff to do, and you do more of your case from your phone. The fee is 10% of the amount recovered at every stage, written into the fee agreement before we start. Nothing is added later."
+          "a": "It is real. Here is the honest version: we take well-documented injury cases, software does much of the paperwork, and you do more of your case from your phone. The fee is 10% of the amount recovered at every stage, written into the fee agreement before we start. Nothing is added later."
         },
         {
           "q": "How can 10flat Law charge only 10%?",
@@ -69,7 +69,7 @@
         },
         {
           "q": "How can you charge only 10%?",
-          "a": "Software does the paperwork that other firms pay staff to do: it organizes your documents, requests records, builds a timeline of your treatment, totals your bills and tracks every deadline. A supervised case team checks the work, and a licensed Texas attorney reviews and approves it. We don’t spend on billboards or expensive offices, so we don’t need a third of your settlement to pay for them."
+          "a": "Software does the paperwork: it organizes your documents, requests records, builds a timeline of your treatment, totals your bills and tracks every deadline. A supervised case team checks the work, and a licensed Texas attorney reviews and approves it. We don’t pay for billboards, TV ads or a downtown office, so we don’t need a third of your settlement."
         },
         {
           "q": "What are case costs, and who pays my medical bills and liens?",
@@ -81,12 +81,13 @@
         },
         {
           "q": "Who is my lawyer, and can I talk to them?",
-          "a": "A licensed Texas attorney of 10flat Law PLLC is responsible for your case. You meet them, and see their Texas license, before you sign anything, and you can request a call with them at any stage. Before you decide on any offer, your attorney advises you."
+          "a": "A licensed Texas attorney of 10flat Law PLLC is responsible for your case. You see your attorney’s name and Texas license, and can ask them questions by message or call, before you sign anything, and you can request a call with them at any stage. Before you decide on any offer, your attorney advises you.",
+          "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
           "q": "I already have a lawyer. Can I switch?",
-          "a": "In Texas you can change lawyers at any time. Your current lawyer may be owed for work already done, which is settled between the firms out of the fee, not added on top of it. If you want to talk about switching, say so in your case request and an attorney will explain how it would work.",
-          "review": "Attorney sign-off needed before launch (SOW Phase 4)."
+          "a": "In Texas you can change lawyers at any time. Your current lawyer may be owed for work already done, and we explain anything your previous lawyer is owed before you switch. If you want to talk about switching, say so in your case request and an attorney will explain how it would work.",
+          "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
           "q": "What does the AI do, and who sees my information?",
@@ -151,7 +152,7 @@
         },
         {
           "q": "Is 10flat Law a real law firm or a referral service?",
-          "a": "A law firm. We are not a lead generator and we do not sell your case to another firm. A licensed Texas attorney is responsible for your case from the first message to the settlement, and you meet that attorney, and see their Texas license, before you sign anything."
+          "a": "A law firm. We are not a lead generator and we do not sell your case to another firm. A licensed Texas attorney is responsible for your case from the first message to the settlement, and you see your attorney’s name and Texas license, and can ask them questions by message or call, before you sign anything."
         },
         {
           "q": "Who is behind 10flat Law?",
@@ -202,7 +203,8 @@
       "items": [
         {
           "q": "Which cases qualify?",
-          "a": "Injury cases in Texas: car and truck accidents, slip and falls, medical and dental injuries and more, from about $1,000 up. The size of a case alone never rules it out. A licensed Texas attorney reviews every request and decides whether to accept it, and we tell you when to expect an answer. It’s free to find out if we can help."
+          "a": "Injury cases in Texas: car and truck accidents, slip and falls, medical and dental injuries and more. We review every case, whatever its size. A licensed Texas attorney decides whether to accept it, and we tell you when to expect an answer. It’s free to find out if we can help.",
+          "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
           "q": "Does 10flat Law handle car accident cases in Texas?",
@@ -226,7 +228,8 @@
         },
         {
           "q": "Will 10flat Law take a small case?",
-          "a": "Yes, if it qualifies. We take claims from about $1,000 up, and the size of a case alone never rules it out. The fee is 10% of whatever is recovered, so a smaller case does not cost you more in percentage terms."
+          "a": "We review every case, whatever its size. The fee is 10% of whatever is recovered, so a smaller case does not cost you more in percentage terms. An attorney tells you whether the case is worth pursuing.",
+          "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
           "q": "What cases will 10flat Law not take?",
@@ -263,8 +266,8 @@
         },
         {
           "q": "Can I switch to 10flat Law if I already have a lawyer?",
-          "a": "In Texas you can change lawyers at any time. Your former lawyer may be entitled to be paid for work already done, which is settled between the firms out of the fee, not added on top of it. Message us and the attorney will explain how it would work in your case.",
-          "review": "Attorney sign-off needed before launch (SOW Phase 4)."
+          "a": "In Texas you can change lawyers at any time. Your former lawyer may be owed for work already done, and we explain anything your previous lawyer is owed before you switch. Tell us in your case request and an attorney will explain how it would work in your case.",
+          "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
           "q": "How long do I have to file an injury claim in Texas?",
@@ -386,7 +389,7 @@
       "items": [
         {
           "q": "Who represents me?",
-          "a": "A licensed Texas attorney of 10flat Law PLLC is responsible for your case, and you meet that attorney, and see their Texas license, before you sign anything. 10flat Law uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed."
+          "a": "A licensed Texas attorney of 10flat Law PLLC is responsible for your case, and you see your attorney’s name and Texas license, and can ask them questions by message or call, before you sign anything. 10flat Law uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed."
         },
         {
           "q": "How do I choose a personal injury lawyer?",
@@ -398,11 +401,11 @@
         },
         {
           "q": "Why don’t other firms charge 10%?",
-          "a": "Their costs are built for a one-third fee: offices, advertising and staff who do by hand what our software does. A lower fee would mean rebuilding how the firm works. We built 10flat Law that way from the start."
+          "a": "We can only speak for how we work: software does much of the paperwork, and we don’t pay for billboards, TV ads or a downtown office. That is what lets us charge 10%."
         },
         {
           "q": "What is the difference between 10flat Law and a billboard law firm?",
-          "a": "Where the money goes. At a firm that advertises heavily, your 33–40% pays for the billboards, the TV ads, the office and the staff who type letters and track deadlines by hand. None of that makes your case stronger. At 10flat Law the paperwork is done by software, your attorney spends time on your case, and you keep more of the settlement."
+          "a": "We can speak for our own costs: we don’t pay for billboards, TV ads or a downtown office, and software does much of the paperwork, so your attorney’s time goes to your case. That is how the fee can be 10% and stay 10% at trial."
         },
         {
           "q": "Is 10flat Law cheaper than other flat-fee injury firms?",

@@ -14,6 +14,15 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 3. Slider range: I set $10,000 to $1,000,000, starting at $100,000. You said 10flat takes cases "as low as $1,000 to 100 million and up". Keep $10,000 as the floor, or go lower?
 4. Which cases qualify for the 10%? The explainer says straightforward, well-documented cases, mainly car accidents, with medical and dental injury as case types. You also said "AI will reject client fraud and frivolous lawsuits". The screening rule we publish needs legal sign-off.
 
+**From the round 2 review (2 Nov), still needing you**
+Q1. Register 10flatlaw.com today, plus the near-misses (10flatlaw.co, 10flat.law; tenflatlaw.com is already registered, probably yours), set up email with SPF, DKIM and DMARC, and point it at Vercel. Until then link previews, the canonical and the sitemap use the Vercel address (CONFIG "site_url").
+Q2. Buy web licences for Perfektta and GT Alpina (or approve free replacements). They still load from Framer's servers.
+Q3. Turn on Web Analytics in the Vercel project (Analytics > Enable); the page already calls it.
+Q4. The four FAQ promises now read: "We review every case, whatever its size"; "we explain anything your previous lawyer is owed before you switch"; "you see your attorney's name and Texas license, and can ask them questions, before you sign"; medical and dental at 10% with an expert-cost budget (SOW). Confirm or change.
+Q5. A one-page sample fee agreement to publish on /fees, a source for a 40% at-trial comparison (the calculator lets visitors type their own percentage instead), a real first-reply time, a WhatsApp Business number and a phone number with hours.
+Q6. The five case-type pages (/car-accident, /truck-accident, /slip-and-fall, /medical-injury, /dental-injury) state general deadline facts (two years; government notice as short as six months; health care expert report within 120 days of the answer). Attorney review before launch.
+Q7. /for-lawyers is not built: it would describe 10Flat Match, which the SOW keeps out of scope until ethics counsel clears it.
+
 **From Chandana's website review (2 Nov), still needing you**
 R1. The responsible attorney: name, photo, Texas bar number and office city. Texas advertising rules require a named lawyer, and the review calls it the single biggest missing piece. The rebuilt home page has no attorney block until you give them.
 R2. A WhatsApp number and a phone number. The review asks for a WhatsApp button and phone next to every "Start your case" and in a sticky phone bar; there is no number to link to yet. The calculator already has "Share on WhatsApp", which needs no number.

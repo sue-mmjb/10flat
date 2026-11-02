@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /classic/
-Disallow: /v2/
 Disallow: /api/
 
-Sitemap: https://10flatlaw.com/sitemap.xml
+Sitemap: https://personal-injury-law-nine.vercel.app/sitemap.xml

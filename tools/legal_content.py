@@ -16,8 +16,10 @@ confidentiality as lawyers also protect what you tell us.</p>
 <h2>What we collect</h2>
 <p><b>What you give us.</b> When you send a case review request we receive your name, mobile number, what happened and
 when, the Texas county, your preferred language, whether you have seen a doctor or dentist, the insurance company
-involved, whether you already have a lawyer, your description of the incident and your injuries, and any photos or
-documents you attach. If you message us on WhatsApp, by text or by email, we receive what you send there.</p>
+involved, whether a government vehicle or property was involved, whether you already have a lawyer, your description of
+the incident and your injuries, and any photos or documents you attach. While you fill in the form, your answers are
+kept on your own device (in your browser) so a dropped connection doesn’t lose them; they are deleted when you send the
+form or press “Start over”, and we don’t see them until you send. If you message us on WhatsApp, by text or by email, we receive what you send there.</p>
 <p><b>What our systems record.</b> Like any website, our hosting provider records basic technical information such as
 your IP address, browser type and the pages requested, to keep the site secure and working. Fonts load from outside
 providers (Google Fonts and Framer), which receive your IP address when your browser fetches them. We use Vercel Web

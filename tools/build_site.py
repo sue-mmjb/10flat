@@ -36,6 +36,9 @@ CONFIG = {
     "firm": "10flat Law",
     "brand": "10flat Law",
     "domain": "10flatlaw.com",
+    # Where the site actually answers today. 10flatlaw.com is not registered (checked 2 and 3 Nov 2026), so canonical,
+    # link previews, share links and the sitemap use the Vercel address. At launch set this to "https://10flatlaw.com".
+    "site_url": "https://personal-injury-law-nine.vercel.app",
     "title": "10% Injury Fee, Even at Trial | 10flat Law",
     "description": "A one-third fee is common for Texas injury cases. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
     "noindex": True,  # prototype. Set False at launch.

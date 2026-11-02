@@ -72,3 +72,17 @@ paste the new `Code.gs` and redeploy (see "If you change the script later"), and
 The pages load Vercel Web Analytics (no cookies). Turn it on once in Vercel: open the project, **Analytics**, **Enable**.
 Until then the browser shows a harmless "not found" for `/_vercel/insights/script.js`.
 
+## Update of 3 Nov 2026 (round 2 review)
+
+The form now asks whether a government vehicle or property was involved, takes up to 10 files and 25 MB, and comes in
+Spanish at /es/start. Files are sent in pieces after the request itself, and the script joins them in the request's
+Drive folder. What this means for the Sheet:
+
+- Paste the new `Code.gs` and redeploy (see "If you change the script later").
+- If your "Case requests" tab already exists, insert a column called **Government involved** after **Texas county**
+  (the script writes the columns in the order of `HEADERS` at the top of `Code.gs`).
+- Each request now sends one email straight away (marked URGENT when a government may be involved, because notice
+  deadlines can be as short as six months) and, when it has files, a second "Files received" email once they are all in.
+- Optional: in the Apps Script editor add a daily time-driven trigger for `cleanUploads`, which forgets uploads that
+  never finished.
+

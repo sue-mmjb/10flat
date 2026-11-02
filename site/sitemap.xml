@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://10flatlaw.com/</loc></url>
-  <url><loc>https://10flatlaw.com/start</loc></url>
-  <url><loc>https://10flatlaw.com/privacy</loc></url>
-  <url><loc>https://10flatlaw.com/terms</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/start</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/es/start</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/fees</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/car-accident</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/truck-accident</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/slip-and-fall</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/medical-injury</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/dental-injury</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/privacy</loc></url>
+  <url><loc>https://personal-injury-law-nine.vercel.app/terms</loc></url>
 </urlset>

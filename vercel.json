@@ -16,6 +16,9 @@
   "functions": {
     "api/intake.js": {
       "maxDuration": 30
+    },
+    "api/intake-file.js": {
+      "maxDuration": 30
     }
   }
 }
