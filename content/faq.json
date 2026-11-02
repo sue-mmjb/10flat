@@ -2,10 +2,17 @@
   "note": "Single source for the FAQ on both site versions and for the FAQPage JSON-LD in content/schema/home.html (regenerated at build time). Written 31 Oct 2026; brought in line with the platform SOW v2.0 on 3 Nov 2026. Rules: no named attorney, licence number, address or phone; no 'guaranteed'; never 'no fee unless we win' (say 'no fee and no costs if there is no recovery'); the fee is '10% of the amount recovered' at every stage, with case costs and liens paid from the client's share after the fee; no bracketed placeholders in answers. Items with a 'review' field need an attorney's sign-off before launch. 'featured' lists the questions shown on the site (and in the schema); the rest stay here for later.",
   "featured": [
     "What is the attorney fee?",
-    "What does it cost to start?",
+    "What do I pay if we lose?",
     "Does the fee go up if my case goes to trial?",
-    "Does a lower fee mean a smaller settlement?",
-    "Which cases qualify?"
+    "How can you charge only 10%?",
+    "What are case costs, and who pays my medical bills and liens?",
+    "Does the fee change what my case is worth?",
+    "How long will my case take?",
+    "Who is my lawyer, and can I talk to them?",
+    "I already have a lawyer. Can I switch?",
+    "What does the AI do, and who sees my information?",
+    "Which cases qualify?",
+    "Which cases don’t you take?"
   ],
   "groups": [
     {
@@ -13,7 +20,7 @@
       "items": [
         {
           "q": "What is the attorney fee?",
-          "a": "10% of the total amount recovered, and it stays 10% even if we go to trial. Case costs and liens are paid from your share after the fee. Most injury firms take 33–40%."
+          "a": "10% of the total amount recovered, and it stays 10% even if we go to trial. Case costs and liens are paid from your share after the fee. A one-third fee is common for Texas injury cases."
         },
         {
           "q": "What is a contingency fee?",
@@ -41,7 +48,7 @@
         },
         {
           "q": "Does the fee go up if my case goes to trial?",
-          "a": "No. Our fee stays 10% whether the case settles early or goes all the way to trial. At most firms the percentage rises from 33% to 40% once a lawsuit is filed."
+          "a": "No. Our fee stays 10% whether the case settles early or goes all the way to trial. At many firms the percentage goes up once a lawsuit is filed."
         },
         {
           "q": "Can the fee change after I sign?",
@@ -54,7 +61,42 @@
         },
         {
           "q": "What percentage do personal injury lawyers take in Texas?",
-          "a": "Typically 33% of the recovery for a case that settles before a lawsuit, and 40% once a lawsuit is filed. Some firms charge more for trial. 10flat Law charges 10% at every stage."
+          "a": "A one-third (33%) fee is common for Texas injury cases, and many firms charge 40% once a lawsuit is filed. 10flat Law charges 10% at every stage."
+        },
+        {
+          "q": "What do I pay if we lose?",
+          "a": "Nothing. If there is no recovery, you owe no fee and no case costs. We advance the case costs while your case is open."
+        },
+        {
+          "q": "How can you charge only 10%?",
+          "a": "Software does the paperwork that other firms pay staff to do: it organizes your documents, requests records, builds a timeline of your treatment, totals your bills and tracks every deadline. A supervised case team checks the work, and a licensed Texas attorney reviews and approves it. We don’t spend on billboards or expensive offices, so we don’t need a third of your settlement to pay for them."
+        },
+        {
+          "q": "What are case costs, and who pays my medical bills and liens?",
+          "a": "Case costs are money spent on your case, such as medical records, police reports, filing fees and expert reports. We advance them, and they are repaid from your share of the recovery at exactly what they cost, with no markup. Medical bills and liens (money owed to doctors, hospitals or your health insurer) are also paid from your share, the same way at any firm. If there is no recovery, you owe no fee and no case costs."
+        },
+        {
+          "q": "How long will my case take?",
+          "a": "A straightforward car accident claim often settles within a few months of finishing treatment. A case that goes to a lawsuit can take a year or more. The biggest factor is how long your medical treatment takes, because a claim can’t be valued until the injury is understood."
+        },
+        {
+          "q": "Who is my lawyer, and can I talk to them?",
+          "a": "A licensed Texas attorney of 10flat Law PLLC is responsible for your case. You meet them, and see their Texas license, before you sign anything, and you can request a call with them at any stage. Before you decide on any offer, your attorney advises you."
+        },
+        {
+          "q": "I already have a lawyer. Can I switch?",
+          "a": "In Texas you can change lawyers at any time. Your current lawyer may be owed for work already done, which is settled between the firms out of the fee, not added on top of it. If you want to talk about switching, say so in your case request and an attorney will explain how it would work.",
+          "review": "Attorney sign-off needed before launch (SOW Phase 4)."
+        },
+        {
+          "q": "What does the AI do, and who sees my information?",
+          "a": "Software, including AI tools, organizes the documents you send, builds timelines, totals bills and prepares drafts. A licensed attorney reviews and approves legal work, and nothing goes to an insurer or a court without your attorney’s approval. Only the people working on your case can see your information. We don’t sell it. The Privacy Policy has the details.",
+          "review": "Attorney sign-off needed before launch (SOW Phase 4)."
+        },
+        {
+          "q": "Which cases don’t you take?",
+          "a": "Cases outside Texas, cases where we have a conflict of interest, and claims an attorney decides we can’t pursue after review, for example where the facts don’t support a claim. If we can’t take your case, a person tells you, along with any deadline you need to know about.",
+          "review": "Attorney sign-off needed before launch (SOW Phase 4)."
         }
       ]
     },
@@ -66,8 +108,8 @@
           "a": "The settlement, minus the 10% fee, minus case costs, minus any medical bills and liens that have to be repaid. Our calculator shows the fee, example case costs and what is left for any settlement amount, next to what the same case would leave you at a 33% firm."
         },
         {
-          "q": "Does a lower fee mean a smaller settlement?",
-          "a": "No. The insurance company decides how much to pay based on your injuries, your medical bills, the facts and the insurance coverage, not on what your lawyer charges. What the fee changes is how much of the settlement you keep."
+          "q": "Does the fee change what my case is worth?",
+          "a": "No. Your fee doesn’t change what your case is worth. It changes how much of it you keep. On the same settlement, a 10% fee leaves more of it for you than a one-third fee does; the calculator shows the math."
         },
         {
           "q": "How does the fee calculator work?",
@@ -105,7 +147,7 @@
       "items": [
         {
           "q": "What is 10flat Law?",
-          "a": "10flat Law is a Texas personal injury law firm that charges a 10% fee at every stage, even at trial, instead of the usual 33–40%. Technology does the paperwork. A licensed Texas attorney does the lawyering."
+          "a": "10flat Law is a Texas personal injury law firm that charges a 10% fee at every stage, even at trial. A one-third fee is common elsewhere. Technology does the paperwork. A licensed Texas attorney does the lawyering."
         },
         {
           "q": "Is 10flat Law a real law firm or a referral service?",
@@ -322,7 +364,8 @@
       "items": [
         {
           "q": "Is there a Spanish-speaking injury lawyer with a low fee?",
-          "a": "Yes. Se habla español, from your first message to your settlement. You can send your documents and get your updates in Spanish."
+          "a": "10flat Law charges 10% at every stage, even at trial. Choose Spanish as your preferred language on the case form and we will tell you how we can help in Spanish.",
+          "review": "Attorney sign-off needed before launch (SOW Phase 4). Keep unpublished until Spanish-speaking staff are in place (website review, 2 Nov 2026)."
         },
         {
           "q": "¿Cuánto cobra 10flat Law?",
@@ -355,7 +398,7 @@
         },
         {
           "q": "Why don’t other firms charge 10%?",
-          "a": "They could, but their costs are built for 33%: offices, advertising and staff who do by hand what our software does. A lower fee would mean rebuilding how the firm works. We built 10flat Law that way from the start."
+          "a": "Their costs are built for a one-third fee: offices, advertising and staff who do by hand what our software does. A lower fee would mean rebuilding how the firm works. We built 10flat Law that way from the start."
         },
         {
           "q": "What is the difference between 10flat Law and a billboard law firm?",
@@ -371,7 +414,7 @@
         },
         {
           "q": "How do I contact 10flat Law?",
-          "a": "Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español."
+          "a": "Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer."
         }
       ]
     }

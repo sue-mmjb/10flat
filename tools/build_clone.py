@@ -23,7 +23,7 @@ from build_site import Tree, by_name, by_class, derevelo, unhide, strip_comments
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source" / "mystack-index.html"
-OUT = ROOT / "site" / "index.html"
+OUT = ROOT / "site" / "classic" / "index.html"   # the old Framer clone, kept for comparison since the 3 Nov rebuild
 FIRM = CONFIG["firm"]
 BRAND = CONFIG.get("brand", "10flat Law")
 
@@ -828,6 +828,8 @@ def main():
     html = html.replace("</body>", FEE_JS + "</body>", 1)
     assert html.count('href="/start"') >= 10, html.count('href="/start"')
 
+    # served from /classic/ now: asset paths must not be relative
+    html = re.sub(r'(["(\s])assets/', r"\1/assets/", html)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
 
@@ -847,6 +849,8 @@ def main():
     print(f"built {OUT.relative_to(ROOT)}: {len(html):,} bytes; reveals: {html.count('--pi-appear')}; calculators: {html.count('data-pi-calc')-1}; step-2 duplicates removed: {len(doomed)}; h1: {html.count('<h1')}")
     import build_start
     build_start.build()
+    import build_home
+    build_home.build()
 
 
 if __name__ == "__main__":

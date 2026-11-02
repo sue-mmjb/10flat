@@ -53,3 +53,22 @@ Edit `Code.gs` in the Apps Script editor, then **Deploy > Manage deployments > (
 - Up to 5 files and 3 MB in total per request (photos are shrunk on the client's phone before sending, so this is usually several photos).
 - A free Gmail account can send about 100 emails a day from a script; Google Workspace allows more.
 - The page tells the client their request was received only after the Sheet, the files and the email have all been saved.
+
+## Optional: an alert when a request is not delivered
+
+If the Sheet script is down or the URL is wrong, the client sees "we couldn't send your request", and the website writes
+the request's reference, name and phone number to the Vercel function log. To be told straight away, add a second
+environment variable in Vercel, `INTAKE_ALERT_URL`, set to any webhook that accepts JSON with a `text` field (a Slack or
+Google Chat incoming webhook works). Then redeploy.
+
+## Reference numbers
+
+Every request gets a reference such as `10F-261103-K7QP`. The client sees it on the thank-you screen; it is in the
+"Reference" column of the Sheet, the email subject and the Drive folder name. If you set the Sheet up before 3 Nov 2026,
+paste the new `Code.gs` and redeploy (see "If you change the script later"), and add a "Reference" column after "Received".
+
+## Visitor numbers
+
+The pages load Vercel Web Analytics (no cookies). Turn it on once in Vercel: open the project, **Analytics**, **Enable**.
+Until then the browser shows a harmless "not found" for `/_vercel/insights/script.js`.
+

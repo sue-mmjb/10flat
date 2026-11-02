@@ -19,9 +19,14 @@ when, the Texas county, your preferred language, whether you have seen a doctor 
 involved, whether you already have a lawyer, your description of the incident and your injuries, and any photos or
 documents you attach. If you message us on WhatsApp, by text or by email, we receive what you send there.</p>
 <p><b>What our systems record.</b> Like any website, our hosting provider records basic technical information such as
-your IP address, browser type and the pages requested, to keep the site secure and working. Fonts and some page code
-load from outside providers (Google Fonts, Framer and jsDelivr), which receive your IP address when your browser fetches
-them. We do not use advertising or analytics cookies, and we do not use tracking pixels.</p>
+your IP address, browser type and the pages requested, to keep the site secure and working. Fonts load from outside
+providers (Google Fonts and Framer), which receive your IP address when your browser fetches them. We use Vercel Web
+Analytics to count visits and see which pages and buttons are used; it does not use cookies and does not identify you.
+We do not use advertising cookies or tracking pixels.</p>
+
+<h2>Text messages</h2>
+<p>If you tick the consent box on the case form, we may text you about your request. Message and data rates may apply.
+Reply STOP at any time to stop texts.</p>
 
 <h2>How we use it</h2>
 <ul>

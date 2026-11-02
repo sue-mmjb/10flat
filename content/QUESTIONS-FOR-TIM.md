@@ -14,6 +14,14 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 3. Slider range: I set $10,000 to $1,000,000, starting at $100,000. You said 10flat takes cases "as low as $1,000 to 100 million and up". Keep $10,000 as the floor, or go lower?
 4. Which cases qualify for the 10%? The explainer says straightforward, well-documented cases, mainly car accidents, with medical and dental injury as case types. You also said "AI will reject client fraud and frivolous lawsuits". The screening rule we publish needs legal sign-off.
 
+**From Chandana's website review (2 Nov), still needing you**
+R1. The responsible attorney: name, photo, Texas bar number and office city. Texas advertising rules require a named lawyer, and the review calls it the single biggest missing piece. The rebuilt home page has no attorney block until you give them.
+R2. A WhatsApp number and a phone number. The review asks for a WhatsApp button and phone next to every "Start your case" and in a sticky phone bar; there is no number to link to yet. The calculator already has "Share on WhatsApp", which needs no number.
+R3. Spanish. "Se habla español" is off the site (review: ship /es or remove it). When Spanish-speaking staff are in place, we build /es and Spanish intake.
+R4. Fee basis. The review recommends the fee after costs (memo, explainer); the SOW of 3 Nov says 10% of the gross recovery, which is what the site, FAQ, footer, terms and schema all say now. Confirm with ethics counsel and make the fee agreement match.
+R5. Ethics counsel: advertising-review filing with the State Bar, and the text-message wording now on /start ("Message and data rates may apply. Reply STOP to opt out of texts.").
+R6. A real answer time ("by 6 pm tomorrow") for the thank-you screen, a "For lawyers" page and the case-type pages (car, truck, dental, medical, slip and fall), the hero redraw (gavel smashing "33%"), press logos and reviews: all in the review's later list.
+
 **Firm details**
 0. Domain. You wrote on 30 October "We secured the name 10flatlaw.com", but 10flatlaw.com is not registered (registry lookup, 3 November). tenflatlaw.com was registered at GoDaddy that same day. Which one did you buy? If it was tenflatlaw.com, should we also register 10flatlaw.com before someone else does? The site, the Privacy and Terms pages and the planned contact@10flatlaw.com mailbox all use 10flatlaw.com.
 5. Registered entity: the explainer's legal line says "10Flat Law [PLLC]". What is the exact entity name for the footer? The footer currently reads "10flat Law [PLLC], Texas" and nothing else.

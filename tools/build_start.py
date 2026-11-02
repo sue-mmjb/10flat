@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_site import CONFIG  # noqa: E402
+from texas_counties import COUNTIES  # noqa: E402
 
 OUT = ROOT / "site" / "start" / "index.html"
 FIRM = CONFIG["firm"]
@@ -28,10 +29,24 @@ DISCLAIMER = (
 FOOTER = (f'<footer><p>{escape(DISCLAIMER)}</p><p class="flinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a>'
           f'<span>© 2026 {FIRM}. All rights reserved.</span></p></footer>')
 
+# Vercel Web Analytics: cookieless page views (enable it once in Vercel > Analytics). track() records custom events
+# where the plan supports them and does nothing otherwise.
+ANALYTICS = ("<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};"
+             "window.track=function(n,d){try{window.va('event',{name:n,data:d})}catch(e){}};</script>"
+             '<script defer src="/_vercel/insights/script.js"></script>')
+
+
+def nav(start_button=True):
+    btn = '<a class="navbtn" href="/start" onclick="track(\'start_click\',{from:\'nav\'})">Start your case</a>' if start_button else ""
+    return (f'<a class="skip" href="#main">Skip to content</a>'
+            f'<header class="nav"><a class="mark" href="/" aria-label="{FIRM} home">{FIRM}</a>'
+            '<nav class="navlinks" aria-label="Main"><a href="/#how">How it works</a><a href="/#fees">Fees</a><a href="/#faq">FAQ</a></nav>'
+            f'{btn}</header>')
+
+
 FONTS = """
 @font-face{font-family:"Perfektta ExtraBold";src:url("https://framerusercontent.com/assets/ehgAhB5skp3UmdaHTx9XRxEGak.woff2");font-display:swap;font-weight:800}
 @font-face{font-family:"GT Alpina Medium";src:url("https://framerusercontent.com/assets/akcrPmCPzVvRITrHAHEcGkGliuE.woff2");font-display:swap;font-weight:500}
-@font-face{font-family:"Archivo SemiExpanded SemiBold";src:url("https://framerusercontent.com/assets/Yy0SUpLGt8QS5Po9OqrTNSyrc.woff2");font-display:swap;font-weight:600}
 @font-face{font-family:"Instrument Sans";src:url("https://fonts.gstatic.com/s/instrumentsans/v4/pximypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr-yp2JGEJOH9npSTF-QfwmS0v3_7Y.woff2");font-display:swap;font-weight:400}
 @font-face{font-family:"Instrument Sans";src:url("https://fonts.gstatic.com/s/instrumentsans/v4/pximypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr-yp2JGEJOH9npSQb_gfwmS0v3_7Y.woff2");font-display:swap;font-weight:600}
 """
@@ -42,13 +57,20 @@ CSS = """
 [hidden]{display:none!important}
 html,body{margin:0;background:var(--egg);color:var(--ink);font:400 16px/1.5 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:rgba(247,245,239,.92);backdrop-filter:blur(8px)}
-.mark{font:800 26px/1 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.03em;text-decoration:none}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:28px;padding:16px 32px;background:rgba(247,245,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent}
+.mark{font:800 26px/1 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.03em;text-decoration:none;margin-right:auto}
+.navlinks{display:flex;gap:24px;font:600 15px/1 "Instrument Sans",sans-serif}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{text-decoration:underline;text-underline-offset:4px}
+.navbtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:var(--yellow);font:600 15px/1 "Instrument Sans",sans-serif;text-decoration:none}
+.navbtn:hover{background:#2c211d}
 .back{font:600 15px/1 "Instrument Sans",sans-serif;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
 .back:hover{text-decoration:underline}
+@media(max-width:760px){.navlinks{display:none}.nav{padding:12px 20px;gap:12px}.mark{font-size:22px}.navbtn{min-height:40px;padding:0 16px;font-size:14px}}
 .wrap{max-width:1180px;margin:0 auto;padding:40px 32px 72px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
 .intro{position:sticky;top:96px}
-.eyebrow{font:600 12px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;margin:0 0 16px}
 h1{font:800 clamp(40px,5vw,64px)/.95 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.03em;margin:0 0 24px}
 .lead{font:500 20px/1.45 "GT Alpina Medium",Georgia,serif;margin:0 0 28px}
 .points{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:10px}
@@ -78,7 +100,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .note{background:var(--field);border-radius:14px;padding:14px 16px;font-size:14px;margin:12px 0 0}
 .consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--muted);font-weight:400}
 .consent input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:var(--ink)}
-.btn{width:100%;border:0;border-radius:999px;background:var(--yellow);color:var(--ink);min-height:58px;font:600 14px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .15s ease,background .15s}
+.btn{width:100%;border:0;border-radius:999px;background:var(--yellow);color:var(--ink);min-height:58px;font:600 17px/1 "Instrument Sans",sans-serif;cursor:pointer;transition:transform .15s ease,background .15s}
 .btn:hover{background:#f5d800}
 .btn:active{transform:scale(.99)}
 .btn[disabled]{opacity:.6;cursor:progress}
@@ -107,6 +129,11 @@ footer p{margin:0 0 12px}
 .flinks{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .flinks a{color:var(--ink);text-underline-offset:3px}
 .consent a{color:var(--ink)}
+.hint{font-size:13px;line-height:1.45;color:var(--muted);margin:0}
+.warn{background:#fff4d6;border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45;margin:0}
+.unsure{display:flex;gap:8px;align-items:center;font-weight:400;font-size:14px;color:var(--muted)}
+.unsure input{width:18px;height:18px;margin:0;accent-color:var(--ink)}
+.ref{display:inline-block;background:var(--field);border-radius:10px;padding:8px 12px;font:600 15px/1 "Instrument Sans",sans-serif;letter-spacing:.04em}
 @media(max-width:900px){
   .wrap{grid-template-columns:1fr;gap:28px;padding:20px 20px 56px}
   .intro{position:static}
@@ -124,6 +151,19 @@ JS = """
 (function () {
   var form = document.getElementById('case-form'), el = function (n) { return form.elements.namedItem(n); }, btn = document.getElementById('send'), formErr = document.getElementById('form-err');
   var date = document.getElementById('f-date');
+  var TYPES = { car: 'Car accident', truck: 'Truck accident', fall: 'Slip and fall', medical: 'Medical injury', dental: 'Dental injury', other: 'Something else' };
+  var q = new URLSearchParams(location.search).get('type'); if (q && TYPES[q]) el('incident').value = TYPES[q];
+  var COUNTIES = [].map.call(document.querySelectorAll('#tx-counties option'), function (o) { return o.value.toLowerCase(); });
+  var countyNote = document.getElementById('county-note'), deadline = document.getElementById('deadline-note'), unsure = document.getElementById('f-unsure');
+  function countyCheck() { var v = el('county').value.trim().toLowerCase().replace(/\\s+county$/, ''); countyNote.hidden = !v || COUNTIES.indexOf(v) > -1; }
+  el('county').addEventListener('change', countyCheck); el('county').addEventListener('blur', countyCheck);
+  function deadlineCheck() {
+    var v = el('date').value; if (!v || unsure.checked) { deadline.hidden = true; return; }
+    var months = (Date.now() - new Date(v + 'T12:00:00').getTime()) / (1000 * 60 * 60 * 24 * 30.44);
+    deadline.hidden = months < 20;
+  }
+  el('date').addEventListener('change', deadlineCheck); el('date').addEventListener('input', deadlineCheck);
+  unsure.addEventListener('change', function () { date.required = !unsure.checked; deadlineCheck(); if (form.querySelector('[data-field="date"]').classList.contains('bad')) check(); });
   var t = new Date(); date.max = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
   var lawyerNote = document.getElementById('lawyer-note');
   [].forEach.call(form.querySelectorAll('input[name=lawyer]'), function (r) {
@@ -175,7 +215,7 @@ JS = """
     name: 'Please tell us your name.',
     phone: 'Please enter a mobile number we can reach you on.',
     incident: 'Please choose what happened.',
-    date: 'Please enter the date it happened (not in the future).',
+    date: 'Please enter the date it happened (not in the future), or tick “not sure” and give your best guess.',
     county: 'Please enter the Texas county where it happened.',
     treatment: 'Please tell us whether you have seen a doctor or dentist.',
     story: 'Please tell us briefly what happened and how you were hurt.',
@@ -195,7 +235,7 @@ JS = """
     var digits = v.phone.replace(/[^0-9]/g, '');
     var ok = {
       name: v.name.length >= 2, phone: digits.length >= 10 && digits.length <= 15, incident: !!v.incident,
-      date: !!v.date && v.date <= date.max, county: v.county.length >= 2, treatment: !!v.treatment, story: v.story.length >= 10, consent: v.consent
+      date: (!!v.date && v.date <= date.max) || (unsure.checked && (!v.date || v.date <= date.max)), county: v.county.length >= 2, treatment: !!v.treatment, story: v.story.length >= 10, consent: v.consent
     };
     Object.keys(ok).forEach(function (k) { setErr(k, ok[k] ? '' : MSG[k]); if (!ok[k]) bad.push(k); });
     return bad;
@@ -208,7 +248,7 @@ JS = """
     if (bad.length) { var first = form.querySelector('[data-field="' + bad[0] + '"] input, [data-field="' + bad[0] + '"] select, [data-field="' + bad[0] + '"] textarea'); if (first) first.focus(); return; }
     var data = {
       name: el('name').value.trim(), phone: el('phone').value.trim(), incident: el('incident').value, date: el('date').value,
-      county: el('county').value.trim(), language: el('language').value, treatment: el('treatment').value,
+      dateUnsure: unsure.checked, county: el('county').value.trim(), language: el('language').value, treatment: el('treatment').value,
       insurer: el('insurer').value.trim(), story: el('story').value.trim(), hasLawyer: el('lawyer').value === 'yes',
       consent: true, company: el('company').value, page: location.href
     };
@@ -221,6 +261,8 @@ JS = """
       .then(function (res) {
         if (res.status === 200 && res.body.ok) {
           document.getElementById('done-name').textContent = data.name.split(/\\s+/)[0];
+          document.getElementById('done-ref').textContent = res.body.ref || '';
+          window.track && track('form_sent', { type: data.incident });
           form.hidden = true; var d = document.getElementById('done'); d.hidden = false; d.focus();
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
@@ -257,8 +299,13 @@ def build():
         field("name", "Your name", '<input type="text" id="f-name" name="name" autocomplete="name" maxlength="100" aria-describedby="e-name">'),
         field("phone", "Mobile number", '<input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="e-phone">'),
         field("incident", "What happened?", f'<select id="f-incident" name="incident" aria-describedby="e-incident">{case_opts}</select>'),
-        field("date", "When did it happen?", '<input type="date" id="f-date" name="date" aria-describedby="e-date">'),
-        field("county", "Texas county", '<input type="text" id="f-county" name="county" autocomplete="address-level2" maxlength="60" aria-describedby="e-county">'),
+        field("date", "When did it happen?", '<input type="date" id="f-date" name="date" aria-describedby="e-date">'
+              '<label class="unsure"><input type="checkbox" id="f-unsure" name="unsure"> I’m not sure of the exact date</label>'
+              '<p class="warn" id="deadline-note" hidden>Texas injury deadlines are generally two years from the date of the injury. '
+              'Please send this today, and an attorney will look at the deadline first.</p>'),
+        field("county", "Texas county", '<input type="text" id="f-county" name="county" list="tx-counties" autocomplete="off" maxlength="60" aria-describedby="e-county">'
+              '<datalist id="tx-counties">' + "".join(f'<option value="{c}">' for c in COUNTIES) + '</datalist>'
+              '<p class="hint" id="county-note" hidden>We couldn’t match that to a Texas county. If it happened outside Texas we may not be able to help, but send it anyway and we’ll tell you.</p>'),
         field("language", "Preferred language", '<select id="f-language" name="language"><option>English</option><option>Español</option></select>'),
         radios("treatment", "Have you seen a doctor or dentist for this?", [("yes", "Yes"), ("no", "No"), ("scheduled", "Appointment scheduled")]),
         field("story", "Briefly, what happened and how were you hurt?", '<textarea id="f-story" name="story" maxlength="4000" aria-describedby="e-story"></textarea>', full=True),
@@ -270,37 +317,23 @@ def build():
         radios("lawyer", "Do you already have a lawyer for this?", [("no", "No"), ("yes", "Yes")], checked="no"),
         '<p class="note full" id="lawyer-note" hidden>Thanks for telling us. An attorney will read your request first. We don’t ask people who already have a lawyer to switch; if you want to talk about changing lawyers, say so above.</p>',
         f'<div class="field full" data-field="consent"><label class="consent"><input type="checkbox" id="f-consent" name="consent" aria-describedby="e-consent">'
-        f'<span>I agree that {FIRM} may contact me about my request by phone, text or WhatsApp, and that technology helps organize my information for attorney review, as the <a href="/privacy" target="_blank">Privacy Policy</a> explains.</span></label>'
+        f'<span>I agree that {FIRM} may contact me about my request by phone, text or WhatsApp, and that technology helps organize my information for attorney review, as the <a href="/privacy" target="_blank">Privacy Policy</a> explains. Message and data rates may apply. Reply STOP to opt out of texts.</span></label>'
         f'<p class="err" id="e-consent" aria-live="polite"></p></div>',
         '<div class="hp" aria-hidden="true"><label for="f-company">Company</label><input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off"></div>',
         '<p class="formerr full" id="form-err" role="alert"></p>',
         '<div class="full"><button type="submit" class="btn" id="send">Send for attorney review</button></div>',
     ])
-    robots = '<meta name="robots" content="noindex, nofollow">' if CONFIG.get("noindex") else ""
-    page = f"""<!doctype html>
-<!-- Built by tools/build_start.py. Do not edit by hand; edit the script and rebuild. -->
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Start your case | {FIRM}</title>
-<meta name="description" content="Tell {FIRM} what happened. A licensed Texas attorney reviews every request. 10% fee, even at trial; no fee and no costs without a recovery.">
-{robots}
-<link rel="canonical" href="https://{CONFIG['domain']}/start">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffe435'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%23140c0a'%3E10%3C/text%3E%3C/svg%3E">
-<style>{FONTS}{CSS}</style>
-</head>
+    page = head("Start your case", f"Tell {FIRM} what happened. A licensed Texas attorney reviews every request. 10% fee, even at trial; no fee and no costs without a recovery.", "/start") + f"""
 <body>
-<header class="nav"><a class="mark" href="/">{FIRM}</a><a class="back" href="/">&larr; Back to home</a></header>
-<main class="wrap">
+{nav(start_button=False)}
+<main class="wrap" id="main">
   <section class="intro" aria-labelledby="h">
-    <p class="eyebrow">Start my case review</p>
     <h1 id="h">Tell us what happened.</h1>
     <p class="lead">It takes about three minutes. A licensed Texas attorney reviews every request, and we tell you when to expect an answer, whether or not we can take your case.</p>
     <ul class="points">
       <li>10% fee, even at trial</li>
       <li>No fee and no costs without a recovery</li>
-      <li>Se habla español</li>
+      <li>A licensed Texas attorney reviews every request</li>
     </ul>
     <p class="fine">Sending this form does not create an attorney-client relationship. Please don’t send anything you consider highly sensitive, such as full medical records; your attorney will ask for those securely later.</p>
   </section>
@@ -309,6 +342,7 @@ def build():
     <div class="done" id="done" hidden tabindex="-1">
       <h2>Thank you, <span id="done-name"></span>.</h2>
       <p>We have your request. A licensed Texas attorney will review it.</p>
+      <p>Your reference: <span class="ref" id="done-ref"></span></p>
       <ol>
         <li>We message you on the mobile number you gave us, with the date to expect an answer.</li>
         <li>The attorney reviews what you sent and may ask for a few more details.</li>
@@ -346,19 +380,39 @@ DOC_CSS = """
 """
 
 
-def head(title, desc, path, extra_css=""):
+def head(title, desc, path, extra_css="", full_title=None):
+    """Shared <head>: title, description, canonical, link preview (Open Graph / Twitter), icons, analytics, styles."""
     robots = '<meta name="robots" content="noindex, nofollow">' if CONFIG.get("noindex") else ""
+    url = f"https://{CONFIG['domain']}{path}"
+    t = full_title or f"{title} | {FIRM}"
     return f"""<!doctype html>
-<!-- Built by tools/build_start.py. Do not edit by hand; edit the script and rebuild. -->
+<!-- Built by tools/build_start.py / tools/build_home.py. Do not edit by hand; edit the script and rebuild. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} | {FIRM}</title>
+<title>{t}</title>
 <meta name="description" content="{desc}">
 {robots}
-<link rel="canonical" href="https://{CONFIG['domain']}{path}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffe435'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%23140c0a'%3E10%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{FIRM}">
+<meta property="og:title" content="{t}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="https://{CONFIG['domain']}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="10% fee. Even at trial. 10flat Law.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{t}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="https://{CONFIG['domain']}/og.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ffe435">
+{ANALYTICS}
 <style>{FONTS}{CSS}{extra_css}</style>
 </head>"""
 
@@ -370,8 +424,8 @@ def build_legal():
         ("terms", "Terms of Use", f"The terms for using the {FIRM} website.", TERMS),
     ):
         page = (head(title, desc, f"/{slug}", DOC_CSS) +
-                f'\n<body>\n<header class="nav"><a class="mark" href="/">{FIRM}</a><a class="back" href="/">&larr; Back to home</a></header>\n'
-                f'<main class="doc"><p class="eyebrow">{FIRM}</p><h1>{title}</h1><p class="updated">Last updated {UPDATED}</p>{body}</main>\n'
+                '\n<body>\n' + nav() + '\n'
+                f'<main class="doc" id="main"><h1>{title}</h1><p class="updated">Last updated {UPDATED}</p>{body}</main>\n'
                 f'{FOOTER}\n</body>\n</html>\n')
         out = ROOT / "site" / slug / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)

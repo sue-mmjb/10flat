@@ -16,7 +16,7 @@ const NOTIFY_TO = '10flatlaw@gmail.com';
 const SHEET_NAME = 'Case requests';                  // tab created on first use
 const FOLDER_NAME = '10flat Law case uploads';       // Drive folder created on first use (private to this account)
 
-const HEADERS = ['Received (Texas time)', 'Name', 'Mobile', 'What happened', 'Date of incident', 'Texas county',
+const HEADERS = ['Received (Texas time)', 'Reference', 'Name', 'Mobile', 'What happened', 'Date of incident', 'Texas county',
   'Language', 'Seen a doctor or dentist', 'Already has a lawyer', 'Insurance company', 'What happened and injuries',
   'Files', 'Status'];
 
@@ -33,7 +33,7 @@ function doPost(e) {
     const blobs = [];
     const links = [];
     if (Array.isArray(d.files) && d.files.length) {
-      const folder = subFolder(rootFolder(), received + ' ' + (d.name || 'request'));
+      const folder = subFolder(rootFolder(), received + ' ' + (d.ref ? d.ref + ' ' : '') + (d.name || 'request'));
       d.files.forEach(function (f) {
         const blob = Utilities.newBlob(Utilities.base64Decode(f.data), f.type || 'application/octet-stream', f.name || 'file');
         const file = folder.createFile(blob);
@@ -52,11 +52,12 @@ function doPost(e) {
       sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
     }
     const treatment = { yes: 'Yes', no: 'No', scheduled: 'Appointment scheduled' }[d.treatment] || d.treatment;
-    sheet.appendRow([received, d.name, d.phone, d.incident, d.date, d.county, d.language, treatment,
+    const when = d.dateUnsure ? (d.date ? 'About ' + d.date + ' (not sure)' : 'Not sure') : d.date;
+    sheet.appendRow([received, d.ref || '', d.name, d.phone, d.incident, when, d.county, d.language, treatment,
       d.hasLawyer ? 'Yes' : 'No', d.insurer || '', d.story, links.join('\n'), 'New'].map(safe));
 
     // 3. the email
-    const rows = [['Name', d.name], ['Mobile', d.phone], ['What happened', d.incident], ['Date of incident', d.date],
+    const rows = [['Name', d.name], ['Mobile', d.phone], ['What happened', d.incident], ['Reference', d.ref || ''], ['Date of incident', when],
       ['Texas county', d.county], ['Language', d.language], ['Seen a doctor or dentist', treatment],
       ['Already has a lawyer', d.hasLawyer ? 'Yes' : 'No'], ['Insurance company', d.insurer || '(not given)'],
       ['Files', links.length ? links.length + ' attached' : 'None']];
@@ -67,7 +68,7 @@ function doPost(e) {
       '<p style="font:13px Arial,sans-serif;color:#666">Saved in the "' + SHEET_NAME + '" sheet: ' + ss.getUrl() + '</p>';
     MailApp.sendEmail({
       to: NOTIFY_TO,
-      subject: 'New case request: ' + d.incident + ', ' + d.county + ' County (' + d.name + ')',
+      subject: 'New case request ' + (d.ref ? d.ref + ': ' : ': ') + d.incident + ', ' + d.county + ' County (' + d.name + ')',
       htmlBody: html,
       attachments: blobs,
       name: '10flat Law website',

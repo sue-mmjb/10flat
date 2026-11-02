@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /classic/
+Disallow: /v2/
+Disallow: /api/
+
+Sitemap: https://10flatlaw.com/sitemap.xml

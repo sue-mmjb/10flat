@@ -37,7 +37,7 @@ CONFIG = {
     "brand": "10flat Law",
     "domain": "10flatlaw.com",
     "title": "10% Injury Fee, Even at Trial | 10flat Law",
-    "description": "Most injury firms take 33–40% of your settlement. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
+    "description": "A one-third fee is common for Texas injury cases. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
     "noindex": True,  # prototype. Set False at launch.
     # One fee for every case type, no percentage on the tabs. Case types from the platform SOW v2.0 (3 Nov 2026).
     "rates": [
