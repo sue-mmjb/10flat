@@ -250,6 +250,16 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 }
 @media(max-width:860px){
   .steps,.prom{grid-template-columns:1fr}
+  .steps{gap:0;padding-bottom:0}
+  .steps li{position:sticky;top:calc(var(--stack-top,76px) + var(--i) * 14px);min-height:min(560px,calc(100svh - 190px));margin-bottom:32px;
+    padding:28px 26px 30px;border-radius:28px;box-shadow:0 -10px 30px -18px rgba(20,12,10,.35);transform-origin:50% 0;will-change:transform}
+  .steps li:last-child{margin-bottom:0}
+  .steps::after{content:"";display:block;height:26vh}   /* room inside the sticky area, so the finished stack holds for a moment */
+  .steps li.c1{background:#ffe435}
+  .steps li.c2{background:#b8d63a}
+  .steps li.c3{background:#f4b0d8}
+  .steps li .num{background:var(--ink);color:#fff}
+  .steps img{max-height:220px;margin-bottom:22px}
   .compare{grid-template-columns:1fr}
   .money-box{grid-template-columns:1fr;gap:10px}
 }
@@ -447,7 +457,7 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
   <div class="in">
     <h2 class="h2" id="how-h">How it works</h2>
     <p class="body">Three steps, mostly from your phone. No waiting room.</p>
-    <ol class="steps"><li><img src="/assets/step-1.webp" alt="Drawing of a phone sending photos and documents, next to a speech bubble with an exclamation and question mark." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">1</span><h3 class="h3">Tell us what happened.</h3><p>Send your case with our short online form, with any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. You meet your attorney before you sign anything.</p></li><li><img src="/assets/step-2.webp" alt="Drawing of document folders being stacked into a folder labelled Case by a small crane." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">2</span><h3 class="h3">We build your case.</h3><p>Our software organizes your records, requests what’s missing, builds a timeline of your treatment, totals your bills and tracks every deadline. A trained case team checks the work.</p></li><li><img src="/assets/step-3.webp" alt="Drawing of the scales of justice, a briefcase and a bag of money tied with a ribbon, moving forward." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">3</span><h3 class="h3">We pursue your recovery.</h3><p>Your attorney reviews your case, advises you and negotiates with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval, and you decide every offer. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li></ol>
+    <ol class="steps"><li class="c1" style="--i:0"><img src="/assets/step-1.webp" alt="Drawing of a phone sending photos and documents, next to a speech bubble with an exclamation and question mark." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">1</span><h3 class="h3">Tell us what happened.</h3><p>Send your case with our short online form, with any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. You meet your attorney before you sign anything.</p></li><li class="c2" style="--i:1"><img src="/assets/step-2.webp" alt="Drawing of document folders being stacked into a folder labelled Case by a small crane." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">2</span><h3 class="h3">We build your case.</h3><p>Our software organizes your records, requests what’s missing, builds a timeline of your treatment, totals your bills and tracks every deadline. A trained case team checks the work.</p></li><li class="c3" style="--i:2"><img src="/assets/step-3.webp" alt="Drawing of the scales of justice, a briefcase and a bag of money tied with a ribbon, moving forward." width="320" height="220" loading="lazy" decoding="async"><span class="num" aria-hidden="true">3</span><h3 class="h3">We pursue your recovery.</h3><p>Your attorney reviews your case, advises you and negotiates with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval, and you decide every offer. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li></ol>
   </div>
 </section>
 
@@ -568,6 +578,28 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
   $('#c-share').addEventListener('click', function () { window.track && track('calc_share_whatsapp'); });
   $('#c-start').addEventListener('click', function () { window.track && track('start_click', { from: 'calculator', type: state.type }); });
   render();
+})();
+</script>
+<script>
+(function () {
+  // Stacked step cards on phones: as the next card slides over, the covered one shrinks a little (like the reference).
+  var mq = window.matchMedia('(max-width: 860px)'), reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var cards = [].slice.call(document.querySelectorAll('.steps li')), ticking = false;
+  var nav = document.querySelector('.nav');
+  function setTop() { document.documentElement.style.setProperty('--stack-top', ((nav ? nav.getBoundingClientRect().height : 64) + 12) + 'px'); }
+  function update() {
+    ticking = false;
+    cards.forEach(function (c, i) {
+      if (!mq.matches || reduce.matches || i === cards.length - 1) { c.style.transform = ''; return; }
+      var r = c.getBoundingClientRect(), n = cards[i + 1].getBoundingClientRect();
+      var covered = Math.min(1, Math.max(0, (r.bottom - n.top) / r.height));
+      c.style.transform = 'scale(' + (1 - 0.06 * covered).toFixed(4) + ')';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  setTop(); update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { setTop(); onScroll(); });
 })();
 </script>
 </body>

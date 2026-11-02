@@ -250,6 +250,16 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 }
 @media(max-width:860px){
   .steps,.prom{grid-template-columns:1fr}
+  .steps{gap:0;padding-bottom:0}
+  .steps li{position:sticky;top:calc(var(--stack-top,76px) + var(--i) * 14px);min-height:min(560px,calc(100svh - 190px));margin-bottom:32px;
+    padding:28px 26px 30px;border-radius:28px;box-shadow:0 -10px 30px -18px rgba(20,12,10,.35);transform-origin:50% 0;will-change:transform}
+  .steps li:last-child{margin-bottom:0}
+  .steps::after{content:"";display:block;height:26vh}   /* room inside the sticky area, so the finished stack holds for a moment */
+  .steps li.c1{background:#ffe435}
+  .steps li.c2{background:#b8d63a}
+  .steps li.c3{background:#f4b0d8}
+  .steps li .num{background:var(--ink);color:#fff}
+  .steps img{max-height:220px;margin-bottom:22px}
   .compare{grid-template-columns:1fr}
   .money-box{grid-template-columns:1fr;gap:10px}
 }
