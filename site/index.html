@@ -363,6 +363,9 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   .framer-1j23hd2-container{transition:transform .1s linear}
 }
 @media(max-width:1199.98px){
+  /* The three step cards had a fixed height shorter than our text and centred it, so headings rode over the
+     top edge on phones. Let each card grow to its content and keep the 48px padding. */
+  .framer-9g4wr0 [data-framer-name^="Card"]{height:auto!important;max-height:none!important;min-height:440px}
   /* Steps 1 and 2 on tablet and phone: Framer left the column at scale(.9), so the beige frames were narrower
      than the reference; the frames size to their cards (see the stuck-wrapper fix in main). */
   .framer-1jodbn0 .framer-6c6fbx{transform:none!important}
