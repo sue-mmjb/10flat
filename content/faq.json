@@ -143,7 +143,7 @@
         },
         {
           "q": "Does 10flat Law have an office I can visit?",
-          "a": "Your case runs from your phone. You send documents by WhatsApp, see everything in your case file, and talk to your attorney by phone or video. That is part of how we keep the fee at 10%."
+          "a": "Your case runs from your phone. You send documents online, see everything in your case file, and talk to your attorney by phone or video. That is part of how we keep the fee at 10%."
         },
         {
           "q": "Does 10flat Law take cases outside Texas?",
@@ -197,11 +197,11 @@
       "items": [
         {
           "q": "How do I start a case with 10flat Law?",
-          "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."
+          "a": "Fill in our short online case form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."
         },
         {
           "q": "Can I hire an injury lawyer over WhatsApp?",
-          "a": "Yes. WhatsApp is how you start with 10flat Law, send documents and get updates. The fee agreement is signed electronically. You never have to come to an office."
+          "a": "You start online with our short case form, and we can keep in touch by phone, text or WhatsApp, whichever you prefer. The fee agreement is signed electronically. You never have to come to an office."
         },
         {
           "q": "What should I send a lawyer after a car accident?",
@@ -330,7 +330,7 @@
         },
         {
           "q": "¿Hay abogados de accidentes en Texas que cobran solo el 10%?",
-          "a": "Sí. 10flat Law es un bufete de lesiones personales en Texas que cobra el 10%. Si no hay recuperación, no paga honorarios ni gastos del caso. Escríbanos por WhatsApp en español y un abogado con licencia en Texas revisará su caso."
+          "a": "Sí. 10flat Law es un bufete de lesiones personales en Texas que cobra el 10%. Si no hay recuperación, no paga honorarios ni gastos del caso. Envíenos su caso con nuestro formulario en línea, elija español, y un abogado con licencia en Texas lo revisará."
         },
         {
           "q": "¿Cuánto cobra un abogado de accidentes en Texas?",
@@ -371,7 +371,7 @@
         },
         {
           "q": "How do I contact 10flat Law?",
-          "a": "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español."
+          "a": "Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español."
         }
       ]
     }

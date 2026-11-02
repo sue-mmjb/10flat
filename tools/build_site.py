@@ -312,7 +312,7 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <ol class="pi-steps">
-      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help.</p></li>
+      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">2</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We build your case.</h3><p class="framer-text framer-styles-preset-1fc2js5">Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">3</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We pursue your recovery.</h3><p class="framer-text framer-styles-preset-1fc2js5">Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval. You decide every offer, after your attorney advises you. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li>
     </ol>
@@ -347,7 +347,7 @@ def build_sections(btn):
 <section class="pi-section pi-yellow" id="start" aria-labelledby="start-h">
   <div class="pi-wrap pi-center">
     <h2 id="start-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Start your case. It takes about ten minutes.</h2>
-    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Message us on WhatsApp, or answer a few questions here. You can stop and come back. Nothing here commits you to anything. It’s free to find out if we can help.</p>
+    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Answer a few questions here. It takes about three minutes. Nothing here commits you to anything. It’s free to find out if we can help.</p>
     <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español, from your first message to your settlement.</p>
   </div>
   <div class="pi-wrap pi-narrow">
@@ -361,7 +361,7 @@ def build_sections(btn):
       <div class="pi-field"><label for="f-docs" class="framer-text framer-styles-preset-7jf1zc">5. Documents you already have (photos, police report, medical bills)</label><input id="f-docs" name="docs" type="file" multiple class="pi-input pi-file framer-text framer-styles-preset-u2fub4"></div>
       <div class="pi-field"><label for="f-contact" class="framer-text framer-styles-preset-7jf1zc">6. How to reach you</label><input id="f-contact" name="contact" type="text" class="pi-input framer-text framer-styles-preset-u2fub4" autocomplete="off" placeholder="Phone or email"></div>
       <button type="submit" class="pi-submit framer-text framer-styles-preset-ivrpyo">Submit my case</button>
-      <p class="pi-form-msg framer-text framer-styles-preset-u2fub4" id="intake-msg" hidden>Thank you. Online intake is not open yet, so nothing was sent. Please start your case on WhatsApp for now.</p>
+      <p class="pi-form-msg framer-text framer-styles-preset-u2fub4" id="intake-msg" hidden>Thank you. This form is a preview, so nothing was sent. Please use our <a href="/start">online case form</a>.</p>
       <p class="pi-fine framer-text framer-styles-preset-10holly">Contacting us does not create an attorney-client relationship until a fee agreement is signed. A licensed Texas attorney reviews your answers, and we tell you when to expect an answer.</p>
     </form>
   </div>

@@ -45,7 +45,7 @@ GLOBAL = [
      "Type or slide to a settlement amount. You’ll see our 10% fee next to the fee at a typical 33% firm, and how much more of your settlement you keep."),
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
-     "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
+     "Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
     # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat Law brief
     (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% fee, even at trial<"),
     (">$575/mo<", ">$85,000<"), (">Total Allowance<", ">After fee and costs (example)<"), (">Maria’s Stack<", ">Documents received<"),
@@ -96,7 +96,7 @@ SCOPED = {
         (">control</span>.", ">No waiting room</span>."),
         (">You set the budget.<", ">1. Tell us what happened.<"),
         ("Pick a monthly amount you can contribute. That’s your number. It doesn’t move unless you want it to. No surprise renewals.",
-         "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
+         "Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
         (">Your team builds their plan.<", ">2. We build your case.<"),
         ("Stack guides each employee to coverage that fits them like their favorite pair of pants. If they're HSA-eligible, we help them maximize HSA funding to build a healthier financial future.",
          "Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work."),
@@ -166,6 +166,36 @@ CASE_HTML = """
   <div class="pi-case-stage"><b>Current stage</b> Evidence collection<i></i><b>Next step</b> Awaiting medical records<i></i>No decision needed right now</div>
   <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the 10% fee, the case costs, your medical bills and liens, and what you’d actually keep. Your attorney advises you, and you decide.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
 </div>
+"""
+
+# Scroll target for "See your fee": the step 1 screen on desktop, the step 1 box on tablet and phone.
+FEE_JS = """<script>
+(function () {
+  function target() {
+    var sel = window.innerWidth >= 1200 ? '[data-framer-name="Text Step 1"]' : '[data-framer-name="Container Configurator Mobile 1"]';
+    var all = [].slice.call(document.querySelectorAll(sel + ', [data-pi-calc]'));
+    for (var i = 0; i < all.length; i++) { if (all[i].getBoundingClientRect().width > 0) return all[i]; }
+    return null;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-pi-fee]'); if (!a) return;
+    if (!target()) return;
+    e.preventDefault();
+    function y() {
+      var t = target(), nav = document.querySelector('.framer-e8x4r3');
+      var off = window.innerWidth >= 1200 ? 0 : -((nav ? nav.getBoundingClientRect().height : 72) + 12);
+      return t.getBoundingClientRect().top + window.scrollY + off;
+    }
+    // land, then check again: late-loading fonts or images can move the section while the page scrolls
+    function go(again) {
+      var to = y();
+      if (window.lenis) window.lenis.scrollTo(to, { onComplete: function () { if (!again && Math.abs(y() - window.scrollY) > 4) go(true); } });
+      else window.scrollTo({ top: to, behavior: 'smooth' });
+    }
+    go(false);
+  });
+})();
+</script>
 """
 
 MOTION_CSS = """
@@ -626,7 +656,7 @@ def mark_appear(html):
 
 
 PROMISES = ["10% fee, even at trial", "No fee without a recovery", "We advance case costs", "No markup on case costs",
-            "No admin fees", "Licensed Texas attorney", "You decide every offer", "Se habla español", "Start on WhatsApp"]
+            "No admin fees", "Licensed Texas attorney", "You decide every offer", "Se habla español", "Start online in 3 minutes"]
 PROMISES_HTML = '<ul class="pi-promises" id="logos-strip" aria-label="What every client gets">' + "".join(
     f'<li{" class=\"is-key\"" if i == 0 else ""}>{t}</li>' for i, t in enumerate(PROMISES)) + '</ul>'
 
@@ -787,6 +817,15 @@ def main():
             return m.group(0)
         return '<a href="/start"' + re.sub(r'\s+href="[^"]*"', "", attrs) + ">" + inner + "</a>"
     html, n_start = re.subn(r"<a\b([^>]*)>(.*?)</a>", _to_start, html, flags=re.S)
+    # "See your fee" scrolls to the step 1 calculator (Sue, 3 Nov 2026)
+    def _to_fee(m):
+        attrs, inner = m.group(1), m.group(2)
+        if "See your fee" not in re.sub(r"<[^>]+>", "", inner):
+            return m.group(0)
+        return '<a href="#fee" data-pi-fee' + re.sub(r'\s+href="[^"]*"', "", attrs) + ">" + inner + "</a>"
+    html, n_fee = re.subn(r"<a\b([^>]*)>(.*?)</a>", _to_fee, html, flags=re.S)
+    assert html.count("data-pi-fee") >= 1, "See your fee button not found"
+    html = html.replace("</body>", FEE_JS + "</body>", 1)
     assert html.count('href="/start"') >= 10, html.count('href="/start"')
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
