@@ -15,6 +15,7 @@ Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/
 4. Which cases qualify for the 10%? The explainer says straightforward, well-documented cases, mainly car accidents, with medical and dental injury as case types. You also said "AI will reject client fraud and frivolous lawsuits". The screening rule we publish needs legal sign-off.
 
 **Firm details**
+0. Domain. You wrote on 30 October "We secured the name 10flatlaw.com", but 10flatlaw.com is not registered (registry lookup, 3 November). tenflatlaw.com was registered at GoDaddy that same day. Which one did you buy? If it was tenflatlaw.com, should we also register 10flatlaw.com before someone else does? The site, the Privacy and Terms pages and the planned contact@10flatlaw.com mailbox all use 10flatlaw.com.
 5. Registered entity: the explainer's legal line says "10Flat Law [PLLC]". What is the exact entity name for the footer? The footer currently reads "10flat Law [PLLC], Texas" and nothing else.
 6. Does the "Not certified by the Texas Board of Legal Specialization" line apply?
 7. Texas only at launch, or national? The site says "licensed Texas attorney" everywhere. Your messages mention "at least 1 attorney in each state" and "cheapest attorney in Texas"; if other states come later, I will keep the copy Texas-only for now.
