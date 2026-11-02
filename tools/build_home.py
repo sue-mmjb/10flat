@@ -128,8 +128,7 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 .prom{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;list-style:none;padding:0}
 .prom li{background:var(--white);border-radius:20px;padding:22px 24px;font-size:16px;line-height:1.5}
 .prom b{display:block;font:800 21px/1.15 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.01em;margin-bottom:6px}
-.prom li.dup{display:none}
-@keyframes prom-drift{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.prom-nav{display:none}
 .faq{max-width:820px;margin:32px 0 0}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;padding:20px 44px 20px 0;position:relative;font-weight:600;font-size:18px}
@@ -162,11 +161,19 @@ table.fees .diff{background:var(--yellow);font-weight:700}
 }
 @media(max-width:860px){
   .compare,.facts{grid-template-columns:1fr}
-  /* phones: the promises drift slowly left to right in one row, looping; a touch pauses them */
-  .prom-wrap{margin:36px -20px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-  .prom{display:flex;width:max-content;gap:0;margin:0;animation:prom-drift 48s linear infinite}
-  .prom li,.prom li.dup{display:block;flex:none;width:260px;margin-right:14px}
-  .prom-wrap:hover .prom,.prom-wrap:active .prom,.prom-wrap:focus-within .prom{animation-play-state:paused}
+  .prom-wrap{margin:32px -20px 0}
+  .prom{display:flex;gap:14px;margin:0;padding:0 20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+  .prom::-webkit-scrollbar{display:none}
+  .prom:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+  .prom li{flex:0 0 82%;scroll-snap-align:start;min-height:150px}
+  .prom-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px 0}
+  .prom-nav button{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);font:600 20px/1 "Instrument Sans",sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+  .prom-nav button:disabled{opacity:.3;cursor:default}
+  .prom-nav button.next{background:var(--ink);color:var(--yellow)}
+  .dots{display:flex;gap:8px}
+  .dots span{width:8px;height:8px;border-radius:50%;background:#cfc6ad;transition:width .2s,background .2s}
+  .dots span.on{width:22px;border-radius:4px;background:var(--ink)}
   .money-box{grid-template-columns:1fr;gap:10px}
   .steps{grid-template-columns:1fr;gap:0}
   .steps::after{content:"";display:block;height:26vh}
@@ -174,12 +181,6 @@ table.fees .diff{background:var(--yellow);font-weight:700}
     padding:28px 26px 30px;box-shadow:0 -10px 30px -18px rgba(20,12,10,.35);transform-origin:50% 0;will-change:transform}
   .steps li:last-child{margin-bottom:0}
   .steps img{max-height:220px;margin:0 0 22px}
-}
-@media(max-width:860px) and (prefers-reduced-motion:reduce){
-  .prom-wrap{overflow-x:auto;-webkit-mask-image:none;mask-image:none;padding:0 20px;scroll-snap-type:x mandatory}
-  .prom{animation:none}
-  .prom li{scroll-snap-align:start}
-  .prom li.dup{display:none}
 }
 @media(max-width:760px){
   .sec{padding:64px 20px}
@@ -196,6 +197,49 @@ table.fees .diff{background:var(--yellow);font-weight:700}
   .mbar a{min-height:50px;font-size:16px}
   body.has-mbar{padding-bottom:76px}
 }
+"""
+
+PROM_JS = r"""
+(function () {
+  var list = document.getElementById('prom'); if (!list) return;
+  var cards = [].slice.call(list.children), dots = [].slice.call(document.querySelectorAll('.dots span'));
+  var prev = document.querySelector('.prom-nav .prev'), next = document.querySelector('.prom-nav .next');
+  var mq = window.matchMedia('(max-width: 860px)'), reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var touched = false, timer = null, inView = false, cur = 0, settle = null;
+  function index() {
+    var x = list.scrollLeft, best = 0;
+    cards.forEach(function (c, i) { if (Math.abs(c.offsetLeft - list.offsetLeft - 20 - x) < Math.abs(cards[best].offsetLeft - list.offsetLeft - 20 - x)) best = i; });
+    return best;
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(cards.length - 1, i)); cur = i;
+    list.scrollTo({ left: cards[i].offsetLeft - list.offsetLeft - 20, behavior: reduce.matches ? 'auto' : 'smooth' });
+  }
+  function paint() {
+    dots.forEach(function (d, k) { d.classList.toggle('on', k === cur); });
+    prev.disabled = cur === 0;
+    next.disabled = cur === cards.length - 1;
+  }
+  function stop() { touched = true; clearInterval(timer); timer = null; }
+  prev.addEventListener('click', function () { stop(); go(cur - 1); paint(); });
+  next.addEventListener('click', function () { stop(); go(cur + 1); paint(); });
+  ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) { list.addEventListener(ev, stop, { passive: true }); });
+  list.addEventListener('scroll', function () {
+    clearTimeout(settle);
+    settle = setTimeout(function () { cur = index(); paint(); }, 140);
+  }, { passive: true });
+  function auto() {
+    if (timer || touched || reduce.matches || !mq.matches || !inView) return;
+    timer = setInterval(function () {
+      if (!inView || document.hidden) return;
+      go(cur >= cards.length - 1 ? 0 : cur + 1); paint();
+    }, 4500);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) auto(); }, { threshold: 0.6 }).observe(list);
+  }
+  paint();
+})();
 """
 
 GAVEL_JS = r"""
@@ -455,7 +499,7 @@ def build_home(schema):
     desc = ("10% injury fee, even at trial. No fee and no costs without a recovery. A licensed Texas attorney on every case. "
             "See what you keep, then start your case online.")
     promises = "".join(f"<li><b>{escape(h)}</b>{escape(t)}</li>" for h, t in PROMISES)
-    promises += "".join(f'<li class="dup" aria-hidden="true"><b>{escape(h)}</b>{escape(t)}</li>' for h, t in PROMISES)
+    dots = "".join(f'<span{" class=\"on\"" if i == 0 else ""}></span>' for i in range(len(PROMISES)))
     page = head("", desc, "/", CSS, full_title=CONFIG["title"]).replace("</head>", schema + "\n</head>") + f"""
 <body class="has-mbar">
 {nav()}
@@ -523,7 +567,11 @@ def build_home(schema):
 <section class="sec paper" aria-labelledby="prom-h">
   <div class="in">
     <h2 class="h2" id="prom-h">Our promises</h2>
-    <div class="prom-wrap"><ul class="prom">{promises}</ul></div>
+    <div class="prom-wrap">
+      <ul class="prom" id="prom" tabindex="0" aria-label="Our promises: swipe or use the arrows to see each one">{promises}</ul>
+      <div class="prom-nav"><button type="button" class="prev" aria-label="Previous promise" aria-controls="prom" disabled>&larr;</button><span class="dots" aria-hidden="true">{dots}</span><button type="button" class="next" aria-label="Next promise" aria-controls="prom">&rarr;</button></div>
+    </div>
+    <script>{PROM_JS}</script>
   </div>
 </section>
 
