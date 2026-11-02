@@ -4,13 +4,15 @@ Every request sent from the website's "Start your case" page (`/start`) ends up 
 
 - **A row in a Google Sheet** (tab "Case requests"), with a Status column you can change as you work the case.
 - **A private Google Drive folder** with any photos or documents the client attached (one sub-folder per request).
-- **An email to contact@10flatlaw.com** with the details and the files attached.
+- **An email to 10flatlaw@gmail.com** (later contact@ the firm's domain) with the details and the files attached.
 
 Setup takes about ten minutes. Do it while signed in to the Google account that should own the requests (for example 10flatlaw@gmail.com). Nobody outside that account can open the Sheet, the folder or the files unless you share them.
 
-## Before you start: the mailbox
+## The firm mailbox (can wait)
 
-contact@10flatlaw.com has to receive mail. Either set up Google Workspace on 10flatlaw.com, or add email forwarding for `contact@` at the domain registrar (most registrars, and Cloudflare Email Routing, do this for free) and forward it to 10flatlaw@gmail.com. To send the emails somewhere else, change `NOTIFY_TO` at the top of `Code.gs`.
+The script emails 10flatlaw@gmail.com for now. As of 3 Nov 2026 10flatlaw.com is not registered (the domain bought on
+30 Oct is tenflatlaw.com, at GoDaddy), so contact@10flatlaw.com cannot receive mail yet. Once the firm's address works,
+change `NOTIFY_TO` at the top of `Code.gs` and redeploy (see "If you change the script later"). The address has to receive mail. Either set up Google Workspace on 10flatlaw.com, or add email forwarding for `contact@` at the domain registrar (most registrars, and Cloudflare Email Routing, do this for free) and forward it to 10flatlaw@gmail.com. To send the emails somewhere else, change `NOTIFY_TO` at the top of `Code.gs`.
 
 ## 1. Make the Sheet and paste the script
 
@@ -22,7 +24,7 @@ contact@10flatlaw.com has to receive mail. Either set up Google Workspace on 10f
 
 1. In the Apps Script editor, choose **testSetup** in the function menu at the top and press **Run**.
 2. Google asks for permission (to edit the Sheet, create Drive folders and send email as you). Choose your account, then **Advanced > Go to project (unsafe) > Allow**. "Unsafe" only means Google has not reviewed this private script.
-3. Check that a "Case requests" tab appeared with one test row, and that a test email reached contact@10flatlaw.com. Delete the test row.
+3. Check that a "Case requests" tab appeared with one test row, and that a test email reached 10flatlaw@gmail.com. Delete the test row.
 
 ## 3. Publish it as a web app
 

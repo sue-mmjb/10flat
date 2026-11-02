@@ -10,7 +10,9 @@
  * function knows the web app URL (Vercel environment variable INTAKE_WEBHOOK_URL).
  */
 
-const NOTIFY_TO = 'contact@10flatlaw.com';          // who gets the email for each new request
+// Who gets the email for each new request. Gmail for now: 10flatlaw.com is not registered yet (3 Nov 2026), so
+// contact@10flatlaw.com cannot receive mail. Change this line once the firm's mailbox works.
+const NOTIFY_TO = '10flatlaw@gmail.com';
 const SHEET_NAME = 'Case requests';                  // tab created on first use
 const FOLDER_NAME = '10flat Law case uploads';       // Drive folder created on first use (private to this account)
 
