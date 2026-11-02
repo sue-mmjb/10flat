@@ -40,24 +40,24 @@ GLOBAL = [
     (">Set a budget.<", ">Less paperwork.<"),
     (">Skip the headache.<", ">More money to you.<"),
     ("Give your team an allowance for health benefits and they’ll choose a plan that’s right for them. You pick a budget. Stack handles the rest.",
-     "When a firm charges 33–40%, that fee pays for paperwork staff, billboards and expensive offices. None of that makes your case stronger, but it all comes out of your settlement. We charge less because we spend less, not because we do less. Our fee is 10%, calculated after case costs, and it never goes up, even at trial."),
+     "When a firm charges 33–40%, that fee pays for paperwork staff, billboards and expensive offices. None of that makes your case stronger, but it all comes out of your settlement. We charge less because we spend less, not because we do less. Our fee is 10% of what we recover for you, and it stays 10% at every stage, even at trial."),
     ("Set your benchmark plan and contribution to see your budget. You’re in total control.",
      "Type or slide to a settlement amount. You’ll see our 10% fee next to the fee at a typical 33% firm, and how much more of your settlement you keep."),
     (">Your team shops for benefits.<", ">Tell us what happened.<"),
     ("Each employee builds a stack of health benefits that’s right for them.",
-     "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."),
+     "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
     # the mock app card inside step 2 (phone and tablet variants): the case dashboard from the 10flat Law brief
-    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% fee, after costs<"),
-    (">$575/mo<", ">$85,500<"), (">Total Allowance<", ">After fee and costs (example)<"), (">Maria’s Stack<", ">Documents received<"),
+    (">Maria R.<", ">Your case<"), (">Designer<", ">Car accident<"), (">Full-Time<", ">10% fee, even at trial<"),
+    (">$575/mo<", ">$85,000<"), (">Total Allowance<", ">After fee and costs (example)<"), (">Maria’s Stack<", ">Documents received<"),
     (">Stackables<", ">View your documents<"), (">Whoop<", ">Police report<"), (">Carbon Health<", ">Medical bills · Photos<"),
-    (">Stack Save HSA<", ">Your fee: 10%<"), (">$50 Employer + $50 Maria<", ">Never goes up, even at trial<"),
-    (">Pre-Tax Savings<", ">Calculated after case costs<"), (">Stack Pay<", ">If there is no recovery<"),
+    (">Stack Save HSA<", ">Your fee: 10%<"), (">$50 Employer + $50 Maria<", ">Stays 10%, even at trial<"),
+    (">Pre-Tax Savings<", ">Of the total recovered<"), (">Stack Pay<", ">If there is no recovery<"),
     (">0% Interest<", ">No fee<"), (">Pay over time<", ">No case costs<"), (">Coming Soon<", ">No decision needed right now<"),
     (">Dental Plan<", ">Your attorney<"), (">Family Plan<", ">Licensed in Texas<"),
     (">Silver HMO Family Plan<", ">Next step: awaiting medical records<"), (">health Plan<", ">Car accident<"), (">Health Premium<", ">Current stage: evidence collection<"),
     (">Bronze<", ">Car accident<"), (">Silver<", ">Medical injury<"), (">Gold<", ">Dental injury<"),   # pill variants outside the card
     # the carrier logo row is kept as tiles; its heading says what it is (the partner logo strip is removed in pass 2)
-    (">Insurance carriers available through stack<", ">One fee for every case we take: car accidents, medical injury, dental injury.<"),
+    (">Insurance carriers available through stack<", ">One fee for every case we take: car and truck accidents, slip and falls, medical and dental injuries.<"),
     # we win when
     ("We win when you and your team are <span", "We win when <span"),
     (">happy.</span>", ">you win.</span>"),
@@ -74,9 +74,9 @@ GLOBAL = [
      "Technology handles the paperwork. It organises your photos, police report and medical records the moment you send them, requests missing records, builds a timeline of your treatment, totals your bills and tracks every deadline. Your lawyer does the lawyering. A licensed Texas attorney reviews and approves every important step."),
     ("“It’s all just so much busy work.”", "A broken arm is worth the same whether your lawyer charges 10% or 40%. The insurance company decides how much to pay based on your case, not on what your lawyer charges. What the fee changes is how much of that settlement you keep."),
     ("“We’ve been hit the last two years with 20% increases in terms of our premiums, year over year, and those costs compound.”",
-     "You see everything on your phone: every document, every update, every offer. You hear from us first. You choose your attorney from the team members available for your case. For every offer we show what you’d actually keep. You decide, with a call from your attorney before you do. Se habla español."),
+     "You see everything on your phone: every document, every update, every offer. You hear from us first. You meet your attorney, and see their Texas license, before you sign anything. For every offer we show what you’d actually keep. You decide, with a call from your attorney before you do. Se habla español."),
     ("“There are real challenges to fitting a one-size-fits-all type of deal for our overall demographic.”",
-     "10% fee, calculated after case costs. It never goes up, even at trial. No fee and no costs if we don’t recover money for you. No markup on case costs. No admin fees. A licensed Texas attorney is responsible for your case. No pressure. It’s your case and your decision."),
+     "10% fee on what we recover, at every stage, even at trial. No fee and no costs if we don’t recover money for you. We advance the case costs, with no markup. No admin fees. A licensed Texas attorney is responsible for your case. No pressure. It’s your case and your decision."),
     (">General Contractor (9 employees)<", ">Where your money goes at a typical firm<"), (">Architecture Firm (28 employees)<", ">What we do differently<"),
     (">Law Firm (4 employees)<", ">Lower percentage, not lower amount<"), (">Creative Agency (70 employees)<", ">Better service, not less service<"), (">Pizza Chain (110 employees)<", ">Our promises<"),
     (">Head of HR<", f">{BRAND}<"), (">Owner<", f">{BRAND}<"),
@@ -96,24 +96,24 @@ SCOPED = {
         (">control</span>.", ">No waiting room</span>."),
         (">You set the budget.<", ">1. Tell us what happened.<"),
         ("Pick a monthly amount you can contribute. That’s your number. It doesn’t move unless you want it to. No surprise renewals.",
-         "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help."),
+         "Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help."),
         (">Your team builds their plan.<", ">2. We build your case.<"),
         ("Stack guides each employee to coverage that fits them like their favorite pair of pants. If they're HSA-eligible, we help them maximize HSA funding to build a healthier financial future.",
          "Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work."),
         (">The plan goes with them.<", ">3. We pursue your recovery.<"),
         ("If someone leaves your team, the plan leaves with them, because it’s their plan. That’s how insurance should work.",
-         "Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. For every offer we show what you’d actually keep. You make every settlement decision, with a call from your attorney before you do. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%."),
+         "Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval. You decide every offer, after your attorney advises you. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%."),
     ],
 }
 
 FOOTER_DISCLAIMER = (
-    f'{FIRM} [PLLC], Texas. '
-    'Our fee is 10% of the amount recovered, calculated after case costs are repaid. If there is no recovery, you owe no fee and no case costs. '
-    'Medical bills and liens are paid from your recovery. Every case is different, and past results do not guarantee future results. '
+    f'{FIRM} PLLC, Texas, a law firm owned only by licensed attorneys. '
+    'Our fee is 10% of the total amount recovered at every stage, including trial; case costs and liens are paid from your share after the fee. '
+    'If there is no recovery, you owe no fee and no case costs. Every case is different, and past results do not guarantee future results. '
     f'{FIRM} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. '
-    'Contacting us does not create an attorney-client relationship until a fee agreement is signed. '
-    '[Not certified by the Texas Board of Legal Specialization, if applicable.] Attorney advertising. '
-    'Typical fee figures based on [Texas Fee Index, date]. The calculator is an example only.'
+    'The software company, 10flat Technologies, is paid a fixed fee and never shares in a recovery or a fee. '
+    'Contacting us does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising. '
+    'Fee comparisons use a one-third (33%) fee, common for Texas injury cases. The calculator is an illustration, not a promise of any outcome.'
 )
 
 # The step-1 card's insides were drawn by Framer's bundle on the live site (the
@@ -121,47 +121,50 @@ FOOTER_DISCLAIMER = (
 CALC_HTML = f"""
 <div class="pi-c" data-pi-calc>
   <div class="pi-c-sec pi-c-top">
-    <div><div class="pi-c-label">You keep this much more than at a 33% firm</div><div class="pi-c-big" data-out="more">$21,850</div></div>
-    <div class="pi-c-tag"><span>10% fee, after case costs</span><i></i><span>Stays 10% at trial</span></div>
+    <div><div class="pi-c-label">You keep this much more than at a 33% firm</div><div class="pi-c-big" data-out="more">$23,000</div></div>
+    <div class="pi-c-tag"><span>10% of the settlement</span><i></i><span>Stays 10% at trial</span></div>
   </div>
   <div class="pi-c-sec">
     <div class="pi-c-label">Case type</div>
     <div class="pi-c-pills" role="group" aria-label="Case type">
-      <button type="button" class="pi-c-pill is-on">Car accident</button>
-      <button type="button" class="pi-c-pill">Medical injury</button>
-      <button type="button" class="pi-c-pill">Dental injury</button>
+      <button type="button" class="pi-c-pill is-on">Car</button>
+      <button type="button" class="pi-c-pill">Truck</button>
+      <button type="button" class="pi-c-pill">Slip and fall</button>
+      <button type="button" class="pi-c-pill">Medical</button>
+      <button type="button" class="pi-c-pill">Dental</button>
+      <button type="button" class="pi-c-pill">Other</button>
     </div>
   </div>
   <div class="pi-c-sec">
     <div class="pi-c-row"><label class="pi-c-label" for="__ID__-amount">If your case settles for</label><input class="pi-c-amount" id="__ID__-amount" type="text" inputmode="numeric" value="$100,000" autocomplete="off"></div>
-    <input class="pi-c-range" id="__ID__" type="range" min="10000" max="1000000" step="1000" value="100000" aria-label="Settlement amount" aria-valuetext="$100,000" style="--p:9.1%">
+    <input class="pi-c-range" id="__ID__" type="range" min="1000" max="1000000" step="1000" value="100000" aria-label="Settlement amount" aria-valuetext="$100,000" style="--p:9.9%">
   </div>
   <div class="pi-c-sec pi-c-rows">
     <div class="pi-c-row"><label class="pi-c-label" for="__ID__-costs">Case costs (example, you can change it)</label><input class="pi-c-amount pi-c-costs" id="__ID__-costs" type="text" inputmode="numeric" value="$5,000" autocomplete="off"></div>
-    <div class="pi-c-row"><span class="pi-c-label">Fee at a 33% firm</span><span class="pi-c-val pi-c-dim" data-out="fee33">$31,350</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">Fee at {BRAND} (10%)</span><span class="pi-c-val" data-out="fee">$9,500</span></div>
-    <div class="pi-c-row"><span class="pi-c-label">You keep, after fee and costs</span><span class="pi-c-val" data-out="keep">$85,500</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Fee at a 33% firm</span><span class="pi-c-val pi-c-dim" data-out="fee33">$33,000</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">Fee at {BRAND} (10%)</span><span class="pi-c-val" data-out="fee">$10,000</span></div>
+    <div class="pi-c-row"><span class="pi-c-label">You keep, after fee and costs</span><span class="pi-c-val" data-out="keep">$85,000</span></div>
   </div>
   <div class="pi-c-foot">
     <div class="pi-c-next">Next, tell us what happened.</div>
     <a class="pi-c-btn" href="#product-step-2">Start your case</a>
-    <p class="pi-c-disc">Fees are figured after case costs at both firms. Medical bills and liens are paid from the settlement the same way at any firm. Example only; every case is different.</p>
+    <p class="pi-c-disc">Both fees are figured on the full settlement. Case costs, medical bills and liens are paid from your share the same way at any firm. An illustration only; every case is different.</p>
   </div>
 </div>
 """
 
 CASE_HTML = """
 <div class="pi-case" data-pi-case hidden>
-  <div class="pi-case-head"><img class="pi-case-avatar" src="assets/avatar.jpg" alt="" width="36" height="36"><div><div class="pi-case-name">Your Case</div><div class="pi-case-meta"><span>Car accident</span><i></i><span>10% fee, after costs</span></div></div></div>
-  <div class="pi-case-amt">$85,500</div>
+  <div class="pi-case-head"><img class="pi-case-avatar" src="assets/avatar.jpg" alt="" width="36" height="36"><div><div class="pi-case-name">Your Case</div><div class="pi-case-meta"><span>Car accident</span><i></i><span>10% fee, even at trial</span></div></div></div>
+  <div class="pi-case-amt">$85,000</div>
   <div class="pi-case-sub">After fee and costs (example)</div>
   <div class="pi-case-note">Based on a $100,000 settlement with $5,000 case costs. Medical bills and liens are paid from the recovery.</div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffe435"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span><div><b>Documents received</b><span>Police report<i></i>Medical bills<i></i>Photos<i></i>View all</span></div></div>
-  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18"/><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></span><div><b>Your fee: 10%</b><span>Never goes up, even at trial</span><em>Calculated after case costs</em></div></div>
+  <div class="pi-case-item"><span class="pi-case-ic" style="background:#ffa9d8"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18"/><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="16" r="2.4"/></svg></span><div><b>Your fee: 10%</b><span>Stays 10%, even at trial</span><em>Of the total recovered</em></div></div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#a9d300"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v18M16.5 7.5c0-1.7-2-2.5-4.5-2.5S7.5 6 7.5 8s2 2.6 4.5 3 4.5 1.1 4.5 3-2 2.5-4.5 2.5-4.5-.8-4.5-2.5"/></svg></span><div><b>If there is no recovery</b><span>No fee<i></i>No case costs<i></i>No markup<i></i>No admin fees</span></div></div>
   <div class="pi-case-item"><span class="pi-case-ic" style="background:#f97815"><svg viewBox="0 0 24 24" fill="none" stroke="#140c0a" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span><div><b>Your attorney</b><span>Licensed Texas attorney</span><em>Request a call</em></div></div>
   <div class="pi-case-stage"><b>Current stage</b> Evidence collection<i></i><b>Next step</b> Awaiting medical records<i></i>No decision needed right now</div>
-  <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the case costs, the 10% fee, your medical bills and liens, and what you’d actually keep. Your attorney calls you before you decide anything.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
+  <div class="pi-case-prem"><b>When an offer arrives</b> you see the offer, the 10% fee, the case costs, your medical bills and liens, and what you’d actually keep. Your attorney advises you, and you decide.<span class="pi-case-choices"><span class="is-on">Talk to my attorney</span><span>Ask a question</span></span></div>
 </div>
 """
 
@@ -193,7 +196,7 @@ html{scroll-behavior:smooth}
 /* Logo ticker */
 /* phone case card: the chip rows of the fee and no-recovery tiles carried a second copy of the tile icon */
 .framer-p5mws8 > svg,.framer-44bqpb > svg{visibility:hidden!important}
-.pi-promises{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%;max-width:1100px}
+.pi-promises{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%;max-width:1280px}
 .pi-promises li{font:600 11px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:13px 18px;white-space:nowrap}
 .pi-promises li.is-key{background:#ffe435;border-color:#ffe435;color:#140c0a}
 @media(max-width:809px){.pi-promises{gap:8px}.pi-promises li{font-size:10px;padding:11px 14px;letter-spacing:.06em}}
@@ -236,9 +239,9 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @media(max-width:809.98px){.pi-faq-sec{padding:72px 20px 56px}.pi-faq-g{font-size:22px;margin-top:40px}.pi-faq summary{font-size:16px}}
 /* Calculator card */
 .pi-c{width:100%;max-width:430px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1,#140c0a);text-align:left}
-.pi-c-sec{padding:20px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
+.pi-c-sec{padding:16px 0;border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2)}
 .pi-c-sec:first-child{border-top:0;padding-top:0}
-.pi-c-top{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-bottom:24px}
+.pi-c-top{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-bottom:18px}
 .pi-c-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .pi-c-row .pi-c-label{flex:1}
 .pi-c-label{font-size:13px;color:#5f564a;line-height:1.35}
@@ -246,8 +249,8 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .pi-c-val{font:700 16px/1 "Instrument Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
 .pi-c-tag{display:flex;align-items:center;gap:10px;flex:none;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:8px;padding:9px 12px;font:600 12px/1 "Instrument Sans",system-ui,sans-serif;white-space:nowrap}
 .pi-c-tag i{width:1px;height:14px;background:#c9c4bb}
-.pi-c-pills{display:flex;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);border-radius:999px;padding:5px;gap:4px;margin-top:14px}
-.pi-c-pill{flex:1;border:0;background:transparent;border-radius:999px;padding:0 6px;font:700 14px/1 "Instrument Sans",system-ui,sans-serif;color:inherit;cursor:pointer;height:46px}
+.pi-c-pills{display:grid;grid-template-columns:repeat(3,1fr);border-radius:26px;background:var(--token-4c494f9f-03b3-4eac-88e8-f5161b116659,#f4efe1);padding:5px;gap:4px;margin-top:14px}
+.pi-c-pill{min-width:0;white-space:nowrap;border:0;background:transparent;border-radius:999px;padding:0 6px;font:700 14px/1 "Instrument Sans",system-ui,sans-serif;color:inherit;cursor:pointer;height:38px}
 .pi-c-pill.is-on{background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435)}
 .pi-c-pill:focus-visible,.pi-c-range:focus-visible,.pi-c-btn:focus-visible,.pi-c-amount{border:0;background:transparent;text-align:right;width:130px;padding:0;color:inherit;font:800 22px/1 "Perfektta ExtraBold","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .pi-c-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;margin:22px 0 4px;cursor:pointer;background:linear-gradient(to right,#140c0a var(--p,9%),#e9e4d6 var(--p,9%))}
@@ -255,7 +258,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .pi-c-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#140c0a;border:0}
 .pi-c-range::-moz-range-track{height:6px;border-radius:3px;background:transparent}
 .pi-c-rows{display:flex;flex-direction:column;gap:10px}
-.pi-c-foot{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2);margin:4px -32px 0;padding:22px 32px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.pi-c-foot{border-top:1px solid var(--token-f4c92abb-11df-44de-9d88-b3a28d1e0eaf,#e3ded2);margin:4px -32px 0;padding:16px 32px 0;display:flex;flex-direction:column;align-items:center;gap:10px}
 .pi-c-next{font-size:13px;color:#5f564a}
 .pi-c-btn{display:block;width:100%;text-align:center;background:var(--token-dfd7ceb1-6225-41fe-9a08-4ed6d573c4d7,#ffe435);border-radius:999px;padding:19px 0;font:700 13px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:inherit;text-decoration:none}
 .pi-c-disc{font-size:11px;line-height:1.45;color:#5f564a;margin:0;text-align:center}
@@ -391,7 +394,10 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   .pi-faq-sec{padding:52px 24px 16px}
   .pi-faq-sec .pi-faq-h{margin-bottom:8px}
   .pi-faq summary{padding:14px 48px 14px 0}
-  .framer-1ebd1db,.framer-hd6jU .framer-1ebd1db{padding:32px 0 28px!important}
+  .framer-TzIF9 .framer-1ebd1db{padding:48px 0 32px!important}
+}
+@media(min-width:1200px) and (max-height:960px){
+  .pi-faq-sec{padding-top:44px}.pi-faq summary{padding:10px 48px 10px 0}
 }
 </style>
 """
@@ -517,8 +523,10 @@ MOTION_JS = """
     kick();
   });
 
-  /* 5. Calculator cards (one per breakpoint variant). From the client explainer: the 10% fee is
-     calculated after case costs, next to a typical 33% firm figured the same way. Case costs default
+  /* 5. Calculator cards (one per breakpoint variant). From the platform SOW v2.0 (3 Nov 2026): the
+     10% fee is figured on the full settlement, next to a typical 33% firm figured the same way, and
+     case costs come out of the client's share after the fee. Typed amounts go up to $100M; the
+     slider stops at $1M. Case costs default
      to an example (5%, to the nearest $500: $1,000 / $2,000 / $5,000 for the explainer's three rows)
      and can be edited. */
   function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
@@ -529,16 +537,16 @@ MOTION_JS = """
     var min = Number(range.min), max = Number(range.max), costsManual = false;
     function set(sel, v) { var el = c.querySelector(sel); if (el) el.textContent = v; }
     function parse(v) { return Number(String(v).replace(/[^0-9]/g, '')); }
-    function clampN(n) { return Math.min(max, Math.max(min, n)); }
+    function clampN(n) { return Math.min(100000000, Math.max(min, n)); }
     function costs(amount) { var n = costsManual ? parse(costsIn.value) : autoCosts(amount); return Math.min(amount * 0.9, Math.max(0, n)); }
     function render(amount) {
-      var k = costs(amount), net = amount - k, fee = net * RATE, fee33 = net * TYPICAL;
-      range.style.setProperty('--p', ((amount - min) / (max - min) * 100).toFixed(1) + '%');
+      var k = costs(amount), fee = amount * RATE, fee33 = amount * TYPICAL;
+      range.style.setProperty('--p', (Math.min(1, (amount - min) / (max - min)) * 100).toFixed(1) + '%');
       if (document.activeElement !== costsIn) costsIn.value = money(k);
       set('[data-out="fee"]', money(fee));
       set('[data-out="fee33"]', money(fee33));
       set('[data-out="more"]', money(fee33 - fee));
-      set('[data-out="keep"]', money(net - fee));
+      set('[data-out="keep"]', money(amount - fee - k));
       range.setAttribute('aria-valuetext', money(amount));
     }
     range.addEventListener('input', function () { amountIn.value = money(Number(range.value)); render(Number(range.value)); });
@@ -585,8 +593,8 @@ def mark_appear(html):
 
 
 
-PROMISES = ["10% fee, even at trial", "No fee without a recovery", "No markup on case costs", "No admin fees",
-            "Licensed Texas attorney", "You choose your attorney", "Se habla español", "Start on WhatsApp"]
+PROMISES = ["10% fee, even at trial", "No fee without a recovery", "We advance case costs", "No markup on case costs",
+            "No admin fees", "Licensed Texas attorney", "You decide every offer", "Se habla español", "Start on WhatsApp"]
 PROMISES_HTML = '<ul class="pi-promises" id="logos-strip" aria-label="What every client gets">' + "".join(
     f'<li{" class=\"is-key\"" if i == 0 else ""}>{t}</li>' for i, t in enumerate(PROMISES)) + '</ul>'
 
@@ -744,6 +752,13 @@ def main():
         if bad.lower() in text.lower():
             i = text.lower().find(bad.lower())
             raise SystemExit(f"build_clone: leftover {bad!r}: ...{text[max(0,i-60):i+60]}...")
+    for bad in ("after case costs", "after costs", "never goes up", "choose your attorney", "same day"):
+        if bad in text.lower():
+            i = text.lower().find(bad)
+            raise SystemExit(f"build_clone: retired wording {bad!r}: ...{text[max(0,i-60):i+60]}...")
+    m = re.search(r"\[[^\]]{2,80}\]", text)
+    if m:
+        raise SystemExit(f"build_clone: placeholder left on the page: {m.group(0)!r}")
     print(f"built {OUT.relative_to(ROOT)}: {len(html):,} bytes; reveals: {html.count('--pi-appear')}; calculators: {html.count('data-pi-calc')-1}; step-2 duplicates removed: {len(doomed)}; h1: {html.count('<h1')}")
 
 

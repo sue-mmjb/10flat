@@ -2,6 +2,8 @@
 
 Updated 31 October 2026 for the 10flat model (10% fee after case costs, stays 10% at trial). Sources: Tim's WhatsApp messages of 30 October, the 30 October huddle ("10flat AI powered injury law concept") and the client explainer PDF of 31 October. The site names no attorney and shows no address, phone or WhatsApp number (Sue's decision, 31 October), so none of that is asked here. Items 1 to 4 block the fee section; the rest can wait a day.
 
+**Update 3 November 2026.** The platform SOW v2.0 (Sue, 3 Nov) answers items 1, 3, 4, 5, 7, 8, 9 and 12, and the site now follows it: fee is 10% of the total recovery at every stage with costs and liens paid from the client's share after the fee; claims from about $1,000; case types car, truck, slip and fall, medical, dental, other; entity "10flat Law PLLC"; Texas only; the client meets their attorney (name, photo, Texas license) before signing, so the site names nobody; "we tell you when to expect an answer" instead of a promised turnaround. Premium is live but client-requested only, so the site does not advertise it and no longer says the fee "never goes up". Still open from the SOW: the supervising attorney's name and Texas license, and the budget range. The site is written so neither is needed on it, but Texas Rule 7.04 requires the responsible attorney's name in advertising before launch (SOW Phase 4 State Bar filing). The "[CONFIRM]" chips and bracketed placeholders are gone from both versions, and the builds now fail if one comes back.
+
 ---
 
 Sir Tim, the 10flat site is live at https://personal-injury-law-nine.vercel.app/ with the explainer applied. I need your answers on a few things before launch:
@@ -48,6 +50,7 @@ Thank you. Questions 1 to 4 are the ones that block me; everything else I can sl
 
 ## Already answered or decided (for the record)
 
+- Platform SOW v2.0 (3 Nov 2026) supersedes the explainer where they differ: fee is 10% of the gross recovery (the site says "total amount recovered"), costs and liens from the client's share after the fee, firm advances all case costs; Premium 25% total, client-requested only, never advertised; staff attorneys at launch (no attorney choice, 10Flat Match out of scope); entity 10flat Law PLLC, owned only by licensed attorneys; 10flat Technologies paid fixed fees, never a share of a fee or recovery; English and Spanish at launch.
 - Fee: 10% of the amount recovered, calculated after case costs are repaid; stays 10% at trial; no fee and no costs without a recovery; no markup on costs; no admin fees. (Explainer, 31 Oct.) Supersedes "$500 down + 25%/33%" (30 Oct 00:45) and "$0 down, $50 per hour or 25%" (30 Oct 08:29).
 - $0 upfront: "No fee and no costs if we don't recover money for you." The engagement agreement must match.
 - Firm name: 10flat Law (Sue, 31 Oct, replacing the short "10flat" of the same day). Wordmark, title, footer, schema and FAQ all say "10flat Law". Domain: 10flatlaw.com, confirmed by Tim on 30 Oct 23:17 ("We secured the name 10flatlaw.com"); the huddle's "10flat.law.com" was a slip.

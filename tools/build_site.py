@@ -37,24 +37,26 @@ CONFIG = {
     "brand": "10flat Law",
     "domain": "10flatlaw.com",
     "title": "10% Injury Fee, Even at Trial | 10flat Law",
-    "description": "Most injury firms take 33–40% of your settlement. 10flat Law takes 10%, calculated after case costs, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
+    "description": "Most injury firms take 33–40% of your settlement. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
     "noindex": True,  # prototype. Set False at launch.
-    # One fee for every case type. From the 10flat Law client explainer, 31 Oct 2026.
+    # One fee for every case type, no percentage on the tabs. Case types from the platform SOW v2.0 (3 Nov 2026).
     "rates": [
         {"key": "car", "label": "Car accident", "rate": 0.10},
+        {"key": "truck", "label": "Truck accident", "rate": 0.10},
+        {"key": "fall", "label": "Slip and fall", "rate": 0.10},
         {"key": "med", "label": "Medical injury", "rate": 0.10},
         {"key": "dent", "label": "Dental injury", "rate": 0.10},
+        {"key": "other", "label": "Other injury", "rate": 0.10},
     ],
-    # Explainer: "No fee and no costs if we don't recover money for you." and "It never goes up, even at trial."
+    # SOW: "$0 upfront. If there is no recovery, the client owes no fee and no case costs." Fee is 10% at every stage, including trial.
     "today_display": "$0 fee, $0 costs",
     "trial": "Still 10%",
-    # Explainer compares with a 33% firm; its footnote cites "[Texas Fee Index, date]".
+    # The comparison is a one-third fee (SOW: "Compare with a one-third fee"), figured on the full settlement like ours.
     "industry_rate": 0.33,
-    "industry_confirm": "CONFIRM: Texas Fee Index citation and date",
-    # Example case costs: 5% of the settlement to the nearest $500, which reproduces the explainer's table ($1,000 / $2,000 / $5,000).
+    # Example case costs: 5% of the settlement to the nearest $500. They come out of the client's share after the fee.
     "costs_share": 0.05,
-    # CONFIRM: slider range.
-    "slider_min": 10000,
+    # SOW: claims from about $1,000 to $100M+; the slider covers the common range.
+    "slider_min": 1000,
     "slider_max": 1000000,
     "slider_step": 1000,
     "slider_default": 100000,
@@ -236,24 +238,24 @@ def money(n):
 def build_sections(btn):
     c = CONFIG
     rates_json = json.dumps({r["key"]: r["rate"] for r in c["rates"]})
-    options = "".join(f'<option value="{r["key"]}">{r["label"]} ({int(round(r["rate"]*100))}%)</option>' for r in c["rates"])
+    options = "".join(f'<option value="{r["key"]}">{r["label"]}</option>' for r in c["rates"])
     d = c["slider_default"]
     r0 = c["rates"][0]["rate"]
     k0 = max(500, round(d * c["costs_share"] / 500) * 500)
-    net0 = d - k0
-    fee0, keep0, ind0 = net0 * r0, net0 - net0 * r0, net0 * c["industry_rate"]
+    fee0, ind0 = d * r0, d * c["industry_rate"]
+    keep0 = d - fee0 - k0
 
     calculator = f"""
 <section class="pi-section pi-yellow" id="calculator" aria-labelledby="calc-h">
   <div class="pi-wrap pi-center">
     <h2 id="calc-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Less paperwork. More money to you.</h2>
-    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Most injury firms take 33–40% of your settlement. We take 10%, calculated after case costs, and it stays 10% even if we go to trial. Your fee doesn’t decide how much your case is worth. Your injuries, your medical bills, the facts and the insurance coverage do. What the fee changes is how much of the settlement you keep.</p>
+    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Most injury firms take 33–40% of your settlement. We take 10%, and it stays 10% even if we go to trial. Your fee doesn’t decide how much your case is worth. Your injuries, your medical bills, the facts and the insurance coverage do. What the fee changes is how much of the settlement you keep.</p>
   </div>
   <div class="pi-wrap">
     <div class="pi-card">
       <p class="framer-text framer-styles-preset-lit60w pi-step">step 1</p>
       <h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">See what you keep.</h3>
-      <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Slide to the amount you expect to recover. We show example case costs, our 10% fee, the fee at a typical 33% firm, and how much more you keep.</p>
+      <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Slide to the amount you expect to recover. We show our 10% fee, the fee at a typical 33% firm, example case costs, and how much more you keep.</p>
       <div class="pi-calc">
         <div class="pi-field">
           <label for="case-type" class="framer-text framer-styles-preset-7jf1zc">Case type</label>
@@ -263,18 +265,17 @@ def build_sections(btn):
           <label for="amount" class="framer-text framer-styles-preset-7jf1zc">If your case settles for <span class="pi-amount-out" id="amount-out">{money(d)}</span></label>
           <input id="amount" class="pi-range" type="range" min="{c['slider_min']}" max="{c['slider_max']}" step="{c['slider_step']}" value="{d}" aria-valuetext="{money(d)}">
           <div class="pi-range-ends framer-text framer-styles-preset-10holly"><span>{money(c['slider_min'])}</span><span>{money(c['slider_max'])}</span></div>
-          <p class="pi-note framer-text framer-styles-preset-10holly">Slider range {chip('CONFIRM: minimum, maximum and default')}</p>
         </div>
         <dl class="pi-results">
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">If there is no recovery</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-today">{c['today_display']}</dd></div>
           <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Case costs (example)</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-costs">{money(k0)}</dd></div>
-          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Fee at a {int(round(c['industry_rate']*100))}% firm <span class="pi-rowchip">{chip(c['industry_confirm'])}</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-industry">{money(ind0)}</dd></div>
-          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Our fee <span id="out-rate">({int(round(r0*100))}%)</span>, calculated after case costs</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-fee">{money(fee0)}</dd></div>
+          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Fee at a {int(round(c['industry_rate']*100))}% firm</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-dim" id="out-industry">{money(ind0)}</dd></div>
+          <div class="pi-row"><dt class="framer-text framer-styles-preset-u2fub4">Our fee <span id="out-rate">({int(round(r0*100))}%)</span></dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-fee">{money(fee0)}</dd></div>
           <div class="pi-row pi-row-hero"><dt class="framer-text framer-styles-preset-u2fub4">You keep, after fee and costs</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num pi-num-big" id="out-keep">{money(keep0)}</dd></div>
           <div class="pi-row pi-row-diff"><dt class="framer-text framer-styles-preset-u2fub4">You keep this much more</dt><dd class="framer-text framer-styles-preset-1jvhhyw pi-num" id="out-diff">{money(ind0-fee0)}</dd></div>
         </dl>
-        <p class="pi-note framer-text framer-styles-preset-u2fub4">Fees are figured after case costs at both firms. Medical bills and liens are paid from the settlement the same way at any firm.</p>
-        <p class="pi-fine framer-text framer-styles-preset-10holly">Example only. Not a prediction, promise or guarantee of any outcome or amount. Every case is different.</p>
+        <p class="pi-note framer-text framer-styles-preset-u2fub4">Both fees are figured on the full settlement. Case costs, medical bills and liens are paid from your share the same way at any firm.</p>
+        <p class="pi-fine framer-text framer-styles-preset-10holly">An illustration only. Not a prediction or promise of any outcome or amount. Every case is different.</p>
       </div>
       <a class="pi-next framer-text framer-styles-preset-15qf7x7" href="#start">Next, tell us what happened. &rarr;</a>
     </div>
@@ -283,7 +284,7 @@ def build_sections(btn):
 """
 
     rows = "".join(
-        f'<tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">{r["label"] if r["key"] != "car" else "Car accidents"}</th>'
+        f'<tr><th scope="row" class="framer-text framer-styles-preset-u2fub4">{r["label"]}</th>'
         f'<td class="framer-text framer-styles-preset-u2fub4">{c["today_display"]}</td>'
         f'<td class="framer-text framer-styles-preset-1jvhhyw pi-rate">{int(round(r["rate"]*100))}%</td>'
         f'<td class="framer-text framer-styles-preset-u2fub4">{c["trial"]}</td></tr>'
@@ -291,15 +292,15 @@ def build_sections(btn):
     pricing = f"""
 <section class="pi-section pi-offwhite" id="pricing" aria-labelledby="pricing-h">
   <div class="pi-wrap pi-center">
-    <h2 id="pricing-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">One fee for every case. It never goes up.</h2>
+    <h2 id="pricing-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">One fee for every case, at every stage.</h2>
     <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">We don’t negotiate fees case by case behind closed doors. Here is what we charge, for everything we handle, whether the case settles or goes to trial.</p>
   </div>
   <div class="pi-wrap">
     <table class="pi-table">
-      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">If there is no recovery</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Fee, after case costs</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">At trial</th></tr></thead>
+      <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">If there is no recovery</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Our fee</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">At trial</th></tr></thead>
       <tbody>{rows}</tbody>
     </table>
-    <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Other case types and rates are proposed only and will be added once approved. {chip('CONFIRM: proposed case types, see content pack section 4.2')}</p>
+    <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Claims from about $1,000 up. The size of a case alone never rules it out; a licensed Texas attorney reviews every request.</p>
   </div>
 </section>
 """
@@ -311,9 +312,9 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <ol class="pi-steps">
-      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. It’s free to find out if we can help.</p></li>
+      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Message us on WhatsApp. Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">2</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We build your case.</h3><p class="framer-text framer-styles-preset-1fc2js5">Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work.</p></li>
-      <li><span class="framer-text framer-styles-preset-lit60w pi-step">3</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We pursue your recovery.</h3><p class="framer-text framer-styles-preset-1fc2js5">Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. For every offer we show what you’d actually keep. You make every settlement decision, with a call from your attorney before you do. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li>
+      <li><span class="framer-text framer-styles-preset-lit60w pi-step">3</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We pursue your recovery.</h3><p class="framer-text framer-styles-preset-1fc2js5">Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval. You decide every offer, after your attorney advises you. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li>
     </ol>
   </div>
 </section>
@@ -347,7 +348,7 @@ def build_sections(btn):
   <div class="pi-wrap pi-center">
     <h2 id="start-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Start your case. It takes about ten minutes.</h2>
     <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Message us on WhatsApp, or answer a few questions here. You can stop and come back. Nothing here commits you to anything. It’s free to find out if we can help.</p>
-    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A Texas attorney will review your case, usually [the same day]. Se habla español, from your first message to your settlement.</p>
+    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español, from your first message to your settlement.</p>
   </div>
   <div class="pi-wrap pi-narrow">
     <form class="pi-card pi-form" id="intake" novalidate>
@@ -360,8 +361,8 @@ def build_sections(btn):
       <div class="pi-field"><label for="f-docs" class="framer-text framer-styles-preset-7jf1zc">5. Documents you already have (photos, police report, medical bills)</label><input id="f-docs" name="docs" type="file" multiple class="pi-input pi-file framer-text framer-styles-preset-u2fub4"></div>
       <div class="pi-field"><label for="f-contact" class="framer-text framer-styles-preset-7jf1zc">6. How to reach you</label><input id="f-contact" name="contact" type="text" class="pi-input framer-text framer-styles-preset-u2fub4" autocomplete="off" placeholder="Phone or email"></div>
       <button type="submit" class="pi-submit framer-text framer-styles-preset-ivrpyo">Submit my case</button>
-      <p class="pi-form-msg framer-text framer-styles-preset-u2fub4" id="intake-msg" hidden>Thank you. This prototype is not connected to the office yet, so nothing was sent. {chip('CONFIRM: where submissions go')}</p>
-      <p class="pi-fine framer-text framer-styles-preset-10holly">Contacting us does not create an attorney-client relationship until a fee agreement is signed. A Texas attorney reviews your answers and will contact you. {chip('CONFIRM: response time, and whether first contact is by text, call or email')}</p>
+      <p class="pi-form-msg framer-text framer-styles-preset-u2fub4" id="intake-msg" hidden>Thank you. Online intake is not open yet, so nothing was sent. Please start your case on WhatsApp for now.</p>
+      <p class="pi-fine framer-text framer-styles-preset-10holly">Contacting us does not create an attorney-client relationship until a fee agreement is signed. A licensed Texas attorney reviews your answers, and we tell you when to expect an answer.</p>
     </form>
   </div>
 </section>
@@ -505,10 +506,9 @@ PI_JS = """
   function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
   function update(){
     var amount = Number(rng.value), rate = RATES[sel.value] || 0;
-    var costs = Math.max(500, Math.round(amount * COSTS / 500) * 500), net = amount - costs;
-    var fee = net * rate, keep = net - fee, ind = net * INDUSTRY;
+    var costs = Math.max(500, Math.round(amount * COSTS / 500) * 500);
+    var fee = amount * rate, ind = amount * INDUSTRY, keep = amount - fee - costs;
     out.amount.textContent = money(amount); rng.setAttribute('aria-valuetext', money(amount));
-    out.rate.textContent = '(' + Math.round(rate * 100) + '%)';
     out.costs.textContent = money(costs); out.fee.textContent = money(fee); out.keep.textContent = money(keep);
     out.industry.textContent = money(ind); out.diff.textContent = money(ind - fee);
   }
@@ -631,9 +631,9 @@ def main():
     disclaimer = t.find_all(by_name("Disclaimer"), footer_outer["children"])[0]
     disc_p = [n for n in disclaimer["children"] if n["tag"] == "p"][0]
     new_disc = (f'<p class="framer-text framer-styles-preset-10holly" dir="auto" style="--framer-text-color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1, rgb(20, 12, 10))">'
-                f'{c["firm"]} {chip("PLLC")}, Texas.<br>'
-                f'Our fee is 10% of the amount recovered, calculated after case costs are repaid. If there is no recovery, you owe no fee and no case costs. Medical bills and liens are paid from your recovery. Every case is different, and past results do not guarantee future results.<br>'
-                f'{c["firm"]} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. Contacting us does not create an attorney-client relationship until a fee agreement is signed. {chip("Not certified by the Texas Board of Legal Specialization, if applicable")}. Attorney advertising. Typical fee figures based on {chip("Texas Fee Index, date")}. The calculator is an example only.</p>')
+                f'{c["firm"]} PLLC, Texas, a law firm owned only by licensed attorneys.<br>'
+                f'Our fee is 10% of the total amount recovered at every stage, including trial; case costs and liens are paid from your share after the fee. If there is no recovery, you owe no fee and no case costs. Every case is different, and past results do not guarantee future results.<br>'
+                f'{c["firm"]} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. The software company, 10flat Technologies, is paid a fixed fee and never shares in a recovery or a fee. Contacting us does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising. Fee comparisons use a one-third (33%) fee, common for Texas injury cases. The calculator is an illustration, not a promise of any outcome.</p>')
     footer_html = footer_html.replace(t.html(disc_p), new_disc)
     links = t.find_all(by_name("Links Container"), footer_outer["children"])[0]
     footer_html = footer_html.replace(t.html(links),
@@ -705,7 +705,16 @@ def main():
         if q != s["name"] or a != s["acceptedAnswer"]["text"]:
             raise SystemExit(f"build: FAQ text differs from schema: {q!r}")
     assert page.count("<h1") == 1, "expected exactly one h1"
-    print(f"built {OUT.relative_to(ROOT)}: {len(page):,} bytes; {page.count('pi-confirm')} CONFIRM chips; FAQ in sync with schema; 1 h1")
+    if 'class="pi-confirm"' in page:
+        raise SystemExit("build: a CONFIRM chip is still on the page")
+    body_text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", "", page[page.find("<body"):], flags=re.S)))
+    m = re.search(r"\[[^\]]{2,80}\]", body_text)
+    if m:
+        raise SystemExit(f"build: placeholder left on the page: {m.group(0)!r}")
+    for bad in ("after case costs", "after costs", "never goes up", "same day", "choose your attorney"):
+        if bad in body_text.lower():
+            raise SystemExit(f"build: retired wording {bad!r}")
+    print(f"built {OUT.relative_to(ROOT)}: {len(page):,} bytes; no placeholders; FAQ in sync with schema; 1 h1")
 
 
 if __name__ == "__main__":
