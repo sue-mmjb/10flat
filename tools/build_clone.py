@@ -197,6 +197,11 @@ html{scroll-behavior:smooth}
 .pi-promises li{font:600 11px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:13px 18px;white-space:nowrap}
 .pi-promises li.is-key{background:#ffe435;border-color:#ffe435;color:#140c0a}
 @media(max-width:809px){.pi-promises{gap:8px}.pi-promises li{font-size:10px;padding:11px 14px;letter-spacing:.06em}}
+/* accent words: black text on a yellow marker highlight that sweeps in, like the reference's canvas highlight */
+.pi-hl{color:#140c0a!important;background-image:linear-gradient(#ffe435,#ffe435);background-repeat:no-repeat;background-size:0% 80%;background-position:0 64%;padding:0 .05em;margin:0 -.05em;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background-size .9s cubic-bezier(.2,.7,.2,1) .25s}
+.pi-hl.pi-in{background-size:100% 80%}
+@media(prefers-reduced-motion:reduce){.pi-hl{background-size:100% 80%;transition:none}}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 .pi-marquee{animation:pi-marquee 28s linear infinite;width:max-content!important;transform:none!important}
 @keyframes pi-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.pi-marquee{animation:none}}
@@ -342,13 +347,9 @@ html{scroll-behavior:smooth}
   .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:32px!important}
   .framer-8pye7d,.framer-TzIF9 .framer-8pye7d,.framer-whz10a,.framer-TzIF9 .framer-whz10a{max-width:100%!important}
 }
-/* One screen per section on desktop (Sue, 2 Nov 2026): the page snaps section by section, every section is sized to the
-   viewport so it fits at 100% zoom and below, the pinned sections (three steps) keep their inner scroll. */
+/* One screen per section on desktop (Sue, 2 Nov 2026): every section is sized to the viewport so it fits at 100% zoom and
+   below; the page scrolls freely (Lenis smooth scroll, like the reference), the pinned sections keep their inner scroll. */
 @media(min-width:1200px){
-  html{scroll-snap-type:y mandatory}
-  [data-framer-name="HERO"],[data-framer-name="SET A BUDGET"] .framer-thykcu,[data-framer-name="Text Step 1"],[data-framer-name="Text Step 2"],
-  .framer-14srhib,[data-framer-name="WE BUILT STACK"],[data-framer-name="WE WIN WHEN"],[data-framer-name="INSURANCE CARRIERS"],
-  [data-framer-name="INSTANT IMPACT"],[data-framer-name="CTA"],.pi-faq-sec,[data-framer-name="FOOTER"]{scroll-snap-align:start;scroll-snap-stop:always}
   /* 1 hero */
   [data-framer-name="HERO"]{height:100vh!important;min-height:0!important}
   [data-framer-name="HERO"] .framer-hn5at0{height:100vh!important;padding:96px 76px 36px!important;gap:0!important;justify-content:space-evenly!important}
@@ -386,17 +387,17 @@ html{scroll-behavior:smooth}
   .pi-promises li{font-size:13px;padding:16px 22px}
   /* 9 quote carousel */
   .framer-1kjwwr3,.framer-hd6jU .framer-1kjwwr3{height:100vh!important;padding:0!important;justify-content:center!important;gap:0!important}
-  /* 10 closing: one plain screen instead of a 200vh scroll-driven zoom */
-  .framer-71z80s,.framer-hd6jU .framer-71z80s{height:100vh!important}
-  /* 11 questions, 12 footer */
-  .pi-faq-sec{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 24px 70px;box-sizing:border-box}
-  .framer-1ebd1db,.framer-hd6jU .framer-1ebd1db{min-height:100vh!important;justify-content:flex-end!important;padding:120px 0 56px!important;box-sizing:border-box}
+  /* 11 questions and footer share the last screen */
+  .pi-faq-sec{padding:52px 24px 16px}
+  .pi-faq-sec .pi-faq-h{margin-bottom:8px}
+  .pi-faq summary{padding:14px 48px 14px 0}
+  .framer-1ebd1db,.framer-hd6jU .framer-1ebd1db{padding:32px 0 28px!important}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-snap-type:none}}
 </style>
 """
 
 MOTION_JS = """
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 <script>
 (function () {
   var doc = document.documentElement;
@@ -406,7 +407,7 @@ MOTION_JS = """
   function clamp(x) { return Math.max(0, Math.min(1, x)); }
 
   /* 1. Scroll-in reveals (elements the bundle used to fade and lift in) */
-  var items = [].slice.call(document.querySelectorAll('[style*="--pi-appear"]'));
+  var items = [].slice.call(document.querySelectorAll('[style*="--pi-appear"], .pi-hl'));
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(function (el) { el.classList.add('pi-in'); });
   } else {
@@ -460,7 +461,7 @@ MOTION_JS = """
     }
     if (cta) {
       var r2 = cta.getBoundingClientRect();
-      var p2 = 1;   /* the closing section is one screen since 2 Nov 2026; keep the final state */
+      var p2 = clamp(-r2.top / Math.max(1, r2.height - vh));
       if (ctaImg) ctaImg.style.transform = 'scale(' + (0.3 + 0.7 * p2).toFixed(3) + ')';
       if (ctaContent) { ctaContent.style.opacity = p2.toFixed(3); ctaContent.style.transform = 'scale(' + (0.9 + 0.1 * p2).toFixed(3) + ')'; }
     }
@@ -478,35 +479,14 @@ MOTION_JS = """
   window.addEventListener('resize', onScroll);
   onScroll();
 
-  /* 3b. One wheel gesture = one screen (desktop). The CSS snap lands each screen; this makes a short wheel nudge
-         advance to the next screen instead of settling back. Tall pinned screens (three steps) scroll freely inside. */
-  var SNAP_SEL = '[data-framer-name="HERO"],[data-framer-name="SET A BUDGET"] .framer-thykcu,[data-framer-name="Text Step 1"],[data-framer-name="Text Step 2"],.framer-14srhib,[data-framer-name="WE BUILT STACK"],[data-framer-name="WE WIN WHEN"],[data-framer-name="INSURANCE CARRIERS"],[data-framer-name="INSTANT IMPACT"],[data-framer-name="CTA"],.pi-faq-sec,[data-framer-name="FOOTER"]';
-  var wheelLock = 0;
-  function snapList() {
-    return [].slice.call(document.querySelectorAll(SNAP_SEL)).filter(function (e) { return e.getBoundingClientRect().width > 0; })
-      .map(function (e) { var r = e.getBoundingClientRect(); return { top: Math.round(r.top + window.scrollY), h: Math.round(r.height) }; })
-      .sort(function (a, b) { return a.top - b.top; });
-  }
-  window.addEventListener('wheel', function (ev) {
-    if (!desktop() || reduce || ev.ctrlKey || Math.abs(ev.deltaY) < Math.abs(ev.deltaX)) return;
-    var now = Date.now();
-    if (now < wheelLock) { ev.preventDefault(); return; }
-    var vh = window.innerHeight, y = window.scrollY, dir = ev.deltaY > 0 ? 1 : -1;
-    var list = snapList(), i = -1;
-    for (var k = 0; k < list.length; k++) if (list[k].top <= y + 2) i = k;
-    if (i < 0) return;
-    var cur = list[i];
-    if (cur.h > vh + 2) {                                     /* inside a tall pinned screen: free scroll until its end */
-      var end = cur.top + cur.h - vh;
-      if ((dir > 0 && y < end - 2) || (dir < 0 && y > cur.top + 2)) return;
-    }
-    var target = dir > 0 ? list[i + 1] : (y > cur.top + 2 ? cur : list[i - 1]);
-    if (!target) return;
-    ev.preventDefault();
-    wheelLock = now + 1200;                                 /* long enough to swallow a trackpad's momentum tail */
-    var to = (dir < 0 && target.h > vh) ? target.top + target.h - vh : target.top;
-    window.scrollTo({ top: to, behavior: 'smooth' });
-  }, { passive: false });
+  /* 3b. Smooth scrolling like the reference: Lenis (deferred script), native scroll underneath so the pinned sections still work */
+  window.addEventListener('load', function () {
+    if (reduce || !window.Lenis) return;
+    var lenis = new window.Lenis({ lerp: 0.1, duration: 1.2, smoothWheel: true, anchors: true });
+    window.lenis = lenis;
+    function rafLoop(t) { lenis.raf(t); requestAnimationFrame(rafLoop); }
+    requestAnimationFrame(rafLoop);
+  });
 
   /* 4. Quote carousel arrows */
   var impact = document.querySelector('[data-framer-name="INSTANT IMPACT"]');
@@ -744,6 +724,9 @@ def main():
     html = html.replace("</head>", meta + "</head>", 1)
     html = html.replace(' data-framer-hydrate-v2="', ' data-x-hydrate="', 1)
     html = html.replace("<!-- Made in Framer · framer.com -->", f"<!-- {BRAND} prototype: mystack.com clone with text swapped by tools/build_clone.py. Do not edit by hand. -->", 1)
+    # accent words (Stack's 60% yellow text token) become black on a yellow marker highlight
+    html, n_hl = re.subn(r'<span([^>]*token-9700579c[^>]*)class="framer-text"', r'<span\1class="framer-text pi-hl"', html)
+    assert n_hl >= 2, "accent spans not found"
     html = html.replace("</body>", MOTION_JS + "</body>", 1)
 
     # --- motion markers, then make everything else the bundle hid visible
