@@ -405,6 +405,31 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
   .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:32px!important}
   .framer-8pye7d,.framer-TzIF9 .framer-8pye7d,.framer-whz10a,.framer-TzIF9 .framer-whz10a{max-width:100%!important}
 }
+/* Phone and tablet: every line of text stays inside the frame it sits in (Sue, 3 Nov 2026). */
+@media(max-width:1199.98px){
+  /* intro ("Less paperwork."): the cream frame is drawn at 90% width, so inset the text from its edges */
+  .framer-thykcu{padding-left:26px!important;padding-right:26px!important;box-sizing:border-box!important}
+  /* step 1 and step 2 text blocks were fixed-width and spilled past the beige box padding */
+  .framer-199lmfg,.framer-13e3bpg{width:100%!important;max-width:100%!important}
+  .framer-199lmfg *,.framer-13e3bpg *{max-width:100%!important;white-space:normal!important}
+  /* on phones the text sits in a fixed 300px component that set the block's minimum width */
+  [data-framer-name^="Container Configurator Mobile"] > :first-child,
+  [data-framer-name^="Container Configurator Mobile"] > :first-child [class$="-container"],
+  [data-framer-name^="Container Configurator Mobile"] > :first-child [data-framer-name]{width:100%!important;min-width:0!important;max-width:100%!important}
+  /* step 2 app card: the 'After fee and costs (example)' label was 165px wide in a 113px column */
+  .framer-1kv4tes,.framer-1kv4tes p{width:100%!important;text-align:right!important;white-space:normal!important}
+  /* footer laid out like the reference: wordmark on top, then the disclaimer, links and copyright, all padded */
+  .framer-TzIF9 .framer-1ebd1db{padding:72px 0 48px!important}
+  .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 24px!important;gap:28px!important}
+  .framer-1w3xnl7 > .framer-8pye7d{order:-1!important}
+  .pi-footer-mark{font-size:clamp(44px,8vw,72px)}
+  .framer-TzIF9 .framer-whz10a,.framer-TzIF9 .framer-s68pjb,.framer-TzIF9 .framer-30xopa,.framer-TzIF9 .framer-13vj0a9,.framer-TzIF9 .framer-30xopa > p{width:100%!important;max-width:100%!important}
+}
+@media(max-width:809.98px){
+  .framer-thykcu{padding-left:20px!important;padding-right:20px!important}
+  .framer-TzIF9 .framer-1ebd1db{padding:56px 0 36px!important}
+  .framer-1w3xnl7,.framer-TzIF9 .framer-1w3xnl7{padding:0 20px!important}
+}
 /* One screen per section on desktop (Sue, 2 Nov 2026): every section is sized to the viewport so it fits at 100% zoom and
    below; the page scrolls freely (Lenis smooth scroll, like the reference), the pinned sections keep their inner scroll. */
 @media(min-width:1200px){
