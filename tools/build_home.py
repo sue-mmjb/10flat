@@ -128,6 +128,8 @@ input[type=range]{width:100%;margin:10px 0 0;accent-color:var(--ink);height:28px
 .prom{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;list-style:none;padding:0}
 .prom li{background:var(--white);border-radius:20px;padding:22px 24px;font-size:16px;line-height:1.5}
 .prom b{display:block;font:800 21px/1.15 "Perfektta ExtraBold","Instrument Sans",sans-serif;letter-spacing:-.01em;margin-bottom:6px}
+.prom li.dup{display:none}
+@keyframes prom-drift{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .faq{max-width:820px;margin:32px 0 0}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;padding:20px 44px 20px 0;position:relative;font-weight:600;font-size:18px}
@@ -159,7 +161,12 @@ table.fees .diff{background:var(--yellow);font-weight:700}
   .calc{max-width:520px}
 }
 @media(max-width:860px){
-  .prom,.compare,.facts{grid-template-columns:1fr}
+  .compare,.facts{grid-template-columns:1fr}
+  /* phones: the promises drift slowly left to right in one row, looping; a touch pauses them */
+  .prom-wrap{margin:36px -20px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .prom{display:flex;width:max-content;gap:0;margin:0;animation:prom-drift 48s linear infinite}
+  .prom li,.prom li.dup{display:block;flex:none;width:260px;margin-right:14px}
+  .prom-wrap:hover .prom,.prom-wrap:active .prom,.prom-wrap:focus-within .prom{animation-play-state:paused}
   .money-box{grid-template-columns:1fr;gap:10px}
   .steps{grid-template-columns:1fr;gap:0}
   .steps::after{content:"";display:block;height:26vh}
@@ -167,6 +174,12 @@ table.fees .diff{background:var(--yellow);font-weight:700}
     padding:28px 26px 30px;box-shadow:0 -10px 30px -18px rgba(20,12,10,.35);transform-origin:50% 0;will-change:transform}
   .steps li:last-child{margin-bottom:0}
   .steps img{max-height:220px;margin:0 0 22px}
+}
+@media(max-width:860px) and (prefers-reduced-motion:reduce){
+  .prom-wrap{overflow-x:auto;-webkit-mask-image:none;mask-image:none;padding:0 20px;scroll-snap-type:x mandatory}
+  .prom{animation:none}
+  .prom li{scroll-snap-align:start}
+  .prom li.dup{display:none}
 }
 @media(max-width:760px){
   .sec{padding:64px 20px}
@@ -442,6 +455,7 @@ def build_home(schema):
     desc = ("10% injury fee, even at trial. No fee and no costs without a recovery. A licensed Texas attorney on every case. "
             "See what you keep, then start your case online.")
     promises = "".join(f"<li><b>{escape(h)}</b>{escape(t)}</li>" for h, t in PROMISES)
+    promises += "".join(f'<li class="dup" aria-hidden="true"><b>{escape(h)}</b>{escape(t)}</li>' for h, t in PROMISES)
     page = head("", desc, "/", CSS, full_title=CONFIG["title"]).replace("</head>", schema + "\n</head>") + f"""
 <body class="has-mbar">
 {nav()}
@@ -509,7 +523,7 @@ def build_home(schema):
 <section class="sec paper" aria-labelledby="prom-h">
   <div class="in">
     <h2 class="h2" id="prom-h">Our promises</h2>
-    <ul class="prom">{promises}</ul>
+    <div class="prom-wrap"><ul class="prom">{promises}</ul></div>
   </div>
 </section>
 
