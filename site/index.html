@@ -242,6 +242,8 @@ html{scroll-behavior:smooth}
 /* Elements the bundle faded in that are not scroll reveals */
 [data-framer-name="Tabs"],[data-framer-name="SET A BUDGET"] [style*="opacity:0"]{opacity:1!important}
 /* Logo ticker */
+/* phone case card: the chip rows of the fee and no-recovery tiles carried a second copy of the tile icon */
+.framer-p5mws8 > svg,.framer-44bqpb > svg{visibility:hidden!important}
 .pi-promises{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%;max-width:1100px}
 .pi-promises li{font:600 11px/1 "Archivo SemiExpanded SemiBold","Instrument Sans",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:13px 18px;white-space:nowrap}
 .pi-promises li.is-key{background:#ffe435;border-color:#ffe435;color:#140c0a}
@@ -358,11 +360,14 @@ html{scroll-behavior:smooth}
 @media(max-width:1199.98px){
   [data-framer-name="MAIN"] [data-framer-name="Absolute"]{position:relative!important;inset:auto!important;transform:none!important}
   [data-framer-name="MAIN"] [data-framer-name="Viewport"]{height:auto!important;min-height:0!important;overflow:visible!important}
-  [data-framer-name="Card 1"],[data-framer-name="Card 2"],[data-framer-name="Card 3"]{transform:none!important}
   /* below desktop the layers flow one after another; the title layer and each card wrapper lose their viewport-tall runway */
   .framer-1tvol1x,.framer-hd6jU .framer-1tvol1x{height:auto!important;min-height:0!important;padding-bottom:40px}
   .framer-9g4wr0,.framer-hd6jU .framer-9g4wr0{height:auto!important;gap:24px!important;align-items:center!important}
-  .framer-9g4wr0 > *{position:relative!important;height:auto!important;top:auto!important;display:flex!important;justify-content:center;width:100%!important}
+  /* the three step cards stack under the nav as on desktop: each wrapper sticks at --pi-slot and the next card slides over it (Sue, 2 Nov 2026) */
+  .framer-1ccwr6f{--pi-slot:92px}
+  .framer-9g4wr0,.framer-hd6jU .framer-9g4wr0{padding-bottom:28vh!important}
+  .framer-1ccwr6f .framer-9g4wr0 > *,[data-framer-name="WE BUILT STACK"] .framer-9g4wr0 > [data-framer-name="Sticky"]{position:sticky!important;height:auto!important;top:var(--pi-slot)!important;display:flex!important;justify-content:center;width:100%!important}
+  .framer-9g4wr0 [data-framer-name^="Card"]{transition:transform .15s linear;will-change:transform;transform-origin:50% 0;box-shadow:0 16px 48px rgba(20,12,10,.14)}
   [data-framer-name="WE BUILT STACK"] [data-framer-name="Sticky"]{position:relative!important;top:auto!important;height:auto!important;min-height:0!important}
   [data-framer-name="WE BUILT STACK"] [data-framer-name="spacer"]{display:none!important}
   .framer-71z80s{height:auto!important;padding:120px 0!important}
@@ -846,31 +851,47 @@ html.lenis body {
   }
 
   /* 2. Pinned card stack and pinned closing image, driven by scroll progress */
-  var cards = ['Card 1', 'Card 2', 'Card 3'].map(function (n) { return document.querySelector('[data-framer-name="' + n + '"]'); });
+  /* each card exists once per breakpoint variant; use the one that is laid out at the current width */
+  var cards = [], cardsWidth = 0;
+  function getCards() {
+    if (cardsWidth !== window.innerWidth) {
+      cardsWidth = window.innerWidth;
+      cards = ['Card 1', 'Card 2', 'Card 3'].map(function (n) {
+        return [].filter.call(document.querySelectorAll('[data-framer-name="' + n + '"]'), function (e) { return e.getBoundingClientRect().width > 0; })[0] || null;
+      });
+    }
+    return cards;
+  }
   var cta = document.querySelector('[data-framer-name="CTA"]');
   var ctaImg = cta && cta.querySelector('.framer-1j23hd2-container');
   var ctaContent = cta && cta.querySelector('.framer-18uk1a7');
   var nav = document.querySelector('.framer-e8x4r3');
   function onScroll() {
     if (nav) nav.classList.toggle('pi-nav-solid', window.scrollY > 24);
-    if (!desktop() || reduce) {
+    var cards = getCards();
+    if (reduce) {
       cards.forEach(function (c) { if (c) c.style.transform = 'none'; });
       if (ctaImg) ctaImg.style.transform = 'none';
       if (ctaContent) { ctaContent.style.opacity = 1; ctaContent.style.transform = 'none'; }
       return;
     }
     var vh = window.innerHeight;
+    var slot = desktop() ? Math.max(0, vh * 0.5 - 200) : 92;   /* same as --pi-slot in the CSS */
     cards.forEach(function (c, i) {
       if (!c) return;
       if (i === 0) { c.style.transform = 'none'; return; }
       var r = c.getBoundingClientRect();
-      var slot = Math.max(0, vh * 0.5 - 200);                 /* same as --pi-slot in the CSS */
       var p = clamp(1 - (r.top - slot) / (vh - slot));         /* 0 when entering from below, 1 when pinned */
       var sign = i === 1 ? -1 : 1;
       c.style.transform = 'rotate(' + (sign * 10 * (1 - p)).toFixed(2) + 'deg) translateY(' + (40 * (1 - p)).toFixed(1) + 'px)';
       var prev = cards[i - 1];
       if (prev) prev.style.transform = 'scale(' + (1 - 0.06 * p).toFixed(3) + ') translateY(' + (-24 * p).toFixed(1) + 'px)';
     });
+    if (!desktop()) {
+      if (ctaImg) ctaImg.style.transform = 'none';
+      if (ctaContent) { ctaContent.style.opacity = 1; ctaContent.style.transform = 'none'; }
+      return;
+    }
     if (cta) {
       var r2 = cta.getBoundingClientRect();
       var p2 = clamp(-r2.top / Math.max(1, r2.height - vh));
