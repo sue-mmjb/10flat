@@ -86,3 +86,10 @@ Drive folder. What this means for the Sheet:
 - Optional: in the Apps Script editor add a daily time-driven trigger for `cleanUploads`, which forgets uploads that
   never finished.
 
+## Update of 17 Nov 2026 (national)
+
+The form now asks where it happened as "City or county, and state" instead of a Texas county. The script's column and
+email line are called **Where it happened**. If your "Case requests" tab already exists, rename the **Texas county**
+header to **Where it happened** (the script writes by position, so nothing breaks if you don't), then paste the new
+`Code.gs` and redeploy.
+

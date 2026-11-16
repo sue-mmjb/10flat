@@ -18,7 +18,7 @@ const NOTIFY_TO = '10flatlaw@gmail.com';
 const SHEET_NAME = 'Case requests';                  // tab created on first use
 const FOLDER_NAME = '10flat Law case uploads';       // Drive folder created on first use (private to this account)
 
-const HEADERS = ['Received (Texas time)', 'Reference', 'Name', 'Mobile', 'What happened', 'Date of incident', 'Texas county',
+const HEADERS = ['Received (Texas time)', 'Reference', 'Name', 'Mobile', 'What happened', 'Date of incident', 'Where it happened',
   'Government involved', 'Language', 'Seen a doctor or dentist', 'Already has a lawyer', 'Insurance company',
   'What happened and injuries', 'Files', 'Status'];
 const FILES_COL = HEADERS.indexOf('Files') + 1;
@@ -71,7 +71,7 @@ function newRequest(d) {
   }
 
   const rows = [['Reference', d.ref || ''], ['Name', d.name], ['Mobile', d.phone], ['What happened', d.incident], ['Date of incident', when],
-    ['Texas county', d.county], ['Government vehicle or property', government], ['Language', d.language],
+    ['Where it happened', d.county], ['Government vehicle or property', government], ['Language', d.language],
     ['Seen a doctor or dentist', treatment], ['Already has a lawyer', d.hasLawyer ? 'Yes' : 'No'],
     ['Insurance company', d.insurer || '(not given)'],
     ['Files', links.length ? links.length + ' attached' : expected ? expected + ' uploading; you will get a second email when they are in' : 'None']];
@@ -84,7 +84,7 @@ function newRequest(d) {
     '<p style="font:13px Arial,sans-serif;color:#666">Sheet: ' + ss.getUrl() + '<br>Files folder: ' + folder.getUrl() + '</p>';
   MailApp.sendEmail({
     to: NOTIFY_TO,
-    subject: (urgent ? 'URGENT ' : '') + 'New case request ' + (d.ref ? d.ref + ': ' : ': ') + d.incident + ', ' + d.county + ' County (' + d.name + ')',
+    subject: (urgent ? 'URGENT ' : '') + 'New case request ' + (d.ref ? d.ref + ': ' : ': ') + d.incident + ', ' + d.county + ' (' + d.name + ')',
     htmlBody: html,
     attachments: blobs,
     name: '10flat Law website',
@@ -143,7 +143,7 @@ function filePiece(d) {
 function testSetup() {
   newRequest({
     type: 'case_review_request', ref: '10F-TEST-0000', receivedAt: new Date().toISOString(), name: 'Test request', phone: '000 000 0000',
-    incident: 'Car accident', date: '2026-11-01', county: 'Harris', government: 'no', language: 'English', treatment: 'yes',
+    incident: 'Car accident', date: '2026-11-01', county: 'Houston, TX', government: 'no', language: 'English', treatment: 'yes',
     hasLawyer: false, insurer: '', story: 'Setup test. Delete this row and its folder.', filesExpected: 0,
   });
 }
