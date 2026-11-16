@@ -1,0 +1,26 @@
+# Turns on GitHub auto-merge for pull requests opened by Chandana, so each update she pushes merges into main as soon
+# as the required checks pass (the "build" check in build-check.yml). Nobody has to click Approve.
+#
+# Safe on pull_request_target: this job never checks out or runs the pull request's code; it only calls the GitHub API.
+# Needs, in the repository settings: "Allow auto-merge" ticked, and main's rule without required approvals.
+name: Auto-merge Chandana's pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  enable-auto-merge:
+    if: github.event.pull_request.user.login == 'chandanavinodhiran-hub' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Turn on auto-merge (merge commit)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        # if nothing is left to wait for, GitHub won't queue an auto-merge; merge straight away instead
+        run: gh pr merge --auto --merge "$PR_URL" || gh pr merge --merge "$PR_URL"

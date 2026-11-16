@@ -1,0 +1,43 @@
+# Rebuilds the site on every pull request and every push to main, and fails if:
+#  - the build stops (placeholders, flagged wording, extra H1s, missing alt text, names in the source), or
+#  - the committed pages in site/ don't match what the source builds (someone edited a page by hand or forgot to rebuild).
+# Make "build" a required status check on main so auto-merge only merges changes that pass.
+name: Build check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Pillow (used by the share-image builder)
+        run: pip install "pillow==11.*"
+
+      - name: Build the site
+        run: python tools/build.py
+
+      - name: Committed pages match the source
+        run: |
+          if ! git diff --ignore-cr-at-eol --exit-code --stat -- site content/schema; then
+            echo "::error::The pages in site/ don't match the source. Run 'python tools/build.py' and commit the site folder."
+            exit 1
+          fi
+          new_files="$(git ls-files --others --exclude-standard -- site)"
+          if [ -n "$new_files" ]; then
+            echo "$new_files"
+            echo "::error::The build made pages that aren't committed. Run 'python tools/build.py' and commit the site folder."
+            exit 1
+          fi
