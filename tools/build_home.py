@@ -384,7 +384,7 @@ def calculator(default="car"):
 STEPS = [
     ("step-1.webp", "Drawing of a phone sending photos and documents, next to a speech bubble with an exclamation and question mark.",
      "Tell us what happened.",
-     "Send your case with our short online form, with any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. You see your attorney’s name and Texas license, and can ask them anything, before you sign."),
+     "Send your case with our short online form, with any photos or documents you have. A licensed attorney reviews every case, and we tell you when to expect an answer. You see your attorney’s name and license, and can ask them anything, before you sign."),
     ("step-2.webp", "Drawing of document folders being stacked into a folder labelled Case by a small crane.",
      "We build your case.",
      "Our software organizes your records, requests what’s missing, builds a timeline of your treatment, totals your bills and tracks every deadline. A trained case team checks the work."),
@@ -402,53 +402,53 @@ PROMISES = [
     ("A lawyer signs off.", "Nothing reaches an insurer or a court without your attorney’s approval."),
 ]
 
-MONEY_BOX = (f'<div class="money-box"><h3 class="h3">How 10flat makes money</h3><p>{FIRM} PLLC is a Texas law firm owned only by '
+MONEY_BOX = (f'<div class="money-box"><h3 class="h3">How 10flat makes money</h3><p>{FIRM} PLLC is a law firm owned only by '
              "licensed attorneys. It is paid 10% of what it recovers for you, and nothing if there is no recovery. The software "
              "comes from 10flat Technologies, which the firm pays a fixed fee; it never receives any part of your recovery or of our fee.</p></div>")
 
 CASE_CONTENT = {
     "car-accident": {
-        "h1": "Car accident lawyer in Texas. 10% fee, even at trial.",
-        "lead": "Hurt in a car crash in Texas? Our fee is 10% of what we recover for you, at every stage. A one-third fee is common for Texas injury cases.",
+        "h1": "Car accident lawyer. 10% fee, even at trial.",
+        "lead": "Hurt in a car crash? Our fee is 10% of what we recover for you, at every stage. A one-third fee is common for injury cases.",
         "send": ["The crash report number or a copy, if there is one", "Photos of the vehicles, the scene and your injuries",
                  "Your insurance details, and the other driver’s if you have them", "Medical bills and records so far", "Names and numbers of any witnesses"],
-        "deadlines": ["Texas injury lawsuits generally must be filed within two years of the crash.",
-                      "If a city, county, state or school vehicle was involved, a written notice can be due within six months, and some cities set shorter deadlines."],
+        "deadlines": ["Filing deadlines depend on the state where it happened. Many are two years from the crash, and some are as short as one year.",
+                      "If a city, county, state or school vehicle was involved, a written notice can be due within months, long before the filing deadline."],
     },
     "truck-accident": {
-        "h1": "Truck accident lawyer in Texas. 10% fee, even at trial.",
-        "lead": "Hurt in a crash with a truck or commercial vehicle in Texas? Our fee is 10% of what we recover for you, at every stage, including trial.",
+        "h1": "Truck accident lawyer. 10% fee, even at trial.",
+        "lead": "Hurt in a crash with a truck or commercial vehicle? Our fee is 10% of what we recover for you, at every stage, including trial.",
         "send": ["The crash report number or a copy", "Photos of the scene, the truck and any company name or number on it",
                  "Your insurance details", "Medical bills and records so far", "Names and numbers of any witnesses"],
-        "deadlines": ["Texas injury lawsuits generally must be filed within two years of the crash.",
+        "deadlines": ["Filing deadlines depend on the state where it happened. Many are two years from the crash, and some are as short as one year.",
                       "Some records, such as driver logs and truck data, may be kept only for a limited time, so it helps to start early.",
-                      "If a government vehicle was involved, a written notice can be due within six months, and some cities set shorter deadlines."],
+                      "If a government vehicle was involved, a written notice can be due within months, long before the filing deadline."],
     },
     "slip-and-fall": {
-        "h1": "Slip and fall lawyer in Texas. 10% fee, even at trial.",
-        "lead": "Hurt in a fall at a store, a workplace or someone else’s property in Texas? Our fee is 10% of what we recover for you, at every stage.",
+        "h1": "Slip and fall lawyer. 10% fee, even at trial.",
+        "lead": "Hurt in a fall at a store, a workplace or someone else’s property? Our fee is 10% of what we recover for you, at every stage.",
         "send": ["Photos of where you fell and what caused it", "Any incident report you were given", "Names of witnesses or staff you spoke to",
                  "Medical bills and records so far"],
-        "deadlines": ["Texas injury lawsuits generally must be filed within two years of the fall.",
-                      "If it happened on city, county, state or school property, a written notice can be due within six months, and some cities set shorter deadlines.",
+        "deadlines": ["Filing deadlines depend on the state where it happened. Many are two years from the fall, and some are as short as one year.",
+                      "If it happened on city, county, state or school property, a written notice can be due within months, long before the filing deadline.",
                       "Hazards get fixed and video gets recorded over, so photos and names collected early help."],
     },
     "medical-injury": {
-        "h1": "Medical injury lawyer in Texas. 10% fee, even at trial.",
-        "lead": "Hurt by a doctor, hospital or clinic in Texas? Our fee is 10% of what we recover for you, at every stage, including trial.",
+        "h1": "Medical injury lawyer. 10% fee, even at trial.",
+        "lead": "Hurt by a doctor, hospital or clinic? Our fee is 10% of what we recover for you, at every stage, including trial.",
         "send": ["Names of the doctors, hospitals and clinics", "Dates of the treatment", "Any records, letters or discharge papers you have",
                  "Medical bills so far", "What has changed for you since the treatment"],
-        "deadlines": ["Texas health care claims generally must be brought within two years of the treatment, with special rules for some cases.",
-                      "These cases need a medical expert: once a lawsuit is filed, an expert report is generally due within 120 days of the defendant’s answer.",
+        "deadlines": ["Health care claims have their own deadlines, often two years from the treatment, with special rules in many states.",
+                      "These cases need a medical expert, and many states require an expert report or affidavit early in the case.",
                       "Expert costs are higher in these cases. Your attorney sets a cost budget with you when the case is accepted, and you owe no costs if there is no recovery."],
     },
     "dental-injury": {
-        "h1": "Dental injury lawyer in Texas. 10% fee, even at trial.",
-        "lead": "Hurt by a dentist, oral surgeon or dental clinic in Texas? Our fee is 10% of what we recover for you, at every stage, including trial.",
+        "h1": "Dental injury lawyer. 10% fee, even at trial.",
+        "lead": "Hurt by a dentist, oral surgeon or dental clinic? Our fee is 10% of what we recover for you, at every stage, including trial.",
         "send": ["The dentist’s name and office", "Dates of the treatment", "X-rays, records or treatment plans you have",
                  "Dental and medical bills so far", "What is wrong now, such as pain or numbness"],
-        "deadlines": ["Claims against dentists are health care claims in Texas, which generally must be brought within two years of the treatment.",
-                      "These cases need a dental expert: once a lawsuit is filed, an expert report is generally due within 120 days of the defendant’s answer.",
+        "deadlines": ["Claims against dentists are usually health care claims, with their own deadlines, often two years from the treatment.",
+                      "These cases need a dental expert, and many states require an expert report or affidavit early in the case.",
                       "Expert costs are higher in these cases. Your attorney sets a cost budget with you when the case is accepted, and you owe no costs if there is no recovery."],
     },
 }
@@ -496,7 +496,7 @@ def closing(where):
 
 def build_home(schema):
     faq_items = [i for g in FAQ_GROUPS for i in g["items"]]
-    desc = ("10% injury fee, even at trial. No fee and no costs without a recovery. A licensed Texas attorney on every case. "
+    desc = ("10% injury fee, even at trial. No fee and no costs without a recovery. A licensed attorney on every case. "
             "See what you keep, then start your case online.")
     promises = "".join(f"<li><b>{escape(h)}</b>{escape(t)}</li>" for h, t in PROMISES)
     dots = "".join(f'<span{" class=\"on\"" if i == 0 else ""}></span>' for i in range(len(PROMISES)))
@@ -508,8 +508,8 @@ def build_home(schema):
   <div class="in">
     <div>
       <h1 id="h1">10% fee.<br>Even at trial.</h1>
-      <p class="body">A one-third fee is common for Texas injury cases. Ours is 10% of what we recover for you, and it stays 10% if your case goes to trial.</p>
-      <ul class="ticks"><li>No fee and no costs without a recovery</li><li>A licensed Texas attorney on every case</li><li>You decide every offer</li></ul>
+      <p class="body">A one-third fee is common for injury cases. Ours is 10% of what we recover for you, and it stays 10% if your case goes to trial.</p>
+      <ul class="ticks"><li>No fee and no costs without a recovery</li><li>A licensed attorney on every case</li><li>You decide every offer</li></ul>
       <div class="btns"><a class="b1" href="/start" onclick="track('start_click',{{from:'hero'}})">Start your case</a><a class="b2" href="#how">How it works</a></div>
     </div>
     {calculator()}
@@ -530,7 +530,7 @@ def build_home(schema):
     <p class="body">Your fee doesn’t change what your case is worth. It changes how much of it you keep. We charge less because we spend less, not because we do less.</p>
     <div class="compare">
       <div class="col them"><h3 class="h3">What we don’t pay for</h3><ul><li>No billboards or TV ads</li><li>No downtown office</li><li>No one retyping letters</li></ul></div>
-      <div class="col us"><h3 class="h3">Where our 10% goes</h3><ul><li>Software that does the paperwork</li><li>A trained case team that checks it</li><li>A licensed Texas attorney who reviews, advises and negotiates</li></ul></div>
+      <div class="col us"><h3 class="h3">Where our 10% goes</h3><ul><li>Software that does the paperwork</li><li>A trained case team that checks it</li><li>A licensed attorney who reviews, advises and negotiates</li></ul></div>
     </div>
     {MONEY_BOX}
     <div class="btns"><a class="b2" href="/fees">Fee examples</a></div>
@@ -609,7 +609,7 @@ def build_case_pages():
     <div>
       <h1 id="h1">{escape(c['h1'])}</h1>
       <p class="body">{escape(c['lead'])}</p>
-      <ul class="ticks"><li>No fee and no costs without a recovery</li><li>A licensed Texas attorney reviews every case</li><li>You decide every offer</li></ul>
+      <ul class="ticks"><li>No fee and no costs without a recovery</li><li>A licensed attorney reviews every case</li><li>You decide every offer</li></ul>
       <div class="btns"><a class="b1" href="/start?type={key}" onclick="track('start_click',{{from:'{slug}'}})">Start your case</a><a class="b2" href="#facts">What to send us</a></div>
     </div>
     {calculator(key)}
@@ -684,7 +684,7 @@ def build_fees():
       <thead><tr><th scope="col">Settlement</th><th scope="col">Case costs (example)</th><th scope="col">Our fee (10%)</th><th scope="col">You keep with us</th><th scope="col">A one-third fee</th><th scope="col">You’d keep</th><th scope="col">You keep more</th></tr></thead>
       <tbody>{rows}</tbody>
     </table></div>
-    <p class="note">Examples only, not a prediction of what any case is worth. A one-third (33%) fee is common for Texas injury cases; fees vary by firm.</p>
+    <p class="note">Examples only, not a prediction of what any case is worth. A one-third (33%) fee is common for injury cases; fees vary by firm.</p>
   </div>
 </section>
 

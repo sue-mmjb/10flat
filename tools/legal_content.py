@@ -15,7 +15,7 @@ confidentiality as lawyers also protect what you tell us.</p>
 
 <h2>What we collect</h2>
 <p><b>What you give us.</b> When you send a case review request we receive your name, mobile number, what happened and
-when, the Texas county, your preferred language, whether you have seen a doctor or dentist, the insurance company
+when, the city or county and state, your preferred language, whether you have seen a doctor or dentist, the insurance company
 involved, whether a government vehicle or property was involved, whether you already have a lawyer, your description of
 the incident and your injuries, and any photos or documents you attach. While you fill in the form, your answers are
 kept on your own device (in your browser) so a dropped connection doesn’t lose them; they are deleted when you send the
@@ -41,7 +41,7 @@ Reply STOP at any time to stop texts.</p>
 
 <h2>Technology, including AI</h2>
 <p>We use software, including AI tools, to organize the information you send, build timelines, total bills and prepare
-drafts. A licensed Texas attorney reviews and approves legal work. Nothing goes to an insurance company, a court or the
+drafts. A licensed attorney reviews and approves legal work. Nothing goes to an insurance company, a court or the
 other side’s lawyer without your attorney’s approval, and every decision about an offer is yours.</p>
 
 <h2>Who we share it with</h2>
@@ -105,9 +105,9 @@ full terms, and it controls if anything on this website is different.</p>
 what your case is worth or what you will receive. Every case is different, and past results do not guarantee future
 results.</p>
 
-<h2>Texas</h2>
-<p>Our attorneys are licensed in Texas, and we take injury cases under Texas law. We do not offer legal services in
-other states.</p>
+<h2>Where we work</h2>
+<p>Our attorneys are licensed in Texas. We handle injury claims for people anywhere in the United States. If a case
+needs a lawsuit in another state, it is filed by an attorney licensed in that state.</p>
 
 <h2>Using the site</h2>
 <ul>

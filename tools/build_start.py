@@ -14,24 +14,22 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from site_common import FIRM, finalize, footer, footer_es, head, nav, nav_es  # noqa: E402
-from texas_counties import COUNTIES  # noqa: E402
 
 CASE_TYPES = ["Car accident", "Truck accident", "Slip and fall", "Medical injury", "Dental injury", "Something else"]
 
 T = {
     "en": {
         "path": "/start", "out": "start/index.html", "title": "Start your case",
-        "desc": f"Tell {FIRM} what happened. A licensed Texas attorney reviews every request. 10% fee, even at trial; no fee and no costs without a recovery.",
+        "desc": f"Tell {FIRM} what happened. A licensed attorney reviews every request. 10% fee, even at trial; no fee and no costs without a recovery.",
         "h1": "Tell us what happened.",
-        "lead": "It takes about three minutes. A licensed Texas attorney reviews every request, and we tell you when to expect an answer, whether or not we can take your case.",
-        "points": ["10% fee, even at trial", "No fee and no costs without a recovery", "A licensed Texas attorney reviews every request"],
+        "lead": "It takes about three minutes. A licensed attorney reviews every request, and we tell you when to expect an answer, whether or not we can take your case.",
+        "points": ["10% fee, even at trial", "No fee and no costs without a recovery", "A licensed attorney reviews every request"],
         "fine": "Sending this form does not create an attorney-client relationship. Please don’t send anything you consider highly sensitive, such as full medical records; your attorney will ask for those securely later.",
         "cases": CASE_TYPES, "choose": "Choose one",
         "name": "Your name", "phone": "Mobile number", "incident": "What happened?", "date": "When did it happen?",
         "unsure": "I’m not sure of the exact date",
-        "deadline": "Texas injury deadlines are generally two years from the date of the injury. Please send this today, and an attorney will look at the deadline first.",
-        "county": "Texas county",
-        "county_note": "We couldn’t match that to a Texas county. If it happened outside Texas we may not be able to help, but send it anyway and we’ll tell you.",
+        "deadline": "Injury deadlines depend on the state, and some are as short as one year from the injury. Please send this today, and an attorney will look at the deadline first.",
+        "county": "Where did it happen? City or county, and state",
         "language": "Preferred language", "lang_default": "English",
         "gov": "Was a city, county, state or school vehicle or property involved?", "gov_opts": ["Yes", "No", "Not sure"],
         "gov_warn": "Claims against a government can have a notice deadline as short as 6 months, and some cities set shorter ones. Please send this today.",
@@ -44,16 +42,16 @@ T = {
         "consent": f"I agree that {FIRM} may contact me about my request by phone, text or WhatsApp, and that technology helps organize my information for attorney review, as the <a href=\"/privacy\" target=\"_blank\">Privacy Policy</a> explains. Message and data rates may apply. Reply STOP to opt out of texts.",
         "send": "Send for attorney review", "sending": "Sending…", "uploading": "Uploading file {i} of {n}…",
         "draft": "We restored the answers you hadn’t sent yet.", "start_over": "Start over",
-        "done_h": "Thank you, {name}.", "done_p": "We have your request. A licensed Texas attorney will review it.", "ref": "Your reference:",
+        "done_h": "Thank you, {name}.", "done_p": "We have your request. A licensed attorney will review it.", "ref": "Your reference:",
         "done_steps": ["We message you on the mobile number you gave us, with the date to expect an answer.",
                        "The attorney reviews what you sent and may ask for a few more details.",
-                       "If we can take your case, you see your attorney’s name and Texas license, and the fee agreement, before you sign anything."],
+                       "If we can take your case, you see your attorney’s name and license, and the fee agreement, before you sign anything."],
         "back": "Back to home", "back_href": "/",
         "msg": {
             "name": "Please tell us your name.", "phone": "Please enter a mobile number we can reach you on.",
             "incident": "Please choose what happened.",
             "date": "Please enter the date it happened (not in the future), or tick “not sure” and give your best guess.",
-            "county": "Please enter the Texas county where it happened.",
+            "county": "Please enter the city or county, and the state, where it happened.",
             "government": "Please tell us whether a government vehicle or property was involved, or choose “Not sure”.",
             "treatment": "Please tell us whether you have seen a doctor or dentist.",
             "story": "Please tell us briefly what happened and how you were hurt.",
@@ -66,18 +64,17 @@ T = {
     },
     "es": {
         "path": "/es/start", "out": "es/start/index.html", "title": "Empiece su caso",
-        "desc": f"Cuéntele a {FIRM} qué pasó. Un abogado con licencia en Texas revisa cada solicitud. Honorarios del 10%, incluso en juicio; sin honorarios ni gastos si no hay recuperación.",
+        "desc": f"Cuéntele a {FIRM} qué pasó. Un abogado con licencia revisa cada solicitud. Honorarios del 10%, incluso en juicio; sin honorarios ni gastos si no hay recuperación.",
         "h1": "Cuéntenos qué pasó.",
-        "lead": "Toma unos tres minutos. Un abogado con licencia en Texas revisa cada solicitud, y le decimos cuándo esperar una respuesta, podamos o no tomar su caso.",
-        "points": ["Honorarios del 10%, incluso en juicio", "Sin honorarios ni gastos si no hay recuperación", "Un abogado con licencia en Texas revisa cada solicitud"],
+        "lead": "Toma unos tres minutos. Un abogado con licencia revisa cada solicitud, y le decimos cuándo esperar una respuesta, podamos o no tomar su caso.",
+        "points": ["Honorarios del 10%, incluso en juicio", "Sin honorarios ni gastos si no hay recuperación", "Un abogado con licencia revisa cada solicitud"],
         "fine": "Enviar este formulario no crea una relación abogado-cliente. Por favor no envíe nada que considere muy delicado, como expedientes médicos completos; su abogado se los pedirá de forma segura más adelante.",
         "cases": ["Accidente de auto", "Accidente de camión", "Resbalón y caída", "Lesión médica", "Lesión dental", "Otra cosa"],
         "choose": "Elija una opción",
         "name": "Su nombre", "phone": "Número de celular", "incident": "¿Qué pasó?", "date": "¿Cuándo pasó?",
         "unsure": "No sé la fecha exacta",
-        "deadline": "En Texas, el plazo para casos de lesiones suele ser de dos años desde la fecha de la lesión. Envíe esto hoy y un abogado revisará primero el plazo.",
-        "county": "Condado de Texas",
-        "county_note": "No encontramos ese condado de Texas. Si pasó fuera de Texas, es posible que no podamos ayudar, pero envíelo de todos modos y le diremos.",
+        "deadline": "El plazo para casos de lesiones depende del estado, y en algunos es de solo un año desde la lesión. Envíe esto hoy y un abogado revisará primero el plazo.",
+        "county": "¿Dónde pasó? Ciudad o condado, y estado",
         "language": "Idioma preferido", "lang_default": "Español",
         "gov": "¿Hubo un vehículo o una propiedad de una ciudad, condado, estado o escuela involucrados?", "gov_opts": ["Sí", "No", "No sé"],
         "gov_warn": "Los reclamos contra un gobierno pueden tener un plazo de aviso de solo 6 meses, y algunas ciudades fijan plazos más cortos. Envíe esto hoy.",
@@ -90,16 +87,16 @@ T = {
         "consent": f"Acepto que {FIRM} me contacte sobre mi solicitud por teléfono, mensaje de texto o WhatsApp, y que la tecnología ayude a organizar mi información para que la revise un abogado, como explica la <a href=\"/privacy\" target=\"_blank\" hreflang=\"en\">Política de privacidad</a> (en inglés). Pueden aplicarse tarifas de mensajes y datos. Responda STOP para dejar de recibir mensajes de texto.",
         "send": "Enviar para revisión de un abogado", "sending": "Enviando…", "uploading": "Subiendo archivo {i} de {n}…",
         "draft": "Recuperamos las respuestas que aún no había enviado.", "start_over": "Empezar de nuevo",
-        "done_h": "Gracias, {name}.", "done_p": "Recibimos su solicitud. Un abogado con licencia en Texas la revisará.", "ref": "Su número de referencia:",
+        "done_h": "Gracias, {name}.", "done_p": "Recibimos su solicitud. Un abogado con licencia la revisará.", "ref": "Su número de referencia:",
         "done_steps": ["Le escribiremos al celular que nos dio, con la fecha en que puede esperar una respuesta.",
                        "El abogado revisa lo que envió y puede pedirle algunos datos más.",
-                       "Si podemos tomar su caso, verá el nombre y la licencia de Texas de su abogado, y el acuerdo de honorarios, antes de firmar nada."],
+                       "Si podemos tomar su caso, verá el nombre y la licencia de su abogado, y el acuerdo de honorarios, antes de firmar nada."],
         "back": "Volver al inicio", "back_href": "/",
         "msg": {
             "name": "Por favor díganos su nombre.", "phone": "Por favor escriba un número de celular donde podamos contactarle.",
             "incident": "Por favor elija qué pasó.",
             "date": "Por favor escriba la fecha en que pasó (no en el futuro), o marque “No sé la fecha exacta” y dé su mejor cálculo.",
-            "county": "Por favor escriba el condado de Texas donde pasó.",
+            "county": "Por favor escriba la ciudad o el condado, y el estado, donde pasó.",
             "government": "Por favor díganos si hubo un vehículo o una propiedad del gobierno involucrados, o elija “No sé”.",
             "treatment": "Por favor díganos si ha visto a un médico o dentista.",
             "story": "Por favor cuéntenos brevemente qué pasó y cómo se lastimó.",
@@ -222,19 +219,16 @@ JS = r"""
   } catch (e) {}
   var q = new URLSearchParams(location.search).get('type'); if (q && TYPES[q]) el('incident').value = TYPES[q];
 
-  var COUNTIES = [].map.call(document.querySelectorAll('#tx-counties option'), function (o) { return o.value.toLowerCase(); });
-  var countyNote = document.getElementById('county-note'), deadline = document.getElementById('deadline-note');
+  var deadline = document.getElementById('deadline-note');
   var govNote = document.getElementById('gov-note'), lawyerNote = document.getElementById('lawyer-note');
-  function countyCheck() { var v = el('county').value.trim().toLowerCase().replace(/\s+(county|condado)$/, '').replace(/^condado( de)?\s+/, ''); countyNote.hidden = !v || COUNTIES.indexOf(v) > -1; }
   function deadlineCheck() {
     var v = el('date').value; if (!v || unsure.checked) { deadline.hidden = true; return; }
     var months = (Date.now() - new Date(v + 'T12:00:00').getTime()) / (1000 * 60 * 60 * 24 * 30.44);
-    deadline.hidden = months < 20;
+    deadline.hidden = months < 9;
   }
   function govCheck() { var g = el('government').value; govNote.hidden = !(g === 'yes' || g === 'unsure'); }
   function lawyerCheck() { lawyerNote.hidden = el('lawyer').value !== 'yes'; }
-  function refresh() { countyCheck(); deadlineCheck(); govCheck(); lawyerCheck(); }
-  el('county').addEventListener('change', countyCheck); el('county').addEventListener('blur', countyCheck);
+  function refresh() { deadlineCheck(); govCheck(); lawyerCheck(); }
   el('date').addEventListener('change', deadlineCheck); el('date').addEventListener('input', deadlineCheck);
   unsure.addEventListener('change', function () { deadlineCheck(); if (form.querySelector('[data-field="date"]').classList.contains('bad')) check(); });
   [].forEach.call(form.querySelectorAll('input[name=government]'), function (r) { r.addEventListener('change', govCheck); });
@@ -392,9 +386,7 @@ def build_form(lang):
         field("date", s["date"], '<input type="date" id="f-date" name="date" aria-describedby="e-date">'
               f'<label class="unsure"><input type="checkbox" id="f-unsure" name="unsure"> {s["unsure"]}</label>'
               f'<p class="warn" id="deadline-note" hidden>{s["deadline"]}</p>'),
-        field("county", s["county"], '<input type="text" id="f-county" name="county" list="tx-counties" autocomplete="off" maxlength="60" aria-describedby="e-county">'
-              '<datalist id="tx-counties">' + "".join(f'<option value="{c}">' for c in COUNTIES) + '</datalist>'
-              f'<p class="hint" id="county-note" hidden>{s["county_note"]}</p>'),
+        field("county", s["county"], '<input type="text" id="f-county" name="county" autocomplete="address-level2" maxlength="60" aria-describedby="e-county">'),
         field("language", s["language"], f'<select id="f-language" name="language">{langs}</select>'),
         radios("government", s["gov"], list(zip(("yes", "no", "unsure"), s["gov_opts"])),
                extra=f'<p class="warn" id="gov-note" hidden style="margin-top:10px">{s["gov_warn"]}</p>'),

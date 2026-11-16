@@ -58,7 +58,7 @@ def og():
     mark = ImageFont.truetype(BLACK_FONT, 46)
     d.text((80, 70), "10% fee.", font=big, fill=INK)
     d.text((80, 245), "Even at trial.", font=big, fill=INK)
-    d.text((80, 468), "Texas injury lawyers. No fee and no costs without a recovery.", font=mid, fill=INK)
+    d.text((80, 468), "Injury lawyers. No fee and no costs without a recovery.", font=mid, fill=INK)
     d.text((80, 538), "10flat Law", font=mark, fill=INK)
     drawing = Image.open(SRC / "step-3.png").convert("RGBA")
     drawing.thumbnail((360, 300))
