@@ -66,17 +66,17 @@ footer p{margin:0 0 12px}
 """
 
 FOOT_EN = (
-    f"{FIRM} PLLC, Texas, a law firm owned only by licensed attorneys. Our fee is 10% of the total amount recovered at every "
+    f"{FIRM} PLLC, a law firm owned only by licensed attorneys. Our fee is 10% of the total amount recovered at every "
     "stage, including trial; case costs and liens are paid from your share after the fee. If there is no recovery, you owe no "
     "fee and no case costs. Every case is different, and past results do not guarantee future results. "
     f"{FIRM} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves "
     "legal work. The software company, 10flat Technologies, is paid a fixed fee and never shares in a recovery or a fee. "
     "Contacting us does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising. "
-    "Fee comparisons use a one-third (33%) fee, common for Texas injury cases. The calculator is an illustration, not a promise of any outcome."
+    "Fee comparisons use a one-third (33%) fee, common for injury cases. The calculator is an illustration, not a promise of any outcome."
 )
 
 FOOT_ES = (
-    f"{FIRM} PLLC, Texas, un bufete de abogados cuyos dueños son solo abogados con licencia. Nuestros honorarios son el 10% del "
+    f"{FIRM} PLLC, un bufete de abogados cuyos dueños son solo abogados con licencia. Nuestros honorarios son el 10% del "
     "monto total recuperado en cada etapa, incluso en juicio; los gastos del caso y los gravámenes se pagan de su parte después "
     "de los honorarios. Si no hay recuperación, no debe honorarios ni gastos del caso. Cada caso es diferente. "
     "Comunicarse con nosotros no crea una relación abogado-cliente hasta que se firme un acuerdo de honorarios. Publicidad de abogados."

@@ -40,7 +40,7 @@ CONFIG = {
     # link previews, share links and the sitemap use the Vercel address. At launch set this to "https://10flatlaw.com".
     "site_url": "https://personal-injury-law-nine.vercel.app",
     "title": "10% Injury Fee, Even at Trial | 10flat Law",
-    "description": "A one-third fee is common for Texas injury cases. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed Texas attorney does the lawyering.",
+    "description": "A one-third fee is common for injury cases. 10flat Law takes 10%, and it stays 10% even at trial. Technology does the paperwork. A licensed attorney does the lawyering.",
     "noindex": True,  # prototype. Set False at launch.
     # One fee for every case type, no percentage on the tabs. Case types from the platform SOW v2.0 (3 Nov 2026).
     "rates": [
@@ -303,7 +303,7 @@ def build_sections(btn):
       <thead><tr><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Case type</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">If there is no recovery</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">Our fee</th><th scope="col" class="framer-text framer-styles-preset-7jf1zc">At trial</th></tr></thead>
       <tbody>{rows}</tbody>
     </table>
-    <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Claims from about $1,000 up. The size of a case alone never rules it out; a licensed Texas attorney reviews every request.</p>
+    <p class="pi-note pi-center framer-text framer-styles-preset-10holly">Claims from about $1,000 up. The size of a case alone never rules it out; a licensed attorney reviews every request.</p>
   </div>
 </section>
 """
@@ -315,7 +315,7 @@ def build_sections(btn):
   </div>
   <div class="pi-wrap">
     <ol class="pi-steps">
-      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help.</p></li>
+      <li><span class="framer-text framer-styles-preset-lit60w pi-step">1</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">Tell us what happened.</h3><p class="framer-text framer-styles-preset-1fc2js5">Send us your case with our short online form. Tell us what happened and attach any photos or documents you have. A licensed attorney reviews every case, and we tell you when to expect an answer. It’s free to find out if we can help.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">2</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We build your case.</h3><p class="framer-text framer-styles-preset-1fc2js5">Our system organises your photos, police report and medical records the moment you send them. It requests missing records, builds a timeline of your treatment, totals your bills, drafts letters and tracks every deadline. A trained case team checks the work.</p></li>
       <li><span class="framer-text framer-styles-preset-lit60w pi-step">3</span><h3 class="framer-text framer-styles-preset-1jvhhyw pi-h3">We pursue your recovery.</h3><p class="framer-text framer-styles-preset-1fc2js5">Your attorney spends time where it counts: reviewing your case, advising you and negotiating with the insurance company. Nothing goes to the insurer or a court without your attorney’s approval. You decide every offer, after your attorney advises you. If the insurer won’t make a fair offer, we file a lawsuit, and your fee stays 10%.</p></li>
     </ol>
@@ -327,7 +327,7 @@ def build_sections(btn):
 <section class="pi-section pi-cream" id="why" aria-labelledby="why-h">
   <div class="pi-wrap pi-center">
     <h2 id="why-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">We charge less because we spend less, not because we do less.</h2>
-    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">When a firm charges 33–40%, that fee pays for paperwork staff, billboards and expensive offices. None of that makes your case stronger, but it all comes out of your settlement. At {c['firm']} technology does the paperwork other firms pay people to do. A trained case team checks the work, and a licensed Texas attorney reviews and approves every important step. No billboards, no marble lobby. Think of it like online banking: it got faster and cheaper because the routine work became automatic.</p>
+    <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">When a firm charges 33–40%, that fee pays for paperwork staff, billboards and expensive offices. None of that makes your case stronger, but it all comes out of your settlement. At {c['firm']} technology does the paperwork other firms pay people to do. A trained case team checks the work, and a licensed attorney reviews and approves every important step. No billboards, no marble lobby. Think of it like online banking: it got faster and cheaper because the routine work became automatic.</p>
   </div>
 </section>
 """
@@ -351,7 +351,7 @@ def build_sections(btn):
   <div class="pi-wrap pi-center">
     <h2 id="start-h" class="framer-text framer-styles-preset-9kqwf9 pi-h2">Start your case. It takes about ten minutes.</h2>
     <p class="framer-text framer-styles-preset-1fc2js5 pi-lead">Answer a few questions here. It takes about three minutes. Nothing here commits you to anything. It’s free to find out if we can help.</p>
-    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A licensed Texas attorney reviews every case, and we tell you when to expect an answer. Se habla español, from your first message to your settlement.</p>
+    <p class="framer-text framer-styles-preset-u2fub4 pi-muted">Tell us what happened and send any photos or documents you have. A licensed attorney reviews every case, and we tell you when to expect an answer. Se habla español, from your first message to your settlement.</p>
   </div>
   <div class="pi-wrap pi-narrow">
     <form class="pi-card pi-form" id="intake" novalidate>
@@ -365,7 +365,7 @@ def build_sections(btn):
       <div class="pi-field"><label for="f-contact" class="framer-text framer-styles-preset-7jf1zc">6. How to reach you</label><input id="f-contact" name="contact" type="text" class="pi-input framer-text framer-styles-preset-u2fub4" autocomplete="off" placeholder="Phone or email"></div>
       <button type="submit" class="pi-submit framer-text framer-styles-preset-ivrpyo">Submit my case</button>
       <p class="pi-form-msg framer-text framer-styles-preset-u2fub4" id="intake-msg" hidden>Thank you. This form is a preview, so nothing was sent. Please use our <a href="/start">online case form</a>.</p>
-      <p class="pi-fine framer-text framer-styles-preset-10holly">Contacting us does not create an attorney-client relationship until a fee agreement is signed. A licensed Texas attorney reviews your answers, and we tell you when to expect an answer.</p>
+      <p class="pi-fine framer-text framer-styles-preset-10holly">Contacting us does not create an attorney-client relationship until a fee agreement is signed. A licensed attorney reviews your answers, and we tell you when to expect an answer.</p>
     </form>
   </div>
 </section>
@@ -634,9 +634,9 @@ def main():
     disclaimer = t.find_all(by_name("Disclaimer"), footer_outer["children"])[0]
     disc_p = [n for n in disclaimer["children"] if n["tag"] == "p"][0]
     new_disc = (f'<p class="framer-text framer-styles-preset-10holly" dir="auto" style="--framer-text-color:var(--token-561f5218-1b33-40dd-8dce-1b36fc074fd1, rgb(20, 12, 10))">'
-                f'{c["firm"]} PLLC, Texas, a law firm owned only by licensed attorneys.<br>'
+                f'{c["firm"]} PLLC, a law firm owned only by licensed attorneys.<br>'
                 f'Our fee is 10% of the total amount recovered at every stage, including trial; case costs and liens are paid from your share after the fee. If there is no recovery, you owe no fee and no case costs. Every case is different, and past results do not guarantee future results.<br>'
-                f'{c["firm"]} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. The software company, 10flat Technologies, is paid a fixed fee and never shares in a recovery or a fee. Contacting us does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising. Fee comparisons use a one-third (33%) fee, common for Texas injury cases. The calculator is an illustration, not a promise of any outcome.</p>')
+                f'{c["firm"]} uses software, including AI, and a supervised case team to prepare work; a licensed attorney reviews and approves legal work. The software company, 10flat Technologies, is paid a fixed fee and never shares in a recovery or a fee. Contacting us does not create an attorney-client relationship until a fee agreement is signed. Attorney advertising. Fee comparisons use a one-third (33%) fee, common for injury cases. The calculator is an illustration, not a promise of any outcome.</p>')
     footer_html = footer_html.replace(t.html(disc_p), new_disc)
     links = t.find_all(by_name("Links Container"), footer_outer["children"])[0]
     footer_html = footer_html.replace(t.html(links),
