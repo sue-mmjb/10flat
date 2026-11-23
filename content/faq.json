@@ -96,7 +96,7 @@
         },
         {
           "q": "Which cases don’t you take?",
-          "a": "Cases outside the United States, cases where we have a conflict of interest, and claims an attorney decides we can’t pursue after review, for example where the facts don’t support a claim. If we can’t take your case, a person tells you, along with any deadline you need to know about.",
+          "a": "Cases in a state where we don’t yet have a licensed attorney, cases where we have a conflict of interest, and claims an attorney decides we can’t pursue after review, for example where the facts don’t support a claim. If we can’t take your case, a person tells you, along with any deadline you need to know about.",
           "review": "Attorney sign-off needed before launch (SOW Phase 4)."
         }
       ]
@@ -160,7 +160,7 @@
         },
         {
           "q": "Where are 10flat Law’s attorneys licensed?",
-          "a": "Our attorneys are licensed in Texas, and we handle injury claims for people anywhere in the US. If your case needs a lawsuit in another state, it is filed by an attorney licensed in that state, and your fee stays 10%."
+          "a": "Our attorneys are licensed in Texas. Every case is handled by an attorney licensed in the state where the claim belongs, and you see that attorney’s name and license before you sign anything."
         },
         {
           "q": "Does 10flat Law use AI?",
@@ -190,11 +190,11 @@
         },
         {
           "q": "Does 10flat Law take cases outside Texas?",
-          "a": "Yes. We take injury cases anywhere in the US. If a case needs a lawsuit, it is filed by an attorney licensed in the state where it belongs, and your fee stays 10%."
+          "a": "Only where we have an attorney licensed in that state. When you send your case, we tell you whether we do. If we do, you see your attorney’s name and license before you sign anything, and your fee stays 10%. If we don’t, a person tells you, along with any deadline you need to know about."
         },
         {
           "q": "Can I hire 10flat Law from Houston, Dallas, San Antonio or Austin?",
-          "a": "Yes. We take cases from anywhere in Texas and the rest of the US. Because your case runs from your phone, where you live makes no difference to how we work with you."
+          "a": "Yes. We take cases from anywhere in Texas. Because your case runs from your phone, where you live in Texas makes no difference to how we work with you."
         }
       ]
     },
@@ -203,7 +203,7 @@
       "items": [
         {
           "q": "Which cases qualify?",
-          "a": "Injury cases anywhere in the US: car and truck accidents, slip and falls, medical and dental injuries and more. We review every case, whatever its size. A licensed attorney decides whether to accept it, and we tell you when to expect an answer. It’s free to find out if we can help.",
+          "a": "Injury cases in the states where we have a licensed attorney, starting with Texas: car and truck accidents, slip and falls, medical and dental injuries and more. We review every case, whatever its size. A licensed attorney decides whether to accept it, and we tell you when to expect an answer. It’s free to find out if we can help.",
           "review": "Business decision for Tim and ethics counsel (round 2 review, 2 Nov 2026); safer wording applied."
         },
         {
@@ -376,7 +376,7 @@
         },
         {
           "q": "¿Hay abogados de accidentes en Texas que cobran solo el 10%?",
-          "a": "Sí. 10flat Law es un bufete de lesiones personales que cobra el 10%, en Texas y en todo Estados Unidos. Si no hay recuperación, no paga honorarios ni gastos del caso. Envíenos su caso con nuestro formulario en línea, elija español, y un abogado con licencia lo revisará."
+          "a": "Sí. 10flat Law es un bufete de lesiones personales que cobra el 10% en Texas y en los estados donde tenemos un abogado con licencia. Si no hay recuperación, no paga honorarios ni gastos del caso. Envíenos su caso con nuestro formulario en línea, elija español, y un abogado con licencia lo revisará."
         },
         {
           "q": "¿Cuánto cobra un abogado de accidentes en Texas?",
